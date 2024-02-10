@@ -1,0 +1,31 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=1%3A2154&mode=design&t=g6qwze9oShWnmzfu-1
+/*atoms/event_type_indicator/css/index.scss*/
+//Dependencies:
+
+//Attributres
+//indicator-type = dot | text
+
+.event_type_indicator {
+	background-color: var(--theme-500, #{$brand-500});
+
+	a:hover & {
+		background-color: var(--theme-200, #{$brand-200});
+	}
+
+	&[indicator-type="dot"] {
+		border: 2/16 * 1rem solid $brand-900;
+		border-radius: 50%;
+		height: 15/16 * 1rem;
+		width: 15/16 * 1rem;
+		flex-grow: 0;
+	}
+	&[indicator-type="text"] {
+		font-size: 10/16 * 1rem;
+		color: var(--primary_text);
+		padding: 7/10 * 1em 11/10 * 1em;
+		border-radius: 2/16 * 1rem;
+	}
+}

@@ -1,0 +1,83 @@
+@use "sass:color";
+@use "../../../global_css/abstracts" as *;
+
+//Visual: https://www.figma.com/file/kIjfaVuV4r1BQl86FGWFhB/Web-Design-System-V1?type=design&node-id=643%3A5962&mode=design&t=1zQKnpLthgt7v7tT-1
+/*Basic Hero/css/hero.scss*/
+//Dependencies:
+
+//Attributres
+//section: vertical-spacing = small | *medium | large
+//section: content-alignment = center |  *left
+//section: color-theme = white | neutral | denim |  *midnight
+//section: has-carousel = true | *false
+
+.card_grid {
+  &-- {
+    &section {
+      padding-block: 100/16 * 1rem;
+
+      &[vertical-spacing="small"] {
+        padding-block: 64/16 * 1rem;
+      }
+      &[vertical-spacing="large"] {
+        padding-block: 160/16 * 1rem;
+      }
+
+      .content_group {
+        grid-column: 2 / span 7;
+
+        @include md {
+          grid-column: 2 / span 9;
+        }
+        @include sm {
+          grid-column: 2 / -2;
+        }
+        &[length="extended"] {
+          grid-column: 2 / span 9;
+
+          @include md {
+            grid-column: 2 / span 9;
+          }
+          @include sm {
+            grid-column: 2 / -2;
+          }
+        }
+      }
+      .grid_area {
+        grid-column: 2/-2;
+        --_min_card_width: #{335/16 * 1rem};
+        --_items_per_row: attr(items-per-row);
+        display: grid;
+        @include fluid_size(gap, 24px, 60px);
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(var(--_min_card_width), 1fr)
+        );
+
+        &:after {
+          content: attr(items-per-row);
+        }
+
+        [constrain-type="card"] {
+          //restricts the layout based on a minimim width for wach card
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(var(--_min_card_width), 1fr)
+          );
+        }
+
+        [constrain-type="card"] {
+          //restricts the layout based on a minimim width for wach card
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(var(--_min_card_width), 1fr)
+          );
+        }
+        [constrain-type="row"] {
+          //restricts the layout based on a minimim width for wach card
+          grid-template-columns: repeat(var(--_items_per_row), 1fr);
+        }
+      }
+    } //section
+  }
+}

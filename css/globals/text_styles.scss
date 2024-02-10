@@ -1,0 +1,94 @@
+@use "sass:color";
+@use "abstracts/" as *;
+
+* {
+	font-family: $sans_font;
+}
+
+h1 {
+	@include headline_1;
+}
+h2 {
+	@include headline_2;
+}
+h3 {
+	@include headline_3;
+}
+h4 {
+	@include headline_4;
+}
+h5 {
+	@include headline_5;
+}
+h6 {
+	@include headline_6;
+}
+
+p {
+	@include body_text;
+	&.x-large {
+		@include body_text-x-large;
+	}
+
+	&.large {
+		@include body_text-large;
+	}
+
+	&.small {
+		@include body_text-small;
+	}
+
+	&.bold {
+		font-weight: 700;
+	}
+	&.medium {
+		font-weight: 500;
+	}
+	&.light {
+		font-weight: 350;
+	}
+	&.book {
+		font-weight: 450;
+	}
+}
+
+.h1 {
+	@include headline_1;
+}
+.h2 {
+	@include headline_2;
+}
+.h3 {
+	@include headline_3;
+}
+.h4 {
+	@include headline_4;
+}
+.h5 {
+	@include headline_5;
+}
+.h6 {
+	@include headline_6;
+}
+
+.subheading {
+	@include subheadline;
+	&-large {
+		@include subheadline-small;
+	}
+	&-small {
+		@include subheadline-small;
+	}
+}
+
+.eyebrow {
+	@include eyebrow;
+
+	&-large {
+		@include eyebrow-large;
+	}
+}
+
+.subnav {
+	@include fluid_size(font-size, 14px, 16px);
+}

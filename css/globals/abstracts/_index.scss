@@ -1,0 +1,8 @@
+// scss variables and mixins
+// these are used globally so they shouldn't contain any declared css styles
+// any declared css rules wil print into every css file
+
+@forward "_colors";
+@forward "_media_queries";
+@forward "_mixins";
+@forward "_fonts";

@@ -1,0 +1,49 @@
+/*atoms/arrows/css/index.scss*/
+.arrow {
+ fill: none;
+ height: 1em;
+ display: block;
+ color: var(--primary_text);
+}
+.arrow[arrow-type=simple] > path {
+ stroke: currentColor;
+ stroke-width: 2;
+ stroke-linecap: round;
+}
+.arrow[arrow-type=breadcrumb] {
+ width: 1em;
+ margin-top: 0.25em;
+ fill: none;
+}
+.arrow[arrow-type=breadcrumb] > path {
+ stroke-width: 1;
+ stroke: currentColor;
+ stroke-linecap: round;
+}
+.arrow[arrow-type=feature] {
+ margin-left: -0.5em;
+ transition: 0.3s all;
+}
+.arrow[arrow-type=feature] > path {
+ stroke: currentColor;
+ stroke-width: 2;
+ stroke-linecap: round;
+}
+.arrow[arrow-type=feature] .line {
+ translate: 50% 0;
+ transition: 0.3s all;
+}
+a:hover .arrow[arrow-type=feature] {
+ margin-left: 0;
+}
+a:hover .arrow[arrow-type=feature] .line {
+ translate: 0 0;
+}
+.arrow[arrow-type=expand] {
+ width: 2em;
+}
+.arrow[arrow-type=expand] > path {
+ stroke: currentColor;
+ stroke-width: 2;
+ stroke-linecap: round;
+}

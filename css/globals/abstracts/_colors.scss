@@ -1,0 +1,118 @@
+@use "sass:color";
+
+//blues
+$brand-900: #192d62;
+$brand-800: #1c326f;
+$brand-700: #213d85;
+$brand-600: #4c76c2;
+$brand-500: #76affe;
+$brand-400: #90b9f8;
+$brand-300: #aac3f2;
+$brand-200: #a9bfeb;
+$brand-100: #bccceb;
+$brand-50: #e9f1ff;
+
+//indoor
+$indoor-900: #592817;
+$indoor-800: #7f371a;
+$indoor-700: #a5451c;
+$indoor-600: #cb531f;
+$indoor-500: #f16122;
+$indoor-400: #ea865f;
+$indoor-300: #e2ab9c;
+$indoor-200: #e6c0b5;
+$indoor-100: #ebd5cd;
+$indoor-50: #f7eeeb;
+
+//grass
+$grass-900: #486510;
+$grass-800: #5b801c;
+$grass-700: #6e9b27;
+$grass-600: #81b632;
+$grass-500: #94d13d;
+$grass-400: #afda66;
+$grass-300: #cae28f;
+$grass-200: #d6eca4;
+$grass-100: #e2f5ba;
+$grass-50: #f3fbe3;
+
+//beach
+$beach-900: #887307;
+$beach-800: #a48c1a;
+$beach-700: #c1a42d;
+$beach-600: #ddbc40;
+$beach-500: #f9d452;
+$beach-400: #f3d978;
+$beach-300: #eddd9d;
+$beach-200: #f6eab6;
+$beach-100: #fff7cf;
+$beach-50: #fffcec;
+
+//neutrals
+$black: #000000;
+$white: #ffffff;
+
+$colors_full: (
+	//blue
+	"brand-900" $brand-900 $brand-100,
+	"brand-800" $brand-800 $brand-100,
+	"brand-800" $brand-700 $brand-100,
+	"brand-500" $brand-500 $brand-100,
+	"brand-200" $brand-200 $brand-900,
+	"brand-100" $brand-100 $brand-900,
+
+	"indoor-900" $indoor-900 $indoor-100,
+	"indoor-800" $indoor-800 $indoor-100,
+	"indoor-800" $indoor-700 $indoor-100,
+	"indoor-500" $indoor-500 $indoor-100,
+	"indoor-200" $indoor-200 $indoor-900,
+	"indoor-100" $indoor-100 $indoor-900,
+
+	"grass-900" $grass-900 $grass-100,
+	"grass-800" $grass-800 $grass-100,
+	"grass-800" $grass-700 $grass-100,
+	"grass-500" $grass-500 $grass-100,
+	"grass-200" $grass-200 $grass-900,
+	"grass-100" $grass-100 $grass-900,
+
+	"beach-900" $beach-900 $beach-100,
+	"beach-800" $beach-800 $beach-100,
+	"beach-500" $beach-500 $beach-100,
+	"beach-300" $beach-300 $beach-900,
+	"beach-200" $beach-200 $beach-900,
+	"beach-100" $beach-100 $beach-900
+);
+
+$colors_dark: (
+	//blue
+	"brand-900" $brand-900 $brand-100,
+	"brand-800" $brand-800 $brand-100,
+	"brand-700" $brand-700 $brand-100,
+	//red
+	"indoor-900" $indoor-900 $indoor-100,
+	"indoor-800" $indoor-800 $indoor-100,
+	"indoor-700" $indoor-700 $indoor-100,
+	//green
+	"grass-900" $grass-900 $grass-100,
+	"grass-800" $grass-800 $grass-100,
+	"grass-700" $grass-700 $grass-100,
+	//yellow
+	"beach-900" $beach-900 $beach-100,
+	"beach-800" $beach-800 $beach-100,
+	"beach-700" $beach-700 $beach-100
+);
+
+$colors_light: (
+	//blue
+	"brand-200" $brand-200 $brand-900,
+	"brand-100" $brand-100 $brand-900,
+	//red
+	"indoor-200" $indoor-200 $indoor-900,
+	"indoor-100" $indoor-100 $indoor-900,
+	//green
+	"grass-200" $grass-200 $grass-900,
+	"grass-100" $grass-100 $grass-900,
+	//yellow
+	"beach-200" $beach-200 $beach-900,
+	"beach-100" $beach-100 $beach-900
+);

@@ -1,0 +1,85 @@
+:root {
+ --background: #e9f1ff;
+ --primary_text: #192d62;
+ --secondary_text: #1c326f;
+ --low_text: #4c76c2;
+ --border: #a9bfeb;
+ --theme_color-50: #e9f1ff;
+ --theme_color-100: #bccceb;
+ --theme_color-200: #a9bfeb;
+ --theme_color-300: #aac3f2;
+ --theme_color-400: #90b9f8;
+ --theme_color-500: #76affe;
+ --theme_color-600: #4c76c2;
+ --theme_color-700: #213d85;
+ --theme_color-800: #1c326f;
+ --theme_color-900: #192d62;
+}
+
+[color-mode=dark] {
+ --background: #192d62;
+ --primary_text: #e9f1ff;
+ --secondary_text: #a9bfeb;
+ --low_text: #90b9f8;
+ --border: #1c326f;
+}
+
+[color-mode=light] {
+ --background: #e9f1ff;
+ --primary_text: #192d62;
+ --secondary_text: #1c326f;
+ --low_text: #4c76c2;
+ --border: #a9bfeb;
+}
+
+[color-theme=indoor] {
+ --theme_color-50: #f7eeeb;
+ --theme_color-100: #ebd5cd;
+ --theme_color-200: #e6c0b5;
+ --theme_color-300: #e2ab9c;
+ --theme_color-400: #ea865f;
+ --theme_color-500: #f16122;
+ --theme_color-600: #cb531f;
+ --theme_color-700: #a5451c;
+ --theme_color-800: #7f371a;
+ --theme_color-900: #592817;
+}
+
+[color-theme=grass] {
+ --theme_color-50: #f3fbe3;
+ --theme_color-100: #e2f5ba;
+ --theme_color-200: #d6eca4;
+ --theme_color-300: #cae28f;
+ --theme_color-400: #afda66;
+ --theme_color-500: #94d13d;
+ --theme_color-600: #81b632;
+ --theme_color-700: #6e9b27;
+ --theme_color-800: #5b801c;
+ --theme_color-900: #486510;
+}
+
+[color-theme=beach] {
+ --theme_color-50: #fffcec;
+ --theme_color-100: #fff7cf;
+ --theme_color-200: #f6eab6;
+ --theme_color-300: #eddd9d;
+ --theme_color-400: #f3d978;
+ --theme_color-500: #f9d452;
+ --theme_color-600: #ddbc40;
+ --theme_color-700: #c1a42d;
+ --theme_color-800: #a48c1a;
+ --theme_color-900: #887307;
+}
+
+[color-theme=brand] {
+ --theme_color-50: #e9f1ff;
+ --theme_color-100: #bccceb;
+ --theme_color-200: #a9bfeb;
+ --theme_color-300: #aac3f2;
+ --theme_color-400: #90b9f8;
+ --theme_color-500: #76affe;
+ --theme_color-600: #4c76c2;
+ --theme_color-700: #213d85;
+ --theme_color-800: #1c326f;
+ --theme_color-900: #192d62;
+}

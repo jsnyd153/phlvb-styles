@@ -1,0 +1,67 @@
+/*components/icons/css/index.scsss*/
+.toggle {
+   background-color: #ffffff;
+   box-shadow: 0px 10px 4px -7px rgba(5, 6, 50, 0.03);
+   padding: 0.25rem;
+   border-radius: 999rem;
+}
+.toggle-checkbox {
+   position: fixed;
+   top: 20px;
+   left: 20px;
+   display: none;
+}
+.toggle-thumb {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 0.5rem;
+}
+.toggle-indicator {
+   background-color: #0079ff;
+   grid-column: 1;
+   grid-row: 1;
+   border-radius: 999rem;
+   z-index: 0;
+   transition: 0.3s all;
+}
+.toggle-option {
+   border-radius: 999rem;
+   padding: 4px 12px 6px 12px;
+   position: relative;
+   z-index: 1;
+   color: var(--secondary_text);
+   font-family: "Mark Pro", "Montserrat", sans-serif;
+   font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+   font-style: normal;
+   font-weight: 400;
+   line-height: 150%;
+   font-size: clamp(0.75rem, 0.19vw + 0.70625rem, 0.875rem);
+   font-weight: 600;
+   transition: 0.3s all;
+}
+.toggle-option:hover {
+   background-color: #e6e6ea;
+}
+.toggle-option:first-child {
+   grid-column: 1;
+   grid-row: 1;
+   color: #ffffff;
+}
+.toggle-option:first-child:hover {
+   background: transparent;
+}
+.toggle-checkbox:checked + .toggle-thumb .toggle-indicator {
+   transform: translateX(calc(100% + 0.5rem));
+}
+.toggle-checkbox:checked + .toggle-thumb .toggle-option:last-child {
+   color: #ffffff;
+}
+.toggle-checkbox:checked + .toggle-thumb .toggle-option:last-child:hover {
+   background: transparent;
+}
+.toggle-checkbox:checked + .toggle-thumb .toggle-option:first-child {
+   color: #040531;
+}
+.toggle-checkbox:checked + .toggle-thumb .toggle-option:first-child:hover {
+   background-color: #e6e6ea;
+}

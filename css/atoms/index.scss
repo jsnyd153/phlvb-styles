@@ -1,0 +1,22 @@
+// print all atoms into one css file
+
+//atoms
+@forward "event_type_indicator/css";
+// @forward "alerts/css";
+// @forward "arrows/css";
+// @forward "buttons/css";
+// @forward "tags/css";
+// @forward "breadcrumbs/css";
+// @forward "icons/css";
+
+// print all components into one css file
+
+atomGrid {
+	display: grid;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 60px;
+	padding: 60px;
+	background: #f5eded;
+}

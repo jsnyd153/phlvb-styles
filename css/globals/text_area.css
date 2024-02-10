@@ -1,0 +1,11 @@
+.text_area {
+ display: flex;
+ flex-direction: column;
+ gap: 1rem;
+}
+
+.text_content {
+ display: flex;
+ flex-direction: column;
+ gap: 0.5rem;
+}

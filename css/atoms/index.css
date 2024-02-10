@@ -1,0 +1,30 @@
+/*atoms/event_type_indicator/css/index.scss*/
+.event_type_indicator {
+ background-color: var(--theme-500, #76affe);
+}
+a:hover .event_type_indicator {
+ background-color: var(--theme-200, #a9bfeb);
+}
+.event_type_indicator[indicator-type=dot] {
+ border: 0.125rem solid #192d62;
+ border-radius: 50%;
+ height: 0.9375rem;
+ width: 0.9375rem;
+ flex-grow: 0;
+}
+.event_type_indicator[indicator-type=text] {
+ font-size: 0.625rem;
+ color: var(--primary_text);
+ padding: 0.7em 1.1em;
+ border-radius: 0.125rem;
+}
+
+atomGrid {
+ display: grid;
+ flex-wrap: wrap;
+ align-items: flex-start;
+ justify-content: flex-start;
+ gap: 60px;
+ padding: 60px;
+ background: #f5eded;
+}

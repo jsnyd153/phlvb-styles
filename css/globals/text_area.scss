@@ -1,0 +1,19 @@
+@use "sass:color";
+@use "abstracts/" as *;
+
+//Visual:
+//Dependencies:
+
+//Attributres
+
+.text_area {
+	display: flex;
+	flex-direction: column;
+	gap: 16/16 * 1rem;
+}
+
+.text_content {
+	display: flex;
+	flex-direction: column;
+	gap: 8/16 * 1rem;
+}

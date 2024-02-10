@@ -1,0 +1,66 @@
+// media queries
+
+$xxs-width: 477px;
+$xs-width: 576px;
+$sm-width: 767px;
+$md-width: 991px;
+//base is between 991/1280
+$lg-width: 1280px;
+$xl-width: 1440px;
+
+@mixin xxs {
+  @media (max-width: #{$xs-width}) {
+    @content;
+  }
+}
+
+@mixin xs {
+  @media (max-width: #{$xs-width}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (max-width: #{$sm-width}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: #{$md-width}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: #{$lg-width}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: #{$xl-width}) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin touch {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}
+
+$media_sizes: (
+  "md" $md-width,
+  "sm" $sm-width,
+  "xxs" $xxs-width,
+  "xs" $xs-width,
+  "lg" $lg-width,
+  "xl" $xl-width
+);

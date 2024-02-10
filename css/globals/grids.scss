@@ -1,0 +1,28 @@
+@use "sass:color";
+@use "abstracts/" as *;
+
+:root {
+	@include fluid_size(--gap, 12px, 32px);
+	--page_margin: clamp(2rem, 5.47vw - 0.625rem, 3.75rem);
+	--grid_margin: calc(var(--page_margin) - var(--gap));
+	--page_grid: var(--grid_margin) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
+		minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
+		minmax(0, 1fr) minmax(0, 1fr) var(--grid_margin);
+}
+section {
+	@include fluid_size(--page_margin, 32px, 60px, 768px, 1280px);
+	@include sm {
+		@include fluid_size(--page_margin, 20px, 32px, 375px, 768px);
+	}
+	@include lg {
+		@include fluid_size(--page_margin, 60px, 120px, 1280px, 1440px);
+	}
+	@include xl {
+		--page_margin: calc((100vw - #{1200 / 16 * 1rem}) / 2 - var(--gap));
+	}
+
+	box-sizing: border-box;
+	display: grid;
+	grid-template-columns: var(--page_grid);
+	gap: var(--gap);
+}

@@ -1,0 +1,120 @@
+@use "_mixins" as *;
+@use "_media_queries" as *;
+
+//fonts
+$serif_font: "p22-mackinac-pro", Libre Baskerville, serif;
+$sans_font: "trade-gothic-next", "Gothic A1", sans-serif;
+$sans_font-condensed: "trade-gothic-next-condensed", "Gothic A1", sans-serif;
+
+@mixin headline_1 {
+	@include fluid_size(font-size, 40px, 56px);
+	font-family: $sans_font;
+	color: var(--primary_text);
+	line-height: 125%;
+	font-weight: 700;
+}
+
+@mixin headline_2 {
+	@include fluid_size(font-size, 32px, 40px);
+	color: var(--primary_text);
+	font-family: $sans_font;
+	line-height: 125%;
+	font-weight: 700;
+}
+
+@mixin headline_3 {
+	@include fluid_size(font-size, 24px, 32px);
+	color: var(--primary_text);
+	font-family: $sans_font;
+	line-height: 125%;
+	font-weight: 700;
+}
+
+@mixin headline_4 {
+	@include fluid_size(font-size, 20px, 28px);
+	color: var(--primary_text);
+	font-family: $sans_font;
+	line-height: 135%;
+	font-weight: 700;
+}
+
+@mixin headline_5 {
+	@include fluid_size(font-size, 18px, 24px);
+	color: var(--primary_text);
+	font-family: $sans_font;
+	line-height: 135%;
+	font-weight: 700;
+}
+
+@mixin headline_6 {
+	@include fluid_size(font-size, 16px, 20px);
+	color: var(--primary_text);
+	font-family: $sans_font;
+	line-height: 135%;
+	font-weight: 700;
+}
+
+@mixin body_text {
+	color: var(--secondary_text);
+	font-family: $sans_font;
+	@include fluid_size(font-size, 14px, 16px);
+	font-style: normal;
+	font-weight: 400;
+	line-height: 150%;
+}
+@mixin body_text-x-large {
+	@include body_text;
+	@include fluid_size(font-size, 18px, 20px);
+}
+
+@mixin body_text-large {
+	@include body_text;
+	@include fluid_size(font-size, 16px, 18px);
+}
+
+@mixin body_text-small {
+	@include body_text;
+	@include fluid_size(font-size, 12px, 14px);
+}
+
+@mixin subheadline {
+	color: var(--primary_text);
+	font-family: $sans_font;
+	@include fluid_size(font-size, 18px, 20px);
+	font-style: normal;
+	font-weight: 500;
+	line-height: 150%;
+}
+@mixin subheadline-large {
+	@include subheadline;
+	@include fluid_size(font-size, 16px, 18px);
+}
+
+@mixin subheadline-small {
+	@include subheadline;
+	@include fluid_size(font-size, 14px, 16px);
+}
+
+@mixin eyebrow-small {
+	color: var(--accent);
+	font-family: $sans_font;
+	font-size: 13/16 * 1rem;
+	letter-spacing: 2/12 * 1em;
+	text-transform: uppercase;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 150%;
+}
+
+@mixin eyebrow {
+	color: var(--accent);
+	font-family: $sans_font;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 145%;
+}
+
+@mixin eyebrow-large {
+	font-size: 20/16 * 1rem;
+}

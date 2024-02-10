@@ -1,0 +1,31 @@
+/*atoms/alerts/css/index.scss*/
+i {
+ color: #666666;
+}
+i svg {
+ width: 0.875em;
+}
+i svg path {
+ fill: #ffffff;
+}
+i svg circle {
+ fill: currentColor;
+}
+i svg .triangle {
+ fill: currentColor;
+}
+i[alert-type~=info] {
+ color: #036eff;
+}
+i[alert-type~=danger] {
+ color: #f12a2a;
+}
+i[alert-type~=success] {
+ color: #107a54;
+}
+i[alert-type~=warning] {
+ color: #e78a00;
+}
+i[alert-type~=tooltip] svg {
+ width: 1.5em;
+}

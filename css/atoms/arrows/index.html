@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+		<meta content="width=device-width, initial-scale=1" large bold="viewport" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+		<title>Atoms - Arrows</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+		/>
+		<link rel="stylesheet" href="../../globals/_index.css" />
+		<link rel="stylesheet" href="../index.css" />
+		<style>
+			atomGrid a:has(.arrow) {
+				color: #0079ff;
+			}
+			atomGrid a:has(.arrow):hover {
+				color: #4da1ff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<main class="">
+			<atomGrid>
+				<div class="w-embed svg-arrow" arrow-size="large">
+					<svg
+						width="30"
+						height="18"
+						viewBox="0 0 30 18"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path d="M0 9H27.32" stroke="#192D62" stroke-width="2.5" />
+						<path d="M18.2134 1L27.32 9L18.2134 17" stroke="#192D62" stroke-width="2.5" />
+					</svg>
+				</div>
+
+				<div class="w-embed svg-arrow" arrow-size="small">
+					<svg
+						width="19"
+						height="12"
+						viewBox="0 0 19 12"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path d="M0 6H17.075" stroke="#192D62" stroke-width="1.5" />
+						<path d="M11.3833 1L17.075 6.00001L11.3833 11" stroke="#192D62" stroke-width="1.5" />
+					</svg>
+				</div>
+
+				<a href="#">
+					<div class="w-embed svg-arrow" arrow-size="large">
+						<svg
+							width="30"
+							height="18"
+							viewBox="0 0 30 18"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path d="M0 9H27.32" stroke="#192D62" stroke-width="2.5" />
+							<path d="M18.2134 1L27.32 9L18.2134 17" stroke="#192D62" stroke-width="2.5" />
+						</svg>
+					</div>
+				</a>
+
+				<a href="#">
+					<div class="w-embed svg-arrow" arrow-size="small">
+						<svg
+							width="19"
+							height="12"
+							viewBox="0 0 19 12"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path d="M0 6H17.075" stroke="#192D62" stroke-width="1.5" />
+							<path d="M11.3833 1L17.075 6.00001L11.3833 11" stroke="#192D62" stroke-width="1.5" />
+						</svg>
+					</div>
+				</a>
+			</atomGrid>
+		</main>
+
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+		<script src="../../jquery.min.js"></script>
+		<script>
+			const svgArrow =
+				'<svg viewBox="0 0 12 10"  xmlns="http://www.w3.org/2000/svg"class="arrow" arrow-type="breadcrumb"><path d="M7.36364 1L11 5M11 5L7.36364 9M11 5H1" /></svg>';
+			$(".breadcrumb:nth-child(n+2)").prepend(svgArrow);
+		</script>
+	</body>
+</html>

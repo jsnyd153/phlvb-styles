@@ -1,0 +1,67 @@
+@use "sass:color";
+@use "../../../global/abstracts" as *;
+
+//Visual: https://www.figma.com/file/kIjfaVuV4r1BQl86FGWFhB/Web-Design-System-V1?type=design&node-id=643%3A5962&mode=design&t=1zQKnpLthgt7v7tT-1
+/*components/cards/css/index.scsss*/
+//Dependencies:
+
+//Attributres
+// tag-type = solid | inverted
+// color-theme = $secondary_colors
+
+.tag-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	justify-content: flex-start;
+}
+
+.tag {
+	--_tag_color: #{$black-50};
+	--_invert_color: #{$black-20};
+	--_hover_color: #{$black-70};
+	color: var(--_tag_color, #808080);
+	font-family: $sans_font;
+	font-size: 12/16 * 1rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 12/16 * 1rem;
+	padding: 3/12 * 1em 8/12 * 1em 5/12 * 1em 8/12 * 1em;
+	border: 1px solid var(--_tag_color);
+	border-radius: 0.25rem;
+	&[tag-type="solid"] {
+		--_tag_color: #{$black};
+		background-color: var(--_tag_color);
+		color: $white;
+	}
+	&[tag-type="inverted"] {
+		--_tag_color: #{$black};
+		background-color: var(--_invert_color);
+		border-color: var(--_invert_color);
+	}
+}
+a.tag {
+	text-decoration: none;
+	&:hover {
+		color: var(--_hover_color);
+		border-color: var(--_hover_color);
+		text-decoration: underline;
+		&[tag-type="solid"] {
+			color: $white;
+			border-color: var(--_tag_color);
+		}
+		&[tag-type="inverted"] {
+			color: var(--_tag_color);
+			border-color: var(--_invert_color);
+		}
+	}
+}
+
+//Color Utility Classes
+@each $type in $secondary_colors {
+	.tag[color-theme="#{nth($type, 1)}"] {
+		--_tag_color: #{nth($type, 2)};
+		--_invert_color: #{nth($type, 3)};
+		--_hover_color: #{color.adjust(nth($type, 2), $lightness: +20%)};
+	}
+}

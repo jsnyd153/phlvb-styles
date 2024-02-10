@@ -1,0 +1,63 @@
+@use "sass:color";
+@use "../../../global/abstracts" as *;
+
+//Visual: https://www.figma.com/file/kIjfaVuV4r1BQl86FGWFhB/Web-Design-System-V1?type=design&node-id=643%3A5962&mode=design&t=1zQKnpLthgt7v7tT-1
+/*atoms/arrows/css/index.scss*/
+//Dependencies:
+
+//Attributres
+//arrow-type = breadcrumb | feature | expand
+
+.arrow {
+	fill: none;
+	height: 1em;
+	display: block;
+	color: var(--primary_text);
+
+	&[arrow-type="simple"] {
+		> path {
+			stroke: currentColor;
+			stroke-width: 2;
+			stroke-linecap: round;
+		}
+	}
+
+	&[arrow-type="breadcrumb"] {
+		width: 1em;
+		margin-top: 0.25em;
+		fill: none;
+		> path {
+			stroke-width: 1;
+			stroke: currentColor;
+			stroke-linecap: round;
+		}
+	}
+
+	&[arrow-type="feature"] {
+		margin-left: -0.5em;
+		transition: 0.3s all;
+		> path {
+			stroke: currentColor;
+			stroke-width: 2;
+			stroke-linecap: round;
+		}
+		.line {
+			translate: 50% 0;
+			transition: 0.3s all;
+		}
+		a:hover & {
+			margin-left: 0;
+			.line {
+				translate: 0 0;
+			}
+		}
+	}
+	&[arrow-type="expand"] {
+		width: 2em;
+		> path {
+			stroke: currentColor;
+			stroke-width: 2;
+			stroke-linecap: round;
+		}
+	}
+}

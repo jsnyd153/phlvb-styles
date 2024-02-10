@@ -1,0 +1,31 @@
+:root {
+ --gap: clamp(0.75rem, 1.88vw + 0.3125rem, 2rem);
+ --page_margin: clamp(2rem, 5.47vw - 0.625rem, 3.75rem);
+ --grid_margin: calc(var(--page_margin) - var(--gap));
+ --page_grid: var(--grid_margin) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
+ 	minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
+ 	minmax(0, 1fr) minmax(0, 1fr) var(--grid_margin);
+}
+
+section {
+ --page_margin: clamp(2rem, 5.47vw - 0.625rem, 3.75rem);
+ box-sizing: border-box;
+ display: grid;
+ grid-template-columns: var(--page_grid);
+ gap: var(--gap);
+}
+@media (max-width: 767px) {
+ section {
+  --page_margin: clamp(1.25rem, 3.05vw + 0.53125rem, 2rem);
+ }
+}
+@media (min-width: 1280px) {
+ section {
+  --page_margin: clamp(3.75rem, 37.5vw - 26.25rem, 7.5rem);
+ }
+}
+@media (min-width: 1440px) {
+ section {
+  --page_margin: calc((100vw - 75rem) / 2 - var(--gap));
+ }
+}

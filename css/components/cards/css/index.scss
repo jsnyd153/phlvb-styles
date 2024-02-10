@@ -1,0 +1,143 @@
+@use "sass:color";
+@use "../../../global_css/abstracts" as *;
+
+//Visual: https://www.figma.com/file/kIjfaVuV4r1BQl86FGWFhB/Web-Design-System-V1?type=design&node-id=643%3A5962&mode=design&t=1zQKnpLthgt7v7tT-1
+/*components/cards/css/index.scsss*/
+//Dependencies:
+
+//Attributres
+//card-type = accelerator-program | horizontal | image-only
+//size = small | x-small
+
+//If there is only one linked element, the whole card should be an anchor
+//If there are multiple linkable element (i.e. leanr more and tags and icons... etc) only internal links
+
+.card {
+  @include fluid_size(--gap, 16px, 32px);
+  --_background_color: var(--background);
+  --_border_color: var(--border);
+  --_subtext: #{$midnight-40};
+
+  background: var(--_background_color);
+  padding: 24/16 * 1rem;
+  border: 1px solid var(--_border_color);
+  border-radius: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+
+  .text_area {
+    gap: 1rem;
+  }
+
+  .text_content {
+    gap: 0.5rem;
+  }
+
+  &-date {
+    @include body_text-small;
+    color: var(--_subtext);
+  }
+  &-media_area {
+    .media_content {
+      border-radius: 0.5rem;
+      img {
+        border-radius: inherit;
+      }
+    }
+  }
+
+  &[card-type="accelerator-program"] {
+    flex-direction: column;
+    min-width: 300px;
+    padding: 0;
+
+    .media_area {
+      padding: 12/16 * 1rem 24/16 * 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: inherit;
+      border-top: 0;
+      border-right: 0;
+      border-left: 0;
+    }
+    .media_content {
+      width: 100%;
+      max-width: 240/16 * 1rem;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .text_area {
+      padding: 0 24/16 * 1rem 24/16 * 1rem 24/16 * 1rem;
+    }
+  } //accelerator partner cards
+
+  &[card-type="horizontal"] {
+    flex-direction: row;
+
+    .media_area {
+      width: 200/16 * 1rem;
+      flex-shrink: 0;
+      max-width: 33%;
+    }
+    .card[card-type="horizontal"][size="small"] & {
+      width: 200/16 * 1rem;
+      flex-shrink: 0;
+    }
+  }
+
+  &[size="small"] {
+    .media_area {
+      width: 100/16 * 1rem;
+      max-width: 25%;
+    }
+    .subheading {
+      @include subheadline-small;
+    }
+    p {
+      @include body_text-small;
+    }
+  }
+
+  &[size="x-small"] {
+    .media_area {
+      width: 64/16 * 1rem;
+    }
+    .eyebrow {
+      @include eyebrow-small;
+    }
+    p {
+      @include subheadline;
+    }
+    .subheading {
+      @include subheadline-small;
+    }
+    .arrow[arrow-type="feature"] {
+      width: 20/16 * 1rem;
+    }
+  }
+  &[size="x-small"][card-type="horizontal"] {
+    align-items: center;
+  }
+  &[card-type="media-only"] {
+    flex-direction: row;
+    align-items: center;
+    .media_area {
+      width: 100%;
+    }
+  }
+}
+
+a.card {
+  text-decoration: none;
+  transition: 0.3s all;
+  &:hover {
+    --primary_text: #{$ocean};
+    box-shadow: var(--card-shadow);
+    translate: 0rem -0.125rem;
+  }
+}

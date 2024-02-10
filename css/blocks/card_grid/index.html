@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1" large bold="viewport" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Highlights Prototype</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+    <link rel="stylesheet" href="../../global_css/components/_index.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+
+  <body>
+    <main class="">
+      <section class="card_grid--section">
+        <div class="background_area">
+          <div class="background_fill"></div>
+        </div>
+
+        <div class="content_group" content-type="feature-text">
+          <div class="text_area">
+            <div class="text_content">
+              <h6 class="eyebrow">Lorem Ipsum</h6>
+              <h2 class="">Lorem ipsum dolor sit amet doles consectetur.</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation.
+              </p>
+            </div>
+            <div class="text_content">
+              <div class="button-container">
+                <a href="#" class="button">Learn more</a>
+                <a href="#" type="borderless" class="button">
+                  Learn more
+                  <svg
+                    viewBox="0 0 7 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="grid_area"
+          constrain-type="row"
+          card-min="300"
+          items-per-row="4"
+        >
+          <article fetch-data="card" data-copies="6"></article>
+        </div>
+      </section>
+    </main>
+
+    <script src="../../jquery.min.js"></script>
+    <script src="js/typewriter.js"></script>
+
+    <script>
+      $("[data-copies]").each(function () {
+        var copies = $(this).attr("data-copies");
+        console.log(copies);
+        for (var i = 1; i < copies; i++) {
+          $(this).clone().insertAfter($(this));
+        }
+      });
+
+      $('[fetch-data="card"]').each(function (element) {
+        // Fetch the HTML content from "_static_pages/block-grid_content.html"
+        fetch("../../components/cards/index.html")
+          .then((response) => response.text())
+          .then((html) => {
+            console.log("fetched");
+            // Create a temporary div element to hold the fetched HTML
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = html;
+
+            // Get the element with the id "cardTournaments" from the fetched HTML
+            const taregtCard = tempDiv.querySelector(
+              '.card[card-type="accelerator-program"]'
+            );
+            console.log("taregtCard", taregtCard);
+
+            // Find the element with attribute html-data="use_CardLeagues"
+            // const elementToReplace = element;
+            const elementToReplace = document.querySelector(
+              '[fetch-data="card"]'
+            );
+            // Replace the element with cardTournamentsElement
+            if (elementToReplace) {
+              elementToReplace.parentNode.replaceChild(
+                taregtCard,
+                elementToReplace
+              );
+            } else {
+              console.error(
+                'Element with attribute html-data="use_CardLeagues" not found.'
+              );
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching the HTML file:", error);
+          });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,378 @@
+* {
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+}
+
+h1 {
+ font-size: clamp(2.5rem, 1.5vw + 2.15rem, 3.5rem);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ color: var(--primary_text);
+ line-height: 125%;
+ font-weight: 700;
+}
+
+h2 {
+ font-size: clamp(2rem, 0.75vw + 1.825rem, 2.5rem);
+ color: var(--primary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ line-height: 125%;
+ font-weight: 700;
+}
+
+h3 {
+ font-size: clamp(1.5rem, 0.75vw + 1.325rem, 2rem);
+ color: var(--primary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ line-height: 125%;
+ font-weight: 700;
+}
+
+h4 {
+ font-size: clamp(1.25rem, 0.75vw + 1.075rem, 1.75rem);
+ color: var(--primary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ line-height: 135%;
+ font-weight: 700;
+}
+
+h5 {
+ font-size: clamp(1.125rem, 0.56vw + 0.99375rem, 1.5rem);
+ color: var(--primary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ line-height: 135%;
+ font-weight: 700;
+}
+
+h6 {
+ font-size: clamp(1rem, 0.38vw + 0.9125rem, 1.25rem);
+ color: var(--primary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ line-height: 135%;
+ font-weight: 700;
+}
+
+p {
+ color: var(--secondary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+}
+p.x-large {
+ color: var(--secondary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+ font-size: clamp(1.125rem, 0.19vw + 1.08125rem, 1.25rem);
+}
+p.large {
+ color: var(--secondary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+ font-size: clamp(1rem, 0.19vw + 0.95625rem, 1.125rem);
+}
+p.small {
+ color: var(--secondary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+ font-size: clamp(0.75rem, 0.19vw + 0.70625rem, 0.875rem);
+}
+p.bold {
+ font-weight: 700;
+}
+p.medium {
+ font-weight: 500;
+}
+p.light {
+ font-weight: 350;
+}
+p.book {
+ font-weight: 450;
+}
+
+.h1 {
+ font-size: clamp(2.5rem, 1.5vw + 2.15rem, 3.5rem);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ color: var(--primary_text);
+ line-height: 125%;
+ font-weight: 700;
+}
+
+.h2 {
+ font-size: clamp(2rem, 0.75vw + 1.825rem, 2.5rem);
+ color: var(--primary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ line-height: 125%;
+ font-weight: 700;
+}
+
+.h3 {
+ font-size: clamp(1.5rem, 0.75vw + 1.325rem, 2rem);
+ color: var(--primary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ line-height: 125%;
+ font-weight: 700;
+}
+
+.h4 {
+ font-size: clamp(1.25rem, 0.75vw + 1.075rem, 1.75rem);
+ color: var(--primary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ line-height: 135%;
+ font-weight: 700;
+}
+
+.h5 {
+ font-size: clamp(1.125rem, 0.56vw + 0.99375rem, 1.5rem);
+ color: var(--primary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ line-height: 135%;
+ font-weight: 700;
+}
+
+.h6 {
+ font-size: clamp(1rem, 0.38vw + 0.9125rem, 1.25rem);
+ color: var(--primary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ line-height: 135%;
+ font-weight: 700;
+}
+
+.subheading {
+ color: var(--primary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-size: clamp(1.125rem, 0.19vw + 1.08125rem, 1.25rem);
+ font-style: normal;
+ font-weight: 500;
+ line-height: 150%;
+}
+.subheading-large {
+ color: var(--primary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-size: clamp(1.125rem, 0.19vw + 1.08125rem, 1.25rem);
+ font-style: normal;
+ font-weight: 500;
+ line-height: 150%;
+ font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+}
+.subheading-small {
+ color: var(--primary_text);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-size: clamp(1.125rem, 0.19vw + 1.08125rem, 1.25rem);
+ font-style: normal;
+ font-weight: 500;
+ line-height: 150%;
+ font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+}
+
+.eyebrow {
+ color: var(--accent);
+ font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-size: 1rem;
+ font-style: normal;
+ font-weight: 600;
+ line-height: 145%;
+}
+.eyebrow-large {
+ font-size: 1.25rem;
+}
+
+.subnav {
+ font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+}
+
+:root {
+ --gap: clamp(0.75rem, 1.88vw + 0.3125rem, 2rem);
+ --page_margin: clamp(2rem, 5.47vw - 0.625rem, 3.75rem);
+ --grid_margin: calc(var(--page_margin) - var(--gap));
+ --page_grid: var(--grid_margin) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
+ 	minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
+ 	minmax(0, 1fr) minmax(0, 1fr) var(--grid_margin);
+}
+
+section {
+ --page_margin: clamp(2rem, 5.47vw - 0.625rem, 3.75rem);
+ box-sizing: border-box;
+ display: grid;
+ grid-template-columns: var(--page_grid);
+ gap: var(--gap);
+}
+@media (max-width: 767px) {
+ section {
+  --page_margin: clamp(1.25rem, 3.05vw + 0.53125rem, 2rem);
+ }
+}
+@media (min-width: 1280px) {
+ section {
+  --page_margin: clamp(3.75rem, 37.5vw - 26.25rem, 7.5rem);
+ }
+}
+@media (min-width: 1440px) {
+ section {
+  --page_margin: calc((100vw - 75rem) / 2 - var(--gap));
+ }
+}
+
+.background_area {
+ z-index: -1;
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+ background-color: var(--background_color);
+}
+.background_area img,
+.background_area video,
+.background_area picture,
+.background_area iframe {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.text_area {
+ display: flex;
+ flex-direction: column;
+ gap: 1rem;
+}
+
+.text_content {
+ display: flex;
+ flex-direction: column;
+ gap: 0.5rem;
+}
+
+img,
+picture,
+video,
+iframe {
+ width: 100%;
+ height: auto;
+ display: block;
+}
+
+.media_content[aspect-ratio="1:1"] {
+ padding-bottom: 100%;
+}
+.media_content[aspect-ratio="4:3"] {
+ padding-bottom: 75%;
+}
+.media_content[aspect-ratio="16:9"] {
+ padding-bottom: 56.25%;
+}
+.media_content[aspect-ratio="21:9"] {
+ padding-bottom: 42.8571428571%;
+}
+.media_content[aspect-ratio] {
+ position: relative;
+}
+.media_content[aspect-ratio] img,
+.media_content[aspect-ratio] picture,
+.media_content[aspect-ratio] video,
+.media_content[aspect-ratio] iframe {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+}
+
+:root {
+ --background: #e9f1ff;
+ --primary_text: #192d62;
+ --secondary_text: #1c326f;
+ --low_text: #4c76c2;
+ --border: #a9bfeb;
+ --theme_color-50: #e9f1ff;
+ --theme_color-100: #bccceb;
+ --theme_color-200: #a9bfeb;
+ --theme_color-300: #aac3f2;
+ --theme_color-400: #90b9f8;
+ --theme_color-500: #76affe;
+ --theme_color-600: #4c76c2;
+ --theme_color-700: #213d85;
+ --theme_color-800: #1c326f;
+ --theme_color-900: #192d62;
+}
+
+[color-mode=dark] {
+ --background: #192d62;
+ --primary_text: #e9f1ff;
+ --secondary_text: #a9bfeb;
+ --low_text: #90b9f8;
+ --border: #1c326f;
+}
+
+[color-mode=light] {
+ --background: #e9f1ff;
+ --primary_text: #192d62;
+ --secondary_text: #1c326f;
+ --low_text: #4c76c2;
+ --border: #a9bfeb;
+}
+
+[color-theme=indoor] {
+ --theme_color-50: #f7eeeb;
+ --theme_color-100: #ebd5cd;
+ --theme_color-200: #e6c0b5;
+ --theme_color-300: #e2ab9c;
+ --theme_color-400: #ea865f;
+ --theme_color-500: #f16122;
+ --theme_color-600: #cb531f;
+ --theme_color-700: #a5451c;
+ --theme_color-800: #7f371a;
+ --theme_color-900: #592817;
+}
+
+[color-theme=grass] {
+ --theme_color-50: #f3fbe3;
+ --theme_color-100: #e2f5ba;
+ --theme_color-200: #d6eca4;
+ --theme_color-300: #cae28f;
+ --theme_color-400: #afda66;
+ --theme_color-500: #94d13d;
+ --theme_color-600: #81b632;
+ --theme_color-700: #6e9b27;
+ --theme_color-800: #5b801c;
+ --theme_color-900: #486510;
+}
+
+[color-theme=beach] {
+ --theme_color-50: #fffcec;
+ --theme_color-100: #fff7cf;
+ --theme_color-200: #f6eab6;
+ --theme_color-300: #eddd9d;
+ --theme_color-400: #f3d978;
+ --theme_color-500: #f9d452;
+ --theme_color-600: #ddbc40;
+ --theme_color-700: #c1a42d;
+ --theme_color-800: #a48c1a;
+ --theme_color-900: #887307;
+}
+
+[color-theme=brand] {
+ --theme_color-50: #e9f1ff;
+ --theme_color-100: #bccceb;
+ --theme_color-200: #a9bfeb;
+ --theme_color-300: #aac3f2;
+ --theme_color-400: #90b9f8;
+ --theme_color-500: #76affe;
+ --theme_color-600: #4c76c2;
+ --theme_color-700: #213d85;
+ --theme_color-800: #1c326f;
+ --theme_color-900: #192d62;
+}

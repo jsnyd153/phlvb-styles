@@ -1,0 +1,15 @@
+@use "sass:color";
+@use "abstracts/" as *;
+
+//Visual:
+//Dependencies:
+
+.background_area {
+	background-color: var(--background_color);
+	img,
+	video,
+	picture,
+	iframe {
+		@include cover_obj;
+	}
+} //background

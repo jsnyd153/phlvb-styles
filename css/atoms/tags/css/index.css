@@ -1,0 +1,73 @@
+/*components/cards/css/index.scsss*/
+.tag-container {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 0.5rem;
+ justify-content: flex-start;
+}
+
+.tag {
+ --_tag_color: #808080;
+ --_invert_color: #cccccc;
+ --_hover_color: #4d4d4d;
+ color: var(--_tag_color, #808080);
+ font-family: "Mark Pro", "Montserrat", sans-serif;
+ font-size: 0.75rem;
+ font-style: normal;
+ font-weight: 500;
+ line-height: 0.75rem;
+ padding: 0.25em 0.6666666667em 0.4166666667em 0.6666666667em;
+ border: 1px solid var(--_tag_color);
+ border-radius: 0.25rem;
+}
+.tag[tag-type=solid] {
+ --_tag_color: #000000;
+ background-color: var(--_tag_color);
+ color: #ffffff;
+}
+.tag[tag-type=inverted] {
+ --_tag_color: #000000;
+ background-color: var(--_invert_color);
+ border-color: var(--_invert_color);
+}
+
+a.tag {
+ text-decoration: none;
+}
+a.tag:hover {
+ color: var(--_hover_color);
+ border-color: var(--_hover_color);
+ text-decoration: underline;
+}
+a.tag:hover[tag-type=solid] {
+ color: #ffffff;
+ border-color: var(--_tag_color);
+}
+a.tag:hover[tag-type=inverted] {
+ color: var(--_tag_color);
+ border-color: var(--_invert_color);
+}
+
+.tag[color-theme=jade] {
+ --_tag_color: #008d8d;
+ --_invert_color: #cce8e8;
+ --_hover_color: #00f3f3;
+}
+
+.tag[color-theme=olive] {
+ --_tag_color: #608d00;
+ --_invert_color: #dfe8cc;
+ --_hover_color: #a5f300;
+}
+
+.tag[color-theme=han] {
+ --_tag_color: #3a21ed;
+ --_invert_color: #d8d3fb;
+ --_hover_color: #8e7ff5;
+}
+
+.tag[color-theme=punch] {
+ --_tag_color: #d8365d;
+ --_invert_color: #f7d7df;
+ --_hover_color: #e98ba2;
+}

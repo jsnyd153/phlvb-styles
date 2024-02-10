@@ -1,0 +1,75 @@
+/*components/tab_navigation/css/index.scsss*/
+.tab_navigation {
+   width: 100%;
+   background: var(--background);
+   display: grid;
+   grid-template-columns: var(--page_grid);
+   gap: var(--gap);
+   grid-column: 1/-1;
+   padding-block: 2rem 1.5rem;
+}
+.tab_navigation[nav-type=no-bar] {
+   padding-block: 2rem;
+}
+.tab_navigation-list {
+   grid-column: 2/-2;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: row;
+   gap: 2.5rem;
+   overflow: scroll;
+   scroll-snap-type: both mandatory;
+}
+@media (max-width: 991px) {
+   .tab_navigation-list {
+      grid-column: 2/-1;
+      justify-content: flex-start;
+   }
+}
+.tab_navigation-item {
+   font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+   color: var(--low_text);
+   font-family: "Mark Pro", "Montserrat", sans-serif;
+   font-size: 0.8125rem;
+   letter-spacing: 0.1666666667em;
+   white-space: nowrap;
+   text-transform: uppercase;
+   font-style: normal;
+   font-weight: 600;
+   line-height: 150%;
+   display: flex;
+   flex-direction: column;
+   gap: 1.25rem;
+   transition: 0.3s all;
+   scroll-snap-align: center;
+}
+.tab_navigation-item::after {
+   display: block;
+   content: "";
+   width: 0;
+   height: 0.125rem;
+   background-color: var(--accent);
+   transition: 0.3s all;
+}
+[nav-type=no-bar] .tab_navigation-item::after {
+   display: none;
+}
+.tab_navigation-item:hover {
+   opacity: 0.5;
+}
+.tab_navigation-item:hover::after {
+   width: 100%;
+   background-color: var(--low_text);
+}
+.tab_navigation-item[state=active] {
+   opacity: 1;
+   color: var(--secondary_text);
+}
+[nav-type=no-bar] .tab_navigation-item[state=active] {
+   color: var(--primary_text);
+}
+.tab_navigation-item[state=active]::after {
+   width: 100%;
+   background-color: var(--accent);
+}

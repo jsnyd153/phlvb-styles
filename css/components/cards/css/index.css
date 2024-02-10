@@ -1,0 +1,149 @@
+/*components/cards/css/index.scsss*/
+.card {
+   --gap: clamp(1rem, 1.5vw + 0.65rem, 2rem);
+   --_background_color: var(--background);
+   --_border_color: var(--border);
+   --_subtext: #9b9bad;
+   background: var(--_background_color);
+   padding: 1.5rem;
+   border: 1px solid var(--_border_color);
+   border-radius: 0.5rem;
+   display: flex;
+   flex-direction: column;
+   gap: var(--gap);
+}
+.card .text_area {
+   gap: 1rem;
+}
+.card .text_content {
+   gap: 0.5rem;
+}
+.card-date {
+   color: var(--secondary_text);
+   font-family: "Mark Pro", "Montserrat", sans-serif;
+   font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+   font-style: normal;
+   font-weight: 400;
+   line-height: 150%;
+   font-size: clamp(0.75rem, 0.19vw + 0.70625rem, 0.875rem);
+   color: var(--_subtext);
+}
+.card-media_area .media_content {
+   border-radius: 0.5rem;
+}
+.card-media_area .media_content img {
+   border-radius: inherit;
+}
+.card[card-type=accelerator-program] {
+   flex-direction: column;
+   min-width: 300px;
+   padding: 0;
+}
+.card[card-type=accelerator-program] .media_area {
+   padding: 0.75rem 1.5rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border: inherit;
+   border-top: 0;
+   border-right: 0;
+   border-left: 0;
+}
+.card[card-type=accelerator-program] .media_content {
+   width: 100%;
+   max-width: 15rem;
+}
+.card[card-type=accelerator-program] .media_content img {
+   width: 100%;
+   height: auto;
+}
+.card[card-type=accelerator-program] .text_area {
+   padding: 0 1.5rem 1.5rem 1.5rem;
+}
+.card[card-type=horizontal] {
+   flex-direction: row;
+}
+.card[card-type=horizontal] .media_area {
+   width: 12.5rem;
+   flex-shrink: 0;
+   max-width: 33%;
+}
+.card[card-type=horizontal][size=small] .card[card-type=horizontal] {
+   width: 12.5rem;
+   flex-shrink: 0;
+}
+.card[size=small] .media_area {
+   width: 6.25rem;
+   max-width: 25%;
+}
+.card[size=small] .subheading {
+   color: var(--primary_text);
+   font-family: "Mark Pro", "Montserrat", sans-serif;
+   font-size: clamp(1.125rem, 0.19vw + 1.08125rem, 1.25rem);
+   font-style: normal;
+   font-weight: 500;
+   line-height: 150%;
+   font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+}
+.card[size=small] p {
+   color: var(--secondary_text);
+   font-family: "Mark Pro", "Montserrat", sans-serif;
+   font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+   font-style: normal;
+   font-weight: 400;
+   line-height: 150%;
+   font-size: clamp(0.75rem, 0.19vw + 0.70625rem, 0.875rem);
+}
+.card[size=x-small] .media_area {
+   width: 4rem;
+}
+.card[size=x-small] .eyebrow {
+   color: var(--accent);
+   font-family: "Mark Pro", "Montserrat", sans-serif;
+   font-size: 0.8125rem;
+   letter-spacing: 0.1666666667em;
+   text-transform: uppercase;
+   font-style: normal;
+   font-weight: 600;
+   line-height: 150%;
+}
+.card[size=x-small] p {
+   color: var(--primary_text);
+   font-family: "Mark Pro", "Montserrat", sans-serif;
+   font-size: clamp(1.125rem, 0.19vw + 1.08125rem, 1.25rem);
+   font-style: normal;
+   font-weight: 500;
+   line-height: 150%;
+}
+.card[size=x-small] .subheading {
+   color: var(--primary_text);
+   font-family: "Mark Pro", "Montserrat", sans-serif;
+   font-size: clamp(1.125rem, 0.19vw + 1.08125rem, 1.25rem);
+   font-style: normal;
+   font-weight: 500;
+   line-height: 150%;
+   font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+}
+.card[size=x-small] .arrow[arrow-type=feature] {
+   width: 1.25rem;
+}
+.card[size=x-small][card-type=horizontal] {
+   align-items: center;
+}
+.card[card-type=media-only] {
+   flex-direction: row;
+   align-items: center;
+}
+.card[card-type=media-only] .media_area {
+   width: 100%;
+}
+
+a.card {
+   text-decoration: none;
+   transition: 0.3s all;
+}
+a.card:hover {
+   --primary_text: #0079ff;
+   box-shadow: var(--card-shadow);
+   translate: 0rem -0.125rem;
+}

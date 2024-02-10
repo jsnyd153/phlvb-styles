@@ -1,0 +1,43 @@
+@use "sass:color";
+@use "abstracts/" as *;
+//Visual:
+//Dependencies:
+
+//Attributres
+
+img,
+picture,
+video,
+iframe {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.media_area {
+}
+
+.media_content {
+	&[aspect-ratio="1:1"] {
+		padding-bottom: 1/1 * 100%;
+	}
+	&[aspect-ratio="4:3"] {
+		padding-bottom: 3/4 * 100%;
+	}
+	&[aspect-ratio="16:9"] {
+		padding-bottom: 9/16 * 100%;
+	}
+	&[aspect-ratio="21:9"] {
+		padding-bottom: 9/21 * 100%;
+	}
+
+	&[aspect-ratio] {
+		position: relative;
+		img,
+		picture,
+		video,
+		iframe {
+			@include cover_obj;
+		}
+	}
+}

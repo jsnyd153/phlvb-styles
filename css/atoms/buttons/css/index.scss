@@ -1,0 +1,152 @@
+@use "sass:color";
+@use "../../../global/abstracts" as *;
+
+//Visual: https://www.figma.com/file/kIjfaVuV4r1BQl86FGWFhB/Web-Design-System-V1?type=design&node-id=643%3A5962&mode=design&t=1zQKnpLthgt7v7tT-1
+/*components/buttons/css/index.scsss*/
+//Dependencies:
+
+//Attributres
+
+.button-container {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.button {
+	--_default_color: #{$ocean};
+	--_hover_color: #{$ocean-70};
+	--_disabled_color: #{$ocean-40};
+	--_text_color: #{$white};
+
+	font-family: $sans_font;
+	text-decoration: none;
+	font-size: 15/16 * 1rem;
+	padding: 8/15 * 1em 24/15 * 1em 10/15 * 1em 24/15 * 1em;
+	border-radius: 99em;
+	margin: 0;
+	flex-shrink: 0;
+	flex-grow: 0;
+	background-color: var(--_default_color);
+	border: 1px solid var(--_default_color);
+	color: var(--_text_color);
+	display: flex;
+	gap: 10/15 * 1em;
+	align-items: center;
+	font-weight: 600;
+
+	&:hover {
+		background-color: var(--_hover_color);
+		border: 1px solid var(--_hover_color);
+	}
+
+	&[size="small"] {
+		font-size: 13/16 * 1rem;
+	}
+
+	&[type~="ghost"] {
+		background: rgba($color: #000000, $alpha: 0);
+		color: var(--_default_color);
+
+		&:hover {
+			background-color: transparent;
+			border: 1px solid var(--_hover_color);
+			color: var(--_hover_color);
+		}
+	}
+
+	&[type~="borderless"] {
+		background: transparent;
+		border: 0 solid transparent;
+		color: var(--_default_color);
+		border-radius: 0;
+		padding-inline: 0;
+		font-weight: 500;
+		svg {
+			transition: 0.3s all;
+			margin: 2/15 * 1em 4/15 * 1em 0 0;
+			width: 5/15 * 1em;
+			* {
+				stroke: currentColor;
+				stroke-width: 2;
+			}
+		}
+
+		&:hover {
+			color: var(--_hover_color);
+			svg {
+				margin: 2/15 * 1em 0 0 4/15 * 1em;
+			}
+		}
+	}
+	&[type~="form"] {
+		padding: 10/15 * 1em 24/15 * 1em 12/15 * 1em 24/15 * 1em;
+		border-radius: 0.5rem;
+		justify-content: center;
+	}
+
+	&[type~="fixed"] {
+		margin: 0;
+		padding: 10/15 * 1em 24/15 * 1em 12/15 * 1em 24/15 * 1em;
+		border-radius: 0.5rem;
+		justify-content: center;
+		background: rgba($color: #000000, $alpha: 0);
+		color: var(--_default_color);
+
+		&:hover {
+			background-color: transparent;
+			border: 1px solid var(--_hover_color);
+			color: var(--_hover_color);
+		}
+	}
+
+	&[type~="fixed"] {
+		padding: 20/15 * 1em 4/15 * 1em 16/15 * 1em 6/15 * 1em;
+		box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.12);
+		position: fixed;
+		bottom: var(--gap);
+		right: var(--gap);
+	}
+
+	&[direction] {
+		padding: 10/15 * 1em 12/15 * 1em 10/15 * 1em 14/15 * 1em;
+		border-radius: 0.5rem;
+		justify-content: center;
+		background: rgba($color: #000000, $alpha: 0);
+		color: var(--_default_color);
+		svg {
+			transition: 0.3s all;
+			width: 10/15 * 1em;
+			* {
+				stroke: currentColor;
+				stroke-width: 1.5;
+			}
+		}
+		&:hover {
+			background-color: transparent;
+			border: 1px solid var(--_hover_color);
+			color: var(--_hover_color);
+		}
+	}
+	&[direction="left"] {
+		padding: 10/15 * 1em 14/15 * 1em 10/15 * 1em 12/15 * 1em;
+		svg {
+			rotate: 180deg;
+		}
+	}
+
+	&[color-theme="midnight"] {
+		--_default_color: #{$midnight};
+		--_hover_color: #{$midnight-70};
+		--_disabled_color: #{$midnight-40};
+		--_text_color: #{$white};
+	}
+
+	&[color-theme="white"] {
+		--_default_color: #{$white};
+		--_hover_color: #{$midnight-20};
+		--_disabled_color: #{rgba($white, 0.04)};
+		--_text_color: #{$midnight};
+	}
+}

@@ -1,0 +1,29 @@
+/*components/icons/css/index.scsss*/
+.icons-container {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 0.5rem;
+}
+
+.icon {
+ width: 3rem;
+ height: 3rem;
+ -o-object-fit: fit;
+    object-fit: fit;
+}
+.icon[size=interface] {
+ width: 1.5rem;
+ height: 1.5rem;
+}
+.icon[size=small] {
+ width: 2rem;
+ height: 2rem;
+}
+.icon[size=large] {
+ width: 4rem;
+ height: 4rem;
+}
+.icon[size=jumbo] {
+ width: 5rem;
+ height: 5rem;
+}
