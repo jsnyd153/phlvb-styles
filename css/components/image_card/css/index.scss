@@ -1,0 +1,89 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=38%3A37284&mode=design&t=nFx03U0WlDirMyZX-1
+/*css/components/image_card/css/index.scss*/
+//Dependencies:
+
+.image_card {
+	--primary_text: white;
+	--secondary_text: #{$brand-50};
+	--background: #{$brand-900};
+	text-decoration: none;
+	position: relative;
+	border-radius: 0.5rem;
+	overflow: hidden;
+	padding: var(--section_padding) 32/16 * 1rem;
+	@include f-center;
+	background-color: var(--background);
+
+	min-height: 450/16 * 1rem;
+	min-width: 315/16 * 1rem;
+	@include sm {
+		min-height: 420/16 * 1rem;
+	}
+	@include sm {
+		min-height: 360/16 * 1rem;
+	}
+
+	.media_area {
+		position: absolute;
+		inset: 0;
+		.media_content {
+			@include cover_obj;
+			&::after {
+				@include psuedo_el;
+				background-color: black;
+				opacity: 0.3;
+				transition: 0.5s opacity;
+			}
+		}
+		img {
+			@include cover_obj;
+			transition: 0.5s scale, 0.5s translate;
+		}
+	}
+	.text_area {
+		position: relative;
+	}
+	.text_content {
+		align-items: center;
+		text-align: center;
+
+		h3 {
+			@include eyebrow-italic;
+			@include fluid_size(font-size, 24px, 30px);
+			@include f-center;
+			gap: 24/16 * 1rem;
+			flex-direction: column;
+			.icon {
+				--_size: 2.25em;
+			}
+		}
+		p {
+			max-width: 30ch;
+		}
+	}
+
+	&:hover {
+		.media_area {
+			.media_content {
+				&::after {
+					opacity: 0.5;
+				}
+			}
+			img {
+				scale: 1.1;
+				translate: 0 -5%;
+			}
+		}
+		// .text_area {
+		// 	h3 {
+		// 	}
+		// }
+		// .text_content {
+		// }
+		// .headline-row h3 {
+		// }
+	}
+}

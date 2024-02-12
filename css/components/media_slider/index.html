@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+		<meta content="width=device-width, initial-scale=1" large bold="viewport" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+		<title>Components - Image Slider</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+		/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+		<link rel="stylesheet" global-css href="../../globals/_index.css" />
+		<link rel="stylesheet" atom-css href="../../atoms/index.css" />
+		<link rel="stylesheet" all-component-css href="../index.css" />
+		<link rel="stylesheet" current-module-css href="css/index.css" />
+	</head>
+
+	<body>
+		<!-- Upgrade this to elements in the future for better readability -->
+		<main class="">
+			<componentGrid>
+				<div class="media_area">
+					<figure class="media_content" media-type="image-slider" aspect-ratio="16:9">
+						<div class="image_slider">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<img
+										src="https://assets-global.website-files.com/6538694ee32907f177d68704/653c28596a1b1a811ceee3b6_grass-1-min.webp"
+										alt=""
+									/>
+								</div>
+								<div class="swiper-slide">
+									<img
+										src="https://assets-global.website-files.com/6538694ee32907f177d68704/653c28597b2438ba0d4a4645_grass-9-min.webp"
+										alt=""
+									/>
+								</div>
+								<div class="swiper-slide">
+									<img
+										src="https://assets-global.website-files.com/6538694ee32907f177d68704/653c28597dbb62ac7b1e1cef_grass-4-min.webp"
+										alt=""
+									/>
+								</div>
+							</div>
+						</div>
+					</figure>
+					<div class="swiper-pagination slider_pagination"></div>
+				</div>
+			</componentGrid>
+			<componentGrid>
+				<div class="media_area">
+					<figure class="media_content" media-type="image-slider" aspect-ratio="1:1">
+						<div class="image_slider">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<img
+										src="https://assets-global.website-files.com/6538694ee32907f177d68704/653c28596a1b1a811ceee3b6_grass-1-min.webp"
+										alt=""
+									/>
+								</div>
+								<div class="swiper-slide">
+									<img
+										src="https://assets-global.website-files.com/6538694ee32907f177d68704/653c28597b2438ba0d4a4645_grass-9-min.webp"
+										alt=""
+									/>
+								</div>
+								<div class="swiper-slide">
+									<img
+										src="https://assets-global.website-files.com/6538694ee32907f177d68704/653c28597dbb62ac7b1e1cef_grass-4-min.webp"
+										alt=""
+									/>
+								</div>
+							</div>
+						</div>
+					</figure>
+					<div class="swiper-pagination slider_pagination"></div>
+				</div>
+			</componentGrid>
+		</main>
+
+		<!-- js dependacies -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+		<script src="../../../js/image_slider.js"></script>
+	</body>
+</html>

@@ -17,4 +17,5 @@ a:hover .event_type_indicator {
  color: var(--primary_text);
  padding: 0.7em 1.1em;
  border-radius: 0.125rem;
+ line-height: 100%;
 }

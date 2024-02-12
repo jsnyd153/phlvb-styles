@@ -1,0 +1,39 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=1%3A2476&mode=design&t=g6qwze9oShWnmzfu-1
+/*atoms/checkbox_filter/css/index.scss*/
+//Dependencies:
+
+//Attributres
+
+.checkbox_filter {
+	$font-family: $sans_font;
+	font-size: 12/16 * 1rem;
+	line-height: 100%;
+	padding: 10/12 * 1em 1em;
+	border-radius: 0.25rem;
+	color: var(--primary_text);
+	border: 1/16 * 1rem solid currentColor;
+	flex-grow: 0;
+	margin: 0 auto;
+	input[type="checkbox"] {
+		display: none;
+	}
+
+	&:hover:not(.fs-cmsfilter_inactive, .fs-cmsfilter_active) {
+		border: 1/16 * 1rem solid var(--theme_color-500);
+		background: var(--theme_color-500);
+	}
+	&.fs-cmsfilter_active {
+		border: 1/16 * 1rem solid var(--theme_color-800);
+		background: var(--theme_color-800);
+		color: var(--theme_color-500);
+	}
+	&.fs-cmsfilter_inactive {
+		color: var(--theme_color-300);
+	}
+	.echo & {
+		color: var(--theme_color-700);
+	}
+}

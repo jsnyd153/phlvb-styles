@@ -1,0 +1,18 @@
+/*atoms/location_indicator/css/index.scss*/
+.location_indicator {
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+ font-size: 0.8125rem;
+ padding: 0.6923076923em 0.9230769231em;
+ border-radius: 0.25rem;
+ color: var(--secondary_text);
+ border: 0.0625rem solid currentColor;
+ text-align: center;
+}
+a:hover .location_indicator {
+ color: var(--primary_text);
+}

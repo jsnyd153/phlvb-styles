@@ -5,7 +5,7 @@
 	//Set up variables for base text colors and themes
 	--background: #{$brand-50};
 	--primary_text: #{$brand-900};
-	--secondary_text: #{$brand-800};
+	--secondary_text: #{$brand-700};
 	--low_text: #{$brand-600};
 	--border: #{$brand-200};
 
@@ -31,7 +31,7 @@
 [color-mode="light"] {
 	--background: #{$brand-50};
 	--primary_text: #{$brand-900};
-	--secondary_text: #{$brand-800};
+	--secondary_text: #{$brand-700};
 	--low_text: #{$brand-600};
 	--border: #{$brand-200};
 }

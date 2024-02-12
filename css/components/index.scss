@@ -1,0 +1,29 @@
+// print all atoms into one css file
+
+//components
+
+@forward "accordian/css";
+@forward "cards/css";
+@forward "image_card/css";
+@forward "inline_alert/css";
+@forward "media_slider/css";
+@forward "person_profile/css";
+@forward "profile_item/css";
+@forward "rich_text/css";
+
+// print all components into one css file
+
+componentGrid {
+	display: grid;
+	grid-column: repeat;
+	grid-template-columns: repeat(auto-fit, minmax(335px, 1fr));
+	align-items: start;
+	gap: 60px;
+	padding: 60px;
+	background: var(--background);
+
+	&[single] {
+		grid-template-columns: 1fr;
+		gap: 30px;
+	}
+}

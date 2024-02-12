@@ -1,141 +1,85 @@
 @use "sass:color";
-@use "../../../global_css/abstracts" as *;
+@use "../../../globals/abstracts" as *;
 
-//Visual: https://www.figma.com/file/kIjfaVuV4r1BQl86FGWFhB/Web-Design-System-V1?type=design&node-id=643%3A5962&mode=design&t=1zQKnpLthgt7v7tT-1
-/*Basic Hero/css/hero.scss*/
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=16%3A7615&mode=design&t=BexzFHryADFV6vUz-1
+/*css/blocks/basic_hero/css/index.scss*/
 //Dependencies:
 
 //Attributres
-//section: vertical-spacing = small | large
-//section: content-alignment = center
-//section: color-theme = white | neutral | denim
-//section: has-carousel = true
+//section: has-image = true | false
 
-:root {
-  --gap: 24px;
-}
+.basic_hero {
+	&-- {
+		&section {
+			//dark mode vairables by default
+			--background: #{$brand-900};
+			--primary_text: #{$brand-50};
+			--secondary_text: #{$brand-200};
+			--low_text: #{$brand-400};
+			--border: #{$brand-800};
+			position: relative;
+			contain: paint;
+			height: 548/16 * 1rem;
+			max-height: 80svh;
+			min-height: 400/16 * 1rem;
+			&[has-image="true"] {
+				--primary_text: white;
+				--secondary_text: #{$brand-50};
+			}
+		}
 
-.hero {
-  &-- {
-    &section {
-      position: relative;
-      --background_color: #{$midnight-90};
-      --primary_text: #{$white};
-      --secondary_text: #{$midnight-20};
-      padding-block: 100/16 * 1rem;
+		&row {
+			grid-column: 2 / span 9;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			align-items: flex-start;
+			padding-block: var(--padding_base);
+			@include sm {
+				grid-column: 2 / span 12;
+			}
+		}
 
-      &[vertical-spacing="small"] {
-        padding-block: 64/16 * 1rem;
-      }
-      &[vertical-spacing="large"] {
-        padding-block: 160/16 * 1rem;
-      }
-    } //section
+		&background {
+			background-color: var(--background);
 
-    &row {
-      @include inner_grid;
-      [content-alignment="center"] &,
-      [has-carousel="true"] & {
-        row-gap: calc(var(--gap) * 2);
-      }
-    } //row
+			img {
+				display: none;
+			}
+			[has-image="true"] & {
+				&::after {
+					display: block;
+					content: "";
+					background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 70%);
+					mix-blend-mode: multiply;
+					@include cover_obj;
+				}
+				img {
+					display: block;
+				}
+			}
+		}
+		&circle {
+			display: block;
+			box-sizing: border-box;
+			width: clamp(22.5rem, 14.04vw + 19.2125rem, 35rem);
+			height: clamp(22.5rem, 14.04vw + 19.2125rem, 35rem);
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			translate: -30% 30%;
+			border-radius: 50%;
+			border-style: solid;
+			border-width: clamp(3.75rem, 2.11vw + 3.25625rem, 5.625rem);
+			border-color: var(--theme_color-500);
+			opacity: 0.3;
 
-    &media_area,
-    &text_area {
-      grid-column: span 6;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      @include md {
-        grid-column: 2/-2;
-      }
-      @include sm {
-        grid-column: 1/-1;
-      }
-
-      &:nth-child(1) {
-        margin-right: var(--gap);
-        @include md {
-          margin-right: 0;
-        }
-      }
-
-      &:nth-child(2) {
-        margin-left: var(--gap);
-        @include md {
-          margin-left: 0;
-        }
-      }
-
-      [content-alignment="center"] &,
-      [has-carousel="true"] & {
-        margin: 0;
-        .text_content {
-          justify-content: center;
-          text-align: center;
-        }
-        .button-container {
-          justify-content: center;
-        }
-        grid-column: 3/-3;
-        @include md {
-          grid-column: 2/-2;
-        }
-        @include sm {
-          grid-column: 1/-1;
-        }
-      }
-    } //text_area media_area
-
-    &media_area {
-      .media_content {
-        border-radius: 0.5rem;
-        img {
-          border-radius: inherit;
-        }
-      }
-    } //media_area
-
-    &carousel {
-      grid-column: 2/-1;
-    } //carousel
-  }
-}
-
-//==================typewriter specific styles====================
-
-[animation="typewriter"] {
-  &::after {
-    content: "|";
-    color: var(--accent);
-    font-weight: 400;
-  }
-
-  &.blinking {
-    &::after {
-      // color: red;
-      animation: blink var(--blinkTiming) infinite;
-    }
-  }
-
-  .textList {
-    > span:nth-child(n + 1) {
-      //hides all except the first line so there are no display issues if the js doesn't load
-      display: none;
-    }
-    &[color="ocean"] {
-      color: #{$ocean};
-    }
-  }
-
-  @keyframes blink {
-    0%,
-    50% {
-      opacity: 1;
-    }
-    51%,
-    100% {
-      opacity: 0;
-    }
-  }
+			[has-image="true"] & {
+				opacity: 1;
+				mix-blend-mode: soft-light;
+				border-color: #fff;
+				z-index: 2;
+			}
+		}
+	}
 }

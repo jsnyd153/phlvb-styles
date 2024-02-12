@@ -1,11 +1,18 @@
 // print all atoms into one css file
 
 //atoms
+
+@forward "alerts_icon/css";
+@forward "arrows/css";
+@forward "buttons/css";
+@forward "checkbox_filter/css";
+@forward "divider/css";
 @forward "event_type_indicator/css";
-// @forward "alerts/css";
-// @forward "arrows/css";
-// @forward "buttons/css";
-// @forward "tags/css";
+@forward "icons/css";
+@forward "location_indicator/css";
+@forward "slider_pagination/css";
+@forward "tabs/css";
+
 // @forward "breadcrumbs/css";
 // @forward "icons/css";
 

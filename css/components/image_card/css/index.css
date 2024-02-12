@@ -1,0 +1,94 @@
+/*css/components/image_card/css/index.scss*/
+.image_card {
+ --primary_text: white;
+ --secondary_text: #e9f1ff;
+ --background: #192d62;
+ text-decoration: none;
+ position: relative;
+ border-radius: 0.5rem;
+ overflow: hidden;
+ padding: var(--section_padding) 2rem;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background-color: var(--background);
+ min-height: 28.125rem;
+ min-width: 19.6875rem;
+}
+@media (max-width: 767px) {
+ .image_card {
+  min-height: 26.25rem;
+ }
+}
+@media (max-width: 767px) {
+ .image_card {
+  min-height: 22.5rem;
+ }
+}
+.image_card .media_area {
+ position: absolute;
+ inset: 0;
+}
+.image_card .media_area .media_content {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+}
+.image_card .media_area .media_content::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ background-color: black;
+ opacity: 0.3;
+ transition: 0.5s opacity;
+}
+.image_card .media_area img {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+ transition: 0.5s scale, 0.5s translate;
+}
+.image_card .text_area {
+ position: relative;
+}
+.image_card .text_content {
+ align-items: center;
+ text-align: center;
+}
+.image_card .text_content h3 {
+ ccolor: var(--theme_color-500, #76affe);
+ font-family: "Trade Gothic Next LT Pro";
+ font-size: 0.875rem;
+ font-style: italic;
+ font-weight: 800;
+ line-height: 100%; /* 0.875rem */
+ text-transform: uppercase;
+ font-size: clamp(1.5rem, 0.56vw + 1.36875rem, 1.875rem);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 1.5rem;
+ flex-direction: column;
+}
+.image_card .text_content h3 .icon {
+ --_size: 2.25em;
+}
+.image_card .text_content p {
+ max-width: 30ch;
+}
+.image_card:hover .media_area .media_content::after {
+ opacity: 0.5;
+}
+.image_card:hover .media_area img {
+ scale: 1.1;
+ translate: 0 -5%;
+}

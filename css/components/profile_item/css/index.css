@@ -1,0 +1,40 @@
+/*css/components/profile_item/css/index.scss*/
+.profile_item {
+ display: flex;
+ flex-direction: column;
+ gap: 0.75rem;
+}
+.profile_item .text_content {
+ gap: 0.25rem;
+}
+.profile_item img {
+ border-radius: 0.5rem;
+}
+.profile_item-division, .profile_item-season, .profile_item-category {
+ color: var(--theme_color-500, #76affe);
+ font-family: "Trade Gothic Next LT Pro";
+ font-size: 0.875rem;
+ font-style: italic;
+ font-weight: 800;
+ line-height: 100%; /* 0.875rem */
+ text-transform: uppercase;
+}
+.profile_item-name {
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+ font-size: clamp(1.0625rem, 0.38vw + 0.975rem, 1.3125rem);
+}
+.profile_item-event {
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+ font-size: clamp(0.8125rem, 0.19vw + 0.76875rem, 0.9375rem);
+ color: #4c76c2;
+}

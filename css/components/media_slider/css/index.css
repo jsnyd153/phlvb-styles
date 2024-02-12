@@ -1,0 +1,20 @@
+/*css/components/media_slider/css/index.scss*/
+.image_slider {
+ contain: paint;
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ border-radius: 0.5rem;
+}
+.image_slider .swiper-slide img {
+ height: 100%;
+ -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.wf-design-mode .image_slider .swiper-wrapper {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ grid-template-rows: repeat(2, 1fr);
+}

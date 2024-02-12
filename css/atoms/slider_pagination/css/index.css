@@ -1,0 +1,23 @@
+/*atoms/slider_pagination/css/index.scss*/
+.slider_pagination {
+ position: relative;
+ display: flex;
+ justify-content: center;
+ min-width: 300px;
+ gap: 0.625rem;
+ --swiper-pagination-bottom: calc(var(--gap) * -1);
+}
+.slider_pagination .swiper-pagination-bullet {
+ transition: 0.3s all;
+ --swiper-pagination-bullet-horizontal-gap: 0;
+ --swiper-pagination-bullet-width: 1.875rem;
+ --swiper-pagination-bullet-height: 0.25rem;
+ --swiper-pagination-bullet-border-radius: 99rem;
+ --swiper-pagination-bullet-inactive-color: var(--color_theme-100, #bccceb);
+ --swiper-pagination-bullet-inactive-opacity: 1;
+ --swiper-pagination-bullet-opacity: 1;
+ --swiper-pagination-color: var(--color_theme-500, #76affe);
+}
+.slider_pagination .swiper-pagination-bullet-active {
+ --swiper-pagination-bullet-width: 5rem;
+}

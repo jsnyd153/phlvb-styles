@@ -82,7 +82,7 @@ p {
 }
 
 .eyebrow {
-	@include eyebrow;
+	@include eyebrow-italic;
 
 	&-large {
 		@include eyebrow-large;

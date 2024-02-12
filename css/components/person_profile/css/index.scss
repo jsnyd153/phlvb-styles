@@ -1,0 +1,164 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/kIjfaVuV4r1BQl86FGWFhB/Web-Design-System-V1?type=design&node-id=643%3A5962&mode=design&t=1zQKnpLthgt7v7tT-1
+/*css/components/person_profile/css/index.scss*/
+//Dependencies:
+
+// Attributes
+// event-type = grass | beach | indoor
+// profile-type = event-host
+
+//size befroe wrapping
+$large-screen-width: 260/16 * 1rem;
+
+//ring definitions
+$rings-none: 0px 0px 0px 0px $brand-900;
+$rings-all: 0px 0px 0px 1px $brand-900, 0px 0px 0px 5px $brand-500, 0px 0px 0px 6px $brand-900,
+	0px 0px 0px 10px $indoor-500, 0px 0px 0px 11px $brand-900, 0px 0px 0px 15px $beach-500,
+	0px 0px 0px 16px $brand-900;
+
+$rings-brand: 0px 0px 0px 1px $brand-900, 0px 0px 0px 5px $brand-500, 0px 0px 0px 6px $brand-900;
+$rings-indoor: 0px 0px 0px 1px $brand-900, 0px 0px 0px 5px $indoor-500, 0px 0px 0px 6px $brand-900;
+$rings-grass: 0px 0px 0px 1px $brand-900, 0px 0px 0px 5px $grass-500, 0px 0px 0px 6px $brand-900;
+$rings-beach: 0px 0px 0px 1px $brand-900, 0px 0px 0px 5px $beach-500, 0px 0px 0px 6px $brand-900;
+
+$rings-indoor-grass: 0px 0px 0px 1px $brand-900, 0px 0px 0px 5px $indoor-500,
+	0px 0px 0px 6px $brand-900, 0px 0px 0px 10px $grass-500, 0px 0px 0px 11px $brand-900;
+
+$rings-grass-beach: 0px 0px 0px 1px $brand-900, 0px 0px 0px 5px $grass-500,
+	0px 0px 0px 6px $brand-900, 0px 0px 0px 10px $beach-500, 0px 0px 0px 11px $brand-900;
+
+$rings-beach-indoor: 0px 0px 0px 1px $brand-900, 0px 0px 0px 5px $beach-500,
+	0px 0px 0px 6px $brand-900, 0px 0px 0px 10px $indoor-500, 0px 0px 0px 11px $brand-900;
+
+.person_profile {
+	--_container-max: #{$large-screen-width};
+	--_image_size: #{72/16 * 1rem};
+	--_column_space: #{24/16 * 1rem};
+	--_static-rings: #{$rings-brand};
+	--_default-rings: #{$rings-none};
+	--_hover-rings: #{$rings-all};
+
+	display: flex;
+	column-gap: var(--_column_space);
+	row-gap: 12/16 * 1rem;
+	flex-wrap: wrap;
+	container: profile / inline-size;
+
+	//set up variables for event types on host cards
+	&[profile-type="event-host"] {
+		--_static-rings: #{$rings-none};
+		--_default-rings: #{$rings-none};
+		--_hover-rings: #{$rings-none};
+		&[event-type="grass"] {
+			--_static-rings: #{$rings-grass};
+			--_default-rings: #{$rings-none};
+			--_hover-rings: #{$rings-grass};
+		}
+		&[event-type="indoor"] {
+			--_static-rings: #{$rings-indoor};
+			--_default-rings: #{$rings-none};
+			--_hover-rings: #{$rings-indoor};
+		}
+		&[event-type="beach"] {
+			--_static-rings: #{$rings-beach};
+			--_default-rings: #{$rings-none};
+			--_hover-rings: #{$rings-beach};
+		}
+		&[event-type~="grass"][event-type~="indoor"] {
+			--_static-rings: #{$rings-indoor-grass};
+			--_default-rings: #{$rings-none};
+			--_hover-rings: #{$rings-indoor-grass};
+		}
+		&[event-type~="grass"][event-type~="beach"] {
+			--_static-rings: #{$rings-grass-beach};
+			--_default-rings: #{$rings-none};
+			--_hover-rings: #{$rings-grass-beach};
+		}
+		&[event-type~="beach"][event-type~="indoor"] {
+			--_static-rings: #{$rings-beach-indoor};
+			--_default-rings: #{$rings-none};
+			--_hover-rings: #{$rings-beach-indoor};
+		}
+	}
+
+	@include hover {
+		@container profile (min-width: 16.25rem) {
+			//if not touch screen AND there is space for the content to not wrap
+			padding-bottom: 1rem;
+		}
+	}
+
+	&[profile-type="event-host"] {
+		--_image_size: #{60/16 * 1rem};
+	}
+
+	.media_area {
+		width: var(--_image_size);
+		height: var(--_image_size);
+		flex-shrink: 0;
+		flex-grow: 0;
+	}
+
+	.text_area {
+		max-width: calc(var(--_container-max) - var(--_image_size));
+		min-width: 10rem;
+		transition: 0.3s translate;
+		@include hover {
+			@container profile (min-width: 16.25rem) {
+				//if not touch screen AND there is space for the content to not wrap
+				translate: calc(var(--_column_space) * -2) 1rem;
+			}
+		}
+	}
+	&:hover {
+		.text_area {
+			translate: 0 0;
+		}
+	}
+
+	&-image {
+		border-radius: 50%;
+		transition: 0.3s opacity, 0.3s box-shadow;
+		box-shadow: var(--_static-rings);
+		@container profile (min-width: 16.25rem) {
+			@include hover {
+				//if not touch screen AND there is space for the content to not wrap
+				opacity: 0.2;
+				box-shadow: var(--_default-rings);
+				article:hover & {
+					box-shadow: var(--_hover-rings);
+				}
+			}
+		}
+
+		.person_profile:hover & {
+			opacity: 1;
+		}
+	}
+	&-title {
+		@include eyebrow-italic;
+		color: var(--theme_color-500);
+	}
+
+	&-name {
+		@include body_text-large;
+		color: var(--primary_text);
+
+		[profile-type="event-host"] & {
+			@include body_text;
+		}
+	}
+	&-pronouns {
+		@include body_text;
+		font-size: 12/16 * 1rem;
+	}
+	&-locations {
+		@include body_text;
+		font-family: $sans_font-condensed;
+		font-size: 14/16 * 1rem;
+		font-weight: 700;
+		color: var(--theme_color-500);
+	}
+}

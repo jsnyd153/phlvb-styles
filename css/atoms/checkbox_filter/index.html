@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+		<meta content="width=device-width, initial-scale=1" large bold="viewport" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+		<title>Atoms - Checkbox Filter</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+		/>
+		<link rel="stylesheet" href="../../globals/_index.css" />
+		<link rel="stylesheet" href="../index.css" />
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+
+	<body>
+		<main class="">
+			<atomGrid>
+				<label class="w-checkbox checkbox_filter"
+					><input
+						type="checkbox"
+						id="Grass"
+						name="Grass"
+						data-name="Grass"
+						class="w-checkbox-input"
+					/><span
+						fs-cmsfilter-tagcategory="Event Type"
+						fs-cmsfilter-field="type"
+						class="w-form-label"
+						for="Grass"
+						>Grass</span
+					></label
+				>
+				<label class="w-checkbox fs-cmsfilter_active checkbox_filter"
+					><input
+						type="checkbox"
+						id="Grass"
+						name="Grass"
+						data-name="Grass"
+						class="w-checkbox-input"
+					/><span
+						fs-cmsfilter-tagcategory="Event Type"
+						fs-cmsfilter-field="type"
+						class="w-form-label"
+						for="Grass"
+						>Grass</span
+					></label
+				>
+				<label class="w-checkbox fs-cmsfilter_inactive checkbox_filter"
+					><input
+						type="checkbox"
+						id="Grass"
+						name="Grass"
+						data-name="Grass"
+						class="w-checkbox-input"
+					/><span
+						fs-cmsfilter-tagcategory="Event Type"
+						fs-cmsfilter-field="type"
+						class="w-form-label"
+						for="Grass"
+						>Grass</span
+					></label
+				>
+				<div class="echo">
+					<label class="w-checkbox checkbox_filter"
+						><input
+							type="checkbox"
+							id="Grass"
+							name="Grass"
+							data-name="Grass"
+							class="w-checkbox-input"
+						/><span
+							fs-cmsfilter-tagcategory="Event Type"
+							fs-cmsfilter-field="type"
+							class="w-form-label"
+							for="Grass"
+							>Grass</span
+						>
+						<span>X</span></label
+					>
+				</div>
+			</atomGrid>
+		</main>
+
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+		<script src="../../jquery.min.js"></script>
+		<script>
+			const svgArrow =
+				'<svg viewBox="0 0 12 10"  xmlns="http://www.w3.org/2000/svg"class="arrow" arrow-type="breadcrumb"><path d="M7.36364 1L11 5M11 5L7.36364 9M11 5H1" /></svg>';
+			$(".breadcrumb:nth-child(n+2)").prepend(svgArrow);
+		</script>
+	</body>
+</html>

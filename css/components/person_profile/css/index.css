@@ -1,0 +1,149 @@
+/*css/components/person_profile/css/index.scss*/
+.person_profile {
+ --_container-max: 16.25rem;
+ --_image_size: 4.5rem;
+ --_column_space: 1.5rem;
+ --_static-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #76affe, 0px 0px 0px 6px #192d62;
+ --_default-rings: 0px 0px 0px 0px #192d62;
+ --_hover-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #76affe, 0px 0px 0px 6px #192d62, 0px 0px 0px 10px #f16122, 0px 0px 0px 11px #192d62, 0px 0px 0px 15px #f9d452, 0px 0px 0px 16px #192d62;
+ display: flex;
+ -moz-column-gap: var(--_column_space);
+      column-gap: var(--_column_space);
+ row-gap: 0.75rem;
+ flex-wrap: wrap;
+ container: profile/inline-size;
+}
+.person_profile[profile-type=event-host] {
+ --_static-rings: 0px 0px 0px 0px #192d62;
+ --_default-rings: 0px 0px 0px 0px #192d62;
+ --_hover-rings: 0px 0px 0px 0px #192d62;
+}
+.person_profile[profile-type=event-host][event-type=grass] {
+ --_static-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #94d13d, 0px 0px 0px 6px #192d62;
+ --_default-rings: 0px 0px 0px 0px #192d62;
+ --_hover-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #94d13d, 0px 0px 0px 6px #192d62;
+}
+.person_profile[profile-type=event-host][event-type=indoor] {
+ --_static-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #f16122, 0px 0px 0px 6px #192d62;
+ --_default-rings: 0px 0px 0px 0px #192d62;
+ --_hover-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #f16122, 0px 0px 0px 6px #192d62;
+}
+.person_profile[profile-type=event-host][event-type=beach] {
+ --_static-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #f9d452, 0px 0px 0px 6px #192d62;
+ --_default-rings: 0px 0px 0px 0px #192d62;
+ --_hover-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #f9d452, 0px 0px 0px 6px #192d62;
+}
+.person_profile[profile-type=event-host][event-type~=grass][event-type~=indoor] {
+ --_static-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #f16122, 0px 0px 0px 6px #192d62, 0px 0px 0px 10px #94d13d, 0px 0px 0px 11px #192d62;
+ --_default-rings: 0px 0px 0px 0px #192d62;
+ --_hover-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #f16122, 0px 0px 0px 6px #192d62, 0px 0px 0px 10px #94d13d, 0px 0px 0px 11px #192d62;
+}
+.person_profile[profile-type=event-host][event-type~=grass][event-type~=beach] {
+ --_static-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #94d13d, 0px 0px 0px 6px #192d62, 0px 0px 0px 10px #f9d452, 0px 0px 0px 11px #192d62;
+ --_default-rings: 0px 0px 0px 0px #192d62;
+ --_hover-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #94d13d, 0px 0px 0px 6px #192d62, 0px 0px 0px 10px #f9d452, 0px 0px 0px 11px #192d62;
+}
+.person_profile[profile-type=event-host][event-type~=beach][event-type~=indoor] {
+ --_static-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #f9d452, 0px 0px 0px 6px #192d62, 0px 0px 0px 10px #f16122, 0px 0px 0px 11px #192d62;
+ --_default-rings: 0px 0px 0px 0px #192d62;
+ --_hover-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #f9d452, 0px 0px 0px 6px #192d62, 0px 0px 0px 10px #f16122, 0px 0px 0px 11px #192d62;
+}
+@media (hover: hover) and (pointer: fine) {
+ @container profile (min-width: 16.25rem) {
+  .person_profile {
+   padding-bottom: 1rem;
+  }
+ }
+}
+.person_profile[profile-type=event-host] {
+ --_image_size: 3.75rem;
+}
+.person_profile .media_area {
+ width: var(--_image_size);
+ height: var(--_image_size);
+ flex-shrink: 0;
+ flex-grow: 0;
+}
+.person_profile .text_area {
+ max-width: calc(var(--_container-max) - var(--_image_size));
+ min-width: 10rem;
+ transition: 0.3s translate;
+}
+@media (hover: hover) and (pointer: fine) {
+ @container profile (min-width: 16.25rem) {
+  .person_profile .text_area {
+   translate: calc(var(--_column_space) * -2) 1rem;
+  }
+ }
+}
+.person_profile:hover .text_area {
+ translate: 0 0;
+}
+.person_profile-image {
+ border-radius: 50%;
+ transition: 0.3s opacity, 0.3s box-shadow;
+ box-shadow: var(--_static-rings);
+}
+@container profile (min-width: 16.25rem) {
+ @media (hover: hover) and (pointer: fine) {
+  .person_profile-image {
+   opacity: 0.2;
+   box-shadow: var(--_default-rings);
+  }
+  article:hover .person_profile-image {
+   box-shadow: var(--_hover-rings);
+  }
+ }
+}
+.person_profile:hover .person_profile-image {
+ opacity: 1;
+}
+.person_profile-title {
+ color: var(--theme_color-500, #76affe);
+ font-family: "Trade Gothic Next LT Pro";
+ font-size: 0.875rem;
+ font-style: italic;
+ font-weight: 800;
+ line-height: 100%; /* 0.875rem */
+ text-transform: uppercase;
+ color: var(--theme_color-500);
+}
+.person_profile-name {
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+ font-size: clamp(1.0625rem, 0.38vw + 0.975rem, 1.3125rem);
+ color: var(--primary_text);
+}
+[profile-type=event-host] .person_profile-name {
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+}
+.person_profile-pronouns {
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+ font-size: 0.75rem;
+}
+.person_profile-locations {
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+ font-family: trade-gothic-next-condensed, "Gothic A1", sans-serif;
+ font-size: 0.875rem;
+ font-weight: 700;
+ color: var(--theme_color-500);
+}

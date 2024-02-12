@@ -1,0 +1,31 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=1%3A2367&mode=design&t=g6qwze9oShWnmzfu-1
+/*atoms/slider_pagination/css/index.scss*/
+//Dependencies:swiper-bundle.min.css, swiper-bundle.min.js
+
+//Attributres
+
+.slider_pagination {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	min-width: 300px;
+	gap: 10/16 * 1rem;
+	--swiper-pagination-bottom: calc(var(--gap) * -1);
+	.swiper-pagination-bullet {
+		transition: 0.3s all;
+		--swiper-pagination-bullet-horizontal-gap: 0;
+		--swiper-pagination-bullet-width: #{30/16 * 1rem};
+		--swiper-pagination-bullet-height: 0.25rem;
+		--swiper-pagination-bullet-border-radius: 99rem;
+		--swiper-pagination-bullet-inactive-color: var(--color_theme-100, #{$brand-100});
+		--swiper-pagination-bullet-inactive-opacity: 1;
+		--swiper-pagination-bullet-opacity: 1;
+		--swiper-pagination-color: var(--color_theme-500, #{$brand-500});
+		&-active {
+			--swiper-pagination-bullet-width: #{80/16 * 1rem};
+		}
+	}
+}

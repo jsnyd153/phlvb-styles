@@ -1,19 +1,19 @@
 * {
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
 }
 
 h1 {
- font-size: clamp(2.5rem, 1.5vw + 2.15rem, 3.5rem);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-size: clamp(2.75rem, 3.76vw + 1.86875rem, 5.25rem);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  color: var(--primary_text);
  line-height: 125%;
  font-weight: 700;
 }
 
 h2 {
- font-size: clamp(2rem, 0.75vw + 1.825rem, 2.5rem);
+ font-size: clamp(2rem, 1.31vw + 1.69375rem, 2.875rem);
  color: var(--primary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-family: p22-mackinac-pro, Libre Baskerville, serif;
  line-height: 125%;
  font-weight: 700;
 }
@@ -21,7 +21,7 @@ h2 {
 h3 {
  font-size: clamp(1.5rem, 0.75vw + 1.325rem, 2rem);
  color: var(--primary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-family: p22-mackinac-pro, Libre Baskerville, serif;
  line-height: 125%;
  font-weight: 700;
 }
@@ -29,61 +29,60 @@ h3 {
 h4 {
  font-size: clamp(1.25rem, 0.75vw + 1.075rem, 1.75rem);
  color: var(--primary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  line-height: 135%;
  font-weight: 700;
 }
-
 h5 {
  font-size: clamp(1.125rem, 0.56vw + 0.99375rem, 1.5rem);
  color: var(--primary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  line-height: 135%;
  font-weight: 700;
 }
 
 h6 {
- font-size: clamp(1rem, 0.38vw + 0.9125rem, 1.25rem);
+ font-size: clamp(1rem, 0.19vw + 0.95625rem, 1.125rem);
  color: var(--primary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  line-height: 135%;
  font-weight: 700;
 }
 
 p {
  color: var(--secondary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
- font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
  line-height: 150%;
 }
 p.x-large {
  color: var(--secondary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
- font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
  line-height: 150%;
- font-size: clamp(1.125rem, 0.19vw + 1.08125rem, 1.25rem);
+ font-size: clamp(1.3125rem, 0.66vw + 1.15625rem, 1.75rem);
 }
 p.large {
  color: var(--secondary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
- font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
  line-height: 150%;
- font-size: clamp(1rem, 0.19vw + 0.95625rem, 1.125rem);
+ font-size: clamp(1.0625rem, 0.38vw + 0.975rem, 1.3125rem);
 }
 p.small {
  color: var(--secondary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
- font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
  line-height: 150%;
- font-size: clamp(0.75rem, 0.19vw + 0.70625rem, 0.875rem);
+ font-size: clamp(0.8125rem, 0.19vw + 0.76875rem, 0.9375rem);
 }
 p.bold {
  font-weight: 700;
@@ -99,17 +98,17 @@ p.book {
 }
 
 .h1 {
- font-size: clamp(2.5rem, 1.5vw + 2.15rem, 3.5rem);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-size: clamp(2.75rem, 3.76vw + 1.86875rem, 5.25rem);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  color: var(--primary_text);
  line-height: 125%;
  font-weight: 700;
 }
 
 .h2 {
- font-size: clamp(2rem, 0.75vw + 1.825rem, 2.5rem);
+ font-size: clamp(2rem, 1.31vw + 1.69375rem, 2.875rem);
  color: var(--primary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-family: p22-mackinac-pro, Libre Baskerville, serif;
  line-height: 125%;
  font-weight: 700;
 }
@@ -117,7 +116,7 @@ p.book {
 .h3 {
  font-size: clamp(1.5rem, 0.75vw + 1.325rem, 2rem);
  color: var(--primary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-family: p22-mackinac-pro, Libre Baskerville, serif;
  line-height: 125%;
  font-weight: 700;
 }
@@ -125,30 +124,29 @@ p.book {
 .h4 {
  font-size: clamp(1.25rem, 0.75vw + 1.075rem, 1.75rem);
  color: var(--primary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  line-height: 135%;
  font-weight: 700;
 }
-
 .h5 {
  font-size: clamp(1.125rem, 0.56vw + 0.99375rem, 1.5rem);
  color: var(--primary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  line-height: 135%;
  font-weight: 700;
 }
 
 .h6 {
- font-size: clamp(1rem, 0.38vw + 0.9125rem, 1.25rem);
+ font-size: clamp(1rem, 0.19vw + 0.95625rem, 1.125rem);
  color: var(--primary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  line-height: 135%;
  font-weight: 700;
 }
 
 .subheading {
  color: var(--primary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  font-size: clamp(1.125rem, 0.19vw + 1.08125rem, 1.25rem);
  font-style: normal;
  font-weight: 500;
@@ -156,7 +154,7 @@ p.book {
 }
 .subheading-large {
  color: var(--primary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  font-size: clamp(1.125rem, 0.19vw + 1.08125rem, 1.25rem);
  font-style: normal;
  font-weight: 500;
@@ -165,7 +163,7 @@ p.book {
 }
 .subheading-small {
  color: var(--primary_text);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  font-size: clamp(1.125rem, 0.19vw + 1.08125rem, 1.25rem);
  font-style: normal;
  font-weight: 500;
@@ -174,12 +172,13 @@ p.book {
 }
 
 .eyebrow {
- color: var(--accent);
- font-family: "trade-gothic-next", "Gothic A1", sans-serif;
- font-size: 1rem;
- font-style: normal;
- font-weight: 600;
- line-height: 145%;
+ ccolor: var(--theme_color-500, #76affe);
+ font-family: "Trade Gothic Next LT Pro";
+ font-size: 0.875rem;
+ font-style: italic;
+ font-weight: 800;
+ line-height: 100%; /* 0.875rem */
+ text-transform: uppercase;
 }
 .eyebrow-large {
  font-size: 1.25rem;

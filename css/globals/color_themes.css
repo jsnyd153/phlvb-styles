@@ -1,7 +1,7 @@
 :root {
  --background: #e9f1ff;
  --primary_text: #192d62;
- --secondary_text: #1c326f;
+ --secondary_text: #213d85;
  --low_text: #4c76c2;
  --border: #a9bfeb;
  --theme_color-50: #e9f1ff;
@@ -27,7 +27,7 @@
 [color-mode=light] {
  --background: #e9f1ff;
  --primary_text: #192d62;
- --secondary_text: #1c326f;
+ --secondary_text: #213d85;
  --low_text: #4c76c2;
  --border: #a9bfeb;
 }

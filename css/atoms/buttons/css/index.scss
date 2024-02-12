@@ -1,7 +1,7 @@
 @use "sass:color";
-@use "../../../global/abstracts" as *;
+@use "../../../globals/abstracts" as *;
 
-//Visual: https://www.figma.com/file/kIjfaVuV4r1BQl86FGWFhB/Web-Design-System-V1?type=design&node-id=643%3A5962&mode=design&t=1zQKnpLthgt7v7tT-1
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=1%3A1013&mode=design&t=g6qwze9oShWnmzfu-1
 /*components/buttons/css/index.scsss*/
 //Dependencies:
 
@@ -12,141 +12,122 @@
 	gap: 1rem;
 	flex-wrap: wrap;
 	justify-content: flex-start;
+	align-items: flex-start;
 }
 
 .button {
-	--_default_color: #{$ocean};
-	--_hover_color: #{$ocean-70};
-	--_disabled_color: #{$ocean-40};
-	--_text_color: #{$white};
+	--_button_color: #{$brand-900};
+	--_button-500: var(--theme_color-500, #{$brand-500});
+	--_button-200: var(--theme_color-200, #{$brand-200});
 
-	font-family: $sans_font;
+	font-family: $serif_font;
+
+	color: var(--_button-500);
+	background-color: var(--_button_color);
+	border: 1/16 * 1rem solid var(--_button_color);
+
+	@include fluid_size(font-size, 15px, 17px);
+
+	padding: 14/17 * 1em 20/17 * 1em 16/17 * 1em 20/17 * 1em;
+	line-height: 100%;
+	border-radius: 0.25rem;
 	text-decoration: none;
-	font-size: 15/16 * 1rem;
-	padding: 8/15 * 1em 24/15 * 1em 10/15 * 1em 24/15 * 1em;
-	border-radius: 99em;
-	margin: 0;
-	flex-shrink: 0;
-	flex-grow: 0;
-	background-color: var(--_default_color);
-	border: 1px solid var(--_default_color);
-	color: var(--_text_color);
 	display: flex;
-	gap: 10/15 * 1em;
-	align-items: center;
-	font-weight: 600;
+	gap: 0.5em;
+	transition: 0.5s all;
 
 	&:hover {
-		background-color: var(--_hover_color);
-		border: 1px solid var(--_hover_color);
+		background-color: var(--_button-500);
+		border: 1/16 * 1rem solid var(--_button-500);
+		color: var(--_button_color);
+		// box-shadow: 0px 4px 14px 0px rgba($brand-500, 0.35);
 	}
 
-	&[size="small"] {
-		font-size: 13/16 * 1rem;
+	&[button-size="small"] {
+		@include fluid_size(font-size, 13px, 15px);
+		padding: 11/17 * 1em 16/17 * 1em 13/17 * 1em 16/17 * 1em;
 	}
 
-	&[type~="ghost"] {
-		background: rgba($color: #000000, $alpha: 0);
-		color: var(--_default_color);
-
-		&:hover {
-			background-color: transparent;
-			border: 1px solid var(--_hover_color);
-			color: var(--_hover_color);
-		}
-	}
-
-	&[type~="borderless"] {
-		background: transparent;
-		border: 0 solid transparent;
-		color: var(--_default_color);
-		border-radius: 0;
-		padding-inline: 0;
-		font-weight: 500;
-		svg {
-			transition: 0.3s all;
-			margin: 2/15 * 1em 4/15 * 1em 0 0;
-			width: 5/15 * 1em;
-			* {
-				stroke: currentColor;
-				stroke-width: 2;
-			}
-		}
+	&[button-type="inverse"] {
+		color: var(--_button_color);
+		background-color: var(--_button-200);
+		border: 1/16 * 1rem solid var(--_button-200);
 
 		&:hover {
-			color: var(--_hover_color);
-			svg {
-				margin: 2/15 * 1em 0 0 4/15 * 1em;
-			}
+			background-color: var(--_button-500);
+			border: 1/16 * 1rem solid var(--_button-500);
+			color: var(--_button_color);
 		}
 	}
-	&[type~="form"] {
-		padding: 10/15 * 1em 24/15 * 1em 12/15 * 1em 24/15 * 1em;
-		border-radius: 0.5rem;
-		justify-content: center;
-	}
 
-	&[type~="fixed"] {
-		margin: 0;
-		padding: 10/15 * 1em 24/15 * 1em 12/15 * 1em 24/15 * 1em;
-		border-radius: 0.5rem;
-		justify-content: center;
-		background: rgba($color: #000000, $alpha: 0);
-		color: var(--_default_color);
+	&[button-type="ghost"] {
+		color: var(--_button_color);
+		background-color: rgba($color: $brand-900, $alpha: 0);
+		border: 1/16 * 1rem solid var(--_button_color);
 
 		&:hover {
-			background-color: transparent;
-			border: 1px solid var(--_hover_color);
-			color: var(--_hover_color);
+			background-color: var(--_button_color);
+			color: var(--_button-500);
 		}
 	}
 
-	&[type~="fixed"] {
-		padding: 20/15 * 1em 4/15 * 1em 16/15 * 1em 6/15 * 1em;
-		box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.12);
-		position: fixed;
-		bottom: var(--gap);
-		right: var(--gap);
-	}
+	&[button-type="ghost inverse"] {
+		color: var(--_button-200);
+		background-color: rgba($color: $brand-900, $alpha: 0);
+		border: 1/16 * 1rem solid var(--_button-200);
 
-	&[direction] {
-		padding: 10/15 * 1em 12/15 * 1em 10/15 * 1em 14/15 * 1em;
-		border-radius: 0.5rem;
-		justify-content: center;
-		background: rgba($color: #000000, $alpha: 0);
-		color: var(--_default_color);
-		svg {
-			transition: 0.3s all;
-			width: 10/15 * 1em;
-			* {
-				stroke: currentColor;
-				stroke-width: 1.5;
-			}
-		}
 		&:hover {
-			background-color: transparent;
-			border: 1px solid var(--_hover_color);
-			color: var(--_hover_color);
-		}
-	}
-	&[direction="left"] {
-		padding: 10/15 * 1em 14/15 * 1em 10/15 * 1em 12/15 * 1em;
-		svg {
-			rotate: 180deg;
+			background-color: var(--_button-200);
+			color: var(--_button_color);
 		}
 	}
 
-	&[color-theme="midnight"] {
-		--_default_color: #{$midnight};
-		--_hover_color: #{$midnight-70};
-		--_disabled_color: #{$midnight-40};
-		--_text_color: #{$white};
+	&[button-type="bright"] {
+		color: var(--_button_color);
+		background-color: var(--_button-500);
+		border: 1/16 * 1rem solid var(--_button-500);
+
+		&:hover {
+			background-color: var(--_button-200);
+			color: var(--_button_color);
+			border: 1/16 * 1rem solid var(--_button-200);
+		}
 	}
 
-	&[color-theme="white"] {
-		--_default_color: #{$white};
-		--_hover_color: #{$midnight-20};
-		--_disabled_color: #{rgba($white, 0.04)};
-		--_text_color: #{$midnight};
+	&[button-type="bright inverse"] {
+		color: var(--_button-500);
+		background-color: rgba($color: $brand-900, $alpha: 0);
+		border: 1/16 * 1rem solid var(--_button-500);
+
+		&:hover {
+			background-color: var(--_button-500);
+			color: var(--_button_color);
+		}
 	}
+}
+
+/* fallback */
+@font-face {
+	font-family: "Material Symbols Outlined";
+	font-style: normal;
+	font-weight: 100 700;
+	src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v161/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsLjBuVY.woff2)
+		format("woff2");
+}
+
+.button .icon {
+	font-family: "Material Symbols Outlined";
+	font-weight: normal;
+	font-style: normal;
+	font-size: 1em;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	-moz-font-feature-settings: "liga";
+	-moz-osx-font-smoothing: grayscale;
+	font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }

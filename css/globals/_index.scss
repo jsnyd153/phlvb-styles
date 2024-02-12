@@ -7,3 +7,10 @@
 @forward "text_area";
 @forward "media_area";
 @forward "color_themes";
+
+.w-embed {
+	&::before,
+	&::after {
+		display: none;
+	}
+}

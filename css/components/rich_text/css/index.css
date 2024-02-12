@@ -1,0 +1,107 @@
+/*css/components/rich_text/css/index.scss*/
+.rich_text h1,
+.rich_text h2,
+.rich_text h3,
+.rich_text h4,
+.rich_text h5,
+.rich_text h6,
+.rich_text p {
+ margin-block: 0.5em 0.25em;
+}
+.rich_text p > em {
+ font-style: italic;
+}
+.rich_text p > strong {
+ font-weight: 700;
+}
+.rich_text p > strong > em,
+.rich_text p > em > strong {
+ font-weight: 700;
+ font-style: italic;
+}
+.rich_text p > sup > em,
+.rich_text p > em > sup {
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+ font-size: clamp(1.0625rem, 0.38vw + 0.975rem, 1.3125rem);
+}
+.rich_text p > sub > em,
+.rich_text p > em > sub {
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+ font-size: clamp(0.8125rem, 0.19vw + 0.76875rem, 0.9375rem);
+}
+.rich_text ul {
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+ padding-inline: 1.5em;
+ display: flex;
+ flex-direction: column;
+ gap: 0.25em;
+}
+.rich_text ul li::marker {
+ color: var(--primary_text);
+}
+.rich_text blockquote {
+ display: flex;
+ align-items: center;
+ padding: 1.5rem;
+ gap: var(--gap);
+ background-color: rgba(255, 255, 255, 0.6);
+ -webkit-backdrop-filter: blur(6px);
+         backdrop-filter: blur(6px);
+ border-radius: 0.5rem;
+ border: 1px dashed var(--theme_color-500, #76affe);
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 150%;
+}
+.rich_text blockquote::before {
+ flex-shrink: 0;
+ flex-grow: 0;
+}
+.rich_text hr {
+ margin-block: var(--gap);
+}
+.rich_text .button-container {
+ margin-block: 1rem;
+}
+.rich_text figure {
+ margin: 0;
+}
+.rich_text .w-richtext-align-center {
+ display: grid;
+ grid-template-columns: repeat(var(--columns, 12), minmax(0, 1fr));
+ gap: var(--gap);
+}
+.rich_text .w-richtext-align-center > div {
+ grid-column: 3/-3;
+}
+@media (max-width: 991px) {
+ .rich_text .w-richtext-align-center > div {
+  grid-column: 2/-2;
+ }
+}
+@media (max-width: 767px) {
+ .rich_text .w-richtext-align-center > div {
+  grid-column: 1/-1;
+ }
+}
+.rich_text .w-richtext-align-fullwidth {
+ max-width: none !important;
+}

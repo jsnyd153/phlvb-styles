@@ -1,718 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-    <meta content="width=device-width, initial-scale=1" large bold="viewport" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <title>Components - Cards</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
-    />
-    <link rel="stylesheet" href="../../global_css/components/_index.css" />
-    <link rel="stylesheet" href="css/index.css" />
-  </head>
+	<head>
+		<meta charset="utf-8" />
+		<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+		<meta content="width=device-width, initial-scale=1" large bold="viewport" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+		<title>Components - Cards</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+		/>
+		<link rel="stylesheet" href="../../globals/_index.css" />
+		<link rel="stylesheet" href="../../atoms/index.css" />
+		<link rel="stylesheet" href="../index.css" />
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
 
-  <body>
-    <main class="">
-      <componentGrid color-theme="">
-        <article class="card" color-theme="">
-          <div class="media_area card-media_area">
-            <div class="media_content" aspect-ratio="16:9">
-              <img src="../../global_media/Media Placeholder 1-1.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <h5 class="subheading">Lorem ipsum dolor, sit amet</h5>
-              <div class="card-date">December 29, 2023</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliq.
-              </p>
-            </div>
-            <div class="text_content">
-              <div class="icons-container">
-                <img
-                  class="icon"
-                  src="../../global_media/Media Placeholder 1-1.png"
-                  alt=""
-                />
-                <img
-                  class="icon"
-                  src="../../global_media/Media Placeholder.svg"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div class="text_content">
-              <a href="#" type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </a>
-            </div>
-            <div class="text_content">
-              <div class="tag-container">
-                <div class="tag">tag wrap</div>
-                <div class="tag">tag this wrap</div>
-                <div class="tag">tag</div>
-              </div>
-            </div>
-          </div>
-        </article>
-        <a href="#" class="card">
-          <div class="media_area card-media_area">
-            <div class="media_content" aspect-ratio="16:9">
-              <img src="../../global_media/Media Placeholder 1-1.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <h5 class="subheading">Lorem ipsum dolor, sit amet</h5>
-              <div class="card-date">December 29, 2023</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliq.
-              </p>
-            </div>
-            <div class="text_content">
-              <div class="icons-container">
-                <img
-                  class="icon"
-                  src="../../global_media/Media Placeholder 1-1.png"
-                  alt=""
-                />
-                <img
-                  class="icon"
-                  src="../../global_media/Media Placeholder.svg"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div class="text_content">
-              <span type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </span>
-            </div>
-            <div class="text_content">
-              <div class="tag-container">
-                <div class="tag">tag wrap</div>
-                <div class="tag">tag this wrap</div>
-                <div class="tag">tag</div>
-              </div>
-            </div>
-          </div>
-        </a>
+	<body>
+		<main class="">
+			<componentGrid single>
+				<a href="#" class="card" card-type="tournament">
+					<div class="card-header">
+						<div class="event_type_indicator" indicator-type="dot"></div>
+						<div class="card-date">
+							<div class="card-start">Aug 19</div>
+							-
+							<div class="card-end">20</div>
+						</div>
+					</div>
+					<div class="card-content">
+						<div class="card-details">
+							<div class="card-name">
+								<h4>Pennypack Pokey</h4>
+								<div class="card-subhead">
+									hosted by:
+									<div class="card-host">philly volleyball</div>
+								</div>
+							</div>
+							<div class="card-body">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est libero similique
+									omnis, nesciunt repellat in. Cumque voluptate similique nobis! Quod, laborum
+									cumque quidem eveniet dolorum repellat nobis exercitationem laudantium minus!
+								</p>
+							</div>
+						</div>
+						<div class="card-location">
+							<div class="location_indicator">University city</div>
+						</div>
+					</div>
+				</a>
+				<a href="#" class="card" card-type="league">
+					<div class="card-header">
+						<div class="event_type_indicator" indicator-type="dot"></div>
+						<div class="card-date">
+							<div class="card-date-pre">expected start:</div>
+							<div class="card-start">Aug 19</div>
+						</div>
+					</div>
+					<div class="card-content">
+						<div class="card-details">
+							<div class="card-name">
+								<h4>Pennypack Pokey</h4>
+								<div class="card-subhead">Wednesday</div>
+							</div>
+							<div class="card-body">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est libero similique
+									omnis, nesciunt repellat in. Cumque voluptate similique nobis! Quod, laborum
+									cumque quidem eveniet dolorum repellat nobis exercitationem laudantium minus!
+								</p>
+							</div>
+						</div>
+						<div class="card-location">
+							<div class="location_indicator">University city</div>
+						</div>
+					</div>
+				</a>
+				<a href="#" class="card" card-type="pickup">
+					<div class="card-header">
+						<div class="event_type_indicator" indicator-type="dot"></div>
+						<div class="card-date">
+							<div class="card-date-pre">expected start:</div>
+							<div class="card-start">Aug 19</div>
+						</div>
+					</div>
+					<div class="card-content">
+						<div class="card-details">
+							<div class="card-name">
+								<h4>Pennypack Pokey</h4>
+								<div class="card-subhead">All levels</div>
+							</div>
+						</div>
+						<div class="card-location">
+							<div class="location_indicator">University city</div>
+						</div>
+					</div>
+				</a>
+				<div class="article">
+					<div class="card" card-type="empty">
+						<p>No scheduled leagues</p>
+					</div>
+				</div>
+			</componentGrid>
+			<componentGrid>
+				<a href="#" class="card" card-type="icon">
+					<div class="text_area">
+						<div class="text_content">
+							<div class="headline-row">
+								<h3>
+									<div class="w-embed svg-icon">
+										<svg class="icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M24.05 46.55L17.3 40H8.00005V30.7L1.30005 24L8.00005 17.3V8.00005H17.3L24.05 1.30005L30.7 8.00005H40V17.3L46.7001 24L40 30.7V40H30.7L24.05 46.55ZM18.15 32.5L24 28.95L29.85 32.5L28.3 25.85L33.5 21.35L26.65 20.8L24 14.5L21.35 20.8L14.5 21.35L19.7 25.85L18.15 32.5Z"
+												class="fill"
+											/>
+										</svg>
+									</div>
+									<div class="headline">Tournaments</div>
+								</h3>
+							</div>
+							<p>Day long (or overnight) competitions. Grab your team and start competing!</p>
+						</div>
+						<div class="text_content">
+							<div class="w-embed svg-arrow" arrow-size="large">
+								<svg viewBox="0 0 30 18" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0 9H27.32" />
+									<path d="M18.2134 1L27.32 9L18.2134 17" />
+								</svg>
+							</div>
+						</div>
+					</div>
+				</a>
+				<article class="card" card-type="icon">
+					<div class="text_area">
+						<div class="text_content">
+							<div class="headline-row">
+								<h3>
+									<div class="w-embed svg-icon">
+										<svg class="icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M24.05 46.55L17.3 40H8.00005V30.7L1.30005 24L8.00005 17.3V8.00005H17.3L24.05 1.30005L30.7 8.00005H40V17.3L46.7001 24L40 30.7V40H30.7L24.05 46.55ZM18.15 32.5L24 28.95L29.85 32.5L28.3 25.85L33.5 21.35L26.65 20.8L24 14.5L21.35 20.8L14.5 21.35L19.7 25.85L18.15 32.5Z"
+												class="fill"
+											/>
+										</svg>
+									</div>
+									<div class="headline">Tournaments</div>
+								</h3>
+							</div>
+							<p>Day long (or overnight) competitions. Grab your team and start competing!</p>
+						</div>
+					</div>
+				</article>
 
-        <article class="card" card-type="accelerator-program">
-          <div class="media_area card-media_area">
-            <div class="media_content">
-              <img src="../../global_media/Media Placeholder 21-9.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area">
-            <div class="text_content">
-              <h5 class="subheading">For help with:</h5>
-            </div>
-            <div class="text_content">
-              <div class="tag-container">
-                <div class="tag" tag-type="inverted" color-theme="han">
-                  OSK to Confluent Cloud
-                </div>
-                <div class="tag" tag-type="inverted" color-theme="olive">
-                  OSK to Confluent Platform
-                </div>
-                <div class="tag" tag-type="inverted" color-theme="jade">
-                  Confluent Platform to Confluent Cloud
-                </div>
-              </div>
-            </div>
+				<a href="#" class="card" card-type="location">
+					<div class="text_area">
+						<div class="text_content">
+							<div class="event_type_indicator" indicator-type="text">Eventtype</div>
+							<h4>Location Name</h4>
+						</div>
+						<div class="divider"></div>
+						<div class="text_content">
+							<div class="location_indicator">University city</div>
+						</div>
+					</div>
+				</a>
 
-            <div class="text_content">
-              <a href="#" type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <a href="#" class="card" card-type="accelerator-program">
-          <div class="media_area card-media_area">
-            <div class="media_content">
-              <img src="../../global_media/Media Placeholder 21-9.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area">
-            <div class="text_content">
-              <h5 class="subheading">For help with:</h5>
-            </div>
-            <div class="text_content">
-              <div class="tag-container">
-                <div class="tag" tag-type="inverted" color-theme="han">
-                  OSK to Confluent Cloud
-                </div>
-                <div class="tag" tag-type="inverted" color-theme="olive">
-                  OSK to Confluent Platform
-                </div>
-                <div class="tag" tag-type="inverted" color-theme="jade">
-                  Confluent Platform to Confluent Cloud
-                </div>
-              </div>
-            </div>
-
-            <div class="text_content">
-              <span type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </span>
-            </div>
-          </div>
-        </a>
-
-        <article class="card" card-type="horizontal">
-          <div class="media_area card-media_area">
-            <div class="media_content" aspect-ratio="1:1">
-              <img src="../../global_media/Media Placeholder 1-1.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <h5 class="subheading">Lorem ipsum dolor, sit amet</h5>
-              <div class="card-date">December 29, 2023</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliq.
-              </p>
-            </div>
-
-            <div class="text_content">
-              <a href="#" type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" card-type="horizontal">
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <h5 class="subheading">Lorem ipsum dolor, sit amet</h5>
-              <div class="card-date">December 29, 2023</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliq.
-              </p>
-            </div>
-
-            <div class="text_content">
-              <a href="#" type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" card-type="horizontal" size="small">
-          <div class="media_area card-media_area">
-            <div class="media_content" aspect-ratio="1:1">
-              <img src="../../global_media/Media Placeholder 1-1.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <h5 class="subheading">Lorem ipsum dolor, sit amet</h5>
-
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliq.
-              </p>
-              <a href="#" type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" card-type="horizontal" size="small">
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <h5 class="subheading">Lorem ipsum dolor, sit amet</h5>
-
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliq.
-              </p>
-              <a href="#" type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" card-type="horizontal" size="x-small">
-          <div class="media_area card-media_area">
-            <div class="media_content" aspect-ratio="1:1">
-              <img src="../../global_media/Media Placeholder 1-1.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <h5 class="eyebrow">LOREM IPSUM</h5>
-
-              <p>Lorem ipsum dolor sit amet, consectetur.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" card-type="media-only" size="">
-          <div class="media_area card-media_area">
-            <div class="media_content">
-              <img src="../../global_media/Media Placeholder 21-9.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <svg
-                viewBox="0 0 22 10"
-                arrow-type="feature"
-                class="arrow"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M16 1L20 5M20 5L16 9M20 5H6" />
-              </svg>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" card-type="horizontal" size="x-small">
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <p class="subheading">
-                Lorem ipsum dolor sit amet, consectetur
-              </h5>
-            </div>
-          </div>
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <svg
-                viewBox="0 0 22 10"
-                arrow-type="feature"
-                class="arrow"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M16 1L20 5M20 5L16 9M20 5H6" />
-              </svg>
-            </div>
-          </div>
-        </article>
-      </componentGrid>
-      <componentGrid color-theme="midnight">
-        <article class="card" color-theme="">
-          <div class="media_area card-media_area">
-            <div class="media_content" aspect-ratio="16:9">
-              <img src="../../global_media/Media Placeholder 1-1.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <h5 class="subheading">Lorem ipsum dolor, sit amet</h5>
-              <div class="card-date">December 29, 2023</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliq.
-              </p>
-            </div>
-            <div class="text_content">
-              <div class="icons-container">
-                <img
-                  class="icon"
-                  src="../../global_media/Media Placeholder 1-1.png"
-                  alt=""
-                />
-                <img
-                  class="icon"
-                  src="../../global_media/Media Placeholder.svg"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div class="text_content">
-              <a href="#" type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </a>
-            </div>
-            <div class="text_content">
-              <div class="tag-container">
-                <div class="tag">tag wrap</div>
-                <div class="tag">tag this wrap</div>
-                <div class="tag">tag</div>
-              </div>
-            </div>
-          </div>
-        </article>
-        <a href="#" class="card">
-          <div class="media_area card-media_area">
-            <div class="media_content" aspect-ratio="16:9">
-              <img src="../../global_media/Media Placeholder 1-1.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <h5 class="subheading">Lorem ipsum dolor, sit amet</h5>
-              <div class="card-date">December 29, 2023</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliq.
-              </p>
-            </div>
-            <div class="text_content">
-              <div class="icons-container">
-                <img
-                  class="icon"
-                  src="../../global_media/Media Placeholder 1-1.png"
-                  alt=""
-                />
-                <img
-                  class="icon"
-                  src="../../global_media/Media Placeholder.svg"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div class="text_content">
-              <span type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </span>
-            </div>
-            <div class="text_content">
-              <div class="tag-container">
-                <div class="tag">tag wrap</div>
-                <div class="tag">tag this wrap</div>
-                <div class="tag">tag</div>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <article class="card" card-type="accelerator-program">
-          <div class="media_area card-media_area">
-            <div class="media_content">
-              <img src="../../global_media/Media Placeholder 21-9.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area">
-            <div class="text_content">
-              <h5 class="subheading">For help with:</h5>
-            </div>
-            <div class="text_content">
-              <div class="tag-container">
-                <div class="tag" tag-type="solid" color-theme="han">
-                  OSK to Confluent Cloud
-                </div>
-                <div class="tag" tag-type="solid" color-theme="olive">
-                  OSK to Confluent Platform
-                </div>
-                <div class="tag" tag-type="solid" color-theme="jade">
-                  Confluent Platform to Confluent Cloud
-                </div>
-              </div>
-            </div>
-
-            <div class="text_content">
-              <a href="#" type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <a href="#" class="card" card-type="accelerator-program">
-          <div class="media_area card-media_area">
-            <div class="media_content">
-              <img src="../../global_media/Media Placeholder 21-9.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area">
-            <div class="text_content">
-              <h5 class="subheading">For help with:</h5>
-            </div>
-            <div class="text_content">
-              <div class="tag-container">
-                <div class="tag" tag-type="solid" color-theme="han">
-                  OSK to Confluent Cloud
-                </div>
-                <div class="tag" tag-type="solid" color-theme="olive">
-                  OSK to Confluent Platform
-                </div>
-                <div class="tag" tag-type="solid" color-theme="jade">
-                  Confluent Platform to Confluent Cloud
-                </div>
-              </div>
-            </div>
-
-            <div class="text_content">
-              <span type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </span>
-            </div>
-          </div>
-        </a>
-
-        <article class="card" card-type="horizontal">
-          <div class="media_area card-media_area">
-            <div class="media_content" aspect-ratio="1:1">
-              <img src="../../global_media/Media Placeholder 1-1.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <h5 class="subheading">Lorem ipsum dolor, sit amet</h5>
-              <div class="card-date">December 29, 2023</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliq.
-              </p>
-            </div>
-
-            <div class="text_content">
-              <a href="#" type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" card-type="horizontal">
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <h5 class="subheading">Lorem ipsum dolor, sit amet</h5>
-              <div class="card-date">December 29, 2023</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliq.
-              </p>
-            </div>
-
-            <div class="text_content">
-              <a href="#" type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" card-type="horizontal" size="small">
-          <div class="media_area card-media_area">
-            <div class="media_content" aspect-ratio="1:1">
-              <img src="../../global_media/Media Placeholder 1-1.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <h5 class="subheading">Lorem ipsum dolor, sit amet</h5>
-
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliq.
-              </p>
-              <a href="#" type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" card-type="horizontal" size="small">
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <h5 class="subheading">Lorem ipsum dolor, sit amet</h5>
-
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliq.
-              </p>
-              <a href="#" type="borderless" class="button">
-                Learn more
-                <svg
-                  viewBox="0 0 7 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1 1.5L5 5.5L1 9.5" stroke-linecap="round" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" card-type="horizontal" size="x-small">
-          <div class="media_area card-media_area">
-            <div class="media_content" aspect-ratio="1:1">
-              <img src="../../global_media/Media Placeholder 1-1.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <h5 class="eyebrow">LOREM IPSUM</h5>
-
-              <p>Lorem ipsum dolor sit amet, consectetur.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" card-type="media-only" size="">
-          <div class="media_area card-media_area">
-            <div class="media_content">
-              <img src="../../global_media/Media Placeholder 21-9.png" alt="" />
-            </div>
-          </div>
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <svg
-                viewBox="0 0 22 10"
-                arrow-type="feature"
-                class="arrow"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M16 1L20 5M20 5L16 9M20 5H6" />
-              </svg>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" card-type="horizontal" size="x-small">
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <p class="subheading">
-                Lorem ipsum dolor sit amet, consectetur
-              </h5>
-            </div>
-          </div>
-          <div class="text_area card-text_area">
-            <div class="text_content">
-              <svg
-                viewBox="0 0 22 10"
-                arrow-type="feature"
-                class="arrow"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M16 1L20 5M20 5L16 9M20 5H6" />
-              </svg>
-            </div>
-          </div>
-        </article>
-      </componentGrid>
-    </main>
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-    <script src="../../jquery.min.js"></script>
-    <script src="js/controls.js"></script>
-  </body>
+				<a href="#" class="card" card-type="resource">
+					<div class="media_area">
+						<div class="media_content" aspect-ratio="16:9">
+							<img
+								src="https://assets-global.website-files.com/653885ff978cfaaaff1f6d97/6572281eace2b5966012a421_article%20image.svg"
+								alt=""
+							/>
+						</div>
+					</div>
+					<div class="text_area">
+						<div class="text_content">
+							<h4>Location Name</h4>
+							<p>Day long (or overnight) competitions. Grab your team and start competing!</p>
+						</div>
+					</div>
+				</a>
+			</componentGrid>
+		</main>
+	</body>
 </html>

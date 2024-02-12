@@ -1,0 +1,28 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=1%3A2160&mode=design&t=g6qwze9oShWnmzfu-1
+/*atoms/alerts_icon/css/index.scss*/
+//Dependencies:
+
+//Attributres
+
+.alert_icon,
+.alert-before::before,
+.rich_text blockquote::before {
+	color: white;
+	font-family: "Times New Roman", serif;
+	font-style: italic;
+	@include fluid_size(font-size, 16px, 20px);
+	text-align: center;
+	background: var(--theme_color-600, #{$brand-600});
+	width: 1.5em;
+	line-height: 1.5;
+	border-radius: 50%;
+}
+
+.alert_icon:not(i)::before,
+.rich_text blockquote::before {
+	content: "i";
+	display: inline-block;
+}

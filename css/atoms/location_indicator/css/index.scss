@@ -1,0 +1,22 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=1%3A2476&mode=design&t=g6qwze9oShWnmzfu-1
+/*atoms/location_indicator/css/index.scss*/
+//Dependencies:
+
+//Attributres
+
+.location_indicator {
+	@include body_text;
+	font-size: 13/16 * 1rem;
+	padding: 9/13 * 1em 12/13 * 1em;
+	border-radius: 0.25rem;
+	color: var(--secondary_text);
+	border: 1/16 * 1rem solid currentColor;
+	text-align: center;
+
+	a:hover & {
+		color: var(--primary_text);
+	}
+}

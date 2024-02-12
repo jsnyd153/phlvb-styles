@@ -1,0 +1,29 @@
+/*atoms/checkbox_filter/css/index.scss*/
+.checkbox_filter {
+ font-size: 0.75rem;
+ line-height: 100%;
+ padding: 0.8333333333em 1em;
+ border-radius: 0.25rem;
+ color: var(--primary_text);
+ border: 0.0625rem solid currentColor;
+ flex-grow: 0;
+ margin: 0 auto;
+}
+.checkbox_filter input[type=checkbox] {
+ display: none;
+}
+.checkbox_filter:hover:not(.fs-cmsfilter_inactive, .fs-cmsfilter_active) {
+ border: 0.0625rem solid var(--theme_color-500);
+ background: var(--theme_color-500);
+}
+.checkbox_filter.fs-cmsfilter_active {
+ border: 0.0625rem solid var(--theme_color-800);
+ background: var(--theme_color-800);
+ color: var(--theme_color-500);
+}
+.checkbox_filter.fs-cmsfilter_inactive {
+ color: var(--theme_color-300);
+}
+.echo .checkbox_filter {
+ color: var(--theme_color-700);
+}

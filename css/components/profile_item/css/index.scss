@@ -1,0 +1,31 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/kIjfaVuV4r1BQl86FGWFhB/Web-Design-System-V1?type=design&node-id=643%3A5962&mode=design&t=1zQKnpLthgt7v7tT-1
+/*css/components/profile_item/css/index.scss*/
+//Dependencies:
+
+.profile_item {
+	display: flex;
+	flex-direction: column;
+	gap: 12/16 * 1rem;
+
+	.text_content {
+		gap: 4/16 * 1rem;
+	}
+	img {
+		border-radius: 0.5rem;
+	}
+	&-division,
+	&-season,
+	&-category {
+		@include eyebrow-italic;
+	}
+	&-name {
+		@include body_text-large;
+	}
+	&-event {
+		@include body_text-small;
+		color: $brand-600;
+	}
+}

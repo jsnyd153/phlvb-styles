@@ -3,6 +3,7 @@
 
 :root {
 	@include fluid_size(--gap, 12px, 32px);
+	@include fluid_size(--padding_base, 40px, 60px);
 	--page_margin: clamp(2rem, 5.47vw - 0.625rem, 3.75rem);
 	--grid_margin: calc(var(--page_margin) - var(--gap));
 	--page_grid: var(--grid_margin) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)

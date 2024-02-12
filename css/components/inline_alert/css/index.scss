@@ -1,0 +1,24 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/kIjfaVuV4r1BQl86FGWFhB/Web-Design-System-V1?type=design&node-id=643%3A5962&mode=design&t=1zQKnpLthgt7v7tT-1
+/*components/cards/css/index.scsss*/
+//Dependencies:
+
+//Attributres
+
+.inline_alert {
+	display: flex;
+	align-items: center;
+	padding: 24/16 * 1rem;
+	gap: var(--gap);
+	background-color: rgba($color: #ffffff, $alpha: 0.6);
+	backdrop-filter: blur(6px);
+	border-radius: 0.5rem;
+	border: 1px dashed var(--theme_color-500, #{$brand-500});
+
+	.alert_icon {
+		flex-shrink: 0;
+		flex-grow: 0;
+	}
+}

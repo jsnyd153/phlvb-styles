@@ -1,0 +1,7 @@
+/*atoms/divider/css/index.scss*/
+.divider,
+hr {
+ border: 0.5px solid var(--theme_color-200);
+ margin: 0;
+ width: 100%;
+}

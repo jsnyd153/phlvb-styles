@@ -1,0 +1,61 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=1%3A2223&mode=design&t=g6qwze9oShWnmzfu-1
+/*atoms/tabs/css/index.scss*/
+//Dependencies:js/tabs.js
+
+// Max for max 6 items.
+
+//Attributres
+
+.tab {
+	&-container {
+		display: grid;
+		grid-template-columns: repeat(var(--options), 1fr);
+
+		padding: 0.25rem;
+		border-radius: 0.25rem;
+		background-color: white;
+	}
+
+	&-indicator {
+		background-color: var(--theme_color-500);
+		width: 100%;
+		height: 100%;
+		grid-row: 1;
+		grid-column: 1;
+		border-radius: 2/16 * 1rem;
+		transition: 0.3s all;
+	}
+
+	background-color: transparent;
+	font-size: 12/16 * 1rem;
+	color: var(--primary_text);
+	font-family: $sans_font;
+	border: 0;
+	padding: 8/12 * 1em 8/12 * 1em;
+	line-height: 100%;
+	position: relative;
+	translate: 0% 0%;
+	z-index: 1;
+	transition: 0.3s all;
+
+	&:nth-child(1) {
+		grid-row: 1;
+		grid-column: 1;
+	}
+}
+
+@for $i from 0 through 6 {
+	.tab-container:has(.tab:nth-child(#{$i})) {
+		--options: #{$i};
+	}
+	[state="#{$i}"] .tab:nth-child(#{$i + 1}) {
+		font-weight: 700;
+	}
+	[state="#{$i}"] .tab-indicator {
+		translate: $i * 100% 0;
+		z-index: 0;
+	}
+}

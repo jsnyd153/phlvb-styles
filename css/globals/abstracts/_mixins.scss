@@ -4,29 +4,29 @@
 // @use "_fonts" as *;
 
 @mixin fluid_size(
-  $property: font-size,
-  $minSize: 16px,
-  $maxSize: 20px,
-  $minBreakpoint: 375px,
-  $maxBreakpoint: 1440px
+	$property: font-size,
+	$minSize: 16px,
+	$maxSize: 20px,
+	$minBreakpoint: 375px,
+	$maxBreakpoint: 1440px
 ) {
-  //Formula y = mx+b
-  $m: ($maxSize - $minSize) / ($maxBreakpoint - $minBreakpoint);
-  $b: $maxSize - ($maxBreakpoint * $m);
-  $m_round: round($m * 10000) / 10000;
-  $b_round: round($b * 10) / 10;
+	//Formula y = mx+b
+	$m: ($maxSize - $minSize) / ($maxBreakpoint - $minBreakpoint);
+	$b: $maxSize - ($maxBreakpoint * $m);
+	$m_round: round($m * 10000) / 10000;
+	$b_round: round($b * 10) / 10;
 
-  #{$property}: clamp(
-    $minSize/16px * 1rem,
-    calc($m_round * 100 * 1vw + $b_round/16px * 1rem),
-    $maxSize/16px * 1rem
-  );
+	#{$property}: clamp(
+		$minSize/16px * 1rem,
+		calc($m_round * 100 * 1vw + $b_round/16px * 1rem),
+		$maxSize/16px * 1rem
+	);
 
-  // //print values
-  // --value1440: #{$m_round * 1440px + $b_round};
-  // --value1024: #{$m_round * 1024px + $b_round};
-  // --value758: #{$m_round * 768px + $b_round};
-  // --value375: #{$m_round * 375px + $b_round};
+	// //print values
+	// --value1440: #{$m_round * 1440px + $b_round};
+	// --value1024: #{$m_round * 1024px + $b_round};
+	// --value758: #{$m_round * 768px + $b_round};
+	// --value375: #{$m_round * 375px + $b_round};
 }
 
 // functions for scss color adjustments
@@ -38,7 +38,7 @@
 /// @return {Color}
 ///
 @function tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
+	@return mix(white, $color, $percentage);
 }
 
 /// Slightly darken a color
@@ -48,97 +48,92 @@
 /// @return {Color}
 ///
 @function shade($color, $percentage) {
-  @return mix(black, $color, $percentage);
+	@return mix(black, $color, $percentage);
 }
 
 //text selectors
 @mixin header_tags {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @content;
-  }
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@content;
+	}
 }
 
 @mixin text_nodes {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    @content;
-  }
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p {
+		@content;
+	}
 }
 
 //basic setting for pseudo element
 @mixin psuedo_el() {
-  display: block;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+	display: block;
+	content: "";
 }
 
 // sets and image to cover - parent must have position property
 @mixin image_cover() {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  inset: 0;
-  object-fit: cover;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	inset: 0;
+	object-fit: cover;
 }
 @mixin cover_obj() {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  inset: 0;
-  object-fit: cover;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	inset: 0;
+	object-fit: cover;
 }
 
 //sets up container for use with @image_cover
 @mixin cover_container() {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
 }
 
 @mixin t-center() {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 @mixin f-center() {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @mixin v-center() {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 @mixin base_grid() {
-  display: grid;
-  grid-template-columns: var(--page_grid);
-  gap: var(--gap);
+	display: grid;
+	grid-template-columns: var(--page_grid);
+	gap: var(--gap);
 }
 
 @mixin inner_grid($c: 12) {
-  --columns: #{$c};
-  display: grid;
-  grid-column: 2/-2;
-  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
-  gap: var(--gap);
+	--columns: #{$c};
+	display: grid;
+	grid-column: 2/-2;
+	grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+	gap: var(--gap);
 }

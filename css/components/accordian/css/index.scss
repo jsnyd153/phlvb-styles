@@ -1,0 +1,70 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=4%3A5788&mode=design&t=g6qwze9oShWnmzfu-1
+/*components/accordian/css/index.scsss*/
+//Dependencies: accordian.js
+
+//hide arrow element
+details > summary {
+	list-style: none;
+}
+details > summary::-webkit-details-marker {
+	display: none;
+}
+
+.accordian {
+	border-bottom: 1px solid var(--theme_color-100);
+	padding-bottom: 1rem;
+
+	&-details {
+		box-sizing: border-box;
+	}
+	&-summary {
+		outline: 0;
+		cursor: pointer;
+		transition: 0.3s color;
+		color: var(--primary_text);
+		&:focus,
+		&:hover {
+			color: var(--theme_color-500);
+		}
+
+		h4 {
+			color: inherit;
+			display: flex;
+			width: 100%;
+			gap: 1.5rem;
+			position: relative;
+			span {
+				flex-grow: 1;
+			}
+			.svg-icon {
+				--_size: 1em;
+				color: inherit;
+			}
+		}
+	}
+	&-icon {
+		transition: 0.3s opacity, 0.3s rotate;
+		&.open {
+			position: absolute;
+			right: 0;
+			opacity: 1;
+			rotate: 90deg;
+			[open] & {
+				opacity: 0;
+				rotate: 0deg;
+			}
+		}
+		&.close {
+			rotate: 90deg;
+			[open] & {
+				rotate: 0deg;
+			}
+		}
+	}
+	&-content {
+		padding-top: 0.75rem;
+	}
+}

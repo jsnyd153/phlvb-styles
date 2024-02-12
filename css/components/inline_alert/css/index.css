@@ -1,0 +1,16 @@
+/*components/cards/css/index.scsss*/
+.inline_alert {
+ display: flex;
+ align-items: center;
+ padding: 1.5rem;
+ gap: var(--gap);
+ background-color: rgba(255, 255, 255, 0.6);
+ -webkit-backdrop-filter: blur(6px);
+         backdrop-filter: blur(6px);
+ border-radius: 0.5rem;
+ border: 1px dashed var(--theme_color-500, #76affe);
+}
+.inline_alert .alert_icon {
+ flex-shrink: 0;
+ flex-grow: 0;
+}

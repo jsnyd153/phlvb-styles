@@ -1,12 +1,12 @@
 @use "sass:color";
-@use "../../../global/abstracts" as *;
+@use "../../../globals/abstracts" as *;
 
-//Visual: https://www.figma.com/file/kIjfaVuV4r1BQl86FGWFhB/Web-Design-System-V1?type=design&node-id=643%3A5962&mode=design&t=1zQKnpLthgt7v7tT-1
-/*components/icons/css/index.scsss*/
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=1%3A2485&mode=design&t=g6qwze9oShWnmzfu-1
+/*css/atoms/icons/css/index.scss*/
 //Dependencies:
 
 //Attributres
-//size = small | large | jumbo | interface
+//icon-size = small | large | jumbo | interface
 
 .icons-container {
 	display: flex;
@@ -14,25 +14,30 @@
 	gap: 0.5rem;
 }
 
-.icon {
-	width: 48/16 * 1rem;
-	height: 48/16 * 1rem;
-	object-fit: fit;
-	// border-radius: 50%;
-	&[size="interface"] {
-		width: 24/16 * 1rem;
-		height: 24/16 * 1rem;
+.svg-icon {
+	display: contents;
+	color: var(--primary_text, #{$brand-900});
+	--_size: #{48/16 * 1rem};
+
+	&[icon-size="interface"] {
+		--_size: #{24/16 * 1rem};
 	}
-	&[size="small"] {
-		width: 32/16 * 1rem;
-		height: 32/16 * 1rem;
+	&[icon-size="small"] {
+		--_size: #{32/16 * 1rem};
 	}
-	&[size="large"] {
-		width: 64/16 * 1rem;
-		height: 64/16 * 1rem;
+	&[icon-size="large"] {
+		--_size: #{64/16 * 1rem};
 	}
-	&[size="jumbo"] {
-		width: 80/16 * 1rem;
-		height: 80/16 * 1rem;
+	&[icon-size="jumbo"] {
+		--_size: #{80/16 * 1rem};
+	}
+	.icon {
+		width: var(--_size);
+		height: var(--_size);
+		fill: none;
+		color: inherit;
+		.fill {
+			fill: currentColor;
+		}
 	}
 }

@@ -1,0 +1,15 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=1%3A2476&mode=design&t=g6qwze9oShWnmzfu-1
+/*atoms/divider/css/index.scss*/
+//Dependencies:
+
+//Attributres
+
+.divider,
+hr {
+	border: 0.5px solid var(--theme_color-200);
+	margin: 0;
+	width: 100%;
+}

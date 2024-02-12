@@ -1,143 +1,159 @@
 @use "sass:color";
-@use "../../../global_css/abstracts" as *;
+@use "../../../globals/abstracts" as *;
 
-//Visual: https://www.figma.com/file/kIjfaVuV4r1BQl86FGWFhB/Web-Design-System-V1?type=design&node-id=643%3A5962&mode=design&t=1zQKnpLthgt7v7tT-1
-/*components/cards/css/index.scsss*/
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=4%3A4898&mode=design&t=g6qwze9oShWnmzfu-1
+/*css/components/cards/css/index.scss*/
 //Dependencies:
 
 //Attributres
-//card-type = accelerator-program | horizontal | image-only
-//size = small | x-small
-
-//If there is only one linked element, the whole card should be an anchor
-//If there are multiple linkable element (i.e. leanr more and tags and icons... etc) only internal links
+//card-type = tournament | pickup | league | empty | icon | location | resource
 
 .card {
-  @include fluid_size(--gap, 16px, 32px);
-  --_background_color: var(--background);
-  --_border_color: var(--border);
-  --_subtext: #{$midnight-40};
+	display: flex;
+	padding: 2rem;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1rem;
+	border-radius: var(--corner, 0.25rem);
+	background: rgba(255, 255, 255, 0.9);
+	text-decoration: none;
+	box-shadow: 0px 0px 16px -4px rgba(25, 45, 98, 0);
+	backdrop-filter: blur(6px);
+	transition: 0.3s all;
+	@include sm {
+		padding: 1.5rem;
+	}
+	@include xs {
+		padding: 1.25rem;
+	}
 
-  background: var(--_background_color);
-  padding: 24/16 * 1rem;
-  border: 1px solid var(--_border_color);
-  border-radius: 0.5rem;
+	&-header {
+		display: flex;
+		gap: 0.75rem;
+		align-items: center;
+	}
+	&-date {
+		display: flex;
+		gap: 0.25em;
+		@include eyebrow-bold;
+		&-pre {
+			font-weight: 400;
+		}
+	}
 
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap);
+	&-content {
+		display: flex;
+		gap: var(--gap, 1.5rem);
+		align-items: flex-end;
+		justify-content: flex-end;
+		flex-wrap: wrap;
+		width: 100%;
+	}
+	&-details {
+		display: flex;
+		gap: var(--gap, 1.5rem);
+		flex-wrap: wrap;
+		width: 82%;
+		flex-grow: 1;
+	}
+	&-name,
+	&-body {
+		width: 30%;
+		min-width: 290/16 * 1rem;
+		flex-shrink: 1;
+		flex-grow: 1;
+	}
+	&-name {
+		display: flex;
+		flex-direction: column;
+		gap: 8/16 * 1rem;
+	}
+	&-subhead {
+		@include eyebrow-italic;
+		display: flex;
+		gap: 6/14 * 1em;
+		color: var(--primary_text);
+	}
+	&-host {
+		color: var(--theme_color-500);
+		transition: 0.3s color;
+		a:hover & {
+			color: var(--primary_text);
+		}
+	}
+	&-location {
+		width: 120/16 * 1rem;
+		flex-shrink: 0;
+		flex-grow: 0;
+		display: flex;
+		justify-content: flex-end;
+		.location_indicator {
+			margin-left: auto;
+		}
+	}
 
-  .text_area {
-    gap: 1rem;
-  }
+	&[card-type="empty"] {
+		text-align: center;
+		align-items: center;
+		p {
+			color: var(--theme_color-700);
+		}
+	}
 
-  .text_content {
-    gap: 0.5rem;
-  }
+	&[card-type="icon"] {
+		.text_content {
+			justify-content: flex-start;
+			align-items: flex-start;
+		}
+		.headline-row {
+			h3 {
+				display: flex;
+				align-items: center;
+				column-gap: 24/16 * 1rem;
+				row-gap: 12/16 * 1rem;
+				flex-wrap: wrap;
+			}
+		}
+		.svg-icon {
+			--_size: #{48/30 * 1em};
+		}
+		.headline {
+			min-width: 15ch;
+		}
+	}
 
-  &-date {
-    @include body_text-small;
-    color: var(--_subtext);
-  }
-  &-media_area {
-    .media_content {
-      border-radius: 0.5rem;
-      img {
-        border-radius: inherit;
-      }
-    }
-  }
-
-  &[card-type="accelerator-program"] {
-    flex-direction: column;
-    min-width: 300px;
-    padding: 0;
-
-    .media_area {
-      padding: 12/16 * 1rem 24/16 * 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: inherit;
-      border-top: 0;
-      border-right: 0;
-      border-left: 0;
-    }
-    .media_content {
-      width: 100%;
-      max-width: 240/16 * 1rem;
-      img {
-        width: 100%;
-        height: auto;
-      }
-    }
-    .text_area {
-      padding: 0 24/16 * 1rem 24/16 * 1rem 24/16 * 1rem;
-    }
-  } //accelerator partner cards
-
-  &[card-type="horizontal"] {
-    flex-direction: row;
-
-    .media_area {
-      width: 200/16 * 1rem;
-      flex-shrink: 0;
-      max-width: 33%;
-    }
-    .card[card-type="horizontal"][size="small"] & {
-      width: 200/16 * 1rem;
-      flex-shrink: 0;
-    }
-  }
-
-  &[size="small"] {
-    .media_area {
-      width: 100/16 * 1rem;
-      max-width: 25%;
-    }
-    .subheading {
-      @include subheadline-small;
-    }
-    p {
-      @include body_text-small;
-    }
-  }
-
-  &[size="x-small"] {
-    .media_area {
-      width: 64/16 * 1rem;
-    }
-    .eyebrow {
-      @include eyebrow-small;
-    }
-    p {
-      @include subheadline;
-    }
-    .subheading {
-      @include subheadline-small;
-    }
-    .arrow[arrow-type="feature"] {
-      width: 20/16 * 1rem;
-    }
-  }
-  &[size="x-small"][card-type="horizontal"] {
-    align-items: center;
-  }
-  &[card-type="media-only"] {
-    flex-direction: row;
-    align-items: center;
-    .media_area {
-      width: 100%;
-    }
-  }
-}
+	&[card-type="location"] {
+		.text_area {
+			width: 100%;
+		}
+		.text_content {
+			justify-content: flex-start;
+			align-items: flex-start;
+			width: 100%;
+		}
+		.divider {
+			border-color: var(--secondary_text);
+		}
+	}
+	&[card-type="resource"] {
+		.media_area {
+			width: 100%;
+		}
+		.media_content {
+			img {
+				border-radius: 0.25rem;
+			}
+		}
+	}
+} //.card
 
 a.card {
-  text-decoration: none;
-  transition: 0.3s all;
-  &:hover {
-    --primary_text: #{$ocean};
-    box-shadow: var(--card-shadow);
-    translate: 0rem -0.125rem;
-  }
+	color: var(--primary_text);
+	&:hover {
+		background: var(--theme_color-500, #{$brand-500});
+		box-shadow: 0px 10px 16px -4px rgba(25, 45, 98, 0.125);
+		p {
+			color: var(--primary_text);
+		}
+	}
 }
