@@ -1,0 +1,153 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+// Story Block
+// Visual:https://www.figma.com/file/oxtfUo8w4dRLkkJmcEBwpA/PHLVB---Website?type=design&node-id=279%3A41769&t=mtKVidobmbDz1PFi-1
+// Dependancy: text_area, media_area
+
+/*css/blocks/story_block.scss*/
+
+//Attributes
+//&--row: column-span = inset | narrow | full_page
+//&--row: distribute-column =  4:8 | 1:1 | 7:5 | 8:4
+//&--row: single-item= true
+
+.story_block {
+	&-- {
+		&section {
+			row-gap: 60/16 * 1rem;
+			padding-block: var(--padding_base);
+			background-color: var(--background);
+		} //section
+
+		&grid_area {
+			width: 100%;
+		}
+
+		&row {
+			@include inner_grid($c: 12);
+			//calculate columns on the section level grid > adjust --columns for change the width of the row
+			//centers the content inside the row
+			//only accepts even --column values
+
+			position: relative;
+			@include column-span;
+
+			&:has(.text_area + .text_area) {
+				.text_area {
+					align-self: start;
+				}
+			}
+
+			> div {
+				align-self: center;
+			}
+
+			> div:nth-of-type(1) {
+				grid-column: span calc(var(--columns) / 2 - 1);
+			}
+			&[distribute-columns="4:8"] > div:nth-of-type(1) {
+				grid-column: span calc(var(--columns) / 2 - 2);
+				@include md {
+					grid-column: span calc(var(--columns) / 2 - 1);
+				}
+			}
+			&[distribute-columns="5:7"] > div:nth-of-type(1) {
+				grid-column: span calc(var(--columns) / 2 - 1);
+			}
+			&[distribute-columns="1:1"] > div:nth-of-type(1),
+			&[distribute-columns="6:6"] > div:nth-of-type(1) {
+				grid-column: span calc(var(--columns) / 2);
+			}
+			&[distribute-columns="7:5"] > div:nth-of-type(1) {
+				grid-column: span calc(var(--columns) / 2 + 1);
+			}
+			&[distribute-columns="8:4"] > div:nth-of-type(1) {
+				grid-column: span calc(var(--columns) / 2 + 2);
+				@include md {
+					grid-column: span calc(var(--columns) / 2 + 1);
+				}
+			}
+
+			> div:nth-of-type(2) {
+				grid-column: span calc(var(--columns) / 2 + 1);
+			}
+
+			&[distribute-columns="4:8"] > div:nth-of-type(2) {
+				grid-column: span calc(var(--columns) / 2 + 2);
+				@include md {
+					grid-column: span calc(var(--columns) / 2 + 1);
+				}
+			}
+			&[distribute-columns="5:7"] > div:nth-of-type(2) {
+				grid-column: span calc(var(--columns) / 2 + 1);
+			}
+			&[distribute-columns="1:1"] > div:nth-of-type(2),
+			&[distribute-columns="6:6"] > div:nth-of-type(2) {
+				grid-column: span calc(var(--columns) / 2);
+			}
+			&[distribute-columns="7:5"] > div:nth-of-type(2) {
+				grid-column: span calc(var(--columns) / 2 - 1);
+			}
+			&[distribute-columns="8:4"] > div:nth-of-type(2) {
+				grid-column: span calc(var(--columns) / 2 - 2);
+				@include md {
+					grid-column: span calc(var(--columns) / 2 - 1);
+				}
+			}
+
+			&[distribute-columns] > div:nth-of-type(n) {
+				@include sm {
+					grid-column: 1/-1;
+				}
+			}
+
+			> .text_area {
+				padding: var(--gap);
+				@include sm {
+					padding-block: var(--gap);
+				}
+				@include xs {
+					padding: 0;
+				}
+			}
+
+			// =====================single column centered =====================
+			&[single-item="true"] {
+				> div {
+					grid-column: 1/-1;
+					padding: 0;
+
+					> .text_content {
+						text-align: center;
+						justify-content: center;
+						align-items: center;
+						gap: 6/16 * 1rem;
+
+						.button-container {
+							justify-content: center;
+							align-items: center;
+						}
+					}
+				}
+				&[alignment="left"] {
+					> div {
+						grid-column: 1/-1;
+
+						> .text_content {
+							text-align: left;
+							justify-content: flex-start;
+							align-items: flex-start;
+							gap: 6/16 * 1rem;
+
+							.button-container {
+								justify-content: flex-start;
+								align-items: flex-start;
+							}
+						}
+					}
+				}
+			}
+		} //row
+	} //--
+} //stopryblock

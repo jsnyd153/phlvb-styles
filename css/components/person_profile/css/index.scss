@@ -10,7 +10,6 @@
 // profile-type = event-host
 
 //size befroe wrapping
-$large-screen-width: 260/16 * 1rem;
 
 //ring definitions
 $rings-none: 0px 0px 0px 0px $brand-900;
@@ -33,12 +32,12 @@ $rings-beach-indoor: 0px 0px 0px 1px $brand-900, 0px 0px 0px 5px $beach-500,
 	0px 0px 0px 6px $brand-900, 0px 0px 0px 10px $indoor-500, 0px 0px 0px 11px $brand-900;
 
 .person_profile {
-	--_container-max: #{$large-screen-width};
+	--_container-max: #{260/16 * 1rem};
 	--_image_size: #{72/16 * 1rem};
-	--_column_space: #{24/16 * 1rem};
 	--_static-rings: #{$rings-brand};
 	--_default-rings: #{$rings-none};
 	--_hover-rings: #{$rings-all};
+	--_column_space: #{24/16 * 1rem};
 
 	display: flex;
 	column-gap: var(--_column_space);
@@ -84,7 +83,7 @@ $rings-beach-indoor: 0px 0px 0px 1px $brand-900, 0px 0px 0px 5px $beach-500,
 	}
 
 	@include hover {
-		@container profile (min-width: 16.25rem) {
+		@container profile (min-width: 16.125rem) {
 			//if not touch screen AND there is space for the content to not wrap
 			padding-bottom: 1rem;
 		}
@@ -102,11 +101,12 @@ $rings-beach-indoor: 0px 0px 0px 1px $brand-900, 0px 0px 0px 5px $beach-500,
 	}
 
 	.text_area {
-		max-width: calc(var(--_container-max) - var(--_image_size));
-		min-width: 10rem;
+		flex-wrap: wrap;
+		width: 8rem;
+		flex-grow: 1;
 		transition: 0.3s translate;
 		@include hover {
-			@container profile (min-width: 16.25rem) {
+			@container profile (min-width: 16.125rem) {
 				//if not touch screen AND there is space for the content to not wrap
 				translate: calc(var(--_column_space) * -2) 1rem;
 			}
@@ -116,18 +116,24 @@ $rings-beach-indoor: 0px 0px 0px 1px $brand-900, 0px 0px 0px 5px $beach-500,
 		.text_area {
 			translate: 0 0;
 		}
+		.person_profile-image {
+			box-shadow: var(--_hover-rings);
+		}
 	}
 
 	&-image {
-		border-radius: 50%;
+		border-radius: 50% !important;
 		transition: 0.3s opacity, 0.3s box-shadow;
 		box-shadow: var(--_static-rings);
-		@container profile (min-width: 16.25rem) {
+		width: var(--_image_size);
+		height: var(--_image_size);
+		object-fit: cover;
+		@container profile (min-width: 16.125rem) {
 			@include hover {
 				//if not touch screen AND there is space for the content to not wrap
 				opacity: 0.2;
 				box-shadow: var(--_default-rings);
-				article:hover & {
+				.person_profile:hover & {
 					box-shadow: var(--_hover-rings);
 				}
 			}
@@ -159,6 +165,6 @@ $rings-beach-indoor: 0px 0px 0px 1px $brand-900, 0px 0px 0px 5px $beach-500,
 		font-family: $sans_font-condensed;
 		font-size: 14/16 * 1rem;
 		font-weight: 700;
-		color: var(--theme_color-500);
+		color: $brand-500;
 	}
 }

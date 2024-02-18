@@ -40,4 +40,7 @@
 			fill: currentColor;
 		}
 	}
+	.button & {
+		color: inherit;
+	}
 }

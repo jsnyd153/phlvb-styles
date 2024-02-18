@@ -3,30 +3,31 @@
  --padding_base: clamp(2.5rem, 1.88vw + 2.0625rem, 3.75rem);
  --page_margin: clamp(2rem, 5.47vw - 0.625rem, 3.75rem);
  --grid_margin: calc(var(--page_margin) - var(--gap));
- --page_grid: var(--grid_margin) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
- 	minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
- 	minmax(0, 1fr) minmax(0, 1fr) var(--grid_margin);
-}
-
-section {
+ --page_grid: [page-start] var(--grid_margin) [grid-start] minmax(0, 1fr) [inset-start]
+ 	minmax(0, 1fr) [narrow-start] minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
+ 	[center] minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) [narrow-end] minmax(0, 1fr)
+ 	[inset-end] minmax(0, 1fr) [grid-end] var(--grid_margin) [page-end];
  --page_margin: clamp(2rem, 5.47vw - 0.625rem, 3.75rem);
- box-sizing: border-box;
- display: grid;
- grid-template-columns: var(--page_grid);
- gap: var(--gap);
 }
 @media (max-width: 767px) {
- section {
+ :root {
   --page_margin: clamp(1.25rem, 3.05vw + 0.53125rem, 2rem);
  }
 }
 @media (min-width: 1280px) {
- section {
+ :root {
   --page_margin: clamp(3.75rem, 37.5vw - 26.25rem, 7.5rem);
  }
 }
 @media (min-width: 1440px) {
- section {
+ :root {
   --page_margin: calc((100vw - 75rem) / 2 - var(--gap));
  }
+}
+
+section {
+ box-sizing: border-box;
+ display: grid;
+ grid-template-columns: var(--page_grid);
+ gap: var(--gap);
 }

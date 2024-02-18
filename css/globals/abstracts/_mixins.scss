@@ -1,4 +1,3 @@
-// Fluid Measurements
 @use "_media_queries" as *;
 // @use "_colors" as *;
 // @use "_fonts" as *;
@@ -136,4 +135,50 @@
 	grid-column: 2/-2;
 	grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
 	gap: var(--gap);
+}
+
+@mixin column-span {
+	--columns: 12;
+	--start: calc((16 - var(--columns)) / 2);
+	grid-column: var(--start) / span var(--columns);
+
+	&[column-span="inset"] {
+		--columns: 10;
+		@include md {
+			--columns: 12;
+		}
+	}
+	&[column-span="narrow"] {
+		--columns: 8;
+		@include md {
+			--columns: 10;
+		}
+		@include sm {
+			--columns: 12;
+		}
+	}
+	&[column-span="full-page"] {
+		--columns: 14;
+	}
+
+	//More readable approach, but can't cascade --columns
+	// grid-column: base;
+	// &[column-span="inset"] {
+	// 	grid-column: inset;
+	// 	@include md {
+	// 		grid-column: base;
+	// 	}
+	// }
+	// &[column-span="narrow"] {
+	// 	grid-column: narrow;
+	// 	@include md {
+	// 		grid-column: inset;
+	// 	}
+	// 	@include sm {
+	// 		grid-column: base;
+	// 	}
+	// }
+	// &[column-span="full-page"] {
+	// 	grid-column: page;
+	// }
 }

@@ -1,3 +1,25 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
 /*css/atoms/icons/css/index.scss*/
 .icons-container {
  display: flex;
@@ -30,4 +52,7 @@
 }
 .svg-icon .icon .fill {
  fill: currentColor;
+}
+.button .svg-icon {
+ color: inherit;
 }

@@ -1,3 +1,25 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
 /*css/components/image_card/css/index.scss*/
 .image_card {
  --primary_text: white;
@@ -5,7 +27,7 @@
  --background: #192d62;
  text-decoration: none;
  position: relative;
- border-radius: 0.5rem;
+ border-radius: 0.25rem;
  overflow: hidden;
  padding: var(--section_padding) 2rem;
  display: flex;
@@ -13,7 +35,6 @@
  align-items: center;
  background-color: var(--background);
  min-height: 28.125rem;
- min-width: 19.6875rem;
 }
 @media (max-width: 767px) {
  .image_card {
@@ -38,12 +59,14 @@
     object-fit: cover;
 }
 .image_card .media_area .media_content::after {
- display: block;
- content: "";
  position: absolute;
  width: 100%;
  height: 100%;
  inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+ display: block;
+ content: "";
  background-color: black;
  opacity: 0.3;
  transition: 0.5s opacity;
@@ -59,18 +82,17 @@
 }
 .image_card .text_area {
  position: relative;
+ padding: 1.5rem;
 }
 .image_card .text_content {
  align-items: center;
  text-align: center;
 }
 .image_card .text_content h3 {
- ccolor: var(--theme_color-500, #76affe);
- font-family: "Trade Gothic Next LT Pro";
- font-size: 0.875rem;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  font-style: italic;
  font-weight: 800;
- line-height: 100%; /* 0.875rem */
+ line-height: 100%;
  text-transform: uppercase;
  font-size: clamp(1.5rem, 0.56vw + 1.36875rem, 1.875rem);
  display: flex;
@@ -78,6 +100,7 @@
  align-items: center;
  gap: 1.5rem;
  flex-direction: column;
+ color: var(--primary_text);
 }
 .image_card .text_content h3 .icon {
  --_size: 2.25em;

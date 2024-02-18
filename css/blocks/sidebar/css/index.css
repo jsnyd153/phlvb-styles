@@ -1,0 +1,73 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
+/*css/blocks/sidebar/css/index.scss*/
+.sidebar--section {
+ background-color: var(--background);
+ padding-block: var(--padding_base);
+}
+.sidebar--row {
+ --columns: 12;
+ display: grid;
+ grid-column: 2/-2;
+ grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+ gap: var(--gap);
+}
+.sidebar--aside {
+ grid-column: span 3;
+ display: flex;
+ flex-direction: column;
+ gap: var(--gap);
+}
+.sidebar--aside:nth-child(1) {
+ padding-right: var(--gap);
+}
+.sidebar--aside:nth-child(2) {
+ padding-left: var(--gap);
+}
+@media (max-width: 991px) {
+ .sidebar--aside {
+  grid-column: span 4;
+ }
+}
+@media (max-width: 767px) {
+ .sidebar--aside:nth-child(n) {
+  grid-column: span 12;
+  padding-inline: 0;
+ }
+}
+.sidebar--main {
+ grid-column: span 9;
+ display: flex;
+ flex-direction: column;
+ gap: var(--gap);
+}
+@media (max-width: 991px) {
+ .sidebar--main {
+  grid-column: span 8;
+ }
+}
+@media (max-width: 767px) {
+ .sidebar--main {
+  grid-column: span 12;
+ }
+}

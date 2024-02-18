@@ -1,0 +1,75 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
+/*components/accordion/css/index.scsss*/
+.toggle_content {
+ grid-column: 1/-1;
+}
+.toggle_content .headline-row {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 1rem;
+ margin-bottom: 1rem;
+}
+.toggle_content-content {
+ display: grid;
+ transition: 0.5s grid-template-rows;
+}
+.toggle_content-content[initial] {
+ grid-template-rows: 1fr;
+ transition: 0.5s 0.5s grid-template-rows;
+}
+[state="1"] .toggle_content-content[initial] {
+ grid-template-rows: 0fr;
+ transition: 0.5s grid-template-rows;
+}
+.toggle_content-content:not([initial]) {
+ grid-template-rows: 0fr;
+ transition: 0.5s grid-template-rows;
+}
+[state="1"] .toggle_content-content:not([initial]) {
+ grid-template-rows: 1fr;
+ transition: 0.5s 0.5s grid-template-rows;
+}
+.toggle_content-content article {
+ overflow: hidden;
+ padding-bottom: 0rem;
+ transition: 0.5s padding;
+ gap: 1rem;
+}
+
+.toggle_content[toggle-label=Indoor] .tab-indicator {
+ background-color: #f16122;
+}
+.toggle_content[toggle-label=Grass] .tab-indicator {
+ background-color: #94d13d;
+}
+
+.wf-design-mode .toggle_content-content {
+ margin-block: 1rem;
+ background: rgba(255, 0, 0, 0.1);
+ padding: 0.5rem;
+}
+.wf-design-mode .toggle_content-content:not([initial]) {
+ grid-template-rows: 1fr;
+ background: rgba(0, 255, 0, 0.1);
+}

@@ -1,0 +1,37 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual:
+/*css/pages/pickup/css/index.scss*/
+//Dependencies:
+
+.level_links {
+	display: flex;
+	align-items: center;
+	padding: 24/16 * 1rem;
+	background-color: rgba($color: #ffffff, $alpha: 0.6);
+	backdrop-filter: blur(6px);
+	border-radius: 0.5rem;
+	border: 1px dashed var(--theme_color-500, #{$brand-500});
+	justify-content: center;
+	gap: 0.75em;
+	width: 100%;
+	@include fluid_size(font-size, 16px, 28px);
+	@include sm {
+		padding: 16/16 * 1rem;
+	}
+	a {
+		color: $brand-900;
+		font-family: $sans_font;
+		font-style: italic;
+		font-weight: 800;
+		line-height: 100%;
+		letter-spacing: 0.0875rem;
+		text-transform: uppercase;
+		text-decoration: none;
+
+		&:hover {
+			color: var(--theme_color-500, #{$brand-500});
+		}
+	}
+}

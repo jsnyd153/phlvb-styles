@@ -1,0 +1,67 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=16%3A7615&mode=design&t=BexzFHryADFV6vUz-1
+/*css/blocks/slider_hero/css/index.scss*/
+//Dependencies:
+
+//Attributres
+
+.slider_hero {
+	&-- {
+		&section {
+			//dark mode variables by default
+			@include theme-dark;
+			position: relative;
+			contain: paint;
+			--primary_text: white;
+			--secondary_text: #{$brand-50};
+			padding-block: var(--padding_base);
+		}
+
+		&row {
+			@include inner_grid;
+			padding-block: var(--padding_base);
+			position: relative;
+			//allow interaction with the slider below content
+			pointer-events: none;
+			.text_area {
+				grid-column: 3/-3;
+				align-self: center;
+				@include md {
+					grid-column: 2/-2;
+				}
+				@include sm {
+					grid-column: 1/-1;
+				}
+			}
+			.text_content {
+				align-items: center;
+				text-align: center;
+			}
+		}
+
+		&background {
+			background-color: var(--background);
+		}
+	}
+}
+
+.slider_hero--section .media_area {
+	&::after {
+		display: block;
+		content: "";
+		background: linear-gradient(180deg, rgba(#000, 0.3) 0%, rgba(#000, 0.4) 100%);
+		mix-blend-mode: multiply;
+		@include cover_obj;
+		//allow interaction with the slider
+		pointer-events: none;
+	}
+
+	@include cover_obj;
+
+	.slider_pagination {
+		position: absolute;
+		--swiper-pagination-bottom: var(--gap);
+	}
+}

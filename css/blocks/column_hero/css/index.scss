@@ -1,0 +1,58 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=16%3A7615&mode=design&t=BexzFHryADFV6vUz-1
+/*css/blocks/column_hero/css/index.scss*/
+//Dependencies:
+
+//Attributres
+//section: has-image = true | false
+
+.column_hero {
+	&-- {
+		&section {
+			//dark mode vairables by default
+			--background: #{$brand-900};
+			--primary_text: #{$brand-50};
+			--secondary_text: #{$brand-200};
+			--low_text: #{$brand-400};
+			--border: #{$brand-800};
+			position: relative;
+			contain: paint;
+			&[has-image="true"] {
+				--primary_text: white;
+				--secondary_text: #{$brand-50};
+			}
+			padding-block: var(--padding_base);
+		}
+
+		&row {
+			@include inner_grid;
+			padding-block: var(--padding_base);
+			> div {
+				grid-column: span 6;
+				align-self: center;
+				@include sm {
+					grid-column: span 12;
+				}
+			}
+			.text_content {
+				align-items: center;
+				text-align: center;
+			}
+		}
+
+		&background {
+			background-color: var(--background);
+			img {
+				display: none;
+			}
+			[has-image="true"] & {
+				img {
+					display: block;
+					opacity: 0.15;
+				}
+			}
+		}
+	}
+}

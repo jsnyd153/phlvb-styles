@@ -1,9 +1,7 @@
 @use "sass:color";
 @use "abstracts/" as *;
 
-* {
-	font-family: $sans_font;
-}
+@import url("https://use.typekit.net/cue8qlh.css");
 
 h1 {
 	@include headline_1;
@@ -71,15 +69,15 @@ p {
 	@include headline_6;
 }
 
-.subheading {
-	@include subheadline;
-	&-large {
-		@include subheadline-small;
-	}
-	&-small {
-		@include subheadline-small;
-	}
-}
+// .subheading {
+// 	@include subheadline;
+// 	&-large {
+// 		@include subheadline-small;
+// 	}
+// 	&-small {
+// 		@include subheadline-small;
+// 	}
+// }
 
 .eyebrow {
 	@include eyebrow-italic;
@@ -89,6 +87,33 @@ p {
 	}
 }
 
-.subnav {
-	@include fluid_size(font-size, 14px, 16px);
+// .subnav {
+// 	@include fluid_size(font-size, 14px, 16px);
+// }
+
+//hover effect for p > a
+
+@keyframes draw_line {
+	0%,
+	10% {
+		width: 0%;
+		left: 0;
+		right: auto;
+	}
+	40% {
+		width: 100%;
+		left: 0;
+		right: auto;
+	}
+	60% {
+		width: 100%;
+		left: auto;
+		right: 0;
+	}
+	90%,
+	100% {
+		width: 0%;
+		left: auto;
+		right: 0;
+	}
 }

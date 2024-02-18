@@ -1,7 +1,30 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
 /*atoms/divider/css/index.scss*/
 .divider,
 hr {
- border: 0.5px solid var(--theme_color-200);
+ border: 0.5px solid var(--theme_color-100);
  margin: 0;
  width: 100%;
+ margin-block: 0.5rem;
 }

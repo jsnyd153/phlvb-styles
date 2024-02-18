@@ -1,0 +1,88 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
+/*components/accordion/css/index.scsss*/
+details > summary {
+ list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+ display: none;
+}
+
+.accordion {
+ border-bottom: 1px solid var(--theme_color-100);
+ padding-bottom: 1rem;
+}
+.accordion-details {
+ box-sizing: border-box;
+}
+.accordion-summary {
+ outline: 0;
+ cursor: pointer;
+ transition: 0.3s color;
+ color: var(--primary_text);
+}
+.accordion-summary:focus, .accordion-summary:hover {
+ color: var(--theme_color-500);
+}
+.accordion-summary h4 {
+ color: inherit;
+ display: flex;
+ width: 100%;
+ gap: 1.5rem;
+ position: relative;
+ justify-content: space-between;
+ margin-bottom: 0.5rem;
+}
+.accordion-summary h4 .headline {
+ flex-grow: 1;
+}
+.accordion-summary h4 .svg-icon {
+ --_size: 1em;
+ color: inherit;
+}
+[open] .accordion-summary h4 {
+ margin-bottom: 1rem;
+}
+.accordion-icon {
+ transition: 0.3s opacity, 0.3s rotate;
+}
+.accordion-icon.open {
+ position: absolute;
+ right: 0;
+ opacity: 1;
+ rotate: 180deg;
+}
+[open] .accordion-icon.open {
+ opacity: 0;
+ rotate: 0deg;
+}
+.accordion-icon.close {
+ rotate: 180deg;
+}
+[open] .accordion-icon.close {
+ rotate: 0deg;
+}
+.accordion-content {
+ padding-top: 0.75rem;
+}

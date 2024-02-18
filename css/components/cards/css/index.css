@@ -1,3 +1,25 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
 /*css/components/cards/css/index.scss*/
 .card {
  display: flex;
@@ -31,16 +53,20 @@
 .card-date {
  display: flex;
  gap: 0.25em;
- color: var(--primary_text, #192d62);
- font-family: "Trade Gothic Next LT Pro";
+ color: var(--theme_color-500, #76affe);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  font-size: 0.875rem;
- font-style: normal;
- font-weight: 700;
- line-height: 119%; /* 1.04125rem */
- letter-spacing: -0.0175rem;
  text-transform: uppercase;
+ font-style: normal;
+ font-weight: 600;
+ line-height: 150%;
+ font-weight: 700;
+ color: var(--primary_text);
 }
 .card-date-pre {
+ font-weight: 400;
+}
+.card-date-time {
  font-weight: 400;
 }
 .card-content {
@@ -58,11 +84,17 @@
  width: 82%;
  flex-grow: 1;
 }
+[card-type=pickup] .card-details {
+ width: 70%;
+}
 .card-name, .card-body {
  width: 30%;
  min-width: 18.125rem;
  flex-shrink: 1;
  flex-grow: 1;
+}
+[card-type=pickup] .card-name, [card-type=pickup] .card-body {
+ min-width: 12.5rem;
 }
 .card-name {
  display: flex;
@@ -70,8 +102,8 @@
  gap: 0.5rem;
 }
 .card-subhead {
- ccolor: var(--theme_color-500, #76affe);
- font-family: "Trade Gothic Next LT Pro";
+ color: var(--theme_color-500, #76affe);
+ font-family: trade-gothic-next-condensed, "Gothic A1", sans-serif;
  font-size: 0.875rem;
  font-style: italic;
  font-weight: 800;
@@ -99,11 +131,37 @@ a:hover .card-host {
  margin-left: auto;
 }
 .card[card-type=empty] {
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 140%;
  text-align: center;
  align-items: center;
-}
-.card[card-type=empty] p {
  color: var(--theme_color-700);
+}
+.card[card-type=empty] a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.card[card-type=empty] a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.card[card-type=empty] a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 .card[card-type=icon] .text_content {
  justify-content: flex-start;
@@ -123,6 +181,9 @@ a:hover .card-host {
 .card[card-type=icon] .headline {
  min-width: 15ch;
 }
+.card[card-type=location] {
+ height: 100%;
+}
 .card[card-type=location] .text_area {
  width: 100%;
 }
@@ -134,11 +195,27 @@ a:hover .card-host {
 .card[card-type=location] .divider {
  border-color: var(--secondary_text);
 }
+.card[card-type=location] .event_type_indicator {
+ text-transform: capitalize;
+}
+.card[card-type=location][has-indicator=false] .event_type_indicator {
+ display: none;
+}
+.card[card-type=resource] {
+ height: 100%;
+}
 .card[card-type=resource] .media_area {
  width: 100%;
 }
 .card[card-type=resource] .media_content img {
  border-radius: 0.25rem;
+}
+.card[card-type=resource] .text_area p {
+ display: -webkit-box;
+ -webkit-box-orient: vertical;
+ -webkit-line-clamp: 3;
+ overflow: hidden;
+ text-overflow: ellipsis;
 }
 
 a.card {

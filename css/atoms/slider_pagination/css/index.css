@@ -1,3 +1,25 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
 /*atoms/slider_pagination/css/index.scss*/
 .slider_pagination {
  position: relative;
@@ -13,10 +35,10 @@
  --swiper-pagination-bullet-width: 1.875rem;
  --swiper-pagination-bullet-height: 0.25rem;
  --swiper-pagination-bullet-border-radius: 99rem;
- --swiper-pagination-bullet-inactive-color: var(--color_theme-100, #bccceb);
+ --swiper-pagination-bullet-inactive-color: #bccceb;
  --swiper-pagination-bullet-inactive-opacity: 1;
  --swiper-pagination-bullet-opacity: 1;
- --swiper-pagination-color: var(--color_theme-500, #76affe);
+ --swiper-pagination-color: var(--theme_color-500, #76affe);
 }
 .slider_pagination .swiper-pagination-bullet-active {
  --swiper-pagination-bullet-width: 5rem;

@@ -1,0 +1,190 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
+/*css/blocks/grid_content/css/index.scss*/
+.grid_content--section {
+ background-color: var(--background);
+ padding-block: var(--padding_base);
+}
+.grid_content--section .w-dyn-list {
+ display: contents;
+}
+.grid_content--section .text_area {
+ --columns: 12;
+ --start: calc((16 - var(--columns)) / 2);
+ grid-column: var(--start)/span var(--columns);
+}
+.grid_content--section .text_area[column-span=inset] {
+ --columns: 10;
+}
+@media (max-width: 991px) {
+ .grid_content--section .text_area[column-span=inset] {
+  --columns: 12;
+ }
+}
+.grid_content--section .text_area[column-span=narrow] {
+ --columns: 8;
+}
+@media (max-width: 991px) {
+ .grid_content--section .text_area[column-span=narrow] {
+  --columns: 10;
+ }
+}
+@media (max-width: 767px) {
+ .grid_content--section .text_area[column-span=narrow] {
+  --columns: 12;
+ }
+}
+.grid_content--section .text_area[column-span=full-page] {
+ --columns: 14;
+}
+.grid_content--list {
+ --columns: 12;
+ --start: calc((16 - var(--columns)) / 2);
+ grid-column: var(--start)/span var(--columns);
+ --_items-per-row: 4;
+ display: grid;
+ grid-template-columns: repeat(var(--_items-per-row), 1fr);
+ gap: var(--gap);
+}
+.grid_content--list[column-span=inset] {
+ --columns: 10;
+}
+@media (max-width: 991px) {
+ .grid_content--list[column-span=inset] {
+  --columns: 12;
+ }
+}
+.grid_content--list[column-span=narrow] {
+ --columns: 8;
+}
+@media (max-width: 991px) {
+ .grid_content--list[column-span=narrow] {
+  --columns: 10;
+ }
+}
+@media (max-width: 767px) {
+ .grid_content--list[column-span=narrow] {
+  --columns: 12;
+ }
+}
+.grid_content--list[column-span=full-page] {
+ --columns: 14;
+}
+@media (max-width: 991px) {
+ .grid_content--list:not([grid-behavior]) {
+  --_items-per-row: 3;
+ }
+}
+@media (max-width: 767px) {
+ .grid_content--list:not([grid-behavior]) {
+  --_items-per-row: 2;
+ }
+}
+@media (max-width: 576px) {
+ .grid_content--list:not([grid-behavior]) {
+  --_items-per-row: 1;
+ }
+}
+.grid_content--list[grid-default="2"] {
+ --_items-per-row: 2;
+}
+.grid_content--list[grid-default="3"] {
+ --_items-per-row: 3;
+}
+.grid_content--list[grid-default="4"] {
+ --_items-per-row: 4;
+}
+.grid_content--list[grid-default="5"] {
+ --_items-per-row: 5;
+}
+.grid_content--list[grid-behavior=fill] {
+ --_min-content-size: calc(56.75rem / var(--_items-per-row, 4));
+ grid-template-columns: repeat(auto-fit, minmax(var(--_min-content-size), 1fr));
+}
+@media (max-width: 576px) {
+ .grid_content--list[grid-behavior=fill] {
+  --_min-content-size: 9rem;
+ }
+}
+.grid_content--list[grid-behavior=stack] {
+ --_min-content-size: calc(53.75rem / var(--_items-per-row, 3));
+ --_items-per-row: 3;
+ --preferred-value: (
+ 		(var(--_min-content-size) * var(--_items-per-row) - var(--gap) * 2) - 100%
+ 	) * 999;
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(clamp(33.3333% - var(--gap), var(--preferred-value), 100%), 1fr));
+}
+.grid_content--list[grid-behavior=stretch] {
+ display: flex;
+ flex-wrap: wrap;
+ width: 100%;
+ justify-content: stretch;
+ --_min-content-size: calc(56.75rem / var(--_items-per-row, 3));
+}
+.grid_content--list[grid-behavior=stretch] > * {
+ flex-grow: 1;
+ min-width: var(--_min-content-size);
+ width: calc(80% / var(--_items-per-row));
+}
+.grid_content--list[grid-behavior=single-col] {
+ display: flex;
+ flex-wrap: wrap;
+ width: 100%;
+ flex-direction: column;
+}
+.grid_content--pagination {
+ --columns: 12;
+ --start: calc((16 - var(--columns)) / 2);
+ grid-column: var(--start)/span var(--columns);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.grid_content--pagination[column-span=inset] {
+ --columns: 10;
+}
+@media (max-width: 991px) {
+ .grid_content--pagination[column-span=inset] {
+  --columns: 12;
+ }
+}
+.grid_content--pagination[column-span=narrow] {
+ --columns: 8;
+}
+@media (max-width: 991px) {
+ .grid_content--pagination[column-span=narrow] {
+  --columns: 10;
+ }
+}
+@media (max-width: 767px) {
+ .grid_content--pagination[column-span=narrow] {
+  --columns: 12;
+ }
+}
+.grid_content--pagination[column-span=full-page] {
+ --columns: 14;
+}
+.grid_content--section .w-pagination-wrapper .button-container {
+ justify-content: center;
+}

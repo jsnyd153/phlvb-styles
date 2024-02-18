@@ -1,0 +1,144 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
+/*atoms/tabs/css/index.scss*/
+ul[list-type=default] {
+ display: flex;
+ flex-direction: column;
+ gap: 0.5rem;
+ padding-left: 0;
+ list-style: none;
+ float: left;
+}
+ul[list-type=default] li {
+ position: relative;
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 140%;
+ padding-left: 2rem;
+}
+ul[list-type=default] li a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+ul[list-type=default] li a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+ul[list-type=default] li a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
+}
+ul[list-type=default] li::before {
+ position: absolute;
+ left: 0.5em;
+ top: 0.5em;
+ content: "";
+ width: 0.375em;
+ height: 0.375em;
+ border-radius: 50%;
+ background: var(--primary_text);
+ display: inline-block;
+}
+ul[list-type=fancy] {
+ display: flex;
+ flex-direction: column;
+ gap: 0.5rem;
+ padding-left: 0;
+ counter-reset: list-counter;
+ list-style: none;
+ float: left;
+}
+ul[list-type=fancy] li {
+ position: relative;
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 140%;
+ padding-left: 3rem;
+ min-height: 2em;
+ padding-top: 0.25em;
+}
+ul[list-type=fancy] li a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+ul[list-type=fancy] li a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+ul[list-type=fancy] li a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
+}
+ul[list-type=fancy] li::after {
+ position: absolute;
+ left: 0;
+ top: 0.125em;
+ content: counter(list-counter);
+ counter-increment: list-counter;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-style: italic;
+ font-weight: 800;
+ color: var(--theme_color-500);
+ font-size: 1.875em;
+ width: 0.875em;
+ text-align: right;
+ display: inline-block;
+}
+ul[list-type=fancy] li::before {
+ position: absolute;
+ left: 0;
+ top: 0;
+ content: "";
+ width: 2em;
+ height: 2em;
+ border-radius: 50%;
+ background: var(--theme_color-500);
+ opacity: 0.1;
+ display: inline-block;
+}

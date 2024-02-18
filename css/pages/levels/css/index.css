@@ -1,0 +1,55 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
+/*css/pages/pickup/css/index.scss*/
+.level_links {
+ display: flex;
+ align-items: center;
+ padding: 1.5rem;
+ background-color: rgba(255, 255, 255, 0.6);
+ -webkit-backdrop-filter: blur(6px);
+         backdrop-filter: blur(6px);
+ border-radius: 0.5rem;
+ border: 1px dashed var(--theme_color-500, #76affe);
+ justify-content: center;
+ gap: 0.75em;
+ width: 100%;
+ font-size: clamp(1rem, 1.13vw + 0.7375rem, 1.75rem);
+}
+@media (max-width: 767px) {
+ .level_links {
+  padding: 1rem;
+ }
+}
+.level_links a {
+ color: #192d62;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-style: italic;
+ font-weight: 800;
+ line-height: 100%;
+ letter-spacing: 0.0875rem;
+ text-transform: uppercase;
+ text-decoration: none;
+}
+.level_links a:hover {
+ color: var(--theme_color-500, #76affe);
+}

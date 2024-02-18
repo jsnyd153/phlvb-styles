@@ -1,13 +1,42 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
 /*atoms/checkbox_filter/css/index.scss*/
+.checkbox_filter-container {
+ display: flex;
+ gap: 0.5rem;
+ flex-wrap: wrap;
+ justify-content: flex-start;
+}
+
 .checkbox_filter {
  font-size: 0.75rem;
  line-height: 100%;
- padding: 0.8333333333em 1em;
+ padding: 0.5em 1em;
  border-radius: 0.25rem;
  color: var(--primary_text);
  border: 0.0625rem solid currentColor;
  flex-grow: 0;
- margin: 0 auto;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
 }
 .checkbox_filter input[type=checkbox] {
  display: none;

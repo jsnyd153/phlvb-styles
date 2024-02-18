@@ -35,8 +35,13 @@
 	&-date {
 		display: flex;
 		gap: 0.25em;
-		@include eyebrow-bold;
+		@include eyebrow-regular;
+		font-weight: 700;
+		color: var(--primary_text);
 		&-pre {
+			font-weight: 400;
+		}
+		&-time {
 			font-weight: 400;
 		}
 	}
@@ -55,6 +60,9 @@
 		flex-wrap: wrap;
 		width: 82%;
 		flex-grow: 1;
+		[card-type="pickup"] & {
+			width: 70%;
+		}
 	}
 	&-name,
 	&-body {
@@ -62,6 +70,9 @@
 		min-width: 290/16 * 1rem;
 		flex-shrink: 1;
 		flex-grow: 1;
+		[card-type="pickup"] & {
+			min-width: 200/16 * 1rem;
+		}
 	}
 	&-name {
 		display: flex;
@@ -93,11 +104,10 @@
 	}
 
 	&[card-type="empty"] {
+		@include body_text;
 		text-align: center;
 		align-items: center;
-		p {
-			color: var(--theme_color-700);
-		}
+		color: var(--theme_color-700);
 	}
 
 	&[card-type="icon"] {
@@ -123,6 +133,7 @@
 	}
 
 	&[card-type="location"] {
+		height: 100%;
 		.text_area {
 			width: 100%;
 		}
@@ -134,14 +145,32 @@
 		.divider {
 			border-color: var(--secondary_text);
 		}
+		.event_type_indicator {
+			text-transform: capitalize;
+		}
+		&[has-indicator="false"] {
+			.event_type_indicator {
+				display: none;
+			}
+		}
 	}
 	&[card-type="resource"] {
+		height: 100%;
 		.media_area {
 			width: 100%;
 		}
 		.media_content {
 			img {
 				border-radius: 0.25rem;
+			}
+		}
+		.text_area {
+			p {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 3;
+				overflow: hidden;
+				text-overflow: ellipsis;
 			}
 		}
 	}

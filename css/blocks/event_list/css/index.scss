@@ -1,0 +1,36 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=16%3A7615&mode=design&t=BexzFHryADFV6vUz-1
+/*css/blocks/event_list/css/index.scss*/
+//Dependencies:
+
+//Attributres
+//--list, text_area: column-span = inset | narrow | full-page
+
+.event_list {
+	&-- {
+		&section {
+			background-color: var(--background);
+			padding-block: var(--padding_base);
+			.w-dyn-list {
+				display: contents;
+			}
+			.text_area {
+				@include column-span;
+			}
+
+			.w-dyn-empty {
+				@include column-span;
+				text-align: center;
+				@include body_text;
+			}
+		}
+		&list {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			@include column-span;
+		}
+	}
+}

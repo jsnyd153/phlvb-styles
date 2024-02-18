@@ -14,7 +14,7 @@
 		gap: 4/16 * 1rem;
 	}
 	img {
-		border-radius: 0.5rem;
+		border-radius: 0.25rem;
 	}
 	&-division,
 	&-season,
@@ -23,6 +23,7 @@
 	}
 	&-name {
 		@include body_text-large;
+		font-weight: 600;
 	}
 	&-event {
 		@include body_text-small;

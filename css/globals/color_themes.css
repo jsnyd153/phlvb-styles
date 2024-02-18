@@ -32,7 +32,8 @@
  --border: #a9bfeb;
 }
 
-[color-theme=indoor] {
+[color-theme=indoor],
+[event-type=indoor] {
  --theme_color-50: #f7eeeb;
  --theme_color-100: #ebd5cd;
  --theme_color-200: #e6c0b5;
@@ -45,7 +46,8 @@
  --theme_color-900: #592817;
 }
 
-[color-theme=grass] {
+[color-theme=grass],
+[event-type=grass] {
  --theme_color-50: #f3fbe3;
  --theme_color-100: #e2f5ba;
  --theme_color-200: #d6eca4;
@@ -58,7 +60,8 @@
  --theme_color-900: #486510;
 }
 
-[color-theme=beach] {
+[color-theme=beach],
+[event-type=beach] {
  --theme_color-50: #fffcec;
  --theme_color-100: #fff7cf;
  --theme_color-200: #f6eab6;

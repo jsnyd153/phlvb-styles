@@ -1,3 +1,25 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
 img,
 picture,
 video,
@@ -32,4 +54,7 @@ iframe {
  inset: 0;
  -o-object-fit: cover;
     object-fit: cover;
+}
+.media_content img {
+ border-radius: 0.25rem;
 }

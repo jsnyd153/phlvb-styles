@@ -1,11 +1,33 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
 /*css/components/person_profile/css/index.scss*/
 .person_profile {
  --_container-max: 16.25rem;
  --_image_size: 4.5rem;
- --_column_space: 1.5rem;
  --_static-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #76affe, 0px 0px 0px 6px #192d62;
  --_default-rings: 0px 0px 0px 0px #192d62;
  --_hover-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #76affe, 0px 0px 0px 6px #192d62, 0px 0px 0px 10px #f16122, 0px 0px 0px 11px #192d62, 0px 0px 0px 15px #f9d452, 0px 0px 0px 16px #192d62;
+ --_column_space: 1.5rem;
  display: flex;
  -moz-column-gap: var(--_column_space);
       column-gap: var(--_column_space);
@@ -49,7 +71,7 @@
  --_hover-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #f9d452, 0px 0px 0px 6px #192d62, 0px 0px 0px 10px #f16122, 0px 0px 0px 11px #192d62;
 }
 @media (hover: hover) and (pointer: fine) {
- @container profile (min-width: 16.25rem) {
+ @container profile (min-width: 16.125rem) {
   .person_profile {
    padding-bottom: 1rem;
   }
@@ -65,12 +87,13 @@
  flex-grow: 0;
 }
 .person_profile .text_area {
- max-width: calc(var(--_container-max) - var(--_image_size));
- min-width: 10rem;
+ flex-wrap: wrap;
+ width: 8rem;
+ flex-grow: 1;
  transition: 0.3s translate;
 }
 @media (hover: hover) and (pointer: fine) {
- @container profile (min-width: 16.25rem) {
+ @container profile (min-width: 16.125rem) {
   .person_profile .text_area {
    translate: calc(var(--_column_space) * -2) 1rem;
   }
@@ -79,18 +102,25 @@
 .person_profile:hover .text_area {
  translate: 0 0;
 }
+.person_profile:hover .person_profile-image {
+ box-shadow: var(--_hover-rings);
+}
 .person_profile-image {
- border-radius: 50%;
+ border-radius: 50% !important;
  transition: 0.3s opacity, 0.3s box-shadow;
  box-shadow: var(--_static-rings);
+ width: var(--_image_size);
+ height: var(--_image_size);
+ -o-object-fit: cover;
+    object-fit: cover;
 }
-@container profile (min-width: 16.25rem) {
+@container profile (min-width: 16.125rem) {
  @media (hover: hover) and (pointer: fine) {
   .person_profile-image {
    opacity: 0.2;
    box-shadow: var(--_default-rings);
   }
-  article:hover .person_profile-image {
+  .person_profile:hover .person_profile-image {
    box-shadow: var(--_hover-rings);
   }
  }
@@ -100,7 +130,7 @@
 }
 .person_profile-title {
  color: var(--theme_color-500, #76affe);
- font-family: "Trade Gothic Next LT Pro";
+ font-family: trade-gothic-next-condensed, "Gothic A1", sans-serif;
  font-size: 0.875rem;
  font-style: italic;
  font-weight: 800;
@@ -114,9 +144,31 @@
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
  font-size: clamp(1.0625rem, 0.38vw + 0.975rem, 1.3125rem);
  color: var(--primary_text);
+}
+.person_profile-name a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.person_profile-name a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.person_profile-name a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 [profile-type=event-host] .person_profile-name {
  color: var(--secondary_text);
@@ -124,7 +176,29 @@
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
+}
+[profile-type=event-host] .person_profile-name a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+[profile-type=event-host] .person_profile-name a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+[profile-type=event-host] .person_profile-name a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 .person_profile-pronouns {
  color: var(--secondary_text);
@@ -132,8 +206,30 @@
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
  font-size: 0.75rem;
+}
+.person_profile-pronouns a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.person_profile-pronouns a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.person_profile-pronouns a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 .person_profile-locations {
  color: var(--secondary_text);
@@ -141,9 +237,31 @@
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
  font-family: trade-gothic-next-condensed, "Gothic A1", sans-serif;
  font-size: 0.875rem;
  font-weight: 700;
+ color: #76affe;
+}
+.person_profile-locations a {
+ font-weight: 600;
  color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.person_profile-locations a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.person_profile-locations a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }

@@ -1,0 +1,68 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=4%3A5788&mode=design&t=g6qwze9oShWnmzfu-1
+/*components/accordion/css/index.scsss*/
+//Dependencies: toggle.js, jquery
+
+.toggle_content {
+	grid-column: 1/-1;
+
+	.headline-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+	&-content {
+		display: grid;
+		transition: 0.5s grid-template-rows;
+
+		&[initial] {
+			grid-template-rows: 1fr;
+			transition: 0.5s 0.5s grid-template-rows;
+			[state="1"] & {
+				grid-template-rows: 0fr;
+				transition: 0.5s grid-template-rows;
+			}
+		}
+
+		&:not([initial]) {
+			grid-template-rows: 0fr;
+			transition: 0.5s grid-template-rows;
+			[state="1"] & {
+				grid-template-rows: 1fr;
+				transition: 0.5s 0.5s grid-template-rows;
+			}
+		}
+
+		article {
+			overflow: hidden;
+			padding-bottom: 0rem;
+			transition: 0.5s padding;
+			gap: 1rem;
+		}
+	}
+}
+
+.tab-indicator {
+	.toggle_content[toggle-label="Indoor"] & {
+		background-color: $indoor-500;
+	}
+	.toggle_content[toggle-label="Grass"] & {
+		background-color: $grass-500;
+	}
+}
+
+.wf-design-mode {
+	.toggle_content-content {
+		margin-block: 1rem;
+		background: rgba($color: #ff0000, $alpha: 0.1);
+		padding: 0.5rem;
+	}
+
+	.toggle_content-content:not([initial]) {
+		grid-template-rows: 1fr;
+		background: rgba($color: #00ff00, $alpha: 0.1);
+	}
+}

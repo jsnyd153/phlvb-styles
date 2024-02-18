@@ -9,10 +9,10 @@
 //indicator-type = dot | text
 
 .event_type_indicator {
-	background-color: var(--theme-500, #{$brand-500});
+	background-color: var(--theme_color-500, #{$brand-500});
 
 	a:hover & {
-		background-color: var(--theme-200, #{$brand-200});
+		background-color: var(--theme_color-200, #{$brand-200});
 	}
 
 	&[indicator-type="dot"] {

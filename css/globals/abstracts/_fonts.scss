@@ -9,18 +9,18 @@ $sans_font-condensed: trade-gothic-next-condensed, "Gothic A1", sans-serif;
 
 @mixin headline_1 {
 	@include fluid_size(font-size, 44px, 84px);
-	font-family: $sans_font;
+	font-family: $serif_font;
 	color: var(--primary_text);
-	line-height: 125%;
-	font-weight: 700;
+	line-height: 120%;
+	font-weight: 500;
 }
 
 @mixin headline_2 {
 	@include fluid_size(font-size, 32px, 46px);
 	color: var(--primary_text);
 	font-family: $serif_font;
-	line-height: 125%;
-	font-weight: 700;
+	line-height: 115%;
+	font-weight: 500;
 }
 
 @mixin headline_3 {
@@ -28,17 +28,18 @@ $sans_font-condensed: trade-gothic-next-condensed, "Gothic A1", sans-serif;
 	color: var(--primary_text);
 	font-family: $serif_font;
 	line-height: 125%;
-	font-weight: 700;
+	font-weight: 500;
 }
 
 @mixin headline_4 {
 	@include fluid_size(font-size, 20px, 28px);
 	color: var(--primary_text);
 	font-family: $sans_font;
-	line-height: 135%;
-	font-weight: 700;
+	line-height: 125%;
+	font-weight: 400;
 	&.serif {
 		$font-family: $serif_font;
+		font-weight: 500;
 	}
 }
 
@@ -53,9 +54,12 @@ $sans_font-condensed: trade-gothic-next-condensed, "Gothic A1", sans-serif;
 @mixin headline_6 {
 	@include fluid_size(font-size, 16px, 18px);
 	color: var(--primary_text);
-	font-family: $sans_font;
-	line-height: 135%;
-	font-weight: 700;
+	font-family: $sans_font-condensed;
+	line-height: 100%;
+	font-weight: 800;
+	font-style: italic;
+	letter-spacing: 0.05rem;
+	text-transform: uppercase;
 }
 
 @mixin body_text {
@@ -64,8 +68,32 @@ $sans_font-condensed: trade-gothic-next-condensed, "Gothic A1", sans-serif;
 	@include fluid_size(font-size, 15px, 18px);
 	font-style: normal;
 	font-weight: 400;
-	line-height: 150%;
+	line-height: 140%;
+
+	a {
+		font-weight: 600;
+		color: var(--theme_color-500);
+		text-decoration: none;
+		white-space: no-wrap;
+		display: inline-block;
+		position: relative;
+
+		&::after {
+			@include psuedo_el;
+			position: absolute;
+			width: 0%;
+			height: 0.125em;
+			border-bottom: 0.125em solid currentColor;
+			bottom: -0.125em;
+			transition: 0.3s all;
+		}
+		&:hover::after {
+			width: 100%;
+			animation: draw_line 1s linear infinite;
+		}
+	}
 }
+
 @mixin body_text-x-large {
 	@include body_text;
 	@include fluid_size(font-size, 21px, 28px);
@@ -89,21 +117,20 @@ $sans_font-condensed: trade-gothic-next-condensed, "Gothic A1", sans-serif;
 	font-weight: 500;
 	line-height: 150%;
 }
-@mixin subheadline-large {
-	@include subheadline;
-	@include fluid_size(font-size, 16px, 18px);
-}
+// @mixin subheadline-large {
+// 	@include subheadline;
+// 	@include fluid_size(font-size, 16px, 18px);
+// }
 
-@mixin subheadline-small {
-	@include subheadline;
-	@include fluid_size(font-size, 14px, 16px);
-}
+// @mixin subheadline-small {
+// 	@include subheadline;
+// 	@include fluid_size(font-size, 14px, 16px);
+// }
 
-@mixin eyebrow-small {
-	color: var(--accent);
+@mixin eyebrow-regular {
+	color: var(--theme_color-500, #{$brand-500});
 	font-family: $sans_font;
-	font-size: 13/16 * 1rem;
-	letter-spacing: 2/12 * 1em;
+	font-size: 14/16 * 1rem;
 	text-transform: uppercase;
 	font-style: normal;
 	font-weight: 600;
@@ -112,7 +139,7 @@ $sans_font-condensed: trade-gothic-next-condensed, "Gothic A1", sans-serif;
 
 @mixin eyebrow-bold {
 	color: var(--primary_text, #{$brand-900});
-	font-family: "Trade Gothic Next LT Pro";
+	font-family: $sans_font-condensed;
 	font-size: 0.875rem;
 	font-style: normal;
 	font-weight: 700;
@@ -123,7 +150,7 @@ $sans_font-condensed: trade-gothic-next-condensed, "Gothic A1", sans-serif;
 
 @mixin eyebrow-italic {
 	color: var(--theme_color-500, #{$brand-500});
-	font-family: "Trade Gothic Next LT Pro";
+	font-family: $sans_font-condensed;
 	font-size: 0.875rem;
 	font-style: italic;
 	font-weight: 800;

@@ -2,14 +2,16 @@
 
 //components
 
-@forward "accordian/css";
+@forward "accordion/css";
 @forward "cards/css";
+@forward "filter_form/css";
 @forward "image_card/css";
 @forward "inline_alert/css";
 @forward "media_slider/css";
 @forward "person_profile/css";
 @forward "profile_item/css";
 @forward "rich_text/css";
+@forward "toggle_content/css";
 
 // print all components into one css file
 

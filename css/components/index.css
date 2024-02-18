@@ -1,4 +1,26 @@
-/*components/accordian/css/index.scsss*/
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
+/*components/accordion/css/index.scsss*/
 details > summary {
  list-style: none;
 }
@@ -7,56 +29,61 @@ details > summary::-webkit-details-marker {
  display: none;
 }
 
-.accordian {
+.accordion {
  border-bottom: 1px solid var(--theme_color-100);
  padding-bottom: 1rem;
 }
-.accordian-details {
+.accordion-details {
  box-sizing: border-box;
 }
-.accordian-summary {
+.accordion-summary {
  outline: 0;
  cursor: pointer;
  transition: 0.3s color;
  color: var(--primary_text);
 }
-.accordian-summary:focus, .accordian-summary:hover {
+.accordion-summary:focus, .accordion-summary:hover {
  color: var(--theme_color-500);
 }
-.accordian-summary h4 {
+.accordion-summary h4 {
  color: inherit;
  display: flex;
  width: 100%;
  gap: 1.5rem;
  position: relative;
+ justify-content: space-between;
+ margin-bottom: 0.5rem;
 }
-.accordian-summary h4 span {
+.accordion-summary h4 .headline {
  flex-grow: 1;
 }
-.accordian-summary h4 .svg-icon {
+.accordion-summary h4 .svg-icon {
  --_size: 1em;
  color: inherit;
 }
-.accordian-icon {
+[open] .accordion-summary h4 {
+ margin-bottom: 1rem;
+}
+.accordion-icon {
  transition: 0.3s opacity, 0.3s rotate;
 }
-.accordian-icon.open {
+.accordion-icon.open {
  position: absolute;
  right: 0;
  opacity: 1;
- rotate: 90deg;
+ rotate: 180deg;
 }
-[open] .accordian-icon.open {
+[open] .accordion-icon.open {
  opacity: 0;
  rotate: 0deg;
 }
-.accordian-icon.close {
- rotate: 90deg;
+.accordion-icon.close {
+ rotate: 180deg;
 }
-[open] .accordian-icon.close {
+[open] .accordion-icon.close {
  rotate: 0deg;
 }
-.accordian-content {
+.accordion-content {
  padding-top: 0.75rem;
 }
 
@@ -93,16 +120,20 @@ details > summary::-webkit-details-marker {
 .card-date {
  display: flex;
  gap: 0.25em;
- color: var(--primary_text, #192d62);
- font-family: "Trade Gothic Next LT Pro";
+ color: var(--theme_color-500, #76affe);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  font-size: 0.875rem;
- font-style: normal;
- font-weight: 700;
- line-height: 119%; /* 1.04125rem */
- letter-spacing: -0.0175rem;
  text-transform: uppercase;
+ font-style: normal;
+ font-weight: 600;
+ line-height: 150%;
+ font-weight: 700;
+ color: var(--primary_text);
 }
 .card-date-pre {
+ font-weight: 400;
+}
+.card-date-time {
  font-weight: 400;
 }
 .card-content {
@@ -120,11 +151,17 @@ details > summary::-webkit-details-marker {
  width: 82%;
  flex-grow: 1;
 }
+[card-type=pickup] .card-details {
+ width: 70%;
+}
 .card-name, .card-body {
  width: 30%;
  min-width: 18.125rem;
  flex-shrink: 1;
  flex-grow: 1;
+}
+[card-type=pickup] .card-name, [card-type=pickup] .card-body {
+ min-width: 12.5rem;
 }
 .card-name {
  display: flex;
@@ -133,7 +170,7 @@ details > summary::-webkit-details-marker {
 }
 .card-subhead {
  color: var(--theme_color-500, #76affe);
- font-family: "Trade Gothic Next LT Pro";
+ font-family: trade-gothic-next-condensed, "Gothic A1", sans-serif;
  font-size: 0.875rem;
  font-style: italic;
  font-weight: 800;
@@ -161,11 +198,37 @@ a:hover .card-host {
  margin-left: auto;
 }
 .card[card-type=empty] {
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 140%;
  text-align: center;
  align-items: center;
-}
-.card[card-type=empty] p {
  color: var(--theme_color-700);
+}
+.card[card-type=empty] a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.card[card-type=empty] a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.card[card-type=empty] a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 .card[card-type=icon] .text_content {
  justify-content: flex-start;
@@ -185,6 +248,9 @@ a:hover .card-host {
 .card[card-type=icon] .headline {
  min-width: 15ch;
 }
+.card[card-type=location] {
+ height: 100%;
+}
 .card[card-type=location] .text_area {
  width: 100%;
 }
@@ -196,11 +262,27 @@ a:hover .card-host {
 .card[card-type=location] .divider {
  border-color: var(--secondary_text);
 }
+.card[card-type=location] .event_type_indicator {
+ text-transform: capitalize;
+}
+.card[card-type=location][has-indicator=false] .event_type_indicator {
+ display: none;
+}
+.card[card-type=resource] {
+ height: 100%;
+}
 .card[card-type=resource] .media_area {
  width: 100%;
 }
 .card[card-type=resource] .media_content img {
  border-radius: 0.25rem;
+}
+.card[card-type=resource] .text_area p {
+ display: -webkit-box;
+ -webkit-box-orient: vertical;
+ -webkit-line-clamp: 3;
+ overflow: hidden;
+ text-overflow: ellipsis;
 }
 
 a.card {
@@ -214,6 +296,106 @@ a.card:hover p {
  color: var(--primary_text);
 }
 
+/*css/components/filter_form/css/index.scss*/
+.filter_form {
+ display: flex;
+ flex-direction: column;
+ gap: 1rem;
+}
+@media (max-width: 767px) {
+ .filter_form h4 {
+  display: none;
+ }
+}
+.filter_form-list {
+ display: flex;
+ flex-direction: column;
+ gap: 1rem;
+}
+@media (max-width: 767px) {
+ .filter_form-list {
+  position: fixed;
+  inset: auto 0 0 0;
+  background-color: white;
+  padding: var(--gap);
+  border-radius: 1rem 1rem 0 0;
+  translate: 0 100%;
+  transition: 0.3s translate;
+ }
+ [filter-state=open] .filter_form-list {
+  translate: 0 0;
+  z-index: 201;
+ }
+}
+.filter_form-close_tab {
+ display: none;
+ width: 2.5rem;
+ border-radius: 2rem;
+ height: 0.25rem;
+ background-color: #a9bfeb;
+ align-self: center;
+ justify-self: center;
+}
+@media (max-width: 767px) {
+ .filter_form-close_tab {
+  display: block;
+ }
+}
+.filter_form-label {
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 140%;
+ font-size: clamp(1.0625rem, 0.38vw + 0.975rem, 1.3125rem);
+ margin-bottom: 0.5rem;
+}
+.filter_form-label a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.filter_form-label a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.filter_form-label a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
+}
+.filter_form-open {
+ display: none;
+}
+@media (max-width: 767px) {
+ .filter_form-open {
+  display: flex;
+ }
+}
+.filter_form-mobile_back {
+ display: none;
+ display: block;
+ background: rgba(0, 0, 0, 0.3);
+ position: fixed;
+ inset: 0;
+ opacity: 0;
+ pointer-events: none;
+ z-index: 200;
+}
+[filter-state=open] .filter_form-mobile_back {
+ opacity: 1;
+ pointer-events: auto;
+}
+
 /*css/components/image_card/css/index.scss*/
 .image_card {
  --primary_text: white;
@@ -221,7 +403,7 @@ a.card:hover p {
  --background: #192d62;
  text-decoration: none;
  position: relative;
- border-radius: 0.5rem;
+ border-radius: 0.25rem;
  overflow: hidden;
  padding: var(--section_padding) 2rem;
  display: flex;
@@ -229,7 +411,6 @@ a.card:hover p {
  align-items: center;
  background-color: var(--background);
  min-height: 28.125rem;
- min-width: 19.6875rem;
 }
 @media (max-width: 767px) {
  .image_card {
@@ -254,12 +435,14 @@ a.card:hover p {
     object-fit: cover;
 }
 .image_card .media_area .media_content::after {
- display: block;
- content: "";
  position: absolute;
  width: 100%;
  height: 100%;
  inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+ display: block;
+ content: "";
  background-color: black;
  opacity: 0.3;
  transition: 0.5s opacity;
@@ -275,18 +458,17 @@ a.card:hover p {
 }
 .image_card .text_area {
  position: relative;
+ padding: 1.5rem;
 }
 .image_card .text_content {
  align-items: center;
  text-align: center;
 }
 .image_card .text_content h3 {
- color: var(--theme_color-500, #76affe);
- font-family: "Trade Gothic Next LT Pro";
- font-size: 0.875rem;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  font-style: italic;
  font-weight: 800;
- line-height: 100%; /* 0.875rem */
+ line-height: 100%;
  text-transform: uppercase;
  font-size: clamp(1.5rem, 0.56vw + 1.36875rem, 1.875rem);
  display: flex;
@@ -294,6 +476,7 @@ a.card:hover p {
  align-items: center;
  gap: 1.5rem;
  flex-direction: column;
+ color: var(--primary_text);
 }
 .image_card .text_content h3 .icon {
  --_size: 2.25em;
@@ -351,10 +534,10 @@ a.card:hover p {
 .person_profile {
  --_container-max: 16.25rem;
  --_image_size: 4.5rem;
- --_column_space: 1.5rem;
  --_static-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #76affe, 0px 0px 0px 6px #192d62;
  --_default-rings: 0px 0px 0px 0px #192d62;
  --_hover-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #76affe, 0px 0px 0px 6px #192d62, 0px 0px 0px 10px #f16122, 0px 0px 0px 11px #192d62, 0px 0px 0px 15px #f9d452, 0px 0px 0px 16px #192d62;
+ --_column_space: 1.5rem;
  display: flex;
  -moz-column-gap: var(--_column_space);
       column-gap: var(--_column_space);
@@ -398,7 +581,7 @@ a.card:hover p {
  --_hover-rings: 0px 0px 0px 1px #192d62, 0px 0px 0px 5px #f9d452, 0px 0px 0px 6px #192d62, 0px 0px 0px 10px #f16122, 0px 0px 0px 11px #192d62;
 }
 @media (hover: hover) and (pointer: fine) {
- @container profile (min-width: 16.25rem) {
+ @container profile (min-width: 16.125rem) {
   .person_profile {
    padding-bottom: 1rem;
   }
@@ -414,12 +597,13 @@ a.card:hover p {
  flex-grow: 0;
 }
 .person_profile .text_area {
- max-width: calc(var(--_container-max) - var(--_image_size));
- min-width: 10rem;
+ flex-wrap: wrap;
+ width: 8rem;
+ flex-grow: 1;
  transition: 0.3s translate;
 }
 @media (hover: hover) and (pointer: fine) {
- @container profile (min-width: 16.25rem) {
+ @container profile (min-width: 16.125rem) {
   .person_profile .text_area {
    translate: calc(var(--_column_space) * -2) 1rem;
   }
@@ -428,18 +612,25 @@ a.card:hover p {
 .person_profile:hover .text_area {
  translate: 0 0;
 }
+.person_profile:hover .person_profile-image {
+ box-shadow: var(--_hover-rings);
+}
 .person_profile-image {
- border-radius: 50%;
+ border-radius: 50% !important;
  transition: 0.3s opacity, 0.3s box-shadow;
  box-shadow: var(--_static-rings);
+ width: var(--_image_size);
+ height: var(--_image_size);
+ -o-object-fit: cover;
+    object-fit: cover;
 }
-@container profile (min-width: 16.25rem) {
+@container profile (min-width: 16.125rem) {
  @media (hover: hover) and (pointer: fine) {
   .person_profile-image {
    opacity: 0.2;
    box-shadow: var(--_default-rings);
   }
-  article:hover .person_profile-image {
+  .person_profile:hover .person_profile-image {
    box-shadow: var(--_hover-rings);
   }
  }
@@ -449,7 +640,7 @@ a.card:hover p {
 }
 .person_profile-title {
  color: var(--theme_color-500, #76affe);
- font-family: "Trade Gothic Next LT Pro";
+ font-family: trade-gothic-next-condensed, "Gothic A1", sans-serif;
  font-size: 0.875rem;
  font-style: italic;
  font-weight: 800;
@@ -463,9 +654,31 @@ a.card:hover p {
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
  font-size: clamp(1.0625rem, 0.38vw + 0.975rem, 1.3125rem);
  color: var(--primary_text);
+}
+.person_profile-name a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.person_profile-name a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.person_profile-name a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 [profile-type=event-host] .person_profile-name {
  color: var(--secondary_text);
@@ -473,7 +686,29 @@ a.card:hover p {
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
+}
+[profile-type=event-host] .person_profile-name a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+[profile-type=event-host] .person_profile-name a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+[profile-type=event-host] .person_profile-name a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 .person_profile-pronouns {
  color: var(--secondary_text);
@@ -481,8 +716,30 @@ a.card:hover p {
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
  font-size: 0.75rem;
+}
+.person_profile-pronouns a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.person_profile-pronouns a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.person_profile-pronouns a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 .person_profile-locations {
  color: var(--secondary_text);
@@ -490,11 +747,33 @@ a.card:hover p {
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
  font-family: trade-gothic-next-condensed, "Gothic A1", sans-serif;
  font-size: 0.875rem;
  font-weight: 700;
+ color: #76affe;
+}
+.person_profile-locations a {
+ font-weight: 600;
  color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.person_profile-locations a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.person_profile-locations a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 
 /*css/components/profile_item/css/index.scss*/
@@ -507,11 +786,11 @@ a.card:hover p {
  gap: 0.25rem;
 }
 .profile_item img {
- border-radius: 0.5rem;
+ border-radius: 0.25rem;
 }
 .profile_item-division, .profile_item-season, .profile_item-category {
  color: var(--theme_color-500, #76affe);
- font-family: "Trade Gothic Next LT Pro";
+ font-family: trade-gothic-next-condensed, "Gothic A1", sans-serif;
  font-size: 0.875rem;
  font-style: italic;
  font-weight: 800;
@@ -524,8 +803,31 @@ a.card:hover p {
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
  font-size: clamp(1.0625rem, 0.38vw + 0.975rem, 1.3125rem);
+ font-weight: 600;
+}
+.profile_item-name a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.profile_item-name a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.profile_item-name a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 .profile_item-event {
  color: var(--secondary_text);
@@ -533,9 +835,31 @@ a.card:hover p {
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
  font-size: clamp(0.8125rem, 0.19vw + 0.76875rem, 0.9375rem);
  color: #4c76c2;
+}
+.profile_item-event a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.profile_item-event a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.profile_item-event a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 
 /*css/components/rich_text/css/index.scss*/
@@ -566,8 +890,33 @@ a.card:hover p {
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
  font-size: clamp(1.0625rem, 0.38vw + 0.975rem, 1.3125rem);
+}
+.rich_text p > sup > em a,
+.rich_text p > em > sup a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.rich_text p > sup > em a::after,
+.rich_text p > em > sup a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.rich_text p > sup > em a:hover::after,
+.rich_text p > em > sup a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 .rich_text p > sub > em,
 .rich_text p > em > sub {
@@ -576,8 +925,33 @@ a.card:hover p {
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
  font-size: clamp(0.8125rem, 0.19vw + 0.76875rem, 0.9375rem);
+}
+.rich_text p > sub > em a,
+.rich_text p > em > sub a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.rich_text p > sub > em a::after,
+.rich_text p > em > sub a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.rich_text p > sub > em a:hover::after,
+.rich_text p > em > sub a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 .rich_text ul {
  color: var(--secondary_text);
@@ -585,11 +959,33 @@ a.card:hover p {
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
  padding-inline: 1.5em;
  display: flex;
  flex-direction: column;
  gap: 0.25em;
+}
+.rich_text ul a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.rich_text ul a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.rich_text ul a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 .rich_text ul li::marker {
  color: var(--primary_text);
@@ -609,7 +1005,30 @@ a.card:hover p {
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
+ margin-block: 1rem;
+}
+.rich_text blockquote a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.rich_text blockquote a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.rich_text blockquote a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 .rich_text blockquote::before {
  flex-shrink: 0;
@@ -644,6 +1063,60 @@ a.card:hover p {
 }
 .rich_text .w-richtext-align-fullwidth {
  max-width: none !important;
+}
+
+/*components/accordion/css/index.scsss*/
+.toggle_content {
+ grid-column: 1/-1;
+}
+.toggle_content .headline-row {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 1rem;
+ margin-bottom: 1rem;
+}
+.toggle_content-content {
+ display: grid;
+ transition: 0.5s grid-template-rows;
+}
+.toggle_content-content[initial] {
+ grid-template-rows: 1fr;
+ transition: 0.5s 0.5s grid-template-rows;
+}
+[state="1"] .toggle_content-content[initial] {
+ grid-template-rows: 0fr;
+ transition: 0.5s grid-template-rows;
+}
+.toggle_content-content:not([initial]) {
+ grid-template-rows: 0fr;
+ transition: 0.5s grid-template-rows;
+}
+[state="1"] .toggle_content-content:not([initial]) {
+ grid-template-rows: 1fr;
+ transition: 0.5s 0.5s grid-template-rows;
+}
+.toggle_content-content article {
+ overflow: hidden;
+ padding-bottom: 0rem;
+ transition: 0.5s padding;
+ gap: 1rem;
+}
+
+.toggle_content[toggle-label=Indoor] .tab-indicator {
+ background-color: #f16122;
+}
+.toggle_content[toggle-label=Grass] .tab-indicator {
+ background-color: #94d13d;
+}
+
+.wf-design-mode .toggle_content-content {
+ margin-block: 1rem;
+ background: rgba(255, 0, 0, 0.1);
+ padding: 0.5rem;
+}
+.wf-design-mode .toggle_content-content:not([initial]) {
+ grid-template-rows: 1fr;
+ background: rgba(0, 255, 0, 0.1);
 }
 
 componentGrid {

@@ -20,10 +20,10 @@
 		--swiper-pagination-bullet-width: #{30/16 * 1rem};
 		--swiper-pagination-bullet-height: 0.25rem;
 		--swiper-pagination-bullet-border-radius: 99rem;
-		--swiper-pagination-bullet-inactive-color: var(--color_theme-100, #{$brand-100});
+		--swiper-pagination-bullet-inactive-color: #{$brand-100};
 		--swiper-pagination-bullet-inactive-opacity: 1;
 		--swiper-pagination-bullet-opacity: 1;
-		--swiper-pagination-color: var(--color_theme-500, #{$brand-500});
+		--swiper-pagination-color: var(--theme_color-500, #{$brand-500});
 		&-active {
 			--swiper-pagination-bullet-width: #{80/16 * 1rem};
 		}

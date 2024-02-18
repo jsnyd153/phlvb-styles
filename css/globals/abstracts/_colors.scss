@@ -116,3 +116,71 @@ $colors_light: (
 	"beach-200" $beach-200 $beach-900,
 	"beach-100" $beach-100 $beach-900
 );
+
+@mixin theme-dark {
+	--background: #{$brand-900};
+	--primary_text: #{$brand-50};
+	--secondary_text: #{$brand-200};
+	--low_text: #{$brand-400};
+	--border: #{$brand-800};
+}
+
+@mixin theme-light {
+	--background: #{$brand-50};
+	--primary_text: #{$brand-900};
+	--secondary_text: #{$brand-700};
+	--low_text: #{$brand-600};
+	--border: #{$brand-200};
+}
+
+@mixin theme-brand {
+	--theme_color-50: #{$brand-50};
+	--theme_color-100: #{$brand-100};
+	--theme_color-200: #{$brand-200};
+	--theme_color-300: #{$brand-300};
+	--theme_color-400: #{$brand-400};
+	--theme_color-500: #{$brand-500};
+	--theme_color-600: #{$brand-600};
+	--theme_color-700: #{$brand-700};
+	--theme_color-800: #{$brand-800};
+	--theme_color-900: #{$brand-900};
+}
+
+@mixin theme-indoor {
+	--theme_color-50: #{$indoor-50};
+	--theme_color-100: #{$indoor-100};
+	--theme_color-200: #{$indoor-200};
+	--theme_color-300: #{$indoor-300};
+	--theme_color-400: #{$indoor-400};
+	--theme_color-500: #{$indoor-500};
+	--theme_color-600: #{$indoor-600};
+	--theme_color-700: #{$indoor-700};
+	--theme_color-800: #{$indoor-800};
+	--theme_color-900: #{$indoor-900};
+}
+
+@mixin theme-grass {
+	--theme_color-50: #{$grass-50};
+	--theme_color-100: #{$grass-100};
+	--theme_color-200: #{$grass-200};
+	--theme_color-300: #{$grass-300};
+	--theme_color-400: #{$grass-400};
+	--theme_color-500: #{$grass-500};
+	--theme_color-600: #{$grass-600};
+	--theme_color-700: #{$grass-700};
+	--theme_color-800: #{$grass-800};
+	--theme_color-900: #{$grass-900};
+}
+
+@mixin theme-beach {
+	--theme_color-50: #{$beach-50};
+	--theme_color-100: #{$beach-100};
+	--theme_color-200: #{$beach-200};
+	--theme_color-300: #{$beach-300};
+	--theme_color-400: #{$beach-400};
+	--theme_color-500: #{$beach-500};
+	--theme_color-600: #{$beach-600};
+	--theme_color-700: #{$beach-700};
+	--theme_color-800: #{$beach-800};
+	--theme_color-900: #{$beach-900};
+}

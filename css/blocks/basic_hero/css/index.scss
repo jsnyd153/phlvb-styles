@@ -62,15 +62,15 @@
 		&circle {
 			display: block;
 			box-sizing: border-box;
-			width: clamp(22.5rem, 14.04vw + 19.2125rem, 35rem);
-			height: clamp(22.5rem, 14.04vw + 19.2125rem, 35rem);
+			@include fluid_size(width, 360px, 560px, 375px, 1800px);
+			@include fluid_size(height, 360px, 560px, 375px, 1800px);
 			position: absolute;
 			bottom: 0;
 			left: 0;
-			translate: -30% 30%;
+			translate: -35% 30%;
 			border-radius: 50%;
 			border-style: solid;
-			border-width: clamp(3.75rem, 2.11vw + 3.25625rem, 5.625rem);
+			@include fluid_size(border-width, 60px, 100px, 375px, 1800px);
 			border-color: var(--theme_color-500);
 			opacity: 0.3;
 

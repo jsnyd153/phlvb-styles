@@ -1,0 +1,61 @@
+/*css/blocks/call_to_action/css/index.scss*/
+.call_to_action--section {
+ background-color: var(--background);
+ position: relative;
+ contain: paint;
+}
+.call_to_action--section[column-span=full-page] {
+ padding-top: calc(var(--padding_base) / 5 * 3);
+}
+.call_to_action--link {
+ --background: #192d62;
+ --primary_text: #e9f1ff;
+ --secondary_text: #a9bfeb;
+ --low_text: #90b9f8;
+ --border: #1c326f;
+ --primary_text: white;
+ --secondary_text: #e9f1ff;
+ grid-column: 2/-2;
+ position: relative;
+ padding: calc(var(--padding_base) / 5 * 7) 2rem;
+ border-radius: 0.5rem;
+ overflow: hidden;
+ text-decoration: none;
+}
+[column-span=full-page] .call_to_action--link {
+ grid-column: 1/-1;
+ border-radius: 0rem;
+}
+.call_to_action--link .background_area {
+ background-color: var(--background, #192d62);
+}
+.call_to_action--link .background_area::after {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+ display: block;
+ content: "";
+ background-color: black;
+ opacity: 0.4;
+}
+.call_to_action--link .background_area img {
+ transition: 0.3s scale;
+}
+.call_to_action--link:hover img {
+ scale: 1.1;
+}
+.call_to_action--row {
+ position: relative;
+}
+.call_to_action--row .text_area {
+ max-width: 37.5rem;
+ align-items: center;
+ margin-inline: auto;
+}
+.call_to_action--row .text_content {
+ align-items: center;
+ text-align: center;
+}

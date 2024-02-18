@@ -1,0 +1,110 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=17%3A17741&mode=design&t=iIhpQlgc7EE2wRKD-1
+/*css/blocks/grid_content/css/index.scss*/
+//Dependencies:
+
+//Attributres
+//--list: grid-behavior = fill | stretch | stack
+//--list: grid-default = 2 | 3 | 4 | 5
+//--list, text_area, --pagination: column-span = inset | narrow | full-page
+
+.grid_content {
+	&-- {
+		&section {
+			background-color: var(--background);
+			padding-block: var(--padding_base);
+			.w-dyn-list {
+				display: contents;
+			}
+			.text_area {
+				@include column-span;
+			}
+		}
+
+		&list {
+			@include column-span;
+			--_items-per-row: 4;
+
+			display: grid;
+			grid-template-columns: repeat(var(--_items-per-row), 1fr);
+			gap: var(--gap);
+
+			&:not([grid-behavior]) {
+				@include md {
+					--_items-per-row: 3;
+				}
+				@include sm {
+					--_items-per-row: 2;
+				}
+				@include xs {
+					--_items-per-row: 1;
+				}
+			}
+
+			@for $i from 2 through 5 {
+				&[grid-default="#{$i}"] {
+					--_items-per-row: #{$i};
+				}
+			}
+
+			&[grid-behavior="fill"] {
+				//min width for each column
+				--_min-content-size: calc(56.75rem / var(--_items-per-row, 4));
+				//if items would drop below that value, it will drop down to the next row. maintains equal width on all items even with uneven number of items in rows
+				grid-template-columns: repeat(auto-fit, minmax(var(--_min-content-size), 1fr));
+				@include xs {
+					--_min-content-size: 9rem;
+				}
+			}
+
+			&[grid-behavior="stack"] {
+				//min width for each column
+				--_min-content-size: calc(53.75rem / var(--_items-per-row, 3));
+				//if items would drop below that value, all items stack in one column
+				--_items-per-row: 3;
+
+				--preferred-value: (
+						(var(--_min-content-size) * var(--_items-per-row) - var(--gap) * 2) - 100%
+					) * 999;
+				display: grid;
+				grid-template-columns: repeat(
+					auto-fit,
+					minmax(clamp(33.3333% - var(--gap), var(--preferred-value), 100%), 1fr)
+				);
+			}
+			&[grid-behavior="stretch"] {
+				display: flex;
+				flex-wrap: wrap;
+				width: 100%;
+				justify-content: stretch;
+				--_min-content-size: calc(56.75rem / var(--_items-per-row, 3));
+				> * {
+					flex-grow: 1;
+					min-width: var(--_min-content-size);
+					width: calc(80% / var(--_items-per-row));
+				}
+			}
+			&[grid-behavior="single-col"] {
+				display: flex;
+				flex-wrap: wrap;
+				width: 100%;
+				flex-direction: column;
+			}
+		}
+		&pagination {
+			@include column-span;
+			@include f-center;
+		}
+
+		&section {
+			//center load more button/ pagination buttons under events
+			.w-pagination-wrapper {
+				.button-container {
+					justify-content: center;
+				}
+			}
+		}
+	}
+}

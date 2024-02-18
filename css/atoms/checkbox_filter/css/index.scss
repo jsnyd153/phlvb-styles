@@ -7,16 +7,22 @@
 
 //Attributres
 
+.checkbox_filter-container {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
 .checkbox_filter {
-	$font-family: $sans_font;
 	font-size: 12/16 * 1rem;
 	line-height: 100%;
-	padding: 10/12 * 1em 1em;
+	padding: 6/12 * 1em 1em;
 	border-radius: 0.25rem;
 	color: var(--primary_text);
 	border: 1/16 * 1rem solid currentColor;
 	flex-grow: 0;
-	margin: 0 auto;
+	font-family: $sans_font;
 	input[type="checkbox"] {
 		display: none;
 	}

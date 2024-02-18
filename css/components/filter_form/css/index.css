@@ -1,0 +1,121 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
+/*css/components/filter_form/css/index.scss*/
+.filter_form {
+ display: flex;
+ flex-direction: column;
+ gap: 1rem;
+}
+@media (max-width: 767px) {
+ .filter_form h4 {
+  display: none;
+ }
+}
+.filter_form-list {
+ display: flex;
+ flex-direction: column;
+ gap: 1rem;
+}
+@media (max-width: 767px) {
+ .filter_form-list {
+  position: fixed;
+  inset: auto 0 0 0;
+  background-color: white;
+  padding: var(--gap);
+  border-radius: 1rem 1rem 0 0;
+  translate: 0 100%;
+  transition: 0.3s translate;
+ }
+ [filter-state=open] .filter_form-list {
+  translate: 0 0;
+  z-index: 201;
+ }
+}
+.filter_form-close_tab {
+ display: none;
+ width: 2.5rem;
+ border-radius: 2rem;
+ height: 0.25rem;
+ background-color: #a9bfeb;
+ align-self: center;
+ justify-self: center;
+}
+@media (max-width: 767px) {
+ .filter_form-close_tab {
+  display: block;
+ }
+}
+.filter_form-label {
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 140%;
+ font-size: clamp(1.0625rem, 0.38vw + 0.975rem, 1.3125rem);
+ margin-bottom: 0.5rem;
+}
+.filter_form-label a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.filter_form-label a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.filter_form-label a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
+}
+.filter_form-open {
+ display: none;
+}
+@media (max-width: 767px) {
+ .filter_form-open {
+  display: flex;
+ }
+}
+.filter_form-mobile_back {
+ display: none;
+ display: block;
+ background: rgba(0, 0, 0, 0.3);
+ position: fixed;
+ inset: 0;
+ opacity: 0;
+ pointer-events: none;
+ z-index: 200;
+}
+[filter-state=open] .filter_form-mobile_back {
+ opacity: 1;
+ pointer-events: auto;
+}

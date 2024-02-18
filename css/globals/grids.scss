@@ -6,11 +6,10 @@
 	@include fluid_size(--padding_base, 40px, 60px);
 	--page_margin: clamp(2rem, 5.47vw - 0.625rem, 3.75rem);
 	--grid_margin: calc(var(--page_margin) - var(--gap));
-	--page_grid: var(--grid_margin) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
-		minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
-		minmax(0, 1fr) minmax(0, 1fr) var(--grid_margin);
-}
-section {
+	--page_grid: [page-start] var(--grid_margin) [grid-start] minmax(0, 1fr) [inset-start]
+		minmax(0, 1fr) [narrow-start] minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
+		[center] minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) [narrow-end] minmax(0, 1fr)
+		[inset-end] minmax(0, 1fr) [grid-end] var(--grid_margin) [page-end];
 	@include fluid_size(--page_margin, 32px, 60px, 768px, 1280px);
 	@include sm {
 		@include fluid_size(--page_margin, 20px, 32px, 375px, 768px);
@@ -21,7 +20,8 @@ section {
 	@include xl {
 		--page_margin: calc((100vw - #{1200 / 16 * 1rem}) / 2 - var(--gap));
 	}
-
+}
+section {
 	box-sizing: border-box;
 	display: grid;
 	grid-template-columns: var(--page_grid);

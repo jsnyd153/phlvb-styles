@@ -40,4 +40,8 @@ iframe {
 			@include cover_obj;
 		}
 	}
+
+	img {
+		border-radius: 0.25rem;
+	}
 }

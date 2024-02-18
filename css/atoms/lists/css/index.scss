@@ -1,0 +1,84 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=1%3A2223&mode=design&t=g6qwze9oShWnmzfu-1
+/*atoms/tabs/css/index.scss*/
+//Dependencies:
+
+//Attributres
+//ul: list-type = fancy
+
+ul {
+	&[list-type="default"] {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding-left: 0;
+		// counter-reset: list-counter;
+		list-style: none;
+		float: left;
+		li {
+			position: relative;
+			@include body_text;
+			padding-left: 2rem;
+			// min-height: 2em;
+			// padding-top: 0.25em;
+			&::before {
+				position: absolute;
+				left: 0.5em;
+				top: 0.5em;
+				content: "";
+				width: 0.375em;
+				height: 0.375em;
+				border-radius: 50%;
+				background: var(--primary_text);
+				// opacity: 0;
+				display: inline-block;
+			}
+		}
+	}
+
+	&[list-type="fancy"] {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding-left: 0;
+		counter-reset: list-counter;
+		list-style: none;
+		float: left;
+		li {
+			position: relative;
+			@include body_text;
+			padding-left: 3rem;
+			min-height: 2em;
+			padding-top: 0.25em;
+			&::after {
+				position: absolute;
+				left: 0;
+				top: 0.125em;
+				content: counter(list-counter);
+				counter-increment: list-counter;
+				font-family: $sans_font;
+				font-style: italic;
+				font-weight: 800;
+				color: var(--theme_color-500);
+				font-size: 1.875em;
+				width: 0.875em;
+				text-align: right;
+				display: inline-block;
+			}
+			&::before {
+				position: absolute;
+				left: 0;
+				top: 0;
+				content: "";
+				width: 2em;
+				height: 2em;
+				border-radius: 50%;
+				background: var(--theme_color-500);
+				opacity: 0.1;
+				display: inline-block;
+			}
+		}
+	}
+}

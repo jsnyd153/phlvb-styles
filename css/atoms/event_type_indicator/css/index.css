@@ -1,9 +1,9 @@
 /*atoms/event_type_indicator/css/index.scss*/
 .event_type_indicator {
- background-color: var(--theme-500, #76affe);
+ background-color: var(--theme_color-500, #76affe);
 }
 a:hover .event_type_indicator {
- background-color: var(--theme-200, #a9bfeb);
+ background-color: var(--theme_color-200, #a9bfeb);
 }
 .event_type_indicator[indicator-type=dot] {
  border: 0.125rem solid #192d62;

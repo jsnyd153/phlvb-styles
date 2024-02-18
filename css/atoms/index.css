@@ -1,3 +1,25 @@
+@keyframes draw_line {
+ 0%, 10% {
+  width: 0%;
+  left: 0;
+  right: auto;
+ }
+ 40% {
+  width: 100%;
+  left: 0;
+  right: auto;
+ }
+ 60% {
+  width: 100%;
+  left: auto;
+  right: 0;
+ }
+ 90%, 100% {
+  width: 0%;
+  left: auto;
+  right: 0;
+ }
+}
 /*atoms/alerts_icon/css/index.scss*/
 .alert_icon,
 .alert-before::before,
@@ -124,6 +146,21 @@ a .svg-arrow {
  background-color: var(--_button-500);
  color: var(--_button_color);
 }
+.button[button-type=borderless] {
+ color: var(--_button-500);
+ background-color: rgba(25, 45, 98, 0);
+ border: 0px solid black;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ align-items: center;
+ padding: 0.5em 0;
+}
+.button[button-type=borderless] svg {
+ translate: 0em 0;
+ transition: 0.3s translate;
+}
+.button[button-type=borderless]:hover svg {
+ translate: 0.5em 0;
+}
 
 /* fallback */
 @font-face {
@@ -147,18 +184,29 @@ a .svg-arrow {
  -moz-font-feature-settings: "liga";
  -moz-osx-font-smoothing: grayscale;
  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+ --_size: 1em;
+}
+.button .icon .fill {
+ fill: currentColor;
 }
 
 /*atoms/checkbox_filter/css/index.scss*/
+.checkbox_filter-container {
+ display: flex;
+ gap: 0.5rem;
+ flex-wrap: wrap;
+ justify-content: flex-start;
+}
+
 .checkbox_filter {
  font-size: 0.75rem;
  line-height: 100%;
- padding: 0.8333333333em 1em;
+ padding: 0.5em 1em;
  border-radius: 0.25rem;
  color: var(--primary_text);
  border: 0.0625rem solid currentColor;
  flex-grow: 0;
- margin: 0 auto;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
 }
 .checkbox_filter input[type=checkbox] {
  display: none;
@@ -182,17 +230,18 @@ a .svg-arrow {
 /*atoms/divider/css/index.scss*/
 .divider,
 hr {
- border: 0.5px solid var(--theme_color-200);
+ border: 0.5px solid var(--theme_color-100);
  margin: 0;
  width: 100%;
+ margin-block: 0.5rem;
 }
 
 /*atoms/event_type_indicator/css/index.scss*/
 .event_type_indicator {
- background-color: var(--theme-500, #76affe);
+ background-color: var(--theme_color-500, #76affe);
 }
 a:hover .event_type_indicator {
- background-color: var(--theme-200, #a9bfeb);
+ background-color: var(--theme_color-200, #a9bfeb);
 }
 .event_type_indicator[indicator-type=dot] {
  border: 0.125rem solid #192d62;
@@ -242,6 +291,132 @@ a:hover .event_type_indicator {
 .svg-icon .icon .fill {
  fill: currentColor;
 }
+.button .svg-icon {
+ color: inherit;
+}
+
+/*atoms/tabs/css/index.scss*/
+ul[list-type=default] {
+ display: flex;
+ flex-direction: column;
+ gap: 0.5rem;
+ padding-left: 0;
+ list-style: none;
+ float: left;
+}
+ul[list-type=default] li {
+ position: relative;
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 140%;
+ padding-left: 2rem;
+}
+ul[list-type=default] li a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+ul[list-type=default] li a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+ul[list-type=default] li a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
+}
+ul[list-type=default] li::before {
+ position: absolute;
+ left: 0.5em;
+ top: 0.5em;
+ content: "";
+ width: 0.375em;
+ height: 0.375em;
+ border-radius: 50%;
+ background: var(--primary_text);
+ display: inline-block;
+}
+ul[list-type=fancy] {
+ display: flex;
+ flex-direction: column;
+ gap: 0.5rem;
+ padding-left: 0;
+ counter-reset: list-counter;
+ list-style: none;
+ float: left;
+}
+ul[list-type=fancy] li {
+ position: relative;
+ color: var(--secondary_text);
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 140%;
+ padding-left: 3rem;
+ min-height: 2em;
+ padding-top: 0.25em;
+}
+ul[list-type=fancy] li a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+ul[list-type=fancy] li a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+ul[list-type=fancy] li a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
+}
+ul[list-type=fancy] li::after {
+ position: absolute;
+ left: 0;
+ top: 0.125em;
+ content: counter(list-counter);
+ counter-increment: list-counter;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-style: italic;
+ font-weight: 800;
+ color: var(--theme_color-500);
+ font-size: 1.875em;
+ width: 0.875em;
+ text-align: right;
+ display: inline-block;
+}
+ul[list-type=fancy] li::before {
+ position: absolute;
+ left: 0;
+ top: 0;
+ content: "";
+ width: 2em;
+ height: 2em;
+ border-radius: 50%;
+ background: var(--theme_color-500);
+ opacity: 0.1;
+ display: inline-block;
+}
 
 /*atoms/location_indicator/css/index.scss*/
 .location_indicator {
@@ -250,13 +425,35 @@ a:hover .event_type_indicator {
  font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
  font-style: normal;
  font-weight: 400;
- line-height: 150%;
+ line-height: 140%;
  font-size: 0.8125rem;
  padding: 0.6923076923em 0.9230769231em;
  border-radius: 0.25rem;
  color: var(--secondary_text);
  border: 0.0625rem solid currentColor;
  text-align: center;
+}
+.location_indicator a {
+ font-weight: 600;
+ color: var(--theme_color-500);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+}
+.location_indicator a::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0%;
+ height: 0.125em;
+ border-bottom: 0.125em solid currentColor;
+ bottom: -0.125em;
+ transition: 0.3s all;
+}
+.location_indicator a:hover::after {
+ width: 100%;
+ animation: draw_line 1.5s linear infinite;
 }
 a:hover .location_indicator {
  color: var(--primary_text);
@@ -277,10 +474,10 @@ a:hover .location_indicator {
  --swiper-pagination-bullet-width: 1.875rem;
  --swiper-pagination-bullet-height: 0.25rem;
  --swiper-pagination-bullet-border-radius: 99rem;
- --swiper-pagination-bullet-inactive-color: var(--color_theme-100, #bccceb);
+ --swiper-pagination-bullet-inactive-color: #bccceb;
  --swiper-pagination-bullet-inactive-opacity: 1;
  --swiper-pagination-bullet-opacity: 1;
- --swiper-pagination-color: var(--color_theme-500, #76affe);
+ --swiper-pagination-color: var(--theme_color-500, #76affe);
 }
 .slider_pagination .swiper-pagination-bullet-active {
  --swiper-pagination-bullet-width: 5rem;

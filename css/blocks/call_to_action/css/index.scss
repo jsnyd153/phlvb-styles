@@ -1,0 +1,69 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=17%3A12318&mode=design&t=yVXL4K3sGmIljLsb-1
+/*css/blocks/call_to_action/css/index.scss*/
+//Dependencies:
+
+//Attributres
+//column-span = full-page
+
+.call_to_action {
+	&-- {
+		&section {
+			//dark mode vairables by default
+			background-color: var(--background);
+			position: relative;
+			contain: paint;
+
+			&[column-span="full-page"] {
+				padding-top: calc(var(--padding_base) / 5 * 3);
+			}
+		}
+		&link {
+			@include theme-dark;
+			--primary_text: white;
+			--secondary_text: #{$brand-50};
+			grid-column: 2/-2;
+			position: relative;
+			padding: calc(var(--padding_base) / 5 * 7) 2rem;
+			border-radius: 0.5rem;
+			overflow: hidden;
+			text-decoration: none;
+
+			[column-span="full-page"] & {
+				grid-column: 1/-1;
+				border-radius: 0rem;
+			}
+
+			.background_area {
+				background-color: var(--background, #{$brand-900});
+				&::after {
+					@include cover_obj;
+					@include psuedo_el;
+					background-color: black;
+					opacity: 0.4;
+				}
+
+				img {
+					transition: 0.3s scale;
+				}
+			}
+			&:hover img {
+				scale: 1.1;
+			}
+		}
+		&row {
+			position: relative;
+			.text_area {
+				max-width: 600/16 * 1rem;
+				align-items: center;
+				margin-inline: auto;
+			}
+			.text_content {
+				align-items: center;
+				text-align: center;
+			}
+		}
+	}
+}

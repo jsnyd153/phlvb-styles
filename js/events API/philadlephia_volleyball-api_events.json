@@ -1,0 +1,39 @@
+{
+	"page": 1,
+	"count": 24,
+	"totalCount": 2,
+	"totalPages": 1,
+	"items": [{
+		"id": "sun-b-bb-indoor-coed-sixes--5ah3AfLaU",
+		"title": "Sun | ⬆️ B - BB | Indoor Coed Sixes",
+		"start": "2024-02-18T18:30:00+00:00",
+		"end": "2024-02-18T21:30:00+00:00",
+		"description": "players knows where to be on the court at all times when plays are developing. They know where to be when the opponent is hitting. They know the footwork of and how to approach hitting effectively. A \"BB\" player knows how to run a 5-1, a 6-2, and needlessly, alayers are above average competitive play",
+		"level": "B",
+		"eventType": "Indoor",
+		"gender": "Coed",
+		"status": "Active",
+		"host": "Tim",
+		"location": {
+			"title": "Crane Community Center",
+			"neighborhood": "Chinatown"
+		},
+		"day": "Sunday"
+	}, {
+		"id": "sat-bb-bb-indoor-sixes-btk_cIzhA",
+		"title": "Sat | BB - ⬆️BB | Indoor Sixes",
+		"start": "2024-02-17T15:00:46.015+00:00",
+		"end": "2024-02-17T18:00:46.015+00:00",
+		"description": " in depth knowledge of offensive and defensive game play, and use advanced strategies to be successful. Level A players are typically in excellent physical condition and are able to compete at a high",
+		"level": "⬇BB/⬆BB",
+		"eventType": "Indoor",
+		"gender": "Coed",
+		"status": "Active",
+		"host": "Berto",
+		"location": {
+			"title": "North Light Community Center",
+			"neighborhood": "Manaunk"
+		},
+		"day": "Saturday"
+	}]
+}

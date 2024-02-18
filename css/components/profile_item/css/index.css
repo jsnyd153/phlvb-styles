@@ -8,11 +8,11 @@
  gap: 0.25rem;
 }
 .profile_item img {
- border-radius: 0.5rem;
+ border-radius: 0.25rem;
 }
 .profile_item-division, .profile_item-season, .profile_item-category {
  color: var(--theme_color-500, #76affe);
- font-family: "Trade Gothic Next LT Pro";
+ font-family: trade-gothic-next-condensed, "Gothic A1", sans-serif;
  font-size: 0.875rem;
  font-style: italic;
  font-weight: 800;
@@ -27,6 +27,7 @@
  font-weight: 400;
  line-height: 150%;
  font-size: clamp(1.0625rem, 0.38vw + 0.975rem, 1.3125rem);
+ font-weight: 600;
 }
 .profile_item-event {
  color: var(--secondary_text);

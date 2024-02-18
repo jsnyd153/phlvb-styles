@@ -1,0 +1,46 @@
+/*css/blocks/column_hero/css/index.scss*/
+.column_hero--section {
+ --background: #192d62;
+ --primary_text: #e9f1ff;
+ --secondary_text: #a9bfeb;
+ --low_text: #90b9f8;
+ --border: #1c326f;
+ position: relative;
+ contain: paint;
+ padding-block: var(--padding_base);
+}
+.column_hero--section[has-image=true] {
+ --primary_text: white;
+ --secondary_text: #e9f1ff;
+}
+.column_hero--row {
+ --columns: 12;
+ display: grid;
+ grid-column: 2/-2;
+ grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+ gap: var(--gap);
+ padding-block: var(--padding_base);
+}
+.column_hero--row > div {
+ grid-column: span 6;
+ align-self: center;
+}
+@media (max-width: 767px) {
+ .column_hero--row > div {
+  grid-column: span 12;
+ }
+}
+.column_hero--row .text_content {
+ align-items: center;
+ text-align: center;
+}
+.column_hero--background {
+ background-color: var(--background);
+}
+.column_hero--background img {
+ display: none;
+}
+[has-image=true] .column_hero--background img {
+ display: block;
+ opacity: 0.15;
+}
