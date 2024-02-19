@@ -23,7 +23,9 @@ footer {
 }
 .footer_nav--navigation {
  display: flex;
- gap: var(--gap);
+ -moz-column-gap: 3.75rem;
+      column-gap: 3.75rem;
+ row-gap: var(--gap);
  justify-content: flex-end;
  flex-grow: 1;
  flex-shrink: 1;

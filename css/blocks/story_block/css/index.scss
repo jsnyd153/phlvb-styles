@@ -38,6 +38,9 @@
 				.text_area {
 					align-self: start;
 				}
+				@include sm {
+					row-gap: 0.5rem;
+				}
 			}
 
 			> div {

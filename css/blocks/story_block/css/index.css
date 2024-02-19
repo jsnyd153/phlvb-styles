@@ -46,6 +46,11 @@
 .story_block--row:has(.text_area + .text_area) .text_area {
  align-self: start;
 }
+@media (max-width: 767px) {
+ .story_block--row:has(.text_area + .text_area) {
+  row-gap: 0.5rem;
+ }
+}
 .story_block--row > div {
  align-self: center;
 }

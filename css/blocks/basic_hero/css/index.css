@@ -7,9 +7,9 @@
  --border: #1c326f;
  position: relative;
  contain: paint;
- height: 34.25rem;
- max-height: 80svh;
- min-height: 25rem;
+ height: 80svh;
+ max-height: 26rem;
+ min-height: 18rem;
 }
 .basic_hero--section[has-image=true] {
  --primary_text: white;

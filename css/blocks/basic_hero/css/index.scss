@@ -19,9 +19,9 @@
 			--border: #{$brand-800};
 			position: relative;
 			contain: paint;
-			height: 548/16 * 1rem;
-			max-height: 80svh;
-			min-height: 400/16 * 1rem;
+			height: 80svh;
+			max-height: 26rem;
+			min-height: 18rem;
 			&[has-image="true"] {
 				--primary_text: white;
 				--secondary_text: #{$brand-50};

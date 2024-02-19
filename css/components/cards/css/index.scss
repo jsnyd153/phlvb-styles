@@ -129,7 +129,6 @@
 		}
 		.headline {
 			@include headline_3;
-			min-width: 14ch;
 		}
 	}
 
@@ -185,5 +184,11 @@ a.card {
 		p {
 			color: var(--primary_text);
 		}
+	}
+}
+
+@for $i from 6 through 24 {
+	[min-char="#{$i}"] {
+		min-width: #{$i}ch;
 	}
 }
