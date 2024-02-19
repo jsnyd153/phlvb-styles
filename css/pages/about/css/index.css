@@ -1,32 +1,10 @@
-@keyframes draw_line {
- 0%, 10% {
-  width: 0%;
-  left: 0;
-  right: auto;
- }
- 40% {
-  width: 100%;
-  left: 0;
-  right: auto;
- }
- 60% {
-  width: 100%;
-  left: auto;
-  right: 0;
- }
- 90%, 100% {
-  width: 0%;
-  left: auto;
-  right: 0;
- }
-}
 /*css/pages/pickup/css/index.scss*/
 .featured_stats-group {
  border-radius: var(--corner, 0.25rem);
  background: linear-gradient(92deg, #192d62 0.55%, #213d85 100%);
  box-shadow: 0px 7px 20px 0px rgba(118, 175, 254, 0.24);
  display: flex;
- padding: 2rem;
+ padding: 3rem 2rem;
  align-items: flex-start;
  gap: 2rem;
  align-self: stretch;
@@ -42,8 +20,8 @@
  color: var(--theme_color-500, #76affe);
  text-align: center;
  text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.19);
- font-family: "Trade Gothic Next LT Pro";
- font-size: 5.6875rem;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ font-size: clamp(4.5rem, 1.69vw + 4.10625rem, 5.625rem);
  font-style: normal;
  font-weight: 800;
  line-height: 100%;
@@ -51,11 +29,12 @@
 .featured_stats-label {
  color: var(--theme_color-500, #76affe);
  text-align: center;
- font-family: "Trade Gothic Next LT Pro";
- font-size: 1.5rem;
+ font-family: trade-gothic-next-condensed, "Gothic A1", sans-serif;
+ font-size: clamp(1rem, 0.75vw + 0.825rem, 1.5rem);
  font-style: italic;
- font-weight: 800;
+ font-weight: 700;
  line-height: 135%;
  letter-spacing: 0.075rem;
  text-transform: uppercase;
+ margin-top: 0.25em;
 }

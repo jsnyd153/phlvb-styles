@@ -1,25 +1,3 @@
-@keyframes draw_line {
- 0%, 10% {
-  width: 0%;
-  left: 0;
-  right: auto;
- }
- 40% {
-  width: 100%;
-  left: 0;
-  right: auto;
- }
- 60% {
-  width: 100%;
-  left: auto;
-  right: 0;
- }
- 90%, 100% {
-  width: 0%;
-  left: auto;
-  right: 0;
- }
-}
 /*components/accordion/css/index.scsss*/
 details > summary {
  list-style: none;
@@ -228,7 +206,7 @@ a:hover .card-host {
 }
 .card[card-type=empty] a:hover::after {
  width: 100%;
- animation: draw_line 1.5s linear infinite;
+ animation: draw_line 1s linear infinite;
 }
 .card[card-type=icon] .text_content {
  justify-content: flex-start;
@@ -246,7 +224,12 @@ a:hover .card-host {
  --_size: 1.6em;
 }
 .card[card-type=icon] .headline {
- min-width: 15ch;
+ font-size: clamp(1.5rem, 0.75vw + 1.325rem, 2rem);
+ color: var(--primary_text);
+ font-family: p22-mackinac-pro, Libre Baskerville, serif;
+ line-height: 125%;
+ font-weight: 500;
+ min-width: 14ch;
 }
 .card[card-type=location] {
  height: 100%;
@@ -294,6 +277,22 @@ a.card:hover {
 }
 a.card:hover p {
  color: var(--primary_text);
+}
+
+/*css/components/contact_form/css/index.scsss*/
+.contact_form-form {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ gap: clamp(0.75rem, 0.38vw + 0.6625rem, 1rem);
+}
+.contact_form-row {
+ display: flex;
+ align-items: flex-start;
+ justify-content: stretch;
+ gap: inherit;
+ align-self: stretch;
+ flex-wrap: wrap;
 }
 
 /*css/components/filter_form/css/index.scss*/
@@ -371,7 +370,7 @@ a.card:hover p {
 }
 .filter_form-label a:hover::after {
  width: 100%;
- animation: draw_line 1.5s linear infinite;
+ animation: draw_line 1s linear infinite;
 }
 .filter_form-open {
  display: none;
@@ -678,7 +677,7 @@ a.card:hover p {
 }
 .person_profile-name a:hover::after {
  width: 100%;
- animation: draw_line 1.5s linear infinite;
+ animation: draw_line 1s linear infinite;
 }
 [profile-type=event-host] .person_profile-name {
  color: var(--secondary_text);
@@ -708,7 +707,7 @@ a.card:hover p {
 }
 [profile-type=event-host] .person_profile-name a:hover::after {
  width: 100%;
- animation: draw_line 1.5s linear infinite;
+ animation: draw_line 1s linear infinite;
 }
 .person_profile-pronouns {
  color: var(--secondary_text);
@@ -739,7 +738,7 @@ a.card:hover p {
 }
 .person_profile-pronouns a:hover::after {
  width: 100%;
- animation: draw_line 1.5s linear infinite;
+ animation: draw_line 1s linear infinite;
 }
 .person_profile-locations {
  color: var(--secondary_text);
@@ -773,7 +772,7 @@ a.card:hover p {
 }
 .person_profile-locations a:hover::after {
  width: 100%;
- animation: draw_line 1.5s linear infinite;
+ animation: draw_line 1s linear infinite;
 }
 
 /*css/components/profile_item/css/index.scss*/
@@ -827,7 +826,7 @@ a.card:hover p {
 }
 .profile_item-name a:hover::after {
  width: 100%;
- animation: draw_line 1.5s linear infinite;
+ animation: draw_line 1s linear infinite;
 }
 .profile_item-event {
  color: var(--secondary_text);
@@ -859,7 +858,7 @@ a.card:hover p {
 }
 .profile_item-event a:hover::after {
  width: 100%;
- animation: draw_line 1.5s linear infinite;
+ animation: draw_line 1s linear infinite;
 }
 
 /*css/components/rich_text/css/index.scss*/
@@ -916,7 +915,7 @@ a.card:hover p {
 .rich_text p > sup > em a:hover::after,
 .rich_text p > em > sup a:hover::after {
  width: 100%;
- animation: draw_line 1.5s linear infinite;
+ animation: draw_line 1s linear infinite;
 }
 .rich_text p > sub > em,
 .rich_text p > em > sub {
@@ -951,7 +950,7 @@ a.card:hover p {
 .rich_text p > sub > em a:hover::after,
 .rich_text p > em > sub a:hover::after {
  width: 100%;
- animation: draw_line 1.5s linear infinite;
+ animation: draw_line 1s linear infinite;
 }
 .rich_text ul {
  color: var(--secondary_text);
@@ -985,7 +984,7 @@ a.card:hover p {
 }
 .rich_text ul a:hover::after {
  width: 100%;
- animation: draw_line 1.5s linear infinite;
+ animation: draw_line 1s linear infinite;
 }
 .rich_text ul li::marker {
  color: var(--primary_text);
@@ -1028,7 +1027,7 @@ a.card:hover p {
 }
 .rich_text blockquote a:hover::after {
  width: 100%;
- animation: draw_line 1.5s linear infinite;
+ animation: draw_line 1s linear infinite;
 }
 .rich_text blockquote::before {
  flex-shrink: 0;

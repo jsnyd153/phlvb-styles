@@ -12,7 +12,7 @@
 			background: linear-gradient(92deg, #192d62 0.55%, #213d85 100%);
 			box-shadow: 0px 7px 20px 0px rgba($brand-500, 0.24);
 			display: flex;
-			padding: 32/16 * 1rem;
+			padding: 48/16 * 1rem 32/16 * 1rem;
 			align-items: flex-start;
 			gap: 32/16 * 1rem;
 			align-self: stretch;
@@ -28,8 +28,8 @@
 			color: var(--theme_color-500, #{$brand-500});
 			text-align: center;
 			text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.19);
-			font-family: "Trade Gothic Next LT Pro";
-			font-size: 5.6875rem;
+			font-family: $sans_font;
+			@include fluid_size(font-size, 72px, 90px);
 			font-style: normal;
 			font-weight: 800;
 			line-height: 100%;
@@ -37,13 +37,14 @@
 		&label {
 			color: var(--theme_color-500, #{$brand-500});
 			text-align: center;
-			font-family: "Trade Gothic Next LT Pro";
-			font-size: 1.5rem;
+			font-family: $sans_font-condensed;
+			@include fluid_size(font-size, 16px, 24px);
 			font-style: italic;
-			font-weight: 800;
+			font-weight: 700;
 			line-height: 135%;
 			letter-spacing: 0.075rem;
 			text-transform: uppercase;
+			margin-top: 0.25em;
 		}
 	}
 }

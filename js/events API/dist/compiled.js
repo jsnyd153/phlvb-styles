@@ -9,6 +9,19 @@
             const itemTemplateElement = firstItem.element;
             const events = await fetchEvents();
             console.log('events', events);
+            if (events.length === 0) {
+                const errorMessage = document.createElement('div');
+                errorMessage.textContent = "Our API isn't working right now, but you can see all our events on ";
+                const opensportsLink = document.createElement('a');
+                opensportsLink.textContent = 'Opensports';
+                opensportsLink.href = 'https://opensports.net/PhiladelphiaVolleyball/events/upcoming';
+                errorMessage.appendChild(opensportsLink);
+                const listContainer = document.querySelector('.w-dyn-list');
+                if (listContainer) {
+                    listContainer.appendChild(errorMessage);
+                }
+               
+            }
             listInstance.clearItems();
             const newItems = events.map((event) => createItem(event, itemTemplateElement));
             await listInstance.addItems(newItems);
@@ -24,8 +37,8 @@
     ]);
     const fetchEvents = async () => {
         try {
-            const response = await fetch('https://main--phlvb-static.netlify.app/attributes-examples-master/philadlephia_volleyball-api_events.json');
-            // const response = await fetch('https://philadelphiavolleyball.org/api/events');
+            // const response = await fetch('https://main--phlvb-static.netlify.app/attributes-examples-master/philadlephia_volleyball-api_events.json');
+            const response = await fetch('https://philadelphiavolleyball.org/api/events');
             const jsonData = await response.json();
             const items = jsonData && jsonData.items && Array.isArray(jsonData.items)
                 ? jsonData.items

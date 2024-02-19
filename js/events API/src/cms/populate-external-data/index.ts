@@ -27,6 +27,23 @@ window.fsAttributes.push([
     const events = await fetchEvents();
     console.log('events',events)
 
+        // If events array is empty, create a message and link
+        if (events.length === 0) {
+          const errorMessage = document.createElement('div');
+          errorMessage.textContent = "Our API isn't working right now, but you can see all our events on Opensports";
+          const opensportsLink = document.createElement('a');
+          opensportsLink.textContent = 'Opensports';
+          opensportsLink.href = 'https://www.opensports.com';
+          errorMessage.appendChild(opensportsLink);
+    
+          // Add the error message to the list container
+          const listContainer = document.querySelector('.w-dyn-list');
+          if (listContainer) {
+            listContainer.appendChild(errorMessage);
+          }
+          return;
+        }
+
     // Remove existing items
     listInstance.clearItems();
 

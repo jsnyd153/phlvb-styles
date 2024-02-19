@@ -1,20 +1,225 @@
 /*atoms/alerts_icon/css/index.scss*/
-.alert_icon,
-.alert-before::before,
-.rich_text blockquote::before {
- color: white;
- font-family: "Times New Roman", serif;
- font-style: italic;
- font-size: clamp(1rem, 0.38vw + 0.9125rem, 1.25rem);
- text-align: center;
- background: var(--theme_color-600, #4c76c2);
- width: 1.5em;
- line-height: 1.5;
- border-radius: 50%;
+.input_area {
+ position: relative;
+ font-size: var(--_size);
+ line-height: 100%;
+ flex-grow: 1;
+ min-width: 7.5rem;
+ --_size: clamp(0.875rem, 0.09vw + 0.85rem, 0.9375rem);
 }
-
-.alert_icon:not(i)::before,
-.rich_text blockquote::before {
- content: "i";
- display: inline-block;
+.input_area input[type=email], .input_area input[type=text], .input_area input[type=tel] {
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ border: 1px solid var(--theme_color-700);
+ border-radius: 0.25rem;
+ margin: 0;
+ padding: var(--_size);
+ font-size: var(--_size);
+ height: auto;
+ color: var(--primary_text);
+ caret-color: var(--theme_color-500);
+ transition: 0.3s all;
+ background: var(--background);
+}
+.input_area input[type=email] + label, .input_area input[type=text] + label, .input_area input[type=tel] + label {
+ position: absolute;
+ margin: 0;
+ padding: 0;
+ background: var(--background);
+ font-size: 0.75em;
+ left: var(--_size);
+ line-height: 100%;
+ font-weight: 500;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ translate: 0 -50%;
+ transition: 0.3s all;
+ padding-inline: 0.375em;
+ top: 0;
+ color: var(--theme_color-700);
+ pointer-events: none;
+}
+.input_area input[type=email]:-moz-placeholder-shown + label, .input_area input[type=text]:-moz-placeholder-shown + label, .input_area input[type=tel]:-moz-placeholder-shown + label {
+ top: 50%;
+ padding: 0;
+ color: var(--theme_color-700);
+ font-size: var(--_size);
+}
+.input_area input[type=email]:placeholder-shown + label, .input_area input[type=text]:placeholder-shown + label, .input_area input[type=tel]:placeholder-shown + label {
+ top: 50%;
+ padding: 0;
+ color: var(--theme_color-700);
+ font-size: var(--_size);
+}
+.input_area input[type=email]:hover, .input_area input[type=text]:hover, .input_area input[type=tel]:hover {
+ border: 1px solid var(--theme_color-500);
+}
+.input_area input[type=email]:hover + label, .input_area input[type=text]:hover + label, .input_area input[type=tel]:hover + label {
+ color: var(--theme_color-500);
+}
+.input_area input[type=email]:focus-visible, .input_area input[type=text]:focus-visible, .input_area input[type=tel]:focus-visible {
+ border: 2px solid var(--theme_color-500);
+ outline: 0;
+}
+.input_area input[type=email]:focus-visible + label, .input_area input[type=text]:focus-visible + label, .input_area input[type=tel]:focus-visible + label {
+ top: 0;
+ font-size: 0.75rem;
+ padding-inline: 0.375em;
+}
+.input_area input[type=email]:required + label::after, .input_area input[type=text]:required + label::after, .input_area input[type=tel]:required + label::after {
+ content: "*";
+}
+.input_area:has(select) {
+ color: var(--theme_color-700);
+}
+.input_area:has(select):hover {
+ color: var(--theme_color-500);
+}
+.input_area:has(select):after {
+ content: "";
+ display: block;
+ position: absolute;
+ right: 1.5rem;
+ top: 50%;
+ translate: 0 -50%;
+ rotate: 45deg;
+ height: 0.5rem;
+ width: 0.5rem;
+ pointer-events: none;
+ color: inherit;
+ border-bottom: 1px solid currentColor;
+ border-right: 1px solid currentColor;
+}
+.input_area:has(select) select {
+ color: inherit;
+ -webkit-appearance: none;
+ -moz-appearance: none;
+ appearance: none;
+}
+.input_area select {
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ border: 1px solid var(--theme_color-700);
+ border-radius: 0.25rem;
+ margin: 0;
+ padding: var(--_size);
+ font-size: var(--_size);
+ height: auto;
+ color: var(--primary_text);
+ caret-color: var(--theme_color-500);
+ transition: 0.3s all;
+ background: var(--background);
+}
+.input_area select + label {
+ position: absolute;
+ margin: 0;
+ padding: 0;
+ background: var(--background);
+ font-size: 0.75em;
+ left: var(--_size);
+ line-height: 100%;
+ font-weight: 500;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ translate: 0 -50%;
+ transition: 0.3s all;
+ padding-inline: 0.375em;
+ top: 0;
+ color: var(--theme_color-700);
+ pointer-events: none;
+}
+.input_area select:-moz-placeholder-shown + label {
+ top: 50%;
+ padding: 0;
+ color: var(--theme_color-700);
+ font-size: var(--_size);
+}
+.input_area select:placeholder-shown + label {
+ top: 50%;
+ padding: 0;
+ color: var(--theme_color-700);
+ font-size: var(--_size);
+}
+.input_area select:hover {
+ border: 1px solid var(--theme_color-500);
+}
+.input_area select:hover + label {
+ color: var(--theme_color-500);
+}
+.input_area select:focus-visible {
+ border: 2px solid var(--theme_color-500);
+ outline: 0;
+}
+.input_area select:focus-visible + label {
+ top: 0;
+ font-size: 0.75rem;
+ padding-inline: 0.375em;
+}
+.input_area select:required + label::after {
+ content: "*";
+}
+.input_area textarea {
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ border: 1px solid var(--theme_color-700);
+ border-radius: 0.25rem;
+ margin: 0;
+ padding: var(--_size);
+ font-size: var(--_size);
+ height: auto;
+ color: var(--primary_text);
+ caret-color: var(--theme_color-500);
+ transition: 0.3s all;
+ background: var(--background);
+}
+.input_area textarea + label {
+ position: absolute;
+ margin: 0;
+ padding: 0;
+ background: var(--background);
+ font-size: 0.75em;
+ left: var(--_size);
+ line-height: 100%;
+ font-weight: 500;
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
+ translate: 0 -50%;
+ transition: 0.3s all;
+ padding-inline: 0.375em;
+ top: 0;
+ color: var(--theme_color-700);
+ pointer-events: none;
+}
+.input_area textarea:-moz-placeholder-shown + label {
+ top: 50%;
+ padding: 0;
+ color: var(--theme_color-700);
+ font-size: var(--_size);
+}
+.input_area textarea:placeholder-shown + label {
+ top: 50%;
+ padding: 0;
+ color: var(--theme_color-700);
+ font-size: var(--_size);
+}
+.input_area textarea:hover {
+ border: 1px solid var(--theme_color-500);
+}
+.input_area textarea:hover + label {
+ color: var(--theme_color-500);
+}
+.input_area textarea:focus-visible {
+ border: 2px solid var(--theme_color-500);
+ outline: 0;
+}
+.input_area textarea:focus-visible + label {
+ top: 0;
+ font-size: 0.75rem;
+ padding-inline: 0.375em;
+}
+.input_area textarea:required + label::after {
+ content: "*";
+}
+.input_area textarea:-moz-placeholder-shown + label {
+ top: calc(var(--_size) * 1.5);
+}
+.input_area textarea:placeholder-shown + label {
+ top: calc(var(--_size) * 1.5);
+}
+.input_area textarea:focus-visible + label {
+ top: 0;
 }

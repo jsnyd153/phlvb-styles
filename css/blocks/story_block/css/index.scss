@@ -15,7 +15,7 @@
 .story_block {
 	&-- {
 		&section {
-			row-gap: 60/16 * 1rem;
+			row-gap: 32/16 * 1rem;
 			padding-block: var(--padding_base);
 			background-color: var(--background);
 		} //section
@@ -32,6 +32,7 @@
 
 			position: relative;
 			@include column-span;
+			row-gap: 2rem;
 
 			&:has(.text_area + .text_area) {
 				.text_area {
@@ -109,6 +110,11 @@
 				}
 				@include xs {
 					padding: 0;
+				}
+			}
+			.media_area + .text_area {
+				@include sm {
+					grid-row: 1;
 				}
 			}
 

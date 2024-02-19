@@ -1,25 +1,3 @@
-@keyframes draw_line {
- 0%, 10% {
-  width: 0%;
-  left: 0;
-  right: auto;
- }
- 40% {
-  width: 100%;
-  left: 0;
-  right: auto;
- }
- 60% {
-  width: 100%;
-  left: auto;
-  right: 0;
- }
- 90%, 100% {
-  width: 0%;
-  left: auto;
-  right: 0;
- }
-}
 /*css/components/cards/css/index.scss*/
 .card {
  display: flex;
@@ -161,7 +139,7 @@ a:hover .card-host {
 }
 .card[card-type=empty] a:hover::after {
  width: 100%;
- animation: draw_line 1.5s linear infinite;
+ animation: draw_line 1s linear infinite;
 }
 .card[card-type=icon] .text_content {
  justify-content: flex-start;
@@ -179,7 +157,12 @@ a:hover .card-host {
  --_size: 1.6em;
 }
 .card[card-type=icon] .headline {
- min-width: 15ch;
+ font-size: clamp(1.5rem, 0.75vw + 1.325rem, 2rem);
+ color: var(--primary_text);
+ font-family: p22-mackinac-pro, Libre Baskerville, serif;
+ line-height: 125%;
+ font-weight: 500;
+ min-width: 14ch;
 }
 .card[card-type=location] {
  height: 100%;

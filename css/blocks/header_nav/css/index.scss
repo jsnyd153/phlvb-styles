@@ -1,0 +1,219 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+// Footer
+// Visual:https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=108%3A8707&mode=design&t=sotPLNOuq96tBLEK-1
+// Dependancy:
+
+/*css/blocks/header/css/index.scss*/
+
+//Attributes
+
+.header_nav {
+	background-color: $brand-900;
+	@include fluid_size(--_inline_margin, 20px, 32px, 375px, 768px);
+	padding-right: var(--_inline_margin);
+	position: sticky;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 500;
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+
+	@include sm {
+		padding-right: 0;
+	}
+	&-- {
+		&container {
+			display: flex;
+			justify-content: stretch;
+			gap: var(--gap);
+			padding-left: var(--_inline_margin);
+			padding-block: 0.75rem;
+			width: 100%;
+		}
+		&branding {
+			width: 140/16 * 1rem;
+			margin: auto 0;
+			svg {
+				width: 100%;
+				display: block;
+			}
+		}
+		&navigaton {
+			display: flex;
+			gap: 1rem;
+			flex-grow: 1;
+			justify-content: flex-end;
+
+			@include sm {
+				position: absolute;
+				top: 100%;
+				flex-direction: column;
+				background: var(--theme_color-800);
+				width: 100%;
+				left: 0;
+				padding: 1.5rem;
+				translate: -100% 0;
+				opacity: 0;
+				pointer-events: none;
+				gap: 1.25svh;
+				transition: 0.3s all;
+
+				[state="open"] & {
+					translate: 0 0%;
+					opacity: 1;
+					pointer-events: auto;
+				}
+			}
+		}
+		&primary_item {
+			color: $brand-400;
+			position: relative;
+
+			&:hover {
+				z-index: 509;
+				color: $brand-100;
+			}
+			@include sm {
+				&:not(:last-child) {
+					padding-bottom: 1.25svh;
+					border-bottom: 1px solid $brand-700;
+				}
+			}
+		}
+
+		&primary_link {
+			padding: 1rem;
+			color: inherit;
+			font-family: $sans_font;
+			font-size: 1rem;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+
+			@include sm {
+				padding: 0;
+				color: $brand-200;
+				font-family: $sans_font;
+				font-size: 1.5rem;
+				font-style: normal;
+				font-weight: 400;
+				line-height: normal;
+				padding-bottom: 0.75rem;
+
+				font-size: clamp(1rem, 3.8svh, 2rem);
+			}
+		}
+		&dropdown {
+			display: flex;
+			padding: 24/16 * 1rem;
+			border-radius: 0.5rem;
+			background-color: $brand-800;
+			gap: 1rem;
+			position: absolute;
+			top: 100%;
+
+			opacity: 0;
+			translate: 0 10%;
+			pointer-events: none;
+			transition: 0.3s all;
+
+			&[hover-align="right"] {
+				left: auto;
+				right: -3rem;
+			}
+
+			@include sm {
+				position: relative;
+				opacity: 1;
+				top: 0;
+				gap: 0.5rem;
+				padding: 0;
+				right: auto;
+				opacity: 1;
+				translate: 0 0;
+				pointer-events: auto;
+
+				gap: 1.25svh;
+			}
+
+			&:has(> div:nth-child(2))::before {
+				@include psuedo_el;
+				position: absolute;
+				left: 2.625rem;
+				top: -1.1375rem;
+				width: 8.625rem;
+				height: 2rem;
+				transform: rotate(13.595deg);
+				z-index: 510;
+			}
+		}
+
+		//hover state for dropdown
+		&primary_item:hover &dropdown {
+			opacity: 1;
+			translate: 0 0;
+			pointer-events: auto;
+		}
+
+		&dropdown_group {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			flex-basis: 120/16 * 1rem;
+			flex-grow: 1;
+			min-width: 7rem;
+			@include sm {
+				gap: 1.25svh;
+			}
+		}
+		&secodary_item {
+		}
+		&secondary_link {
+			@include body_text-small;
+			text-decoration: none;
+			color: $brand-300;
+			transition: 0.3s all;
+			&:hover {
+				color: $brand-500;
+				text-decoration: underline;
+			}
+		}
+		&burger {
+			display: none;
+			--_size: 1.5rem;
+
+			@include sm {
+				display: block;
+				background-color: $brand-800;
+			}
+			svg {
+				width: 64/16 * 1rem;
+				path,
+				rect {
+					fill: $brand-400;
+				}
+			}
+			.o {
+				display: block;
+				[state="open"] & {
+					display: none;
+				}
+			}
+			.x {
+				display: none;
+				[state="open"] & {
+					display: block;
+				}
+			}
+		}
+	}
+}

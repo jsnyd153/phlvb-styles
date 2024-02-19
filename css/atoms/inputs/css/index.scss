@@ -1,28 +1,137 @@
 @use "sass:color";
 @use "../../../globals/abstracts" as *;
 
-//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=1%3A2160&mode=design&t=g6qwze9oShWnmzfu-1
+//Visual:
 /*atoms/alerts_icon/css/index.scss*/
 //Dependencies:
 
 //Attributres
 
-.alert_icon,
-.alert-before::before,
-.rich_text blockquote::before {
-	color: white;
-	font-family: "Times New Roman", serif;
-	font-style: italic;
-	@include fluid_size(font-size, 16px, 20px);
-	text-align: center;
-	background: var(--theme_color-600, #{$brand-600});
-	width: 1.5em;
-	line-height: 1.5;
-	border-radius: 50%;
+@mixin input_style() {
+	font-family: $sans_font;
+	border: 1px solid var(--theme_color-700);
+	border-radius: 0.25rem;
+	margin: 0;
+	padding: var(--_size);
+	font-size: var(--_size);
+	height: auto;
+	color: var(--primary_text);
+	caret-color: var(--theme_color-500);
+	transition: 0.3s all;
+	background: var(--background);
+	& + label {
+		position: absolute;
+		margin: 0;
+		padding: 0;
+		background: var(--background);
+		font-size: 0.75em;
+		left: var(--_size);
+		line-height: 100%;
+		font-weight: 500;
+		font-family: $sans_font;
+		translate: 0 -50%;
+		transition: 0.3s all;
+		padding-inline: 0.375em;
+		top: 0;
+		color: var(--theme_color-700);
+		pointer-events: none;
+	}
+
+	&:placeholder-shown {
+		& + label {
+			top: 50%;
+			padding: 0;
+			color: var(--theme_color-700);
+			font-size: var(--_size);
+		}
+	}
+
+	&:hover {
+		border: 1px solid var(--theme_color-500);
+		& + label {
+			color: var(--theme_color-500);
+		}
+	}
+	&:focus-visible {
+		border: 2px solid var(--theme_color-500);
+		outline: 0;
+		& + label {
+			// color: var(--theme_color-500);
+			top: 0;
+			font-size: 0.75rem;
+			padding-inline: 0.375em;
+		}
+	}
+	&:required {
+		+ label {
+			&::after {
+				content: "*";
+			}
+		}
+	}
 }
 
-.alert_icon:not(i)::before,
-.rich_text blockquote::before {
-	content: "i";
-	display: inline-block;
+//print styles
+.input_area {
+	position: relative;
+	font-size: var(--_size);
+	line-height: 100%;
+	flex-grow: 1;
+	min-width: 120/16 * 1rem;
+	@include fluid_size(--_size, 14px, 15px);
+
+	input {
+		&[type="email"],
+		&[type="text"],
+		&[type="tel"] {
+			@include input_style();
+		}
+	}
+	&:has(select) {
+		color: var(--theme_color-700);
+		&:hover {
+			color: var(--theme_color-500);
+		}
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			right: 1.5rem;
+			top: 50%;
+			translate: 0 -50%;
+			rotate: 45deg;
+			height: 0.5rem;
+			width: 0.5rem;
+			pointer-events: none;
+			color: inherit;
+			border-bottom: 1px solid currentColor;
+			border-right: 1px solid currentColor;
+		}
+		select {
+			//hides default arrow (nested here so it only hides if we have a replacement element
+			color: inherit;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+		}
+	}
+	select {
+		@include input_style();
+	}
+	textarea {
+		@include input_style();
+
+		&:placeholder-shown {
+			& + label {
+				//adjust positon for multi-line
+				top: calc(var(--_size) * 1.5);
+			}
+		}
+		&:focus-visible {
+			& + label {
+				//re-declare focus value to overide multi-line
+				top: 0;
+			}
+		}
+	}
 }

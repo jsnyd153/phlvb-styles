@@ -17,6 +17,13 @@
 			--primary_text: white;
 			--secondary_text: #{$brand-50};
 			padding-block: var(--padding_base);
+
+			.button {
+				pointer-events: auto;
+			}
+			@include header_tags {
+				pointer-events: auto;
+			}
 		}
 
 		&row {

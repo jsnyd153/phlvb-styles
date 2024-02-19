@@ -1,6 +1,7 @@
 @use "sass:color";
 @use "abstracts/" as *;
 
+/*css/globals/grids.scss*/
 :root {
 	@include fluid_size(--gap, 12px, 32px);
 	@include fluid_size(--padding_base, 40px, 60px);

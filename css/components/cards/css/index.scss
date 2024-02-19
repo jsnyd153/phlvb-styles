@@ -128,7 +128,8 @@
 			--_size: #{48/30 * 1em};
 		}
 		.headline {
-			min-width: 15ch;
+			@include headline_3;
+			min-width: 14ch;
 		}
 	}
 

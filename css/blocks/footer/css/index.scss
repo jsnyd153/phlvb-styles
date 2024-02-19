@@ -1,0 +1,140 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+// Footer
+// Visual:https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=108%3A8707&mode=design&t=sotPLNOuq96tBLEK-1
+// Dependancy:
+
+/*css/blocks/footer/css/index.scss*/
+
+//Attributes
+
+footer {
+	display: flex !important;
+	flex-direction: column;
+	@include theme-dark;
+}
+
+.footer {
+	&_nav {
+		background-color: #000000;
+		padding-block: var(--padding_base);
+		padding-inline: var(--page_margin);
+		display: flex;
+		gap: var(--gap);
+		justify-content: space-between;
+		flex-wrap: wrap;
+		&--branding {
+			width: 240/16 * 1rem;
+		}
+		&--navigation {
+			display: flex;
+			gap: var(--gap);
+			justify-content: flex-end;
+			flex-grow: 1;
+			flex-shrink: 1;
+			max-width: 768/16 * 1rem;
+			flex-wrap: wrap;
+		}
+		&--group {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			flex-grow: 1;
+			min-width: 120/16 * 1rem;
+			flex-basis: 8rem;
+		}
+		&--item {
+			a {
+				color: $brand-50;
+				font-family: $sans_font;
+				font-size: 0.92075rem;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 100%; /* 1.33506rem */
+				text-decoration: none;
+				position: relative;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+			&.header {
+				a {
+					color: $brand-200;
+					font-family: $sans_font-condensed;
+					font-size: 0.875rem;
+					font-style: italic;
+					font-weight: 800;
+					line-height: 100%;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+
+	&_play {
+		display: flex;
+		justify-items: stretch;
+		@include sm {
+			flex-direction: column;
+		}
+		&--link {
+			height: 180/16 * 1rem;
+			position: relative;
+			@include f-center;
+			flex-grow: 1;
+			text-decoration: none;
+			overflow: hidden;
+		}
+		&--media {
+			@include cover_obj;
+			background-color: #000000;
+			img {
+				@include cover_obj;
+				opacity: 0.4;
+				transition: 0.3s all;
+				a:hover & {
+					opacity: 0.3;
+					scale: 1.1;
+				}
+			}
+		}
+		&--text {
+			position: relative;
+			h3 {
+				@include fluid_size(font-size, 36px, 48px);
+				color: white;
+			}
+		}
+	}
+}
+
+.footer_end {
+	background-color: #111111;
+	display: flex;
+	justify-content: center;
+	padding: 1.5rem;
+}
+.footer_end--social {
+	display: flex;
+	justify-content: center;
+	gap: 3rem;
+}
+
+.social_nav--link {
+	opacity: 0.4;
+	color: $brand-50;
+	transition: 0.3s all;
+	width: 24/16 * 1rem;
+
+	&:hover {
+		opacity: 1;
+	}
+
+	svg {
+		color: inherit;
+	}
+	.fill {
+		fill: currentColor;
+	}
+}

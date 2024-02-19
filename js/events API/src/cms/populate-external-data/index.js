@@ -9,6 +9,19 @@
             const itemTemplateElement = firstItem.element;
             const events = await fetchEvents();
             console.log('events', events);
+            if (events.length === 0) {
+                const errorMessage = document.createElement('div');
+                errorMessage.textContent = "Our API isn't working right now, but you can see all our events on Opensports";
+                const opensportsLink = document.createElement('a');
+                opensportsLink.textContent = 'Opensports';
+                opensportsLink.href = 'https://www.opensports.com';
+                errorMessage.appendChild(opensportsLink);
+                const listContainer = document.querySelector('.w-dyn-list');
+                if (listContainer) {
+                    listContainer.appendChild(errorMessage);
+                }
+                return;
+            }
             listInstance.clearItems();
             const newItems = events.map((event) => createItem(event, itemTemplateElement));
             await listInstance.addItems(newItems);

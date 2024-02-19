@@ -1,28 +1,6 @@
-@keyframes draw_line {
- 0%, 10% {
-  width: 0%;
-  left: 0;
-  right: auto;
- }
- 40% {
-  width: 100%;
-  left: 0;
-  right: auto;
- }
- 60% {
-  width: 100%;
-  left: auto;
-  right: 0;
- }
- 90%, 100% {
-  width: 0%;
-  left: auto;
-  right: 0;
- }
-}
 /*css/blocks/story_block.scss*/
 .story_block--section {
- row-gap: 3.75rem;
+ row-gap: 2rem;
  padding-block: var(--padding_base);
  background-color: var(--background);
 }
@@ -39,6 +17,7 @@
  --columns: 12;
  --start: calc((16 - var(--columns)) / 2);
  grid-column: var(--start)/span var(--columns);
+ row-gap: 2rem;
 }
 .story_block--row[column-span=inset] {
  --columns: 10;
@@ -142,6 +121,11 @@
 @media (max-width: 576px) {
  .story_block--row > .text_area {
   padding: 0;
+ }
+}
+@media (max-width: 767px) {
+ .story_block--row .media_area + .text_area {
+  grid-row: 1;
  }
 }
 .story_block--row[single-item=true] > div {
