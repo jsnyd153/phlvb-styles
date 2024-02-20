@@ -15,15 +15,15 @@
 }
 
 [color-theme="indoor"],
-[event-type="indoor"] {
+[event-type="Indoor"] {
 	@include theme-indoor;
 }
 [color-theme="grass"],
-[event-type="grass"] {
+[event-type="Grass"] {
 	@include theme-grass;
 }
 [color-theme="beach"],
-[event-type="beach"] {
+[event-type="Beach"] {
 	@include theme-beach;
 }
 

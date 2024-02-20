@@ -33,7 +33,7 @@
 }
 
 [color-theme=indoor],
-[event-type=indoor] {
+[event-type=Indoor] {
  --theme_color-50: #f7eeeb;
  --theme_color-100: #ebd5cd;
  --theme_color-200: #e6c0b5;
@@ -47,7 +47,7 @@
 }
 
 [color-theme=grass],
-[event-type=grass] {
+[event-type=Grass] {
  --theme_color-50: #f3fbe3;
  --theme_color-100: #e2f5ba;
  --theme_color-200: #d6eca4;
@@ -61,7 +61,7 @@
 }
 
 [color-theme=beach],
-[event-type=beach] {
+[event-type=Beach] {
  --theme_color-50: #fffcec;
  --theme_color-100: #fff7cf;
  --theme_color-200: #f6eab6;
