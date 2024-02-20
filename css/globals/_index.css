@@ -278,6 +278,7 @@ p.book {
   right: 0;
  }
 }
+/*css/globals/grids.scss*/
 :root {
  --gap: clamp(0.75rem, 1.88vw + 0.3125rem, 2rem);
  --padding_base: clamp(2.5rem, 1.88vw + 2.0625rem, 3.75rem);
@@ -420,7 +421,7 @@ iframe {
 }
 
 [color-theme=indoor],
-[event-type=indoor] {
+[event-type=Indoor] {
  --theme_color-50: #f7eeeb;
  --theme_color-100: #ebd5cd;
  --theme_color-200: #e6c0b5;
@@ -434,7 +435,7 @@ iframe {
 }
 
 [color-theme=grass],
-[event-type=grass] {
+[event-type=Grass] {
  --theme_color-50: #f3fbe3;
  --theme_color-100: #e2f5ba;
  --theme_color-200: #d6eca4;
@@ -448,7 +449,7 @@ iframe {
 }
 
 [color-theme=beach],
-[event-type=beach] {
+[event-type=Beach] {
  --theme_color-50: #fffcec;
  --theme_color-100: #fff7cf;
  --theme_color-200: #f6eab6;
