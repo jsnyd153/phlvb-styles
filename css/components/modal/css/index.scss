@@ -1,0 +1,35 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=4%3A5788&mode=design&t=g6qwze9oShWnmzfu-1
+/*components/accordion/css/index.scsss*/
+//Dependencies: toggle.js, jquery
+
+.modal {
+	opacity: 0;
+	pointer-events: none;
+	@include cover_obj;
+	@include f-center;
+	position: fixed;
+	z-index: 600;
+	&[modal-state="active"] {
+		opacity: 1;
+		pointer-events: auto;
+	}
+	&-background {
+		@include cover_obj;
+		background-color: rgba($color: #000000, $alpha: 0.5);
+		backdrop-filter: blur(6px);
+	}
+	&-content {
+		@include f-center;
+		scale: 0;
+		[modal-state="active"] & {
+			scale: 1;
+		}
+		.media_area {
+			width: clamp(300/16 * 1rem, 50svw, 640/16 * 1rem);
+			@include f-center;
+		}
+	}
+}

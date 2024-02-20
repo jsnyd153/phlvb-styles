@@ -229,7 +229,6 @@ a:hover .card-host {
  font-family: p22-mackinac-pro, Libre Baskerville, serif;
  line-height: 125%;
  font-weight: 500;
- min-width: 14ch;
 }
 .card[card-type=location] {
  height: 100%;
@@ -277,6 +276,82 @@ a.card:hover {
 }
 a.card:hover p {
  color: var(--primary_text);
+}
+
+[min-char="6"] {
+ min-width: 6ch;
+}
+
+[min-char="7"] {
+ min-width: 7ch;
+}
+
+[min-char="8"] {
+ min-width: 8ch;
+}
+
+[min-char="9"] {
+ min-width: 9ch;
+}
+
+[min-char="10"] {
+ min-width: 10ch;
+}
+
+[min-char="11"] {
+ min-width: 11ch;
+}
+
+[min-char="12"] {
+ min-width: 12ch;
+}
+
+[min-char="13"] {
+ min-width: 13ch;
+}
+
+[min-char="14"] {
+ min-width: 14ch;
+}
+
+[min-char="15"] {
+ min-width: 15ch;
+}
+
+[min-char="16"] {
+ min-width: 16ch;
+}
+
+[min-char="17"] {
+ min-width: 17ch;
+}
+
+[min-char="18"] {
+ min-width: 18ch;
+}
+
+[min-char="19"] {
+ min-width: 19ch;
+}
+
+[min-char="20"] {
+ min-width: 20ch;
+}
+
+[min-char="21"] {
+ min-width: 21ch;
+}
+
+[min-char="22"] {
+ min-width: 22ch;
+}
+
+[min-char="23"] {
+ min-width: 23ch;
+}
+
+[min-char="24"] {
+ min-width: 24ch;
 }
 
 /*css/components/contact_form/css/index.scsss*/
@@ -506,6 +581,53 @@ a.card:hover p {
 .inline_alert .alert_icon {
  flex-shrink: 0;
  flex-grow: 0;
+}
+
+/*components/accordion/css/index.scsss*/
+.modal {
+ opacity: 0;
+ pointer-events: none;
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ position: fixed;
+ z-index: 600;
+}
+.modal[modal-state=active] {
+ opacity: 1;
+ pointer-events: auto;
+}
+.modal-background {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+ background-color: rgba(0, 0, 0, 0.5);
+ -webkit-backdrop-filter: blur(6px);
+         backdrop-filter: blur(6px);
+}
+.modal-content {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ scale: 0;
+}
+[modal-state=active] .modal-content {
+ scale: 1;
+}
+.modal-content .media_area {
+ width: clamp(18.75rem, 50svw, 40rem);
+ display: flex;
+ justify-content: center;
+ align-items: center;
 }
 
 /*css/components/media_slider/css/index.scss*/
