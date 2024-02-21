@@ -41,7 +41,11 @@
 		}
 		img {
 			@include cover_obj;
-			transition: 0.5s scale, 0.5s translate;
+			height: 120%;
+			width: 100%;
+			top: -10%;
+			bottom: -10%;
+			// transition: 0.5s scale, 0.5s translate;
 		}
 	}
 	.text_area {
@@ -80,8 +84,8 @@
 				}
 			}
 			img {
-				scale: 1.1;
-				translate: 0 -5%;
+				// scale: 1.1;
+				// translate: 0 -5%;
 			}
 		}
 	}
