@@ -41,11 +41,6 @@
 		}
 		img {
 			@include cover_obj;
-			height: 120%;
-			width: 100%;
-			top: -10%;
-			bottom: -10%;
-			// transition: 0.5s scale, 0.5s translate;
 		}
 	}
 	.text_area {

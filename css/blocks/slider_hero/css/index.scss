@@ -71,4 +71,11 @@
 		position: absolute;
 		--swiper-pagination-bottom: var(--gap);
 	}
+	.media_content {
+		border-radius: 0;
+	}
+
+	img {
+		border-radius: 0;
+	}
 }

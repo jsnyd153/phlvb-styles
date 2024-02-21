@@ -386,6 +386,12 @@ iframe {
  border-radius: 0.25rem;
 }
 
+.parallax-image {
+ height: 120%;
+ top: -10%;
+ bottom: -10%;
+}
+
 :root {
  --background: #e9f1ff;
  --primary_text: #192d62;

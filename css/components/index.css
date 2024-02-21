@@ -528,10 +528,6 @@ a.card:hover p {
  inset: 0;
  -o-object-fit: cover;
     object-fit: cover;
- height: 120%;
- width: 100%;
- top: -10%;
- bottom: -10%;
 }
 .image_card .text_area {
  position: relative;

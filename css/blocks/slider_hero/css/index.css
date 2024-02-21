@@ -79,3 +79,9 @@
  position: absolute;
  --swiper-pagination-bottom: var(--gap);
 }
+.slider_hero--section .media_area .media_content {
+ border-radius: 0;
+}
+.slider_hero--section .media_area img {
+ border-radius: 0;
+}
