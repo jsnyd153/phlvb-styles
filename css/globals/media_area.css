@@ -37,7 +37,7 @@ iframe {
  border-radius: 0.25rem;
 }
 
-.parallax-image {
+.media_area .media_content .parallax-image {
  height: 120%;
  top: -10%;
  bottom: -10%;

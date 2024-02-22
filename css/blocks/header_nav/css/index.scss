@@ -59,7 +59,7 @@
 				translate: -100% 0;
 				opacity: 0;
 				pointer-events: none;
-				gap: 1.25svh;
+				gap: 1.5svh;
 				transition: 0.3s all;
 
 				[state="open"] & {
@@ -79,7 +79,7 @@
 			}
 			@include sm {
 				&:not(:last-child) {
-					padding-bottom: 1.25svh;
+					padding-bottom: 1.5svh;
 					border-bottom: 1px solid $brand-700;
 				}
 			}
@@ -129,6 +129,9 @@
 			&[hover-align="right"] {
 				left: auto;
 				right: -3rem;
+				@include sm {
+					right: auto;
+				}
 			}
 
 			@include sm {
@@ -142,7 +145,7 @@
 				translate: 0 0;
 				pointer-events: auto;
 
-				gap: 1.25svh;
+				gap: 1.5svh;
 			}
 
 			&:has(> div:nth-child(2))::before {
@@ -172,7 +175,7 @@
 			flex-grow: 1;
 			min-width: 7rem;
 			@include sm {
-				gap: 1.25svh;
+				gap: 1.5svh;
 			}
 		}
 

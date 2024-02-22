@@ -46,7 +46,8 @@ iframe {
 	}
 }
 
-.parallax-image {
+.media_area .media_content .parallax-image {
+	//need to nest this 3 levels down so it has highest specificity
 	height: 120%;
 	top: -10%;
 	bottom: -10%;

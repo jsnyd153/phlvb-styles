@@ -37,7 +37,7 @@
     ]);
     const fetchEvents = async () => {
         try {
-            const response = await fetch('https://main--phlvb-static.netlify.app/attributes-examples-master/philadlephia_volleyball-api_events.json');
+            const response = await fetch('https://philadelphiavolleyball.org/api/events');
             const jsonData = await response.json();
             const items = jsonData && jsonData.items && Array.isArray(jsonData.items)
                 ? jsonData.items
@@ -68,8 +68,33 @@
             hour12: true
         }).format(endDateTime);
         const formattedDate = `${startFormatted} - ${endFormatted}`;
+        const sortDate = new Intl.DateTimeFormat('en-US', {
+            month: 'long',
+            day: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+        }).format(startDateTime);
+        const formattedSortDate = sortDate.replace(" at", "");
         const dayofWeek = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(startDateTime);
         const eventURL = 'https://opensports.net/posts/' + event.id;
+        const eventLevel = event.level;
+        function mapConstValue(eventLevel) {
+            const mappings = {
+                "B": "B",
+                "B/⬇BB": "B",
+                "⬇BB": "BB",
+                "⬇BB/⬆BB": "BB",
+                "BB": "BB",
+                "⬆BB": "BB",
+                "⬆BB/A": "A",
+                "A": "A",
+                "A/AA": "A"
+            };
+            return mappings[eventLevel] || "Invalid input";
+        }
+        const filterLevel = mapConstValue(eventLevel);
         const date = newItem.querySelector('[data-element="date"]');
         const title = newItem.querySelector('[data-element="title"]');
         const description = newItem.querySelector('[data-element="description"]');
@@ -78,6 +103,8 @@
         const location = newItem.querySelector('[data-element="location"]');
         const gender = newItem.querySelector('[data-element="gender"]');
         const day = newItem.querySelector('[data-element="day"]');
+        const sort_date = newItem.querySelector('[data-element="sort_date"]');
+        const filter_level = newItem.querySelector('[data-element="filter_level"]');
         const link = newItem.querySelector('[data-element="link"]');
         if (date)
             date.textContent = formattedDate;
@@ -101,6 +128,10 @@
             link.setAttribute('event-type', event.eventType);
         if (link)
             link.setAttribute('loaded', 'true');
+        if (sort_date)
+            sort_date.textContent = formattedSortDate;
+        if (filter_level)
+            filter_level.textContent = filterLevel;
         return newItem;
     };
 })();

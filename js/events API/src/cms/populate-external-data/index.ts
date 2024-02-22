@@ -73,7 +73,7 @@ window.fsAttributes.push([
 
 const fetchEvents = async (): Promise<Event[]> => {
   try {
-    const response = await fetch('https://main--phlvb-static.netlify.app/attributes-examples-master/philadlephia_volleyball-api_events.json');
+    const response = await fetch('https://philadelphiavolleyball.org/api/events');
     const jsonData = await response.json();
 
     // Check if the "items" property exists and is an array
@@ -101,6 +101,15 @@ const createItem = (event: Event, templateElement: HTMLDivElement) => {
   const newItem = templateElement.cloneNode(true) as HTMLDivElement;
 
 
+
+
+
+//Process values from the API to get them to the intended formats
+
+//========DATES =======
+//=====================
+//======================
+
 //start formated with day and month
 const startDateTime = new Date(event.start);
   const startFormatted = new Intl.DateTimeFormat('en-US', {
@@ -111,6 +120,7 @@ const startDateTime = new Date(event.start);
     minute: 'numeric',
     hour12: true
   }).format(startDateTime);
+  
 //Just the time for end
 const endDateTime = new Date(event.end);
   const endFormatted = new Intl.DateTimeFormat('en-US', {
@@ -122,12 +132,55 @@ const endDateTime = new Date(event.end);
   //Final formatted date
   const formattedDate = `${startFormatted} - ${endFormatted}`;
 
+    const sortDate = new Intl.DateTimeFormat('en-US', {
+      month: 'long', 
+      day: '2-digit', 
+      year: 'numeric', 
+      hour: '2-digit', 
+      minute: '2-digit', 
+      hour12: false 
+  }).format(startDateTime);
+
+  const formattedSortDate = sortDate.replace(" at", "");
+
   //Just the Day fo the Week for filtering
   const dayofWeek = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(startDateTime);
+
+
+
+//====================== EVENT URL
+
 
   //create full URL from post aliasID
   const eventURL = 'https://opensports.net/posts/' + event.id;
   
+//===============Level for filters
+
+const eventLevel = event.level;
+
+function mapConstValue(eventLevel: string): string {
+  // Define the mapping rules
+  const mappings: { [key: string]: string } = {
+      "B": "B",
+      "B/⬇BB": "B",
+      "⬇BB": "BB",
+      "⬇BB/⬆BB": "BB",
+      "BB": "BB",
+      "⬆BB": "BB",
+      "⬆BB/A": "A",
+      "A": "A",
+      "A/AA": "A"
+  };
+
+  // Map the event level to the corresponding value
+  return mappings[eventLevel] || "Invalid input";
+}
+
+// Example usage
+const filterLevel: string = mapConstValue(eventLevel);
+
+
+
 
   // Query inner elements to modify
   const date = newItem.querySelector<HTMLDivElement>('[data-element="date"]');
@@ -138,7 +191,10 @@ const endDateTime = new Date(event.end);
   const location = newItem.querySelector<HTMLParagraphElement>('[data-element="location"]');
   const gender = newItem.querySelector<HTMLParagraphElement>('[data-element="gender"]');
   const day = newItem.querySelector<HTMLParagraphElement>('[data-element="day"]');
+  const sort_date = newItem.querySelector<HTMLParagraphElement>('[data-element="sort_date"]');
+  const filter_level = newItem.querySelector<HTMLParagraphElement>('[data-element="filter_level"]');
   const link = newItem.querySelector<HTMLLinkElement>('[data-element="link"]');
+  
 
   // Populate inner elements
   //check if they exist first, set the content if they do
@@ -153,6 +209,8 @@ const endDateTime = new Date(event.end);
   if (link) link.href = eventURL;
   if (link) link.setAttribute('event-type',event.eventType)
   if (link) link.setAttribute('loaded','true')
+  if (sort_date) sort_date.textContent = formattedSortDate;
+  if (filter_level) filter_level.textContent = filterLevel;
   return newItem;
 };
 
