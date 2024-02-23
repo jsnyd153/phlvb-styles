@@ -142,6 +142,7 @@
  --border: #1c326f;
  position: relative;
  contain: paint;
+ row-gap: 2.5rem;
  padding-block: var(--padding_base);
 }
 .column_hero--section[has-image=true] {
@@ -325,6 +326,7 @@ footer {
  padding-inline: var(--page_margin);
  display: flex;
  gap: var(--gap);
+ row-gap: 2.5rem;
  justify-content: space-between;
  flex-wrap: wrap;
 }
@@ -1098,7 +1100,7 @@ a:hover .footer_play--media img {
 }
 .slider_hero--section .media_area .slider_pagination {
  position: absolute;
- --swiper-pagination-bottom: var(--gap);
+ --swiper-pagination-bottom: 1.5rem;
 }
 .slider_hero--section .media_area .media_content {
  border-radius: 0;
