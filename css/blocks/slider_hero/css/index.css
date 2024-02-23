@@ -77,7 +77,7 @@
 }
 .slider_hero--section .media_area .slider_pagination {
  position: absolute;
- --swiper-pagination-bottom: var(--gap);
+ --swiper-pagination-bottom: 1.5rem;
 }
 .slider_hero--section .media_area .media_content {
  border-radius: 0;

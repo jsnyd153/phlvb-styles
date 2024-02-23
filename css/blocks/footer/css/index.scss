@@ -22,6 +22,7 @@ footer {
 		padding-inline: var(--page_margin);
 		display: flex;
 		gap: var(--gap);
+		row-gap: 2.5rem;
 		justify-content: space-between;
 		flex-wrap: wrap;
 		&--branding {

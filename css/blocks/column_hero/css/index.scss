@@ -19,6 +19,7 @@
 			--border: #{$brand-800};
 			position: relative;
 			contain: paint;
+			row-gap: 2.5rem;
 			&[has-image="true"] {
 				--primary_text: white;
 				--secondary_text: #{$brand-50};

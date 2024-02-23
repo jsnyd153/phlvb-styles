@@ -33,6 +33,7 @@ iframe {
 
 	&[aspect-ratio] {
 		position: relative;
+		overflow: hidden;
 		> img,
 		> picture,
 		> video,

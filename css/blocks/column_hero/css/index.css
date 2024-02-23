@@ -7,6 +7,7 @@
  --border: #1c326f;
  position: relative;
  contain: paint;
+ row-gap: 2.5rem;
  padding-block: var(--padding_base);
 }
 .column_hero--section[has-image=true] {

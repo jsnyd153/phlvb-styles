@@ -21,6 +21,7 @@ iframe {
 }
 .media_content[aspect-ratio] {
  position: relative;
+ overflow: hidden;
 }
 .media_content[aspect-ratio] > img,
 .media_content[aspect-ratio] > picture,
