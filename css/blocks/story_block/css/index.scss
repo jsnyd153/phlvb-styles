@@ -25,15 +25,11 @@
 		}
 
 		&row {
-			@include inner_grid($c: 12);
-			//calculate columns on the section level grid > adjust --columns for change the width of the row
-			//centers the content inside the row
-			//only accepts even --column values
-
 			position: relative;
 			@include column-span;
 			row-gap: 2rem;
-
+			column-gap: inherit;
+			grid-template-columns: 1fr 1fr;
 			&:has(.text_area + .text_area) {
 				.text_area {
 					align-self: start;
@@ -45,65 +41,6 @@
 
 			> div {
 				align-self: center;
-			}
-
-			> div:nth-of-type(1) {
-				grid-column: span calc(var(--columns) / 2 - 1);
-			}
-			&[distribute-columns="4:8"] > div:nth-of-type(1) {
-				grid-column: span calc(var(--columns) / 2 - 2);
-				@include md {
-					grid-column: span calc(var(--columns) / 2 - 1);
-				}
-			}
-			&[distribute-columns="5:7"] > div:nth-of-type(1) {
-				grid-column: span calc(var(--columns) / 2 - 1);
-			}
-			&[distribute-columns="1:1"] > div:nth-of-type(1),
-			&[distribute-columns="6:6"] > div:nth-of-type(1) {
-				grid-column: span calc(var(--columns) / 2);
-			}
-			&[distribute-columns="7:5"] > div:nth-of-type(1) {
-				grid-column: span calc(var(--columns) / 2 + 1);
-			}
-			&[distribute-columns="8:4"] > div:nth-of-type(1) {
-				grid-column: span calc(var(--columns) / 2 + 2);
-				@include md {
-					grid-column: span calc(var(--columns) / 2 + 1);
-				}
-			}
-
-			> div:nth-of-type(2) {
-				grid-column: span calc(var(--columns) / 2 + 1);
-			}
-
-			&[distribute-columns="4:8"] > div:nth-of-type(2) {
-				grid-column: span calc(var(--columns) / 2 + 2);
-				@include md {
-					grid-column: span calc(var(--columns) / 2 + 1);
-				}
-			}
-			&[distribute-columns="5:7"] > div:nth-of-type(2) {
-				grid-column: span calc(var(--columns) / 2 + 1);
-			}
-			&[distribute-columns="1:1"] > div:nth-of-type(2),
-			&[distribute-columns="6:6"] > div:nth-of-type(2) {
-				grid-column: span calc(var(--columns) / 2);
-			}
-			&[distribute-columns="7:5"] > div:nth-of-type(2) {
-				grid-column: span calc(var(--columns) / 2 - 1);
-			}
-			&[distribute-columns="8:4"] > div:nth-of-type(2) {
-				grid-column: span calc(var(--columns) / 2 - 2);
-				@include md {
-					grid-column: span calc(var(--columns) / 2 - 1);
-				}
-			}
-
-			&[distribute-columns] > div:nth-of-type(n) {
-				@include sm {
-					grid-column: 1/-1;
-				}
 			}
 
 			> .text_area {
