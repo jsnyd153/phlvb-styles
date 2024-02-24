@@ -23,6 +23,9 @@
 			}
 			@include header_tags {
 				pointer-events: auto;
+				.wf-design-mode & {
+					pointer-events: auto;
+				}
 			}
 		}
 

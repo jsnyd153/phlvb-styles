@@ -22,6 +22,14 @@
 .slider_hero--section h6 {
  pointer-events: auto;
 }
+.wf-design-mode .slider_hero--section h1,
+.wf-design-mode .slider_hero--section h2,
+.wf-design-mode .slider_hero--section h3,
+.wf-design-mode .slider_hero--section h4,
+.wf-design-mode .slider_hero--section h5,
+.wf-design-mode .slider_hero--section h6 {
+ pointer-events: auto;
+}
 .slider_hero--row {
  --columns: 12;
  display: grid;
