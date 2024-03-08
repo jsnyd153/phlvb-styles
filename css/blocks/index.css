@@ -893,6 +893,7 @@ a:hover .footer_play--media img {
 }
 .story_block--row {
  position: relative;
+ display: grid;
  --columns: 12;
  --start: calc((16 - var(--columns)) / 2);
  grid-column: var(--start)/span var(--columns);

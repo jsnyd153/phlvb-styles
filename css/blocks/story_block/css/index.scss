@@ -26,10 +26,12 @@
 
 		&row {
 			position: relative;
+			display: grid;
 			@include column-span;
 			row-gap: 2rem;
 			column-gap: inherit;
 			grid-template-columns: 1fr 1fr;
+
 			&:has(.text_area + .text_area) {
 				.text_area {
 					align-self: start;
