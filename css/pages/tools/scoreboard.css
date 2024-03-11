@@ -4,7 +4,6 @@
  font-weight: 100 700;
  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v166/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsLjBuVY.woff2) format("woff2");
 }
-/* latin */
 @font-face {
  font-family: "Chivo Mono";
  font-style: normal;
@@ -38,6 +37,11 @@
  width: 100%;
  height: 100%;
 }
+@media (orientation: portrait) {
+ .t-score-display {
+  grid-template-columns: 1fr;
+ }
+}
 .t-score-display-team {
  --inset: 2rem;
  --service_indicator-size: 0.5rem;
@@ -59,7 +63,7 @@
  font-family: "Trade Gothic Next LT Pro";
  font-style: normal;
  font-weight: 600;
- font-size: 6cqi;
+ font-size: 5cqi;
  line-height: 38px;
  text-align: center;
  color: #ffffff;
@@ -83,7 +87,7 @@
  color: #ffffff;
  z-index: 0;
  padding-top: 3%;
- font-family: "Chivo Mono", monospace;
+ font-family: "Chivo Mono", "Avenir Next", "Trade Gothic Next LT Pro", Helvetica, sans-serif;
  font-style: normal;
  font-weight: 900;
 }
@@ -297,7 +301,6 @@
  font-family: "Material Symbols Outlined";
  font-weight: normal;
  font-style: normal;
- font-size: 24px;
  line-height: 1;
  letter-spacing: normal;
  text-transform: none;
@@ -312,7 +315,7 @@
  color: #474646;
  border-radius: 50%;
  aspect-ratio: 1;
- font-size: 2rem;
+ font-size: 1.5rem;
 }
 
 .t-reset-button {
