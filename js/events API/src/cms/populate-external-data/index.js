@@ -120,8 +120,9 @@
             gender.textContent = event.gender;
         if (day)
             day.textContent = dayofWeek;
-        if (location)
-            location.textContent = event.location.neighborhood;
+        if (location) {
+            location.textContent = event.location.neighborhood ? event.location.neighborhood : event.location.title;
+        }
         if (link)
             link.href = eventURL;
         if (link)

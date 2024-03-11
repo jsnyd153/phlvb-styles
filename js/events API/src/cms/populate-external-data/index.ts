@@ -205,7 +205,10 @@ const filterLevel: string = mapConstValue(eventLevel);
   if (type) type.textContent = event.eventType;
   if (gender) gender.textContent = event.gender;
   if (day) day.textContent = dayofWeek;
-  if (location) location.textContent = event.location.neighborhood;
+  //checks if neighborhood value exists and uses title if there's no neighborhood
+  if (location) {
+    location.textContent = event.location.neighborhood ? event.location.neighborhood : event.location.title;
+}
   if (link) link.href = eventURL;
   if (link) link.setAttribute('event-type',event.eventType)
   if (link) link.setAttribute('loaded','true')
