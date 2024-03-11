@@ -32,6 +32,30 @@
 			column-gap: inherit;
 			grid-template-columns: 1fr 1fr;
 
+			&[distribute-columns="4:8"] {
+				grid-template-columns: 4fr 8fr;
+				@include md {
+					grid-template-columns: 5fr 7fr;
+				}
+			}
+			&[distribute-columns="5:7"] {
+				grid-template-columns: 5fr 7fr;
+			}
+
+			&[distribute-columns="6:6"],
+			&[distribute-columns="1:1"] {
+				grid-template-columns: 6fr 6fr;
+			}
+			&[distribute-columns="7:5"] {
+				grid-template-columns: 7fr 5fr;
+			}
+			&[distribute-columns="8:4"] {
+				grid-template-columns: 8fr 4fr;
+				@include md {
+					grid-template-columns: 7fr 5fr;
+				}
+			}
+
 			&:has(.text_area + .text_area) {
 				.text_area {
 					align-self: start;
@@ -43,6 +67,9 @@
 
 			> div {
 				align-self: center;
+				@include sm {
+					grid-column: 1/-1;
+				}
 			}
 
 			> .text_area {

@@ -81,7 +81,12 @@
 					// font-family: "Trade Gothic Next LT Pro";
 					font-style: normal;
 					// font-weight: 800;
-					font-size: 50cqi;
+					font-size: clamp(10rem, 50cqi, 60svh);
+
+					@media (orientation: portrait) {
+						font-size: clamp(10rem, 50cqi, 50svh);
+					}
+
 					line-height: 1;
 					leading-trim: both;
 					text-edge: cap;
@@ -238,6 +243,7 @@
 			gap: 2rem;
 			width: 100%;
 			justify-content: stretch;
+			flex-wrap: wrap;
 		}
 		&-game {
 			display: flex;
@@ -309,25 +315,10 @@
 	position: fixed;
 	@include t-center;
 	top: 2rem;
-	font-family: "Material Symbols Outlined";
-	font-weight: normal;
-	font-style: normal;
-	line-height: 1;
-	letter-spacing: normal;
-	text-transform: none;
-	display: inline-block;
-	white-space: nowrap;
-	word-wrap: normal;
-	direction: ltr;
-	-webkit-font-feature-settings: "liga";
-	-webkit-font-smoothing: antialiased;
-	font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
 
-	background-color: white;
-	color: #474646;
-	border-radius: 50%;
-	aspect-ratio: 1;
-	font-size: 1.5rem;
+	svg {
+		width: 3rem;
+	}
 }
 
 .t-reset-button {
@@ -341,6 +332,7 @@
 		border: 1px solid var(--theme_color-900);
 		padding: 0.5rem;
 		flex-grow: 1;
+		flex-basis: 14rem;
 	}
 	.tab {
 		font-size: 1rem;

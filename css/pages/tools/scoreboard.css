@@ -78,7 +78,7 @@
  transform: translate(-50%, -50%);
  display: block;
  font-style: normal;
- font-size: 50cqi;
+ font-size: clamp(10rem, 50cqi, 60svh);
  line-height: 1;
  leading-trim: both;
  text-edge: cap;
@@ -90,6 +90,11 @@
  font-family: "Chivo Mono", "Avenir Next", "Trade Gothic Next LT Pro", Helvetica, sans-serif;
  font-style: normal;
  font-weight: 900;
+}
+@media (orientation: portrait) {
+ .t-score-display-team::after {
+  font-size: clamp(10rem, 50cqi, 50svh);
+ }
 }
 .t-score-display-service {
  display: flex;
@@ -222,6 +227,7 @@
  gap: 2rem;
  width: 100%;
  justify-content: stretch;
+ flex-wrap: wrap;
 }
 .t-control-panel-game {
  display: flex;
@@ -298,24 +304,9 @@
  left: 50%;
  transform: translate(-50%, -50%);
  top: 2rem;
- font-family: "Material Symbols Outlined";
- font-weight: normal;
- font-style: normal;
- line-height: 1;
- letter-spacing: normal;
- text-transform: none;
- display: inline-block;
- white-space: nowrap;
- word-wrap: normal;
- direction: ltr;
- -webkit-font-feature-settings: "liga";
- -webkit-font-smoothing: antialiased;
- font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
- background-color: white;
- color: #474646;
- border-radius: 50%;
- aspect-ratio: 1;
- font-size: 1.5rem;
+}
+.t-navigation-toggle svg {
+ width: 3rem;
 }
 
 .t-reset-button {
@@ -328,6 +319,7 @@
  border: 1px solid var(--theme_color-900);
  padding: 0.5rem;
  flex-grow: 1;
+ flex-basis: 14rem;
 }
 .t-score-wrapper .tab {
  font-size: 1rem;
