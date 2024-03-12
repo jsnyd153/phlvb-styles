@@ -15,6 +15,13 @@
 		&section {
 			background-color: var(--background);
 			padding-block: var(--padding_base);
+			//override dumb webflow addition
+			display: grid;
+			grid-template-columns: var(--page_grid);
+			gap: var(--gap);
+			grid-template-rows: initial;
+			grid-auto-columns: initial;
+
 			.w-dyn-list {
 				display: contents;
 			}
@@ -24,6 +31,9 @@
 		}
 
 		&list {
+			//override dumb webflow addition
+			grid-template-rows: initial;
+			grid-auto-columns: initial;
 			@include column-span;
 			--_items-per-row: 4;
 

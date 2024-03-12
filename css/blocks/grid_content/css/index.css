@@ -1,29 +1,12 @@
-@keyframes draw_line {
- 0%, 10% {
-  width: 0%;
-  left: 0;
-  right: auto;
- }
- 40% {
-  width: 100%;
-  left: 0;
-  right: auto;
- }
- 60% {
-  width: 100%;
-  left: auto;
-  right: 0;
- }
- 90%, 100% {
-  width: 0%;
-  left: auto;
-  right: 0;
- }
-}
 /*css/blocks/grid_content/css/index.scss*/
 .grid_content--section {
  background-color: var(--background);
  padding-block: var(--padding_base);
+ display: grid;
+ grid-template-columns: var(--page_grid);
+ gap: var(--gap);
+ grid-template-rows: initial;
+ grid-auto-columns: initial;
 }
 .grid_content--section .w-dyn-list {
  display: contents;
@@ -58,6 +41,8 @@
  --columns: 14;
 }
 .grid_content--list {
+ grid-template-rows: initial;
+ grid-auto-columns: initial;
  --columns: 12;
  --start: calc((16 - var(--columns)) / 2);
  grid-column: var(--start)/span var(--columns);

@@ -457,6 +457,11 @@ a:hover .footer_play--media img {
 .grid_content--section {
  background-color: var(--background);
  padding-block: var(--padding_base);
+ display: grid;
+ grid-template-columns: var(--page_grid);
+ gap: var(--gap);
+ grid-template-rows: initial;
+ grid-auto-columns: initial;
 }
 .grid_content--section .w-dyn-list {
  display: contents;
@@ -491,6 +496,8 @@ a:hover .footer_play--media img {
  --columns: 14;
 }
 .grid_content--list {
+ grid-template-rows: initial;
+ grid-auto-columns: initial;
  --columns: 12;
  --start: calc((16 - var(--columns)) / 2);
  grid-column: var(--start)/span var(--columns);
