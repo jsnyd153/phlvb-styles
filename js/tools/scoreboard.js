@@ -1,39 +1,39 @@
 //=============================================
 //============= SERVE CONTROLS ===============
 //=============================================
-$(document).ready(function () {
-	// Function to initialize the behavior
-	function initializeScoreDisplayService() {
-		$(".t-score-display-service").each(function () {
-			const parentWrapper = $(this).closest(".t-score-wrapper");
-			const playersFormat = parentWrapper.attr("players-format");
-			$(this).empty(); // Clear previous span tags
+// $(document).ready(function () {
+// 	// Function to initialize the behavior
+// 	function initializeScoreDisplayService() {
+// 		$(".t-score-display-service").each(function () {
+// 			const parentWrapper = $(this).closest(".t-score-wrapper");
+// 			const playersFormat = parentWrapper.attr("players-format");
+// 			$(this).empty(); // Clear previous span tags
 
-			// Add span tags based on players-format attribute
-			for (let i = 0; i < playersFormat; i++) {
-				$(this).append("<span></span>");
-			}
+// 			// Add span tags based on players-format attribute
+// 			for (let i = 0; i < playersFormat; i++) {
+// 				$(this).append("<span></span>");
+// 			}
 
-			// Event listener for control buttons
-			parentWrapper.find('[control="players-format"]').click(function () {
-				const value = $(this).attr("value");
-				parentWrapper.attr("players-format", value);
-				initializeScoreDisplayService(); // Re-run the function to update spans
-			});
+// 			// Event listener for control buttons
+// 			parentWrapper.find('[control="players-format"]').click(function () {
+// 				const value = $(this).attr("value");
+// 				parentWrapper.attr("players-format", value);
+// 				initializeScoreDisplayService(); // Re-run the function to update spans
+// 			});
 
-			// Event listener for score display service
-			$(this).click(function () {
-				const teamDisplay = $(this).closest(".t-score-wrapper").find(".t-score-display-team");
-				let teamServerNumber = parseInt(teamDisplay.attr("team-server-number")) || 0;
-				teamServerNumber = (teamServerNumber % playersFormat) + 1;
-				teamDisplay.attr("team-server-number", teamServerNumber);
-			});
-		});
-	}
+// 			// Event listener for score display service
+// 			$(this).click(function () {
+// 				const teamDisplay = $(this).closest(".t-score-wrapper").find(".t-score-display-team");
+// 				let teamServerNumber = parseInt(teamDisplay.attr("team-server-number")) || 0;
+// 				teamServerNumber = (teamServerNumber % playersFormat) + 1;
+// 				teamDisplay.attr("team-server-number", teamServerNumber);
+// 			});
+// 		});
+// 	}
 
-	// Call the function to initialize the behavior
-	initializeScoreDisplayService();
-});
+// 	// Call the function to initialize the behavior
+// 	initializeScoreDisplayService();
+// });
 
 //=============================================
 //============= SCORE CONTROLS ===============

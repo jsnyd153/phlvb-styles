@@ -18,3 +18,16 @@
 		@include cover_obj;
 	}
 }
+
+[background="color-50"] {
+	--background_color: var(--theme_color-50);
+}
+[background="white"] {
+	--background_color: white;
+}
+
+@for $i from 0 through 9 {
+	[background="color-#{$i}00"] {
+		--background_color: var(--theme_color-#{$i}00);
+	}
+}
