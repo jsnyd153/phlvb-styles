@@ -75,11 +75,13 @@
   row-gap: 0.5rem;
  }
 }
-.story_block--row > div {
+.story_block--row > div,
+.story_block--row > a {
  align-self: center;
 }
 @media (max-width: 767px) {
- .story_block--row > div {
+ .story_block--row > div,
+.story_block--row > a {
   grid-column: 1/-1;
  }
 }

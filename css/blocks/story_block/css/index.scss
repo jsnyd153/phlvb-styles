@@ -65,7 +65,8 @@
 				}
 			}
 
-			> div {
+			> div,
+			> a {
 				align-self: center;
 				@include sm {
 					grid-column: 1/-1;
