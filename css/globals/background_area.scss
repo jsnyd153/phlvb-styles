@@ -28,6 +28,6 @@
 
 @for $i from 0 through 9 {
 	[background="color-#{$i}00"] {
-		--background_color: var(--theme_color-#{$i}00);
+		--background: var(--theme_color-#{$i}00);
 	}
 }

@@ -344,43 +344,43 @@ section {
 }
 
 [background=color-000] {
- --background_color: var(--theme_color-000);
+ --background: var(--theme_color-000);
 }
 
 [background=color-100] {
- --background_color: var(--theme_color-100);
+ --background: var(--theme_color-100);
 }
 
 [background=color-200] {
- --background_color: var(--theme_color-200);
+ --background: var(--theme_color-200);
 }
 
 [background=color-300] {
- --background_color: var(--theme_color-300);
+ --background: var(--theme_color-300);
 }
 
 [background=color-400] {
- --background_color: var(--theme_color-400);
+ --background: var(--theme_color-400);
 }
 
 [background=color-500] {
- --background_color: var(--theme_color-500);
+ --background: var(--theme_color-500);
 }
 
 [background=color-600] {
- --background_color: var(--theme_color-600);
+ --background: var(--theme_color-600);
 }
 
 [background=color-700] {
- --background_color: var(--theme_color-700);
+ --background: var(--theme_color-700);
 }
 
 [background=color-800] {
- --background_color: var(--theme_color-800);
+ --background: var(--theme_color-800);
 }
 
 [background=color-900] {
- --background_color: var(--theme_color-900);
+ --background: var(--theme_color-900);
 }
 
 .text_area {
