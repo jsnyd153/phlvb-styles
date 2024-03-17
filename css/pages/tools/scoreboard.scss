@@ -23,7 +23,7 @@
 .t- {
 	&score {
 		&-wrapper {
-			width: 100svw;
+			width: 100vw;
 			height: 100svh;
 			@include theme-brand;
 			@include touch {
@@ -64,7 +64,7 @@
 					text-align: center;
 					display: block;
 					position: relative;
-					font-family: "Trade Gothic Next LT Pro";
+					font-family: $sans_font;
 					font-style: normal;
 					font-weight: 600;
 					font-size: 5cqi;
@@ -103,7 +103,7 @@
 				}
 			}
 			&-service {
-				display: flex;
+				display: none;
 				gap: 0.375rem;
 				width: 100%;
 				justify-content: center;
@@ -316,6 +316,11 @@
 	@include t-center;
 	top: 2rem;
 
+	@media (orientation: portrait) {
+		top: 50%;
+		left: 2.5rem;
+	}
+
 	svg {
 		width: 3rem;
 	}
@@ -333,6 +338,9 @@
 		padding: 0.5rem;
 		flex-grow: 1;
 		flex-basis: 14rem;
+		&[control="players-format"] {
+			display: none;
+		}
 	}
 	.tab {
 		font-size: 1rem;

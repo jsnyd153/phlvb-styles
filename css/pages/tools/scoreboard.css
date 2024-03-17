@@ -12,7 +12,7 @@
  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 .t-score-wrapper {
- width: 100svw;
+ width: 100vw;
  height: 100svh;
  --theme_color-50: #e9f1ff;
  --theme_color-100: #bccceb;
@@ -60,7 +60,7 @@
  text-align: center;
  display: block;
  position: relative;
- font-family: "Trade Gothic Next LT Pro";
+ font-family: trade-gothic-next, "Gothic A1", sans-serif;
  font-style: normal;
  font-weight: 600;
  font-size: 5cqi;
@@ -97,7 +97,7 @@
  }
 }
 .t-score-display-service {
- display: flex;
+ display: none;
  gap: 0.375rem;
  width: 100%;
  justify-content: center;
@@ -305,6 +305,12 @@
  transform: translate(-50%, -50%);
  top: 2rem;
 }
+@media (orientation: portrait) {
+ .t-navigation-toggle {
+  top: 50%;
+  left: 2.5rem;
+ }
+}
 .t-navigation-toggle svg {
  width: 3rem;
 }
@@ -320,6 +326,9 @@
  padding: 0.5rem;
  flex-grow: 1;
  flex-basis: 14rem;
+}
+.t-score-wrapper .tab-container[control=players-format] {
+ display: none;
 }
 .t-score-wrapper .tab {
  font-size: 1rem;
