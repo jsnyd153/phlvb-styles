@@ -98,6 +98,10 @@
 		flex-grow: 0;
 		display: flex;
 		justify-content: flex-end;
+
+		@include md {
+			width: auto;
+		}
 		.location_indicator {
 			margin-left: auto;
 		}

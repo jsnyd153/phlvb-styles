@@ -185,3 +185,16 @@ $(document).ready(function () {
 		});
 	});
 });
+
+//=============================================
+//============= RESET ===============
+//=============================================
+$(document).ready(function () {
+	$('[control="reset"]').click(function () {
+		// Set all input[control="score"] to 0
+		$('input[control="score"]').val(0);
+
+		// Set team-score attributes to "0"
+		$("[team-score]").attr("team-score", "0");
+	});
+});

@@ -105,6 +105,11 @@ a:hover .card-host {
  display: flex;
  justify-content: flex-end;
 }
+@media (max-width: 991px) {
+ .card-location {
+  width: auto;
+ }
+}
 .card-location .location_indicator {
  margin-left: auto;
 }
