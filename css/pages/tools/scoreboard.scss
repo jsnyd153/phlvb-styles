@@ -57,6 +57,7 @@
 				background-blend-mode: multiply, normal;
 				container-type: inline-size;
 				container-name: team-display;
+				position: relative;
 
 				&::before {
 					content: attr(team-name);
