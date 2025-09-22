@@ -1,0 +1,39 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=4%3A5788&mode=design&t=g6qwze9oShWnmzfu-1
+/*components/accordion/css/index.scsss*/
+//Dependencies:
+.agenda_list {
+  &- {
+    &header {
+      color: $cream;
+      font-family: $primary_font-var;
+      @include fluid_size(font-size, 22px, 33px);
+      font-weight: 600;
+      line-height: 105%;
+    }
+    &list {
+      display: flex;
+      flex-direction: column;
+    }
+    &item {
+      display: flex;
+      gap: vaR(--gutter);
+    }
+    &label {
+      width: 90 * $rem;
+      border-radius: 4px;
+      background: $frog;
+      box-shadow: 0px 16px 32px -20px rgba(16, 68, 112, 0.13);
+      color: $cream;
+      font-family: $primary_font-var;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 115%; /* 16.1px */
+      text-align: center;
+      @include f-center;
+    }
+  }
+}

@@ -1,0 +1,185 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual:
+/*css/components/form/css/index.scss*/
+//Dependencies:
+
+.c25-form,
+.c26-form {
+  margin-bottom: 0;
+  --_corner: var(--corner-12);
+  --_glow-inset: 2.5rem;
+  padding: 0;
+  container-type: inline-size;
+  container-name: form-card;
+  position: relative;
+
+  &[color-theme="silver"] {
+    --gold: #ffffff;
+    --red: #acacac;
+    --blue: #5e6894;
+  }
+
+  &:before {
+    @include psuedo_el;
+    background: var(--theme--border);
+    position: absolute;
+    inset: -1 * $rem;
+    border-radius: inherit;
+    z-index: -1;
+    background-image: var(
+      --brand--gradient-conic,
+      conic-gradient(
+        from var(--_gradient_angle),
+        var(--gold),
+        var(--red),
+        var(--blue),
+        var(--red),
+        var(--gold)
+      )
+    );
+  }
+  &[color-theme] {
+    &::before {
+      background-image: conic-gradient(
+        from var(--_gradient_angle),
+        var(--theme--accent),
+        var(--theme--accent-light),
+        var(--theme--accent)
+      );
+    }
+  }
+  &- {
+    &form {
+      padding: var(--obj_padding-large);
+      display: flex;
+      flex-direction: column;
+      gap: var(--obj_padding);
+      background-color: var(--theme--background);
+      border-radius: inherit;
+      position: relative;
+    }
+    &text_area {
+      .text_content {
+        gap: 0.5rem;
+      }
+    }
+    &fields {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    &row {
+      display: flex;
+      gap: var(--gutter);
+      flex-wrap: wrap;
+      .input_area {
+        flex-basis: 200/16 * 1rem;
+        flex-grow: 1;
+      }
+    }
+  }
+
+  &-tracker {
+  }
+  &-step-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    h3 {
+      @include fluid_size(font-size, 28px, 36px);
+      font-weight: 400;
+      margin-top: 0.5em;
+      color: var(--theme--accent-light);
+    }
+  }
+}
+
+.c25-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-block: 2rem;
+  border-bottom: 1 * $rem solid var(--theme--accent-light);
+  .c25-form-row:not(
+      :has(
+          textarea,
+          [type="text"],
+          [type="number"],
+          [type="email"],
+          [type="url"],
+          [type="tel"]
+        )
+    ) {
+    margin-top: 1.5rem;
+  }
+  .text_content {
+    gap: 0.25rem;
+  }
+}
+.c25-form-group:has([required]) {
+  h4 {
+    &::after {
+      display: inline-block;
+      content: "*";
+      color: $red;
+    }
+  }
+}
+
+.max {
+  color: vaR(--theme--secondary_text);
+}
+
+.c26-form-tracker {
+  width: 100%;
+  position: sticky;
+  top: 7.5rem;
+  background-color: var(--theme--background-em);
+  height: 10px;
+  --_items: 5;
+  display: grid;
+  grid-template-columns: repeat(var(--_items), 1fr);
+  border: 2px solid var(--theme--background-em);
+  gap: 0.25rem;
+  z-index: 99;
+  box-shadow: 0px 2px 16px 4px var(--theme--background);
+
+  &-item {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    &[complete="true"] {
+      background-color: var(--theme--accent-light);
+    }
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+.invalid {
+  border-color: $red !important;
+}
+
+.c25-form-group[id] {
+  position: relative;
+  .scroll-anchor {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    top: -100 * $rem;
+  }
+}
+
+.form--checkbox_input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.utm-fields {
+  display: none;
+}

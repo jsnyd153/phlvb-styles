@@ -1,0 +1,223 @@
+/*atoms/buttons/css/index.scsss*/
+.button-container {
+ display: flex;
+ gap: 1rem;
+ flex-wrap: wrap;
+ justify-content: flex-start;
+}
+
+.pv25-button {
+ display: flex;
+ padding: 0.6428571429em 1.0714285714em;
+ justify-content: center;
+ align-items: center;
+ gap: 1.0714285714em;
+ font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+ color: var(--theme--accent-text, #ffffff);
+ background: var(--theme--accent, #1a7aff);
+ border: 0.0625rem solid var(--theme--accent, #94d13d);
+ border-radius: 1rem 0 1rem 0;
+ font-style: normal;
+ font-weight: 400;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ line-height: 100%;
+ text-decoration: none;
+ transition: 0.5s box-shadow, 0.5s background-color, 0.5s color, 0.25s translate, 0.5s filter;
+ position: relative;
+ filter: brightness(1);
+}
+.button-container .pv25-button:nth-child(even) {
+ border-radius: 0rem 1rem 0rem 1rem;
+}
+.pv25-button:before {
+ display: block;
+ content: "";
+ position: absolute;
+ inset: 0.5em;
+ filter: blur(1.25em);
+ background-color: inherit;
+ opacity: 0;
+ transition: 0.5s opacity;
+ transition-timing-function: cubic-bezier(0.11, 0, 0.2, 0);
+}
+.pv25-button .button-arrow {
+ transition: 0.3s translate;
+}
+.pv25-button:hover {
+ color: var(--theme--accent-text, #ffffff);
+ filter: brightness(1.25);
+}
+.pv25-button:hover::before {
+ opacity: 1;
+}
+.pv25-button:hover .button-arrow {
+ translate: 50% 0;
+}
+.pv25-button .button-text {
+ position: relative;
+}
+.pv25-button[button-size=large] {
+ font-size: clamp(0.875rem, 0.38vw + 0.7875rem, 1.125rem);
+}
+.pv25-button[button-size=small] {
+ font-size: clamp(0.75rem, 0.09vw + 0.725rem, 0.8125rem);
+}
+.pv25-button[button-type~=back] {
+ flex-direction: row-reverse;
+}
+.pv25-button[button-type~=back] .button-arrow {
+ rotate: 180deg;
+}
+.pv25-button[button-type~=no-arrow] .button-arrow {
+ display: none;
+}
+.pv25-button[button-style~=ghost] {
+ color: var(--theme--accent-text, #ffffff);
+ background: transparent;
+ border: 0.0625rem solid var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-style~=ghost]:hover {
+ background-color: var(--theme--accent-text, #ffffff);
+ color: var(--theme--accent, #1a7aff);
+}
+.pv25-button[button-style~=ghost][button-color=green] {
+ color: var(--theme--accent, #1a7aff);
+ background: transparent;
+ border: 0.0625rem solid var(--theme--accent, #1a7aff);
+}
+.pv25-button[button-style~=ghost][button-color=green]:hover {
+ background-color: var(--theme--accent, #1a7aff);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-style~=ghost][button-color=light-green] {
+ color: var(--theme--accent, #1a7aff);
+ background: transparent;
+ border: 0.0625rem solid var(--theme--accent, #1a7aff);
+}
+.pv25-button[button-style~=ghost][button-color=light-green]:hover {
+ background-color: var(--theme--accent, #1a7aff);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-style~=ghost][button-color=blue] {
+ color: var(--theme--accent, #1a7aff);
+ background: transparent;
+ border: 0.0625rem solid var(--theme--accent, #1a7aff);
+}
+.pv25-button[button-style~=ghost][button-color=blue]:hover {
+ background-color: var(--theme--accent, #1a7aff);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-style~=ghost][button-color=light-blue] {
+ color: var(--theme--accent, #1a7aff);
+ background: transparent;
+ border: 0.0625rem solid var(--theme--accent, #1a7aff);
+}
+.pv25-button[button-style~=ghost][button-color=light-blue]:hover {
+ background-color: var(--theme--accent, #1a7aff);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-style~=ghost][button-color=crimson] {
+ color: var(--theme--accent, #1a7aff);
+ background: transparent;
+ border: 0.0625rem solid var(--theme--accent, #1a7aff);
+}
+.pv25-button[button-style~=ghost][button-color=crimson]:hover {
+ background-color: var(--theme--accent, #1a7aff);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-style~=ghost][button-color=light-crimson] {
+ color: var(--theme--accent, #1a7aff);
+ background: transparent;
+ border: 0.0625rem solid var(--theme--accent, #1a7aff);
+}
+.pv25-button[button-style~=ghost][button-color=light-crimson]:hover {
+ background-color: var(--theme--accent, #1a7aff);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-style~=ghost][button-color=yellow] {
+ color: var(--theme--accent, #1a7aff);
+ background: transparent;
+ border: 0.0625rem solid var(--theme--accent, #1a7aff);
+}
+.pv25-button[button-style~=ghost][button-color=yellow]:hover {
+ background-color: var(--theme--accent, #1a7aff);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-style~=ghost][button-color=light-yellow] {
+ color: var(--theme--accent, #1a7aff);
+ background: transparent;
+ border: 0.0625rem solid var(--theme--accent, #1a7aff);
+}
+.pv25-button[button-style~=ghost][button-color=light-yellow]:hover {
+ background-color: var(--theme--accent, #1a7aff);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-style~=ghost][button-color=white] {
+ color: var(--theme--accent, #1a7aff);
+ background: transparent;
+ border: 0.0625rem solid var(--theme--accent, #1a7aff);
+}
+.pv25-button[button-style~=ghost][button-color=white]:hover {
+ background-color: var(--theme--accent, #1a7aff);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-style~=ghost][button-color=navy] {
+ color: var(--theme--accent, #1a7aff);
+ background: transparent;
+ border: 0.0625rem solid var(--theme--accent, #1a7aff);
+}
+.pv25-button[button-style~=ghost][button-color=navy]:hover {
+ background-color: var(--theme--accent, #1a7aff);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-color~=blue] {
+ --theme--accent: #1a7aff;
+ --theme--accent-light: #76afff;
+ --theme--accent_glow: rgba(26, 122, 255, 0.6);
+ --theme--accent-text: #ffffff;
+ --theme--accent-text-light: #000e35;
+}
+.pv25-button[button-color~=green] {
+ --theme--accent: #94d13d;
+ --theme--accent-light: #bfe38b;
+ --theme--accent_glow: rgba(148, 209, 61, 0.6);
+ --theme--accent-text: #ffffff;
+ --theme--accent-text-light: #000e35;
+}
+.pv25-button[button-color~=crimson] {
+ --theme--accent: #f16122;
+ --theme--accent-light: #f7a07a;
+ --theme--accent_glow: rgba(241, 97, 34, 0.6);
+ --theme--accent-text: #ffffff;
+ --theme--accent-text-light: #000e35;
+}
+.pv25-button[button-color~=yellow] {
+ --theme--accent: #f9d452;
+ --theme--accent-light: #fbe597;
+ --theme--accent_glow: rgba(249, 212, 82, 0.6);
+ --theme--accent-text: #ffffff;
+ --theme--accent-text-light: #000e35;
+}
+.pv25-button[button-color~=white] {
+ color: #1a7aff;
+ background: #ffffff;
+ border: 0.0625rem solid #ffffff;
+}
+.pv25-button[button-color~=light] {
+ background: var(--theme--accent-light, #76afff);
+ color: var(--theme--accent-text-light, #000e35);
+}
+.pv25-button[button-color=inactive] {
+ background: var(--theme--border);
+ color: var(--theme--primary_text);
+}
+.pv25-button:active {
+ translate: 0 0.125rem;
+}
+
+.button-arrow svg {
+ width: 0.5714285714em;
+}
+.button-arrow svg path {
+ fill: currentColor;
+}

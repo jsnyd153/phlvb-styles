@@ -1,0 +1,314 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=17%3A17741&mode=design&t=iIhpQlgc7EE2wRKD-1
+/*css/blocks/grid_content/css/index.scss*/
+//Dependencies:
+
+//Attributres
+// body {
+//   background: color.adjust($light-blue, $lightness: -5%);
+// }
+
+body {
+	background-color: var(--theme--background);
+}
+header {
+	position: sticky;
+	top: var(--gutter);
+	margin-inline: var(--page_margin);
+	z-index: 700;
+	font-family: $primary_font-var;
+
+	[page-type="agenda"] & {
+		position: relative;
+	}
+
+	.w-nav {
+		padding: 0.25rem 0.5rem 0.25rem 1rem;
+		display: flex;
+		gap: var(--space_between);
+		align-items: center;
+		position: static;
+		border-radius: 99em;
+		border: 1px solid var(--theme--primary_text);
+		background: rgba(255, 255, 255, 0.7);
+		box-shadow: 0px 0.25rem 1.5rem 0px rgba(6, 15, 83, 0.65);
+		backdrop-filter: blur(0.25rem);
+		&:not(:has(.nav--actions)) {
+			min-height: 48 * $rem;
+		}
+		&:not(:has(.nav--actions .c26-button)) {
+			padding: 0.25rem 1rem 0.25rem 1rem;
+		}
+
+		&::before,
+		&::after {
+			display: none;
+		}
+	}
+}
+
+.nav-- {
+	//Logo Area
+	&branding {
+		width: 200/16 * 1rem;
+		flex-grow: 1;
+		min-width: 10rem;
+		&-link {
+			display: block;
+			width: 100%;
+			@include fluid_size(max-width, 200px, 280px);
+			color: var(--theme--background);
+			&:hover {
+				color: var(--theme--accent);
+			}
+		}
+	}
+	&logo {
+		display: flex;
+		align-items: center;
+		padding-left: 0.5rem;
+		svg {
+			max-width: 100%;
+			@include fluid_size(height, 24px, 30px);
+			path {
+				fill: currentColor;
+			}
+		}
+	}
+
+	//main navigation actions
+	&actions {
+		flex-grow: 0;
+		display: flex;
+		gap: var(--space_between-small);
+		align-items: center;
+		.w-nav-overlay & {
+			//style adjustments for expanded mobile nav
+			//webflow moves the entire actions into the .w-nav-overlay element
+			flex-direction: column;
+			justify-content: space-between;
+			background: var(--theme--primary_text);
+			box-shadow: -13px 0px 100px 0px rgba(0, 0, 0, 0.7);
+			translate: calc(var(--page_margin) * -1) 0;
+		}
+	} //actions
+	&list {
+		display: flex;
+		gap: var(--space_between-small);
+		align-items: center;
+		.w-nav-overlay & {
+			//style adjustments for expanded mobile nav
+			//webflow moves the entire actions into the .w-nav-overlay element
+			flex-direction: column;
+			align-items: flex-start;
+			padding: 1.5rem;
+			@include fluid_size(min-width, 300px, 480px, 375px, 991px);
+			max-width: 90svw;
+			height: 100svh;
+		}
+	} //list
+	&item {
+		position: relative;
+		.w-nav-overlay & {
+			width: 100%;
+		}
+	} //item
+	&link {
+		position: relative;
+		color: vaR(--theme--background);
+		@include fluid_size(font-size, 12px, 14px, 991px, 1440px);
+		padding: 10/14 * 1em 4/14 * 1em;
+		font-weight: 500;
+		text-decoration: none;
+		transition: 0.45s font-variation-settings, 0.45s color;
+		font-variation-settings: "wght" 500;
+		&::before {
+			@include psuedo_el;
+			position: absolute;
+			width: 0;
+			top: 100%;
+			left: 0;
+			height: 1/16 * 1rem;
+			background-color: currentColor;
+			transition: 0.45s width, 0.45s color;
+		}
+
+		&.w--current {
+			color: $blue;
+			font-variation-settings: "wght" 700;
+			&::before {
+				// width: 100%;
+				// height: 2/16 * 1rem;
+			}
+		}
+		&:hover {
+			font-variation-settings: "wght" 600;
+			color: var(--purple);
+			&::before {
+				width: 100%;
+			}
+		}
+		.w-nav-overlay & {
+			//style adjustments for expanded mobile nav
+			//webflow moves the entire actions into the .w-nav-overlay element
+			@include fluid_size(font-size, 19px, 24px, 375px, 991px);
+			&::before {
+				width: 100%;
+			}
+		}
+	} //link
+	&dropdown {
+	}
+	&dropdown &link {
+		background-color: transparent;
+		border: 0;
+		display: flex;
+		gap: 8/16 * 1rem;
+		align-items: center;
+		&::after {
+			@include psuedo_el;
+			width: 0;
+			height: 0;
+			border-left: 4px solid transparent;
+			border-right: 4px solid transparent;
+			border-top: 5px solid currentColor;
+			transition: 0.3s rotate;
+		}
+		.w-nav-overlay & {
+			//style adjustments for expanded mobile nav
+			//webflow moves the entire actions into the .w-nav-overlay element
+			font-size: 0.875rem;
+			margin-top: 1rem;
+			&::after {
+				display: none;
+			}
+		}
+	} //dropdown link
+	&dropdown.open &link {
+		&::after {
+			rotate: 180deg;
+		}
+	}
+} //nav
+
+.dropdown-- {
+	&container {
+		position: absolute;
+		top: calc(100% + 0.25rem);
+		width: 240px;
+		background-color: $white;
+		box-shadow: var(--blue-shadow);
+		height: 0;
+		overflow: clip;
+		@media (prefers-reduced-motion: no-preference) {
+			interpolate-size: allow-keywords;
+		}
+		transition: content-visibility 0.5s allow-discrete, height 0.5s;
+		.open & {
+			--_items: 4;
+			height: calc(
+				var(--obj_padding-small) + var(--obj_padding-small) + var(--_items) * 24 * $rem
+			) !important;
+			max-height: 15em;
+			z-index: 999;
+		}
+
+		.w-nav-overlay & {
+			position: static;
+			width: 100%;
+			background-color: transparent;
+			box-shadow: none;
+			height: auto;
+		}
+	}
+	&list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		padding: var(--obj_padding-small);
+		align-items: flex-start;
+		.w-nav-overlay & {
+			padding: 0;
+			gap: 0.5rem;
+		}
+	}
+	&link {
+		font-size: 15/16 * 1rem;
+		font-variation-settings: "wght" 600;
+		color: var(--theme--background);
+		text-decoration: none;
+		padding: 0.5em 0.75em;
+		border: 1/16 * 1rem solid transparent;
+		display: block;
+		transition: 0.3s border 0.3s background;
+		font-size: 1rem;
+		--_accent: var(--blue);
+		&[href~="/bengaluru"] {
+			--_accent: var(--red);
+		}
+		&[href~="/london"] {
+			--_accent: var(--blue);
+		}
+		&[href~="/new-orleans"] {
+			--_accent: var(--green);
+		}
+		&:hover {
+			border: 1/16 * 1rem solid var(--_accent);
+			background-color: var(--theme--primary_text);
+			color: var(--_accent);
+		}
+		svg {
+			width: auto;
+			height: 1em;
+			display: block;
+			path {
+				fill: currentColor;
+			}
+		}
+		.w-nav-overlay & {
+			text-align: left;
+			background-color: rgba($color: $white, $alpha: 0.1);
+			@include fluid_size(font-size, 19px, 24px, 375px, 991px);
+			width: 100%;
+		}
+		[event="bengaluru"] &[event="bengaluru"],
+		[event="london"] &[event="london"],
+		[event="new-orleans"] &[event="new-orleans"] {
+			background: $white;
+			color: var(--_accent);
+		}
+		&:not([event]) {
+			font-size: 1rem;
+		}
+	}
+} //dropdown
+
+.w-nav-overlay {
+	.c25-button {
+		margin-top: auto;
+		width: 100%;
+		font-size: 18/16 * 1rem;
+		.button-text {
+			width: 100%;
+		}
+	}
+	.side-button {
+		padding: 0;
+		background-color: transparent;
+	}
+}
+
+.w-nav-button {
+	padding: 0.25rem 1rem;
+}
+
+#header-burger {
+	width: 1.5em;
+}
+.w-nav[data-animation="over-right"] .w-nav-overlay,
+.w-nav[data-animation="over-right"] [data-nav-menu-open] {
+	right: calc(var(--page_margin) * -1);
+	top: calc(var(--gutter) * -1);
+}

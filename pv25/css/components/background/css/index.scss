@@ -1,0 +1,194 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=4%3A5788&mode=design&t=g6qwze9oShWnmzfu-1
+/*components/background/css/index.scsss*/
+//Dependencies:
+
+.background_area {
+  z-index: -1;
+  pointer-events: none;
+  position: absolute;
+  inset: 0%;
+  overflow-x: clip;
+}
+main > .background_area {
+  z-index: -1;
+  pointer-events: none;
+  position: absolute;
+  inset: 0 0 auto 0;
+  overflow-x: clip;
+  height: clamp(300px, 80svh, 600px);
+  .background_fill {
+    @include cover_obj;
+  }
+  &[background-size="unlimited"] {
+    height: auto;
+    --_fade-length: 50%;
+    --_fade-angle: 0deg;
+
+    .background_fill {
+      position: relative;
+      height: auto;
+      width: 100%;
+    }
+  }
+  &[fade~="left"] {
+    mask-image: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 0.8) var(--_fade-length, 50%)
+    );
+  }
+  &[fade~="right"] {
+    mask-image: linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 0.8) var(--_fade-length, 50%)
+    );
+  }
+  &[fade~="10"] {
+    --_fade-length: 10%;
+  }
+  &[fade~="20"] {
+    --_fade-length: 20%;
+  }
+  &[fade~="30"] {
+    --_fade-length: 30%;
+  }
+  &[fade~="40"] {
+    --_fade-length: 40%;
+  }
+  &[fade~="50"] {
+    --_fade-length: 50%;
+  }
+  [fade~="bottom"] {
+    .background_fill {
+      mask-image: linear-gradient(
+        270deg,
+        rgba(0, 0, 0, 0) 0,
+        rgba(0, 0, 0, 0.8) var(--_fade-length, 50%)
+      );
+    }
+  }
+  [fade~="10"] {
+    --_fade-length: 10%;
+  }
+  [fade~="20"] {
+    --_fade-length: 20%;
+  }
+  [fade~="30"] {
+    --_fade-length: 30%;
+  }
+  [fade~="40"] {
+    --_fade-length: 40%;
+  }
+  [fade~="50"] {
+    --_fade-length: 50%;
+  }
+}
+
+section {
+  > .background_area {
+    z-index: -1;
+    pointer-events: none;
+    position: absolute;
+    @include cover_obj;
+    overflow-x: clip;
+
+    .background_fill {
+      @include cover_obj;
+    }
+  }
+}
+
+.background_fill.color {
+  --_background: var(--theme--background);
+  background-color: vaR(--_background);
+
+  @each $color in $all_colors {
+    &[color="#{nth($color, 1)}"] {
+      --_background: #{nth($color, 2)};
+    }
+  }
+}
+// background-image: url("../../../../media/placeholder-bg.jpg");
+// background-size: cover;
+// .grid {
+//   opacity: 0.2;
+//   display: none;
+//   rect {
+//     opacity: 0.1;
+//   }
+// }
+
+//   .canvas {
+//   }
+
+//   .gradient-group-1 {
+//     position: absolute;
+//     width: 100%;
+//     inset: 0;
+//     // filter: blur(2px);
+
+//     > * {
+//       // outline: 1px solid red;
+//     }
+//   }
+// }
+// svg path {
+//   // stroke: white;
+//   // stroke-width: 1;
+// }
+// svg:has(#o-1-4) {
+//   position: absolute;
+//   width: 132.7%;
+//   height: auto;
+//   top: 0;
+//   // border: 1px solid red;
+//   translate: 28% 0%;
+// }
+
+// svg:has(#o-1-3) {
+//   position: absolute;
+//   width: 165.5%;
+//   height: auto;
+//   top: 0;
+//   // border: 1px solid red;
+//   translate: 14% -28%;
+// }
+
+// svg:has(#o-1-2) {
+//   position: absolute;
+//   width: 165.4%;
+//   height: auto;
+//   top: 0;
+//   // border: 1px solid red;
+//   translate: 6% -17%;
+// }
+
+// svg:has(#o-1-1) {
+//   position: absolute;
+//   width: 163.5%;
+//   height: auto;
+//   top: 0;
+//   translate: 25% 22%;
+//   left: 0;
+//   // border: 1px solid red;
+// }
+// svg:has(#Burst) {
+//   position: absolute;
+//   width: 479.6%;
+//   height: auto;
+//   top: 0;
+//   // border: 1px solid blue;
+//   mix-blend-mode: lighten;
+//   translate: -36% -16%;
+// }
+// svg:has(#Indigo-gradient-top) {
+//   position: absolute;
+//   width: 100%;
+//   height: auto;
+//   top: 0;
+//   // border: 1px solid green;
+// }

@@ -1,0 +1,162 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+// Bento Grid
+// Uneven layouts in rows that don't nessasarily match the layout of the other rows.
+// Can be used for a multi row bento grid or a 2 column utility section
+// the --row can exist in most other sections when needed
+
+//Visual:
+/*css/blocks/bento_grid/css/index.scss*/
+//Dependencies:
+
+//Attributes
+//--section: space-between = $sizes > adjusts the space between rows
+//--row: space-between = $sizes > adjusts the space between columns
+//--row: @column-span
+//--row: bento-layout = 1-7
+
+//layout 1: 5-7
+//layout 2: 7-5
+//layout 3: 6-6
+//layout 4: 1
+//layout 5: 4-8
+//layout 5B: 4-8 - with differnt stacking
+//layout 6: 8-4
+
+//Attributres
+
+.bento_grid {
+	&-- {
+		&section {
+			row-gap: var(--space_between, 24 * $rem);
+			padding-block: var(--section_padding-large, 48 * $rem);
+			position: relative;
+			@each $size in $sizes {
+				&[space-between="#{nth($size, 1)}"] {
+					row-gap: var(--space_between-#{nth($size, 1)});
+					column-gap: var(--_gutter, 12 * $rem);
+				}
+			}
+		}
+		&row {
+			display: grid;
+			gap: var(--space_between, 24 * $rem);
+			@each $size in $sizes {
+				&[space-between="#{nth($size, 1)}"] {
+					gap: var(--space_between-#{nth($size, 1)});
+				}
+			}
+
+			&[bento-layout="1"] {
+				//Slighlty Uneven - right
+				grid-template-columns: 5fr 7fr;
+				@include md {
+					grid-template-columns: 6fr 6fr;
+				}
+				@include sm {
+					grid-template-columns: 1fr;
+				}
+			}
+			&[bento-layout="2"] {
+				//Slighlty Uneven - left
+				grid-template-columns: 7fr 5fr;
+				@include md {
+					grid-template-columns: 6fr 6fr;
+				}
+				@include sm {
+					grid-template-columns: 1fr;
+				}
+			}
+			&[bento-layout="3"] {
+				//Even
+				grid-template-columns: 6fr 6fr;
+				@include sm {
+					grid-template-columns: 1fr;
+				}
+			}
+			&[bento-layout="4"] {
+				//Single
+				grid-template-columns: 1;
+			}
+			&[bento-layout="5"] {
+				// 1-2 uneven
+				grid-template-columns: 4fr 8fr;
+				@include md {
+					grid-template-columns: 5fr 7fr;
+				}
+				@include sm {
+					grid-template-columns: 1fr;
+				}
+			}
+			&[bento-layout="5B"] {
+				grid-template-columns: 2fr 5fr;
+				@include lg {
+					grid-template-columns: 1fr 2fr;
+				}
+				@include md {
+					grid-template-columns: 1fr;
+				}
+			}
+			&[bento-layout="6"] {
+				// 2-1 uneven
+				grid-template-columns: 8fr 4fr;
+				@include md {
+					grid-template-columns: 7fr 5fr;
+				}
+				@include sm {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			.media_area {
+				@include sm {
+					grid-row: 1;
+				}
+			}
+			&[bento-layout="7"] {
+				// 1-2 uneven
+				grid-template-columns: 3fr 9fr;
+				@include md {
+					grid-template-columns: 4fr 8fr;
+				}
+				@include sm {
+					grid-template-columns: 1fr;
+				}
+			}
+			&[bento-layout="8"] {
+				// 1-2 uneven
+				grid-template-columns: 9fr 3fr;
+				@include md {
+					grid-template-columns: 8fr 4fr;
+				}
+				@include sm {
+					grid-template-columns: 1fr;
+				}
+			}
+		} //row
+	}
+}
+
+.sidebar_area {
+	position: relative;
+	height: 100%;
+	&-sticky {
+		position: sticky;
+		top: var(--section_padding-large, 48 * $rem);
+		@include md {
+			position: relative;
+			top: auto;
+		}
+		> .text_area {
+			@include md {
+				display: none;
+			}
+		}
+	}
+}
+.filter-sidebar {
+	@include sm {
+		grid-row: 1;
+	}
+}

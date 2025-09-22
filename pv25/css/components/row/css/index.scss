@@ -1,0 +1,10 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual:
+/*css/components/row/css/index.scss*/
+//Dependencies:
+
+.row {
+  @include column-span;
+}

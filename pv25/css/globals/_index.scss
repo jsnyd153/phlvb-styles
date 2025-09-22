@@ -1,0 +1,22 @@
+// print all globals
+@use "sass:color";
+@use "abstracts/" as *;
+//globals
+@forward "color_themes";
+@forward "grids";
+@forward "text_variables";
+@forward "text_styles";
+@forward "units";
+
+.w-embed {
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+.cms-wrap {
+  display: contents !important;
+}
+.svg-embed {
+  display: contents !important;
+}

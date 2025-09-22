@@ -1,0 +1,80 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=17%3A17741&mode=design&t=iIhpQlgc7EE2wRKD-1
+/*css/blocks/stat_feature/css/index.scss*/
+//Dependencies:
+
+//Attributres
+
+section {
+  // margin-block: 100vh;
+}
+
+.stat_feature {
+  &-- {
+    &section {
+      gap: var(--space_between);
+      padding-block: var(--section_padding);
+    }
+    &row {
+      display: grid;
+      gap: inherit;
+    }
+    &row:nth-child(odd) {
+      grid-template-columns: 5fr 4fr;
+      @include sm {
+        grid-template-columns: 1fr;
+      }
+    }
+    &row:nth-child(even) {
+      grid-template-columns: 4fr 5fr;
+      @include sm {
+        grid-template-columns: 1fr;
+      }
+    }
+    &row:has(&item:nth-child(3)) {
+      grid-template-columns: 1fr 1fr 1fr;
+      @include sm {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &item {
+      border-radius: var(--corner-16, 1rem);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(
+        90deg,
+        var(--theme--accent, $gold) 0%,
+        var(--theme--accent-light, $light-gold) 100%
+      );
+      --_shadow-size: #{44 * $rem};
+      box-shadow: 0 0 var(--_shadow-size, 2rem) 0
+        var(--theme--accent_glow, rgba(254, 163, 57, 0.6));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10% 0;
+      min-height: 200px;
+    }
+    &label {
+      @include headline_4;
+      position: relative;
+      z-index: 1;
+    }
+    &number {
+      @include headline_1;
+      font-weight: 800;
+      @include fluid_size(font-size, 60px, 80px);
+      position: relative;
+      z-index: 1;
+    }
+    &background {
+      @include cover_obj;
+      width: 101%;
+      height: 101%;
+    }
+  }
+}

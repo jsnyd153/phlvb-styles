@@ -1,0 +1,186 @@
+/*css/components/pricing_cards/css/index.scss*/
+@property --_gradient_angle {
+   syntax: "<angle>";
+   initial-value: 0deg;
+   inherits: false;
+}
+.pricing_cards-card {
+   position: relative;
+   --_corner: var(--corner-12);
+   --_glow-inset: 2.5rem;
+   border-radius: var(--_corner);
+   padding: 0;
+   container-type: inline-size;
+   container-name: pricing-card;
+   opacity: 0.7;
+}
+.pricing_cards-card:hover .c26-button .button-arrow {
+   translate: 50% 0;
+}
+.pricing_cards-card::after {
+   position: absolute;
+   border-radius: inherit;
+   z-index: -1;
+   filter: blur(3.5rem);
+   inset: var(--_glow-inset);
+}
+@media (max-width: 767px) {
+   .pricing_cards-card::after {
+      inset: 1rem;
+   }
+}
+.pricing_cards-card:before {
+   display: block;
+   content: "";
+   background: var(--theme--border);
+   position: absolute;
+   inset: -0.0625rem;
+   border-radius: inherit;
+   z-index: -1;
+}
+.pricing_cards-card[state=active] {
+   opacity: 1;
+   background-color: var(--theme--background-em);
+}
+.pricing_cards-card[state=active]::after, .pricing_cards-card[state=active]::before {
+   background-image: conic-gradient(from var(--_gradient_angle), var(--gold), var(--red), var(--blue), var(--red), var(--gold));
+   animation: card-border-rotation 5s linear infinite;
+}
+.pricing_cards-card[state=active]:after {
+   display: block;
+   content: "";
+}
+.pricing_cards-border-wrapper {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   border-radius: inherit;
+   background-color: var(--theme--background);
+   position: relative;
+   transition: 1s background-color;
+}
+a:hover .pricing_cards-border-wrapper {
+   background-color: var(--theme--background-em);
+}
+.pricing_cards-text_area {
+   padding: var(--obj_padding-small);
+   flex-basis: 18.75rem;
+   flex-grow: 1;
+}
+@container pricing-card (max-width:31.25rem) {
+   [state=active] .pricing_cards-text_area {
+      margin-bottom: -5rem;
+   }
+}
+.pricing_cards-text_area .text_content {
+   flex-direction: row;
+   gap: 1rem;
+   align-items: center;
+}
+[state=active] .pricing_cards-text_area .text_content {
+   flex-direction: column;
+   align-items: flex-start;
+}
+.pricing_cards-text_area .tag {
+   background-color: var(--theme--background);
+   border: 0.0625rem solid var(--theme--border);
+   color: var(--theme--primary_text);
+}
+.pricing_cards-text_area h3 {
+   display: none;
+}
+[state=active] .pricing_cards-text_area h3 {
+   margin-top: 1em;
+   display: block;
+}
+.pricing_cards-text_area h4 {
+   order: 3;
+   font-size: 1.125rem;
+   font-weight: 570;
+   flex-grow: 1;
+   text-align: right;
+   opacity: 0.7;
+}
+[state=active] .pricing_cards-text_area h4 {
+   order: 0;
+   opacity: 1;
+   color: var(--theme--primary_text, #fff);
+   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
+   font-weight: 500;
+   font-size: clamp(2.625rem, 1.69vw + 2.23125rem, 3.75rem);
+   line-height: 1.1;
+   text-wrap: pretty;
+   text-align: left;
+}
+.pricing_cards-text_area p {
+   color: var(--theme--secondary_text);
+   font-size: 0.8125rem;
+   font-weight: 600;
+}
+.pricing_cards-media_area {
+   flex-basis: 12.5rem;
+   flex-grow: 1;
+   display: none;
+   border-radius: 0 var(--_corner) var(--_corner) 0;
+   overflow: clip;
+}
+@container pricing-card (max-width:31.25rem) {
+   .pricing_cards-media_area {
+      min-height: 5rem;
+   }
+   .pricing_cards-media_area img {
+      display: none;
+   }
+}
+[state=active] .pricing_cards-media_area {
+   display: block;
+}
+.pricing_cards-media_area .media_content {
+   position: relative;
+   height: 100%;
+   width: 100%;
+   aspect-ratio: auto;
+}
+.pricing_cards-media_area .media_content::after {
+   display: block;
+   content: "";
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   inset: 0;
+   -o-object-fit: cover;
+      object-fit: cover;
+   background: radial-gradient(56.38% 94.65% at 100% 100%, #161b32 0%, rgba(22, 27, 50, 0) 100%);
+}
+.pricing_cards-media_area .media_content img {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   inset: 0;
+   -o-object-fit: cover;
+      object-fit: cover;
+}
+.pricing_cards-media_area .media_content .c26-button {
+   z-index: 1;
+   position: absolute;
+   right: var(--obj_padding-small);
+   bottom: var(--obj_padding-small);
+}
+.pricing_cards-media_area .media_content .c26-button svg {
+   position: relative;
+}
+
+@keyframes card-border-rotation {
+   0% {
+      --_gradient_angle: 0deg;
+   }
+   100% {
+      --_gradient_angle: -360deg;
+   }
+}
+#header-burger {
+   color: #161b32;
+}
+#header-burger path {
+   stroke: currentColor;
+}

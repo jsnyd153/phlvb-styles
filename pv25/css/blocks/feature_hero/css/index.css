@@ -1,0 +1,58 @@
+/*css/blocks/basic_content/css/index.scss*/
+.feature_hero--section {
+ padding-top: calc(var(--section_padding) * 3);
+ padding-bottom: calc(var(--section_padding) * 2);
+ min-height: clamp(25rem, 18.78vw + 20.6rem, 37.5rem);
+ position: relative;
+}
+.feature_hero--media_area {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+}
+.feature_hero--media_area .media_content::after {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+ background: linear-gradient(180deg, rgba(0, 14, 53, 0) 45%, rgba(0, 14, 53, 0.5) 65%, #000e35 100%);
+}
+.feature_hero--media_area .media_content img {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+}
+.feature_hero--text_area {
+ align-self: end;
+ position: relative;
+ grid-column: 3/-3;
+}
+@media (max-width: 991px) {
+ .feature_hero--text_area {
+  grid-column: 2/-2;
+ }
+}
+.feature_hero--text_area .text_content {
+ align-items: center;
+ text-align: center;
+}
+.feature_hero--text_area .text_content p {
+ color: var(--theme--primary_text);
+ text-align: center;
+ font-variant-numeric: lining-nums proportional-nums;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-size: clamp(1.25rem, 0.75vw + 1.075rem, 1.75rem);
+ font-style: normal;
+ font-weight: 400;
+ line-height: 130%;
+}

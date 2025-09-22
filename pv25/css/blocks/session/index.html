@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1" large bold="viewport" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Block - Grid Content</title>
+    <link rel="stylesheet" href="../../globals/normalize.css" />
+    <link rel="stylesheet" href="../../globals/_index.css" />
+    <link rel="stylesheet" href="../../atoms/_index.css" />
+    <link rel="stylesheet" href="../../components/_index.css" />
+    <link rel="stylesheet" href="../index.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+
+  <body>
+    <main class="">
+      <section class="stat_feature--section">
+        <div class="stat_feature--media_area">
+          <div class="stat_feature--media_content">
+            <div
+              data-poster-url="https://cdn.prod.website-files.com/6606bdecf31e2757cbfbb965%2F66fc3c88ef12bf11a426e186_web-current-24-poster-00001.jpg"
+              data-video-urls="https://cdn.prod.website-files.com/6606bdecf31e2757cbfbb965%2F66fc3c88ef12bf11a426e186_web-current-24-transcode.mp4,https://cdn.prod.website-files.com/6606bdecf31e2757cbfbb965%2F66fc3c88ef12bf11a426e186_web-current-24-transcode.webm"
+              data-autoplay="true"
+              data-loop="true"
+              data-wf-ignore="true"
+              class="stat_feature--video w-background-video w-background-video-atom"
+            >
+              <video
+                id="b17e4c54-e0b0-4999-bf9c-5c50bdda63c1-video"
+                autoplay=""
+                loop=""
+                style="
+                  background-image: url('https://cdn.prod.website-files.com/6606bdecf31e2757cbfbb965%2F66fc3c88ef12bf11a426e186_web-current-24-poster-00001.jpg');
+                "
+                muted=""
+                playsinline=""
+                data-wf-ignore="true"
+                data-object-fit="cover"
+              >
+                <source
+                  src="https://cdn.prod.website-files.com/6606bdecf31e2757cbfbb965%2F66fc3c88ef12bf11a426e186_web-current-24-transcode.mp4"
+                  data-wf-ignore="true"
+                />
+                <source
+                  src="https://cdn.prod.website-files.com/6606bdecf31e2757cbfbb965%2F66fc3c88ef12bf11a426e186_web-current-24-transcode.webm"
+                  data-wf-ignore="true"
+                />
+              </video>
+            </div>
+          </div>
+        </div>
+        <div class="stat_feature--row">
+          <div class="stat_feature--list">
+            <article class="stat_feature--item">
+              <h6 class="stat_feature--label">Atteneees</h6>
+              <div class="stat_feature--number" scroll-animation="count-up">2000</div>
+            </article>
+            <article class="stat_feature--item">
+              <h6 class="stat_feature--label">Lorem Ipsum</h6>
+              <div class="stat_feature--number" scroll-animation="count-up">+28</div>
+            </article>
+          </div>
+          <div class="stat_feature--list">
+            <article class="stat_feature--item">
+              <h6 class="stat_feature--label">Partners</h6>
+              <div class="stat_feature--number" scroll-animation="count-up">63</div>
+            </article>
+            <article class="stat_feature--item">
+              <h6 class="stat_feature--label">Sessions</h6>
+              <div class="stat_feature--number" scroll-animation="count-up">175</div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="../../jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
+
+
+    <script>
+
+function scrollfunctions() {
+	gsap.registerPlugin(ScrollTrigger);
+
+  $('[scroll-animation="count-up"]').each(function(){
+    const scrollTarget = $(this);
+    const scrollTargetLabel = $(this).parents().find('.stat_feature--label');
+
+    //store value and the number of digits to use for animation
+    let endValue = $(scrollTarget).text();
+    let timing = endValue.length;
+    //set initial display value to 0
+    $(scrollTarget).text('0');
+
+  ScrollTrigger.create({
+		trigger:  scrollTarget, 
+		start: "bottom 100%", 
+		end: "center 50%", 
+    once:true,
+		scrub: true,  
+		// markers:true,
+		onEnter: function() { 
+      gsap.from(scrollTarget, { opacity: 0,  duration: 1 });
+      $(scrollTarget).prop('Counter',0).animate({
+            Counter: endValue
+        }, {
+          
+            duration: timing * 1000,
+            easing: 'swing',
+            step: function (now) {
+                $(scrollTarget).text(Math.ceil(now));
+            }
+        });
+		},    
+	});
+})
+}//scrolFunctions
+scrollfunctions();
+
+    </script>
+    </script>
+  </body>
+</html>

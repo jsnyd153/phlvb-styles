@@ -1,0 +1,103 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+// Basic Content
+//This is a basic block with stadnard row settings
+// Visual:
+// Dependancy:
+
+/*css/blocks/basic_content/css/index.scss*/
+
+//Attributes
+//&--row: column-span = main* | inset | narrow | full_page
+//&--row: alignment = center* | right | left
+
+// section {
+//   background: $teal !important;
+// }
+
+.headliners {
+  &-- {
+    &section {
+      row-gap: var(--space_between, 32 * $rem);
+      padding-block: var(--section_padding, 80 * $rem);
+      position: relative;
+      // display: none;
+    } //section
+
+    &intro {
+      position: relative;
+      grid-column: 2/-2;
+    } //intro
+    &grid {
+      position: relative;
+      grid-column: 2/-2;
+      @include inner_grid;
+      gap: inherit;
+    } //grid
+    &description {
+      @include inner_grid;
+      grid-column: 1/-1;
+      gap: inherit;
+      p {
+        grid-column: 3 / span 5;
+      }
+      .headliners--text-secondary {
+        grid-column: 9 / span 3;
+        font-size: 14 * $rem;
+        font-weight: 600;
+        line-height: 145%;
+        letter-spacing: -0.143px;
+        text-transform: uppercase;
+      }
+    }
+    &list {
+      grid-column: 1 / span 7;
+      display: flex;
+      flex-direction: column;
+      gap: var(--gutter);
+    }
+    &item {
+      display: grid;
+      grid-template-columns: 2fr 5fr;
+      gap: var(--gutter);
+      grid-auto-flow: dense;
+      h3 {
+        grid-column: 2;
+        opacity: 0.9;
+      }
+      &[focus="true"] h3 {
+        opacity: 1;
+      }
+      img {
+        display: none;
+      }
+    }
+    &title {
+      grid-column: 1;
+      color: $cream;
+      font-family: $primary_font-var;
+      font-size: 14 * $rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 125%; /* 17.971px */
+      opacity: 0;
+      transition: 0.5s all;
+      translate: -50% 0;
+      [focus="true"] & {
+        opacity: 1;
+        translate: 0% 0;
+      }
+    }
+    &media {
+      grid-column: 9 / span 3;
+      overflow: hidden;
+      position: relative;
+      border-radius: 0.75rem;
+      aspect-ratio: 5/7;
+      img {
+        @include cover_obj;
+      }
+    }
+  } //--
+} //

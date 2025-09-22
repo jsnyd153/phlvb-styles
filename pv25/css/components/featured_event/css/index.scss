@@ -1,0 +1,319 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual:
+/*css/components/featured_event/css/index.scss*/
+//Dependencies:
+
+// body {
+//   background: #{$white} !important;
+// }
+
+.session_list- {
+  &list {
+    &[session-display="featured"] {
+      grid-template-columns: 1fr;
+      .event_card-card {
+        display: none;
+      }
+    }
+    &[session-display="grid"] {
+      --_items-per-row: 3;
+      .featured_event-card {
+        display: none;
+      }
+    }
+  }
+  &item {
+    --_border-width: #{1 * $rem};
+    --_gold: var(--theme--border);
+    --_red: var(--theme--border);
+    --_blue: var(--theme--border);
+    --_logo-opacity: 0.9;
+    --_glow-opacity: 0;
+    --_corner: var(--corner-12);
+    --_glow-inset: 2.5rem;
+
+    // --_gold: rgba(254, 165, 57, 1);
+    // --_red: rgba(246, 65, 92, 1);
+    // --_blue: rgba(97, 123, 238, 1);
+    // --_logo-opacity: 1;
+    // --_glow-opacity: 1;
+
+    border-radius: var(--_corner);
+    padding: 0;
+    container-type: inline-size;
+    container-name: session-item;
+    position: relative;
+
+    &::after,
+    &::before {
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      z-index: -1;
+      @include psuedo_el;
+    }
+    &:before {
+      background-image: conic-gradient(
+        from var(--_gradient_angle),
+        var(--_gold),
+        var(--_red),
+        var(--_blue),
+        var(--_red),
+        var(--_gold)
+      );
+    }
+    &::after {
+      opacity: var(--_glow-opacity, 0);
+      filter: blur(1.5rem);
+      inset: 1rem;
+      background-image: conic-gradient(
+        from var(--_gradient_angle),
+        var(--_gold),
+        var(--_red),
+        var(--_blue),
+        var(--_red),
+        var(--_gold)
+      );
+    }
+
+    &:hover {
+      &::after,
+      &::before {
+        animation: card-border-rotation 5s linear infinite;
+      }
+    }
+  }
+  &link {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: inherit;
+    background-color: var(--theme--background);
+    position: relative;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: var(--obj_padding);
+    gap: var(--obj_padding);
+  }
+}
+
+//=============================================================================
+//=============================================================================
+// EVENT Grid STYLES
+//=============================================================================
+//=============================================================================
+.event_card- {
+  &card {
+    // background-color: $contrast-white;
+    display: flex;
+    flex-direction: column;
+    gap: 12 * $rem;
+    width: 100%;
+    border-radius: 16 * $rem;
+    transition: 0.3s all;
+
+    // .session_list-item:has([session-type="Breakout Session"]):has(&:hover) {
+    //   --_gold: var(--gold);
+    //   --_red: var(--light-gold);
+    //   --_blue: var(--gold);
+    // }
+    // .session_list-item:has([session-type="Lightning Talk"]):has(&:hover) {
+    //   --_gold: rgb(84, 80, 224);
+    //   --_red: rgb(114, 176, 254);
+    //   --_blue: var(--blue);
+    // }
+  }
+  &header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .tag-container {
+      flex-grow: 0;
+    }
+    .tag {
+      [session-type="Lightning Talk"] & {
+        background: var(
+          --Gradient-Blue-1,
+          linear-gradient(90deg, #4f42dc -5.41%, #73b1ff 100%)
+        );
+      }
+      [session-type="Breakout Session"] & {
+        background: var(
+          --Linear,
+          linear-gradient(90deg, #ef9023 0%, #e9af63 100%)
+        );
+      }
+    }
+    [ct-el="live"] {
+      display: none;
+    }
+  }
+  &time {
+    color: var(--theme--primary_text);
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: $primary_font-var;
+    font-size: 14 * $rem;
+    font-weight: 600;
+    line-height: 145%;
+    flex-grow: 0;
+
+    // &::before {
+    //   content: "15";
+    //   [session-type="Lightning Talk"] & {
+    //     content: "15";
+    //   }
+    //   [session-type="Breakout Session"] & {
+    //     content: "45";
+    //   }
+    // }
+  }
+  &title {
+    color: var(--theme--primary_text);
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: $primary_font-var;
+    font-size: 18 * $rem;
+    font-weight: 700;
+    line-height: 115%;
+  }
+  &speakers {
+    @include body_text-style-small;
+    opacity: 0.6;
+    text-decoration: none;
+    // span.company {
+    //   text-decoration-line: underline;
+    //   text-decoration-style: solid;
+    //   text-decoration-skip-ink: none;
+    //   text-decoration-thickness: auto;
+    //   text-underline-offset: auto;
+    //   text-underline-position: from-font;
+    // }
+  }
+  &location {
+    @include body_text-style-small;
+    text-align: right;
+    &:empty {
+      display: none;
+    }
+  }
+}
+
+//=============================================================================
+//=============================================================================
+// FEATURED EVENT LIST STYLES
+//=============================================================================
+//=============================================================================
+.featured_event- {
+  &card {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: var(--obj_padding-large);
+    color: var(--theme--primary_text);
+    &:hover {
+      color: var(--theme--primary_text);
+    }
+    @include md {
+      grid-template-columns: 6fr 6fr;
+    }
+    @include sm {
+      grid-template-columns: 1fr;
+    }
+  }
+  //================================
+  //Overview Section
+  //================================
+  &overview {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: vaR(--obj_padding-small);
+    --_overview-max: #{400 * $rem};
+    @include sm {
+      --_overview-max: #{700 * $rem};
+    }
+
+    [ct-el="live"] {
+      display: none;
+    }
+  }
+  &feature_image {
+    border-radius: var(--corner-8);
+    position: relative;
+    aspect-ratio: 16/9;
+    max-width: var(--_overview-max, 400 * $rem);
+    overflow: clip;
+    width: 100%;
+    img {
+      @include cover_obj;
+    }
+    a:not([session-type="keynote"]) &,
+    a:not([session-type="Workshop"]) & {
+      display: none;
+    }
+  }
+  &title {
+    color: inherit;
+    @include fluid_size(font-size, 22px, 26px);
+    font-weight: 500;
+    line-height: 120%;
+    max-width: var(--_overview-max);
+    a:hover & {
+      color: var(--theme--accent-light);
+    }
+  }
+  &time {
+    color: inherit;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 14 * $rem;
+    font-family: $primary_font-var;
+    font-weight: 600;
+    max-width: var(--_overview-max, 400 * $rem);
+  }
+
+  //================================
+  //Details Section
+  //================================
+
+  &details {
+    display: flex;
+    flex-direction: column;
+    gap: 24 * $rem;
+  }
+  &details-row {
+    display: grid;
+    grid-template-columns: 90 * $rem 1fr;
+    max-width: 450 * $rem;
+    @include sm {
+      max-width: 700 * $rem;
+    }
+    h5 {
+      color: inherit;
+      @include fluid_size(font-size, 14px, 16px);
+      font-weight: 400;
+      line-height: 145%;
+    }
+  }
+  &speakers,
+  &audience,
+  &location {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-family: $primary_font-var;
+    @include fluid_size(font-size, 14px, 16px);
+    font-weight: 500;
+    line-height: 145%;
+  }
+  &speaker {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    img {
+      width: 30/15 * 1em;
+      height: 30/15 * 1em;
+      border-radius: 50%;
+    }
+  }
+}

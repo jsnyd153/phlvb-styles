@@ -1,0 +1,168 @@
+//==========================
+//===========BUTTONS==========
+//==========================
+
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/design/n1MRfrTDtMMwCwlUUJxRMM/Current-25-Website?node-id=487-14256&t=O2mZJSyMOQO7kI4S-1
+/*atoms/buttons/css/index.scsss*/
+//Dependencies:
+
+//Attributes
+//.c25-button: button-size= default | large | small | mini
+//.c25-button: button-color= $all_colors
+
+.button-container {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.pv25-button {
+	display: flex;
+	padding: 9/14 * 1em 15/14 * 1em;
+	justify-content: center;
+	align-items: center;
+	gap: 15/14 * 1em;
+	@include fluid_size(font-size, 14px, 16px);
+	color: var(--theme--accent-text, #{$white});
+	background: var(--theme--accent, #{$blue});
+	border: 1 * $rem solid var(--theme--accent, #{$green});
+	border-radius: 1rem 0 1rem 0;
+	font-style: normal;
+	font-weight: 400;
+	font-family: $primary_font-var;
+	line-height: 100%;
+	text-decoration: none;
+	transition: 0.5s box-shadow, 0.5s background-color, 0.5s color, 0.25s translate, 0.5s filter;
+	position: relative;
+	filter: brightness(1);
+
+	.button-container &:nth-child(even) {
+		border-radius: 0rem 1rem 0rem 1rem;
+	}
+	&:before {
+		@include psuedo_el;
+		position: absolute;
+		inset: 0.5em;
+		filter: blur(1.25em);
+		background-color: inherit;
+		opacity: 0;
+		transition: 0.5s opacity;
+		transition-timing-function: cubic-bezier(0.11, 0, 0.2, 0);
+	}
+	.button-arrow {
+		transition: 0.3s translate;
+	}
+
+	&:hover {
+		color: var(--theme--accent-text, #{$white});
+		filter: brightness(1.25);
+		&::before {
+			opacity: 1;
+		}
+		.button-arrow {
+			translate: 50% 0;
+		}
+	}
+
+	.button-text {
+		position: relative;
+	}
+
+	&[button-size="large"] {
+		@include fluid_size(font-size, 14px, 18px);
+	}
+	&[button-size="small"] {
+		@include fluid_size(font-size, 12px, 13px);
+	}
+	&[button-type~="back"] {
+		flex-direction: row-reverse;
+		.button-arrow {
+			rotate: 180deg;
+		}
+	}
+	&[button-type~="no-arrow"] {
+		.button-arrow {
+			display: none;
+		}
+	}
+	// &[button-type~="ghost"] {
+	// 	background-color: var(--theme--background);
+	// 	border: 1 * $rem solid var(--theme--background);
+	// 	color: var(--theme--accent, #{$green});
+
+	// 	&:hover {
+	// 		background-color: var(--theme--accent, #{$green});
+	// 		color: var(--theme--accent-text, #{$white});
+	// 	}
+	// }
+
+	&[button-style~="ghost"] {
+		color: var(--theme--accent-text, #{$white});
+		background: transparent;
+		border: 1 * $rem solid var(--theme--accent-text, #{$white});
+		&:hover {
+			background-color: var(--theme--accent-text, #{$white});
+			color: var(--theme--accent, #{$blue});
+		}
+		@each $color in $all_colors {
+			&[button-color="#{nth($color, 1)}"] {
+				color: var(--theme--accent, #{$blue});
+				background: transparent;
+				border: 1 * $rem solid var(--theme--accent, #{$blue});
+				&:hover {
+					background-color: var(--theme--accent, #{$blue});
+					color: var(--theme--accent-text, #{$white});
+				}
+			}
+		}
+	}
+
+	&[button-color~="blue"] {
+		@include theme-blue;
+	}
+
+	&[button-color~="green"] {
+		@include theme-green;
+	}
+
+	&[button-color~="crimson"] {
+		@include theme-crimson;
+	}
+
+	&[button-color~="yellow"] {
+		@include theme-yellow;
+	}
+
+	&[button-color~="white"] {
+		color: #{$blue};
+		background: #{$white};
+		border: 1 * $rem solid #{$white};
+	}
+
+	&[button-color~="light"] {
+		background: var(--theme--accent-light, #{$blue-200});
+		color: var(--theme--accent-text-light, #{$navy});
+	}
+
+	&[button-color="inactive"] {
+		background: var(--theme--border);
+		color: var(--theme--primary_text);
+	}
+
+	&:active {
+		translate: 0 0.125rem;
+	}
+}
+
+.button-arrow {
+	svg {
+		width: 8/14 * 1em;
+		path {
+			fill: currentColor;
+		}
+	}
+}

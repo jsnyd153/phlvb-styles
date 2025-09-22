@@ -1,0 +1,17 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=17%3A17741&mode=design&t=iIhpQlgc7EE2wRKD-1
+/*css/blocks/grid_content/css/index.scss*/
+//Dependencies:
+
+//Attributres
+
+.image_hero-- {
+	section {
+		padding-block: var(--section_padding);
+	}
+	&media_area {
+		grid-column: 2/-2;
+	}
+}

@@ -1,0 +1,31 @@
+/*css/globals/grids.scss*/
+:root {
+   --grid_margin: calc(var(--page_margin) - var(--gutter));
+   --page_grid: [page-start] var(--grid_margin) minmax(0, 1fr) [inset-start]
+     minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
+     [center] minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
+     minmax(0, 1fr) minmax(0, 1fr) var(--grid_margin);
+   --page_margin: clamp(1.75rem, 3.91vw - 0.125rem, 3rem);
+}
+@media (max-width: 767px) {
+   :root {
+      --page_margin: clamp(0.75rem, 4.07vw - 0.20625rem, 1.75rem);
+   }
+}
+@media (min-width: 1280px) {
+   :root {
+      --page_margin: clamp(3rem, 7.5vw - 3rem, 3.75rem);
+   }
+}
+@media (min-width: 1440px) {
+   :root {
+      --page_margin: calc((100vw - 82.5rem) / 2);
+   }
+}
+
+section {
+   box-sizing: border-box;
+   display: grid;
+   grid-template-columns: var(--page_grid);
+   gap: var(--gutter);
+}

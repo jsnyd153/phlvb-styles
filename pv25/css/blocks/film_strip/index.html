@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1" large bold="viewport" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Block - Film Strip</title>
+    <link rel="stylesheet" href="../../globals/normalize.css" />
+    <link rel="stylesheet" href="../../globals/_index.css" />
+    <link rel="stylesheet" href="../../atoms/_index.css" />
+    <link rel="stylesheet" href="../../components/_index.css" />
+    <link rel="stylesheet" href="../index.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+
+  <body>
+    <main class="">
+      <section class="film_strip--section">
+        <div class="text_area film_strip--intro_text">
+          <div class="text_content">
+            <h2 class="style-h3">The best of Kafka Summit London</h2>
+            <p class="body-text-large">
+              Check out the highlights from our last Kafka Summit in London. And
+              2025 is going to offer so much more.
+            </p>
+          </div>
+        </div>
+        <article class="film_strip--row" fade="both" direction="" media-type="">
+          <div class="film_strip--wrapper">
+            <ul class="film_strip--list">
+              <li class="film_strip--item">
+                <img src="../../../media/placeholder-16x9.png" alt="" />
+              </li>
+              <li class="film_strip--item">
+                <img src="../../../media/placeholder-1x1.png" alt="" />
+              </li>
+              <li class="film_strip--item">
+                <img src="../../../media/placeholder-21x9.png" alt="" />
+              </li>
+              <li class="film_strip--item">
+                <img src="../../../media/placeholder-4x3.png" alt="" />
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <div class="film_strip--call_to_action">
+          <div class="card" card-style="cream">
+            <div class="text_area">
+              <div class="text_content">
+                <h4>Checkout Last Years Sessions</h4>
+              </div>
+              <div class="text_content">
+                <div class="button-container">
+                  <a
+                    href="#"
+                    class="c25-button"
+                    button-size=""
+                    button-color=""
+                    button-type=""
+                  >
+                    <div class="button-text">Learn more</div>
+                    <div class="button-arrow">
+                      <svg
+                        viewBox="0 0 7 10"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <title>Arrow</title>
+                        <path d="M1.03125 1.1875L5.09375 5.25L1.03125 9.3125" />
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      //Clone Carousel Content
+      var carouselContainer = document.querySelector(".film_strip--list");
+      var carouselCopy = carouselContainer.cloneNode(true);
+      carouselContainer.parentNode.insertBefore(
+        carouselCopy,
+        carouselContainer.nextSibling
+      );
+    </script>
+  </body>
+</html>

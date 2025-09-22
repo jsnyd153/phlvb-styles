@@ -1,0 +1,17 @@
+// print all components into one css file
+
+@forward "accordion/css";
+@forward "cards/css";
+@forward "confluent_tag/css";
+@forward "exec_agenda/css";
+@forward "form/css";
+@forward "grid_content/css";
+@forward "media_area/css";
+@forward "modal/css";
+@forward "onetrust/css";
+@forward "row/css";
+@forward "text_area/css";
+
+.i-frmae {
+  @include fluid_size(padding, 24px, 60px, 335px, 840px);
+}

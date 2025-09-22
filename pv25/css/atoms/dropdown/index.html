@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1" large bold="viewport" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Atoms - Icons</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+    <link rel="stylesheet" href="../../global_css/components/_index.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+
+  <body>
+    <main class="">
+      <atomGrid>
+        <div class="dropdown--select" intial-name="Region">
+          <button
+            role="combobox"
+            aria-labelledby="select button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-controls="dropdown--list"
+            class="dropdown--button"
+          >
+            <div class="dropdown--button-text">Region</div>
+            <div class="dropdown--arrow"></div>
+          </button>
+          <ul role="listbox" id="dropdown--list" class="dropdown--list">
+            <li role="option" class="dropdown--option">
+              <input
+                type="radio"
+                name="ai-filter-data"
+                id="all-regions"
+                dsr-action="update-chart-overview"
+                class="dropdown--input"
+              /><label for="all-regions" class="dropdown--label"
+                >All Regions</label
+              >
+
+            </li>
+            <li role="option" class="dropdown--option">
+              <input
+                type="radio"
+                name="ai-filter-data"
+                id="apac"
+                dsr-action="update-chart-overview"
+                class="dropdown--input"
+              /><label for="apac" class="dropdown--label">APAC</label>
+
+            </li>
+            <li role="option" class="dropdown--option">
+              <input
+                type="radio"
+                name="ai-filter-data"
+                id="emea"
+                dsr-action="update-chart-overview"
+                class="dropdown--input"
+              /><label for="emea" class="dropdown--label">EMEA</label>
+
+            </li>
+            <li role="option" class="dropdown--option">
+              <input
+                type="radio"
+                name="ai-filter-data"
+                id="north-america"
+                dsr-action="update-chart-overview"
+                class="dropdown--input"
+              /><label for="north-america" class="dropdown--label"
+                >North America</label
+              >
+            </li>
+            <li role="option" class="dropdown--option">
+              <input
+                type="radio"
+                name="ai-filter-data"
+                id="canada"
+                dsr-action="update-chart-overview"
+                class="dropdown--input"
+              /><label for="canada" class="dropdown--label">Canada</label>
+              <div class="chart-props w-embed">
+                <!-- Canada-->
+
+              
+            </li>
+            <li role="option" class="dropdown--option">
+              <input
+                type="radio"
+                name="ai-filter-data"
+                id="india"
+                dsr-action="update-chart-overview"
+                class="dropdown--input"
+              /><label for="india" class="dropdown--label">India</label>
+             
+            </li>
+            <li role="option" class="dropdown--option">
+              <input
+                type="radio"
+                name="ai-filter-data"
+                id="united-kingdom"
+                dsr-action="update-chart-overview"
+                class="dropdown--input"
+              /><label for="united-kingdom" class="dropdown--label"
+                >United Kingdom</label
+              >
+
+            </li>
+            <li role="option" class="dropdown--option">
+              <input
+                type="radio"
+                name="ai-filter-data"
+                id="united-states"
+                dsr-action="update-chart-overview"
+                class="dropdown--input"
+              /><label for="united-states" class="dropdown--label"
+                >United States</label
+              >
+   
+            </li>
+          </ul>
+        </div>
+      </atomGrid>
+    </main>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="../../jquery.min.js"></script>
+    <script src="js/controls.js"></script>
+
+    <script>
+      $(document).ready(function () {
+
+let $customSelect = $(".dropdown--select");
+
+$customSelect.each(function () {
+  let $selectBtn = $(this).find(".dropdown--button");
+  let $selectedValue = $(this).find(".dropdown--button-text");
+  let $optionsList = $(this).find(".dropdown--option");
+  let initialText = $selectedValue.text();
+  
+  // Store initial text on the select
+  $(this).attr('intial-name',initialText);
+
+    // add click event to select button
+    $selectBtn.on("click", function () {
+        // update the aria-expanded attribute based on the current state
+        $(this).attr("aria-expanded", function (_, attr) {
+            return attr === "true" ? "false" : "true";
+        });
+    });
+
+    $optionsList.each(function () {
+        let $this = $(this);
+        let forAttr = $this.attr("dsr-for");
+        let $currentSelect = $(this).parents('.dropdown--select');
+        let $currentSelectButton = $currentSelect.find('.dropdown--button');
+        let $currentSelectValue= $currentSelect.find(".dropdown--button-text");
+        let  $radioName = $(this).find('input').attr('name');
+        let $displayValue = $('[dsr-label-for="'+ forAttr +'"]');
+        let $currentText = $(this).text();
+
+        function handler(e) {
+            // Click Events
+            if (e.type === "click" && e.clientX !== 0 && e.clientY !== 0) {
+                $currentSelectValue.text($currentText);
+                $displayValue.text($currentText);
+                $currentSelectButton.attr("aria-expanded", false);
+                resetOtherDropdowns($currentSelect, $radioName); // Reset other dropdowns
+            }
+            // Key Events
+            if (e.key === "Enter") {
+                $selectedValue.text($currentText);
+                $displayValue.text($currentText);
+                $currentSelectButton.attr("aria-expanded", false);
+                resetOtherDropdowns($currentSelect, $radioName); // Reset other dropdowns
+                
+            }
+        }
+
+        $(this).on("keyup click", handler);
+    });
+});
+
+// Function to reset other dropdowns
+function resetOtherDropdowns($currentSelect, $radioName) {
+  //Get selects that are contain the same named inputs
+    $('.dropdown--select:has(input[name="'+$radioName+'"])').not($currentSelect).each(function () {
+      //Get the stored value and replace the button label
+        let initialText = $(this).attr('intial-name');
+        let $select = $(this);
+        const $value = $select.find(".dropdown--button-text");
+        $value.text(initialText)
+
+    });
+}
+
+});
+    </script>
+  </body>
+</html>

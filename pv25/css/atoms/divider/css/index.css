@@ -1,0 +1,142 @@
+/*css/atoms/inputs/css/index.scss*/
+.divider,
+hr {
+   --_color: var(--theme--border);
+   --columns: 12;
+   --start: calc((16 - var(--columns)) / 2);
+   grid-column: var(--start)/span var(--columns);
+   border: 0;
+   outline: 0;
+   border-top: 0.0625rem solid var(--_color);
+   width: 100%;
+}
+.divider[column-span=grid],
+hr[column-span=grid] {
+   --columns: 12;
+}
+.divider[column-span=inset],
+hr[column-span=inset] {
+   --columns: 10;
+}
+@media (max-width: 991px) {
+   .divider[column-span=inset],
+hr[column-span=inset] {
+      --columns: 12;
+   }
+}
+.divider[column-span=narrow],
+hr[column-span=narrow] {
+   --columns: 8;
+}
+@media (max-width: 991px) {
+   .divider[column-span=narrow],
+hr[column-span=narrow] {
+      --columns: 10;
+   }
+}
+@media (max-width: 767px) {
+   .divider[column-span=narrow],
+hr[column-span=narrow] {
+      --columns: 12;
+   }
+}
+.divider[column-span=full-page],
+hr[column-span=full-page] {
+   --columns: 14;
+}
+.divider[alignment=left],
+hr[alignment=left] {
+   grid-column: 2/span var(--columns);
+}
+.divider[alignment=right],
+hr[alignment=right] {
+   grid-column: span var(--columns)/-2;
+}
+.divider[alignment=center],
+hr[alignment=center] {
+   grid-column: var(--start)/span var(--columns);
+}
+.divider[divider-color=green],
+hr[divider-color=green] {
+   --_color: #02a576;
+}
+.divider[divider-color=light-green],
+hr[divider-color=light-green] {
+   --_color: #6cde8e;
+}
+.divider[divider-color=blue],
+hr[divider-color=blue] {
+   --_color: #5450e0;
+}
+.divider[divider-color=light-blue],
+hr[divider-color=light-blue] {
+   --_color: #72b0fe;
+}
+.divider[divider-color=purple],
+hr[divider-color=purple] {
+   --_color: #7e2cbf;
+}
+.divider[divider-color=light-purple],
+hr[divider-color=light-purple] {
+   --_color: #b774f3;
+}
+.divider[divider-color=red],
+hr[divider-color=red] {
+   --_color: #f63f5c;
+}
+.divider[divider-color=light-red],
+hr[divider-color=light-red] {
+   --_color: #fa8d5a;
+}
+.divider[divider-color=orange],
+hr[divider-color=orange] {
+   --_color: #fa8d5a;
+}
+.divider[divider-color=gold],
+hr[divider-color=gold] {
+   --_color: #fea237;
+}
+.divider[divider-color=light-gold],
+hr[divider-color=light-gold] {
+   --_color: #f5c27f;
+}
+.divider[divider-color=cyan],
+hr[divider-color=cyan] {
+   --_color: #3ce4fa;
+}
+.divider[divider-color=light-cyan],
+hr[divider-color=light-cyan] {
+   --_color: #9ef4ff;
+}
+.divider[divider-color=white],
+hr[divider-color=white] {
+   --_color: #fff;
+}
+.divider[divider-color=navy],
+hr[divider-color=navy] {
+   --_color: #161b32;
+}
+.divider[divider-color=navy-grey-light],
+hr[divider-color=navy-grey-light] {
+   --_color: #b9bbc2;
+}
+.divider[divider-color=navy-grey-mid],
+hr[divider-color=navy-grey-mid] {
+   --_color: #737684;
+}
+.divider[divider-color=accent],
+hr[divider-color=accent] {
+   --_color: var(--theme--accent);
+}
+.divider[divider-color="accent light"],
+hr[divider-color="accent light"] {
+   --_color: var(--theme--accent-light);
+}
+.divider[divider-color=primary],
+hr[divider-color=primary] {
+   --_color: var(--theme--primary_text);
+}
+.divider[divider-color=secondary],
+hr[divider-color=secondary] {
+   --_color: var(--theme--secondary_text);
+}

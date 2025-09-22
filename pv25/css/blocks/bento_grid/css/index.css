@@ -1,0 +1,183 @@
+/*css/blocks/bento_grid/css/index.scss*/
+.bento_grid--section {
+ row-gap: var(--space_between, 1.5rem);
+ padding-block: var(--section_padding-large, 3rem);
+ position: relative;
+}
+.bento_grid--section[space-between=mini] {
+ row-gap: var(--space_between-mini);
+ -moz-column-gap: var(--_gutter, 0.75rem);
+      column-gap: var(--_gutter, 0.75rem);
+}
+.bento_grid--section[space-between=small] {
+ row-gap: var(--space_between-small);
+ -moz-column-gap: var(--_gutter, 0.75rem);
+      column-gap: var(--_gutter, 0.75rem);
+}
+.bento_grid--section[space-between=medium] {
+ row-gap: var(--space_between-medium);
+ -moz-column-gap: var(--_gutter, 0.75rem);
+      column-gap: var(--_gutter, 0.75rem);
+}
+.bento_grid--section[space-between=large] {
+ row-gap: var(--space_between-large);
+ -moz-column-gap: var(--_gutter, 0.75rem);
+      column-gap: var(--_gutter, 0.75rem);
+}
+.bento_grid--section[space-between=jumbo] {
+ row-gap: var(--space_between-jumbo);
+ -moz-column-gap: var(--_gutter, 0.75rem);
+      column-gap: var(--_gutter, 0.75rem);
+}
+.bento_grid--row {
+ display: grid;
+ gap: var(--space_between, 1.5rem);
+}
+.bento_grid--row[space-between=mini] {
+ gap: var(--space_between-mini);
+}
+.bento_grid--row[space-between=small] {
+ gap: var(--space_between-small);
+}
+.bento_grid--row[space-between=medium] {
+ gap: var(--space_between-medium);
+}
+.bento_grid--row[space-between=large] {
+ gap: var(--space_between-large);
+}
+.bento_grid--row[space-between=jumbo] {
+ gap: var(--space_between-jumbo);
+}
+.bento_grid--row[bento-layout="1"] {
+ grid-template-columns: 5fr 7fr;
+}
+@media (max-width: 991px) {
+ .bento_grid--row[bento-layout="1"] {
+  grid-template-columns: 6fr 6fr;
+ }
+}
+@media (max-width: 767px) {
+ .bento_grid--row[bento-layout="1"] {
+  grid-template-columns: 1fr;
+ }
+}
+.bento_grid--row[bento-layout="2"] {
+ grid-template-columns: 7fr 5fr;
+}
+@media (max-width: 991px) {
+ .bento_grid--row[bento-layout="2"] {
+  grid-template-columns: 6fr 6fr;
+ }
+}
+@media (max-width: 767px) {
+ .bento_grid--row[bento-layout="2"] {
+  grid-template-columns: 1fr;
+ }
+}
+.bento_grid--row[bento-layout="3"] {
+ grid-template-columns: 6fr 6fr;
+}
+@media (max-width: 767px) {
+ .bento_grid--row[bento-layout="3"] {
+  grid-template-columns: 1fr;
+ }
+}
+.bento_grid--row[bento-layout="4"] {
+ grid-template-columns: 1;
+}
+.bento_grid--row[bento-layout="5"] {
+ grid-template-columns: 4fr 8fr;
+}
+@media (max-width: 991px) {
+ .bento_grid--row[bento-layout="5"] {
+  grid-template-columns: 5fr 7fr;
+ }
+}
+@media (max-width: 767px) {
+ .bento_grid--row[bento-layout="5"] {
+  grid-template-columns: 1fr;
+ }
+}
+.bento_grid--row[bento-layout="5B"] {
+ grid-template-columns: 2fr 5fr;
+}
+@media (min-width: 1280px) {
+ .bento_grid--row[bento-layout="5B"] {
+  grid-template-columns: 1fr 2fr;
+ }
+}
+@media (max-width: 991px) {
+ .bento_grid--row[bento-layout="5B"] {
+  grid-template-columns: 1fr;
+ }
+}
+.bento_grid--row[bento-layout="6"] {
+ grid-template-columns: 8fr 4fr;
+}
+@media (max-width: 991px) {
+ .bento_grid--row[bento-layout="6"] {
+  grid-template-columns: 7fr 5fr;
+ }
+}
+@media (max-width: 767px) {
+ .bento_grid--row[bento-layout="6"] {
+  grid-template-columns: 1fr;
+ }
+}
+@media (max-width: 767px) {
+ .bento_grid--row .media_area {
+  grid-row: 1;
+ }
+}
+.bento_grid--row[bento-layout="7"] {
+ grid-template-columns: 3fr 9fr;
+}
+@media (max-width: 991px) {
+ .bento_grid--row[bento-layout="7"] {
+  grid-template-columns: 4fr 8fr;
+ }
+}
+@media (max-width: 767px) {
+ .bento_grid--row[bento-layout="7"] {
+  grid-template-columns: 1fr;
+ }
+}
+.bento_grid--row[bento-layout="8"] {
+ grid-template-columns: 9fr 3fr;
+}
+@media (max-width: 991px) {
+ .bento_grid--row[bento-layout="8"] {
+  grid-template-columns: 8fr 4fr;
+ }
+}
+@media (max-width: 767px) {
+ .bento_grid--row[bento-layout="8"] {
+  grid-template-columns: 1fr;
+ }
+}
+
+.sidebar_area {
+ position: relative;
+ height: 100%;
+}
+.sidebar_area-sticky {
+ position: sticky;
+ top: var(--section_padding-large, 3rem);
+}
+@media (max-width: 991px) {
+ .sidebar_area-sticky {
+  position: relative;
+  top: auto;
+ }
+}
+@media (max-width: 991px) {
+ .sidebar_area-sticky > .text_area {
+  display: none;
+ }
+}
+
+@media (max-width: 767px) {
+ .filter-sidebar {
+  grid-row: 1;
+ }
+}

@@ -1,0 +1,305 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual:
+/*css/components/grid_content/css/index.scss*/
+//Dependencies:
+
+.grid_content {
+	//set up variables
+	--_base_size: #{1120/16 * 1rem};
+	--_gutter: var(--gutter);
+	--_items-per-row: 4;
+	--_min-content-size: calc(var(--_base_size) / var(--_items-per-row) - var(--_gutter));
+	//base settings
+	display: grid;
+	gap: var(--_gutter);
+	grid-template-columns: repeat(auto-fit, minmax(var(--_min-content-size), 1fr));
+	width: 100%;
+	//options
+
+	&[grid-behavior="stretch"] {
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		justify-content: stretch;
+		--_items-per-row: 3;
+		> * {
+			flex-grow: 1;
+			min-width: var(--_min-content-size);
+			width: calc(80% / var(--_items-per-row));
+			max-width: 100svw;
+			@include xs {
+				--_min-content-size: 15rem;
+			}
+		}
+	} //stretch
+	&[grid-behavior="centered"] {
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		justify-content: center;
+		--_items: calc(var(--_items-per-row) - 0);
+		@include md {
+			--_items: calc(var(--_items-per-row) - 1);
+		}
+		@include sm {
+			--_items: calc(var(--_items-per-row) - 2);
+		}
+		@include xs {
+			--_items: calc(var(--_items-per-row) - 3);
+		}
+		> * {
+			flex-grow: 0;
+			flex-shrink: 0;
+			min-width: 0;
+			--_gutters: calc(var(--_items)-1);
+			width: calc((100% - (var(--_gutter) * var(--_gutters))) / var(--_items));
+		}
+	} //centered
+
+	&[grid-behavior="stack"] {
+		display: flex;
+		flex-wrap: wrap;
+
+		--gutter: 2rem;
+		--_min-content-size: 220px;
+		--breakpoint: calc(
+			var(--_min-content-size) * var(--_items-per-row) + var(--_gutter) *
+				(var(--_items-per-row) - 1)
+		);
+		--modifier: calc((var(--breakpoint) - 100%) * 999);
+		row-gap: var(--space_between);
+		> * {
+			flex-grow: 1;
+			flex-basis: max(var(--width, var(--auto-width)), var(--modifier));
+			max-width: max(var(--width, var(--max-width)), var(--modifier));
+			--auto-width: calc(99.999% * var(--w, 0) - var(--_gutter));
+			--max-width: calc(99.999% * var(--w) - var(--_gutter));
+		}
+	} //stack
+
+	&[grid-behavior="scroll"] {
+		--_mask: linear-gradient(
+			90deg,
+			rgba(0, 0, 0, 1) 0%,
+			rgba(0, 0, 0, 1) 85%,
+			rgba(0, 0, 0, 0) 100%
+		);
+		--_visible-items: 3;
+		--_gutter: var(--space_between);
+
+		mask-image: var(--_mask);
+		container-type: inline-size;
+		container-name: scrolling-grid;
+
+		@include touch {
+			mask-image: none;
+			container-type: normal;
+		}
+
+		section:has(&) {
+			overflow: clip;
+		}
+
+		.content_grid-scroll-wrapper {
+			--a: calc(100% / var(--_visible-items) - var(--_gutter) - var(--_gutter));
+			display: grid;
+			column-gap: var(--_gutter);
+			row-gap: var(--space_between-large);
+			grid-template-columns: repeat(calc(var(--_items-per-row) + 1), var(--a));
+			overflow: scroll;
+			padding-bottom: var(--_gutter);
+			max-width: 120%;
+			width: 120%;
+
+			@include sm {
+				max-width: 150%;
+				width: 150%;
+			}
+			@container scrolling-grid (min-width: 860px) {
+				// grid-template-columns: repeat(4, 1fr);
+				// width: 100%;
+			}
+			@container scrolling-grid (max-width: 620px) {
+				--_visible-items: 2.5;
+			}
+			@container scrolling-grid (max-width: 540px) {
+				--_visible-items: 2;
+			}
+
+			@include touch {
+				display: grid;
+				column-gap: var(--_gutter);
+				row-gap: var(--space_between);
+				grid-template-columns: 1fr 1fr;
+				overflow: initial;
+				padding-bottom: var(--_gutter);
+
+				max-width: 100%;
+				width: 100%;
+			}
+		}
+	} //stack
+
+	[column-span="inset"] & {
+		--_base_size: 62.25rem;
+	}
+	[column-span="narrow"] & {
+		--_base_size: 52.5rem;
+	}
+
+	@each $size in $sizes {
+		&[space-between="#{nth($size, 1)}"] {
+			--_gutter: var(--space_between-#{nth($size, 1)});
+		}
+	}
+
+	//change the items per row (size changes based on the desktop size)
+	@for $i from 1 through 6 {
+		&[items-per-row="#{$i}"] {
+			--_items-per-row: #{$i};
+		}
+	}
+	//override grid setting for $1 - should always be a single column
+	&[items-per-row="1"] {
+		grid-template-columns: 1fr;
+	}
+
+	//manually set the --_min-content-size in rem
+	@for $i from 5 through 20 {
+		&[min-column-size="#{$i}"] {
+			--_min-content-size: #{$i * 1rem};
+			@include sm {
+				// --_min-content-size: #{$i * 0.75rem};
+			}
+		}
+	}
+
+	@media (max-width: 600px) {
+		--_min-content-size: #{200/16 * 1rem};
+	}
+
+	@media (max-width: 450px) {
+		//make sure the min size isn't too big for mobile devices
+		--_min-content-size: #{140/16 * 1rem};
+	}
+}
+
+.content_block {
+	display: flex;
+	flex-direction: column;
+	gap: 20 * $rem;
+	.text_area {
+	}
+	.style-eyebrow {
+		color: var(--theme--accent-light, $blue-200);
+	}
+
+	.media_content {
+		border-radius: var(--corner-10, 10 * $rem);
+		overflow: hidden;
+	}
+}
+
+[content-layout="wrap"] {
+	flex-direction: row;
+	flex-wrap: wrap;
+	.media_area {
+		flex-basis: 220 * $rem;
+		flex-grow: 1;
+		flex-shrink: 0;
+	}
+	.text_area {
+		flex-basis: 220 * $rem;
+		flex-grow: 1;
+		flex-shrink: 0;
+	}
+}
+
+.sponsor_grid-item {
+	--_corner: #{8 * $rem};
+	--_border-width: 1px;
+	--_gold: var(--theme--border);
+	--_red: var(--theme--border);
+	--_blue: var(--theme--border);
+	--_logo-opacity: 0.9;
+	--_glow-opacity: 0;
+	//====
+	border-radius: var(--_corner);
+	aspect-ratio: 21/9;
+	position: relative;
+	background-color: var(--theme--background);
+
+	&::after,
+	&::before {
+		position: absolute;
+		inset: -1px;
+		border-radius: inherit;
+		z-index: -1;
+		@include psuedo_el;
+	}
+	&:before {
+		background-image: conic-gradient(
+			from var(--_gradient_angle),
+			var(--_gold),
+			var(--_red),
+			var(--_blue),
+			var(--_red),
+			var(--_gold)
+		);
+	}
+	&::after {
+		opacity: var(--_glow-opacity, 0);
+		filter: blur(1.5rem);
+		inset: 0.5rem;
+		background-image: conic-gradient(
+			from var(--_gradient_angle),
+			var(--_gold),
+			var(--_red),
+			var(--_blue),
+			var(--_red),
+			var(--_gold)
+		);
+	}
+
+	&:hover {
+		&::after,
+		&::before {
+			animation: card-border-rotation 5s linear infinite;
+		}
+	}
+
+	&:has(.w-dyn-bind-empty) {
+		display: none;
+	}
+}
+.sponsor_grid-item-border {
+	width: 100%;
+	height: 100%;
+	background-color: var(--theme--background);
+	border-radius: inherit;
+	display: block;
+}
+.sponsor_grid-item-image {
+	@include t-center;
+	opacity: var(--_logo-opacity);
+	max-width: calc(90% * var(--_logo-width, 1));
+	filter: saturate(0);
+}
+.sponsor_grid-item-image-color {
+	@include t-center;
+	opacity: 0;
+	transition: 0.5s all;
+	max-width: calc(90% * var(--_logo-width, 1));
+	.sponsor_grid-item:hover & {
+		// opacity: 1;
+	}
+}
+
+@for $i from 1 through 20 {
+	$step: $i * 5;
+	[logo-width="#{$step}"] {
+		--_logo-width: #{$step * 0.01};
+	}
+}

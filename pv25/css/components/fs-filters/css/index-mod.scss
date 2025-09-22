@@ -1,0 +1,109 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=4%3A5788&mode=design&t=g6qwze9oShWnmzfu-1
+/*css/components/fs-filters/css/index-mod.scss*/
+//Dependencies: @finsweet/attributes-cmsfilter@1/cmsfilter.js, js/fs-filters.js
+
+.fs-filter-group {
+  display: flex;
+  gap: var(--space_between-mini, 1.5rem);
+  position: relative;
+  z-index: 1;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+
+.fs-filter-dropdown {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  .dropdown--button {
+    box-sizing: border-box;
+    display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+    // padding: 0.5rem 1rem;
+    // box-shadow: 0px 0.75em 1em -0.25em color.adjust($indigo, $alpha: -0.8);
+    text-decoration: none;
+    background: var(--theme--background);
+    backdrop-filter: blur(0.5rem);
+    transition: 0.3s box-shadow, 0.3s translate, 0.5s background, 0.5s color;
+    color: var(--theme--primary_text);
+    height: 100%;
+    @include body_text-style;
+
+    // width: 175px;
+    flex-grow: 0;
+    // &:hover {
+    //   box-shadow: 0px 0.75em 1em -0.25em color.adjust($indigo, $alpha: -0.5);
+    //   translate: 0 -2%;
+    // }
+    &::after {
+      display: inline-block;
+      content: ":";
+      //   width: 0;
+      //   height: 0;
+      //   border-left: 4px solid transparent;
+      //   border-right: 4px solid transparent;
+      //   border-top: 5px solid currentColor;
+      //   transition: 0.3s rotate;
+    }
+  }
+  .dropdown--list {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  &.open {
+    .dropdown--button {
+      &::after {
+        rotate: 180deg;
+      }
+    }
+  }
+  .dropdown--container {
+    // background-color: $cream;
+  }
+}
+
+.fs-filter-search {
+  flex-grow: 1;
+}
+
+.fs-filter-search-field[type="text"] {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  //   box-shadow: 0px 0.75em 1em -0.25em color.adjust($indigo, $alpha: -0.8);
+  text-decoration: none;
+  background: var(--theme--background);
+  //   backdrop-filter: blur(0.5rem);
+  transition: 0.3s box-shadow, 0.3s translate, 0.5s background, 0.5s color;
+  color: var(--theme--primary_text);
+  @include body_text-style;
+  border: 1px solid var(--color--blue);
+  border-radius: 99em;
+
+  //   border-bottom: 0px;
+  &:hover {
+    // box-shadow: 0px 0.75em 1em -0.25em color.adjust($indigo, $alpha: -0.5);
+    // translate: 0 -2%;
+
+    border-width: 1px;
+    border-color: #116597;
+    padding-bottom: 0.5rem;
+  }
+  &::placeholder {
+    color: var(--color--blue);
+    opacity: 0.9;
+  }
+  &:hover::placeholder {
+    color: #116597;
+  }
+}
+
+.content_grid--list {
+  padding-bottom: 3rem;
+}

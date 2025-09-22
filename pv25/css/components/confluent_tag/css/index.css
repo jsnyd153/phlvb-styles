@@ -1,0 +1,35 @@
+/*css/components/confuent-tag/css/index.scss*/
+.confluent-tag {
+   position: fixed;
+   bottom: var(--obj_padding);
+   right: var(--obj_padding);
+   font-size: clamp(1rem, 0.38vw + 0.9125rem, 1.25rem);
+   z-index: 600;
+}
+.confluent-tag a {
+   color: #5450e0;
+   transition: 0.75s all;
+   text-decoration: none;
+   padding-block: 0.375em;
+   padding-inline: 0.625em;
+   background-color: #fff;
+   border-radius: 0.25em;
+   border: 0.0625rem solid rgba(38, 50, 115, 0.2);
+   box-shadow: 0px 0.75em 1em -0.25em rgba(22, 27, 50, 0.2);
+   display: block;
+   font-size: inherit;
+}
+.confluent-tag a svg {
+   font-size: inherit;
+   width: 11.25em;
+   height: auto;
+   display: block;
+}
+.confluent-tag a svg path {
+   fill: currentColor;
+}
+.confluent-tag a:hover {
+   color: #f63f5c;
+   border-color: #fea237;
+   box-shadow: 0px 0em 1.5em -0.25em rgba(254, 162, 55, 0.7);
+}

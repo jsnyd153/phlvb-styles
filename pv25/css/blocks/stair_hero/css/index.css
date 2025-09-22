@@ -1,0 +1,66 @@
+/*css/blocks/stair_hero/css/index.scss*/
+.stair_hero--section {
+   padding-block: var(--section_padding);
+   --theme--background: rgba(255, 255, 255, 0.15);
+   --theme--primary_text: #faf9e9;
+   --theme--secondary_text: #faf9e9;
+   --theme--emphasis_text: #f6fcfe;
+   --theme--contrast: #fff;
+   --theme--background-active: #faf9e9;
+   --theme--primary_text-active: #339499;
+   --theme--secondary_text-active: #007e99;
+   --theme--emphasis_text-active: #126587;
+   --theme--contrast-active: #0e3c62;
+}
+.stair_hero--row {
+   grid-column: 3/-3;
+}
+@media (max-width: 991px) {
+   .stair_hero--row {
+      grid-column: 2/-2;
+   }
+}
+.stair_hero--text_area {
+   width: 100%;
+}
+.stair_hero--text_area .text_content {
+   width: 100%;
+   gap: 2rem;
+}
+.stair_hero--text_area .text_content h1 {
+   display: flex;
+   flex-direction: column;
+}
+@media (max-width: 991px) {
+   .stair_hero--text_area .text_content h1 {
+      display: inline-block;
+      text-align: center;
+   }
+}
+.stair_hero--text_area .text_content h1 span {
+   display: inline-block;
+   text-wrap: nowrap;
+}
+@media (max-width: 991px) {
+   .stair_hero--text_area .text_content h1 span {
+      text-wrap: initial;
+   }
+}
+.stair_hero--text_area .text_content h1 span:nth-child(2) {
+   margin-left: 2.5ch;
+   margin-right: -1ch;
+}
+@media (max-width: 991px) {
+   .stair_hero--text_area .text_content h1 span:nth-child(2) {
+      margin-inline: 0;
+   }
+}
+.stair_hero--text_area .text_content h1 span:nth-child(3) {
+   margin-left: 5ch;
+   margin-right: -1ch;
+}
+@media (max-width: 991px) {
+   .stair_hero--text_area .text_content h1 span:nth-child(3) {
+      margin-inline: 0;
+   }
+}

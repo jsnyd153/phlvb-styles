@@ -1,0 +1,204 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+// Basic Content
+//This is a basic block with stadnard row settings
+// Visual:
+// Dependancy:
+
+/*css/components/pricing_cards/css/index.scss*/
+
+//Attributes
+//state = default | active | expired
+
+@property --_gradient_angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.pricing_cards- {
+  &card {
+    position: relative;
+    --_corner: var(--corner-12);
+    --_glow-inset: 2.5rem;
+    border-radius: var(--_corner);
+    padding: 0;
+    container-type: inline-size;
+    container-name: pricing-card;
+    // transition: 0.5s filter;
+    &:hover {
+      // filter: brightness(1.2);
+      .c26-button .button-arrow {
+        translate: 50% 0;
+      }
+    }
+    &::after {
+      position: absolute;
+      border-radius: inherit;
+      z-index: -1;
+      filter: blur(3.5rem);
+      inset: var(--_glow-inset);
+      @include sm {
+        inset: 1rem;
+      }
+    }
+    &:before {
+      @include psuedo_el;
+      background: var(--theme--border);
+      position: absolute;
+      inset: -1 * $rem;
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    opacity: 0.7;
+    &[state="active"] {
+      opacity: 1;
+      background-color: var(--theme--background-em);
+      &::after,
+      &::before {
+        background-image: conic-gradient(
+          from var(--_gradient_angle),
+          var(--gold),
+          var(--red),
+          var(--blue),
+          var(--red),
+          var(--gold)
+        );
+        animation: card-border-rotation 5s linear infinite;
+      }
+      &:after {
+        @include psuedo_el;
+      }
+    } //[state="active"]
+  } //card
+
+  &border-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: inherit;
+    background-color: var(--theme--background);
+    position: relative;
+    transition: 1s background-color;
+    a:hover & {
+      background-color: var(--theme--background-em);
+    }
+  }
+
+  &text_area {
+    padding: var(--obj_padding-small);
+    flex-basis: 300 * $rem;
+    flex-grow: 1;
+
+    [state="active"] & {
+      @container pricing-card (max-width:#{ 500 * $rem}) {
+        margin-bottom: -80 * $rem;
+      }
+    }
+
+    .text_content {
+      flex-direction: row;
+      gap: 1rem;
+      align-items: center;
+      [state="active"] & {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    .tag {
+      background-color: var(--theme--background);
+      border: 1 * $rem solid var(--theme--border);
+      color: var(--theme--primary_text);
+    }
+    h3 {
+      display: none;
+      [state="active"] & {
+        margin-top: 1em;
+        display: block;
+      }
+    }
+    h4 {
+      order: 3;
+      font-size: 18 * $rem;
+      font-weight: 570;
+      flex-grow: 1;
+      text-align: right;
+      opacity: 0.7;
+      [state="active"] & {
+        order: 0;
+        opacity: 1;
+        @include headline_1;
+        text-align: left;
+      }
+    }
+    p {
+      color: var(--theme--secondary_text);
+      font-size: 13 * $rem;
+      font-weight: 600;
+    }
+  } //text area
+  &media_area {
+    flex-basis: 200 * $rem;
+    flex-grow: 1;
+    display: none;
+    border-radius: 0 var(--_corner) var(--_corner) 0;
+    overflow: clip;
+
+    @container pricing-card (max-width:#{ 500 * $rem}) {
+      min-height: 80 * $rem;
+      img {
+        display: none;
+      }
+    }
+
+    [state="active"] & {
+      display: block;
+    }
+    .media_content {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      aspect-ratio: auto;
+
+      &::after {
+        @include psuedo_el;
+        @include cover_obj;
+        background: radial-gradient(
+          56.38% 94.65% at 100% 100%,
+          #161b32 0%,
+          rgba(22, 27, 50, 0) 100%
+        );
+      }
+      img {
+        @include cover_obj;
+      }
+      .c26-button {
+        z-index: 1;
+        position: absolute;
+        right: var(--obj_padding-small);
+        bottom: var(--obj_padding-small);
+        svg {
+          position: relative;
+        }
+      } //button
+    } //media content
+  } //media area
+} //pricing_cards-
+
+@keyframes card-border-rotation {
+  0% {
+    --_gradient_angle: 0deg;
+  }
+  100% {
+    --_gradient_angle: -360deg;
+  }
+}
+
+#header-burger {
+  color: $deep-navy;
+  path {
+    stroke: currentColor;
+  }
+}

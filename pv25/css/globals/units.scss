@@ -1,0 +1,86 @@
+@use "sass:color";
+@use "abstracts/" as *;
+
+/*css/globals/units.scss*/
+:root {
+	@include fluid_size(--section_padding-mini, 8px, 16px);
+	@include fluid_size(--section_padding-small, 30px, 45px);
+	@include fluid_size(--section_padding, 48px, 64px);
+	@include fluid_size(--section_padding-large, 86px, 108px);
+	@include fluid_size(--section_padding-jumbo, 120px, 160px);
+	--section_padding-medium: var(--section_padding);
+
+	@include fluid_size(--obj_padding-mini, 16px, 20px, 768px, 1440px);
+	@include fluid_size(--obj_padding-small, 18px, 26px, 768px, 1440px);
+	@include fluid_size(--obj_padding, 20px, 32px);
+	@include fluid_size(--obj_padding-large, 32px, 48px);
+	@include fluid_size(--obj_padding-jumbo, 40px, 60px);
+	--obj_padding-medium: var(--obj_padding);
+
+	@include fluid_size(--space_between-mini, 12px, 20px);
+	@include fluid_size(--space_between-small, 20px, 28px);
+	@include fluid_size(--space_between, 24px, 48px);
+	@include fluid_size(--space_between-large, 48px, 64px);
+	@include fluid_size(--space_between-jumbo, 64px, 80px);
+	--space_between-medium: var(--space_between);
+
+	@include fluid_size(--gutter, 12px, 28px);
+
+	@include fluid_size(--corner-20, 16px, 20px);
+	@include fluid_size(--corner-16, 12px, 16px);
+	@include fluid_size(--corner-12, 8px, 12px);
+	@include fluid_size(--corner-10, 6px, 10px);
+	@include fluid_size(--corner-8, 6px, 8px);
+	@include fluid_size(--corner-4, 2px, 4px);
+}
+
+@each $size in $sizes {
+	[space-between="#{nth($size, 1)}"] {
+		gap: var(--space_between-#{nth($size, 1)});
+	}
+	[object-padding="#{nth($size, 1)}"] {
+		padding: var(--obj_padding-#{nth($size, 1)});
+	}
+	[section-height="#{nth($size, 1)}"] {
+		padding-block: var(--section_padding-#{nth($size, 1)});
+	}
+}
+section[section-height="minimum"] {
+	padding-block: 0;
+}
+
+@each $color in $all_colors {
+	[text-color="#{nth($color, 1)}"] {
+		color: var(--#{nth($color, 1)});
+	}
+}
+[text-color="accent"] {
+	color: var(--theme--accent);
+}
+[text-color="accent-light"] {
+	color: var(--theme--accent-light);
+}
+[text-color="accent-text"] {
+	color: var(--theme--accent-text);
+}
+[text-color="accent-text-light"] {
+	color: var(--theme--accent-text-light);
+}
+[text-color="secondary"] {
+	color: var(--theme--secondary_text);
+}
+[text-color="primary"] {
+	color: var(--theme--primary_text);
+}
+[text-color="border"] {
+	color: var(--theme--border);
+}
+[text-color="soft"] {
+	color: var(--theme--soft_color);
+}
+[text-color="background"] {
+	color: var(--theme--background);
+}
+[text-color="background-em"] {
+	color: var(--theme--background-em);
+}

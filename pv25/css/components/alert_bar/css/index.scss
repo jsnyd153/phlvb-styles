@@ -1,0 +1,61 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual:
+/*css/components/alert_bar/css/index.scss*/
+//Dependencies:
+
+.alert_bar {
+  background: linear-gradient(
+    90deg,
+    var(--theme--accent) -5.41%,
+    var(--theme--accent-light) 100%
+  );
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: var(--obj_padding-small);
+  padding-block: clamp(0.5rem, -0.75vw + 1.175rem, 1rem);
+  padding-inline: 1rem;
+
+  &-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-grow: 1;
+
+    color: $white;
+    svg {
+      transition: 0.5s translate;
+    }
+    &:hover {
+      color: $white;
+      text-decoration: underline;
+      svg {
+        translate: 50% 0;
+      }
+    }
+  }
+  &-text {
+    color: $white;
+    font-family: $primary_font-var;
+    font-size: 13 * $rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%;
+  }
+  &-close {
+    button {
+      background-color: transparent;
+      padding: 5 * $rem 5 * $rem;
+      &:hover,
+      &:focus {
+        opacity: 0.8;
+        outline: 1px solid $white;
+        // padding: ;
+      }
+    }
+  }
+}

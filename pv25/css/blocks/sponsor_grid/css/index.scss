@@ -1,0 +1,277 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual:
+/*css/blocks/sponsor_grid/css/index.scss*/
+//Dependencies:
+
+//Attributres
+
+.sponsor_grid {
+  &-- {
+    &section {
+      padding-block: var(--section_padding);
+    }
+    &text_area {
+      @include column-span;
+    }
+    &row {
+      grid-column: 2/-2;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: inherit;
+    } //row
+    &level {
+      --columns: 12;
+      grid-column: span var(--columns);
+      display: grid;
+      grid-template-columns: repeat(var(--columns), 1fr);
+      gap: inherit;
+      padding-top: var(--gutter);
+      border-top: 1/16 * 1rem solid var(--theme--primary_text);
+
+      &.hide {
+        display: none;
+      }
+
+      &[sub-division="4"] {
+        .content_grid {
+          height: 100%;
+          &::after {
+            content: "";
+            display: block;
+            grid-column: span 2;
+            @include lg {
+              display: none;
+            }
+          }
+        }
+        @include lg {
+          --columns: 4;
+        }
+      }
+      &[sub-division="8"] {
+        @include lg {
+          --columns: 8;
+        }
+      }
+    }
+    &label {
+      grid-column: span 2;
+      @include header_tags {
+        @include fluid_size(font-size, 14px, 20px);
+      }
+      @include md {
+        grid-column: span 12;
+      }
+    }
+    &grid {
+      grid-column: span calc(var(--columns) - 2);
+      @include md {
+        grid-column: span 12;
+      }
+      .content_grid {
+        --_base_size: 56.25rem;
+      }
+
+      .content_grid {
+        &[items-per-row="2"]:not(:has(.w-dyn-item:nth-child(2))) {
+          &:after {
+            display: block;
+            content: "";
+          }
+        }
+      }
+      .content_grid {
+        &[items-per-row="3"]:not(:has(.w-dyn-item:nth-child(3))) {
+          &:after {
+            display: block;
+            content: "";
+          }
+        }
+      }
+      .content_grid {
+        &[items-per-row="4"]:not(:has(.w-dyn-item:nth-child(4))) {
+          &:after {
+            display: block;
+            content: "";
+          }
+        }
+      }
+      .content_grid {
+        &[items-per-row="5"]:not(:has(.w-dyn-item:nth-child(5))) {
+          &:after {
+            display: block;
+            content: "";
+          }
+        }
+        &[items-per-row="5"]:not(:has(.w-dyn-item:nth-child(4))) {
+          &:after {
+            display: block;
+            content: "";
+          }
+          &:before {
+            display: block;
+            content: "";
+            grid-column-end: -1;
+          }
+        }
+      }
+    }
+    &logo {
+      position: relative;
+      img {
+        width: 100%;
+        // aspect-ratio: 21/9;
+        object-fit: contain;
+        transition: 0.5s all;
+      }
+      .cream-logo {
+        a:hover & {
+          opacity: 0;
+        }
+      }
+      .color-logo {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        a:hover & {
+          opacity: 1;
+        }
+      }
+    }
+    &card {
+      height: 100%;
+      padding: var(--obj_padding-small);
+      @include glass-background;
+      transition: 0.5s all;
+      @include f-center;
+      aspect-ratio: 25/14;
+      @include sm {
+        aspect-ratio: 21/9;
+        padding: var(--obj_padding);
+      }
+
+      &:is(a):hover,
+      &:is([modal-trigger]):hover {
+        // @include theme-cream;
+        background-color: var(--theme--background);
+      }
+
+      &-label {
+        transition: 0.5s all;
+        @include body_text;
+        font-size: 0.75rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.sponsor_grid--logo,
+.film_strip--wrapper[media-type="logos"] {
+  //reusing the logo width in the film strip
+  width: 100%;
+
+  &[logo-width="auto"] {
+    width: 100%;
+  }
+  &[logo-width=""] {
+    width: 100%;
+  }
+  @for $i from 10 through 20 {
+    $inciment: $i * 5;
+    &[logo-width="#{$inciment}"] {
+      width: #{$inciment * 1%};
+    }
+  }
+}
+
+.sponsor_grid-item {
+  --_corner: #{8 * $rem};
+  --_border-width: 1px;
+  --_gold: var(--theme--border);
+  --_red: var(--theme--border);
+  --_blue: var(--theme--border);
+  --_logo-opacity: 0.9;
+  --_glow-opacity: 0;
+  //====
+  border-radius: var(--_corner);
+  aspect-ratio: 21/9;
+  position: relative;
+  background-color: var(--theme--background);
+
+  &::after,
+  &::before {
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    z-index: -1;
+    @include psuedo_el;
+  }
+  &:before {
+    background-image: conic-gradient(
+      from var(--_gradient_angle),
+      var(--_gold),
+      var(--_red),
+      var(--_blue),
+      var(--_red),
+      var(--_gold)
+    );
+  }
+  &::after {
+    opacity: var(--_glow-opacity, 0);
+    filter: blur(1.5rem);
+    inset: 0.5rem;
+    background-image: conic-gradient(
+      from var(--_gradient_angle),
+      var(--_gold),
+      var(--_red),
+      var(--_blue),
+      var(--_red),
+      var(--_gold)
+    );
+  }
+
+  &:hover {
+    &::after,
+    &::before {
+      animation: card-border-rotation 5s linear infinite;
+    }
+  }
+
+  &:has(.w-dyn-bind-empty) {
+    display: none;
+  }
+}
+.sponsor_grid-item-border {
+  width: 100%;
+  height: 100%;
+  background-color: var(--theme--background);
+  border-radius: inherit;
+  display: block;
+}
+.sponsor_grid-item-image {
+  @include t-center;
+  opacity: var(--_logo-opacity);
+  max-width: calc(90% * var(--_logo-width, 1));
+  width: 90%;
+  filter: saturate(0);
+  max-height: 80%;
+}
+.sponsor_grid-item-image-color {
+  @include t-center;
+  opacity: 0;
+  transition: 0.5s all;
+  max-width: calc(90% * var(--_logo-width, 1));
+  .sponsor_grid-item:hover & {
+    // opacity: 1;
+  }
+}
+
+@for $i from 1 through 20 {
+  $step: $i * 5;
+  [logo-width="#{$step}"] {
+    --_logo-width: #{$step * 0.01};
+  }
+}

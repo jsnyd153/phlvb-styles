@@ -1,0 +1,26 @@
+/*css/components/tabs/css/index.scss*/
+.tab-menu {
+   margin-bottom: var(--obj_padding-large);
+   display: flex;
+   gap: 0.75rem;
+}
+.tab-link {
+   background: var(--theme--accent);
+}
+.tab-link:hover:after {
+   width: 100%;
+   transition: 0.4s all;
+}
+.tab-link.w--current {
+   background: #fea237;
+   color: #161b32;
+}
+.tab-link.w--current:hover {
+   filter: brightness(1);
+}
+.tab-link.w--current:hover::before {
+   display: none;
+}
+.w--tab-active {
+   padding: 1px;
+}

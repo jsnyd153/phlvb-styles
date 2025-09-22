@@ -1,0 +1,159 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual:
+/*css/blocks/session/css/index.scss*/
+//Dependencies:
+
+//Attributres
+
+.session_hero-- {
+  &section {
+    padding-top: var(--section_padding);
+    padding-bottom: 0;
+  }
+}
+
+.session_content-- {
+  &section {
+  }
+  &row {
+    @include inner_grid;
+    gap: inherit;
+  }
+  &media {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 7;
+    @include lg {
+      grid-column: span 8;
+    }
+    @include sm {
+      grid-column: span 12;
+    }
+  }
+  &recording {
+    margin-bottom: var(--space_between-small);
+  }
+  &slides {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: 0.5s all;
+    .w-iframe {
+      overflow: hidden;
+    }
+    &[aria-hidden="false"] {
+      grid-template-rows: 1fr;
+      margin-bottom: var(--space_between-small);
+    }
+  }
+
+  &description {
+    grid-column: span 5;
+    @include lg {
+      grid-column: span 4;
+    }
+    @include sm {
+      grid-column: span 12;
+    }
+
+    hr {
+      border-top: 1px solid var(--theme--primary_text);
+      margin-block: 1.5rem;
+    }
+  }
+
+  &body_text {
+    display: grid;
+    grid-template-rows: clamp(120/16 * 1rem, 50vh, 400/16 * 1rem);
+    transition: 0.5s all;
+    mask-image: linear-gradient(180deg, #000000 35%, rgba(0, 0, 0, 0) 50%);
+    mask-size: 100% 200%;
+    .w-richtext {
+      overflow: hidden;
+    }
+    [expanded="true"] & {
+      grid-template-rows: 1fr;
+      mask-size: 100% 300%;
+    }
+    @include sm {
+      grid-template-rows: 1fr;
+      mask-size: 100% 300%;
+    }
+  }
+  &speakers {
+    display: flex;
+    gap: 6/16 * 1rem;
+    flex-direction: column;
+
+    p strong {
+      @include headline_6(19px, 22px);
+      color: var(--theme--primary_text);
+    }
+    p {
+      @include body_text-large-style;
+      color: var(--theme--emphasis_text);
+    }
+    p:nth-child(n + 2) strong {
+      // border-top: 1px solid currentColor;
+      padding-top: 0.5em;
+      display: inline-block;
+    }
+  }
+}
+
+button[action="toggle-body"] {
+  .button-arrow {
+    display: none;
+  }
+  .button-container:has(&) {
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  @include sm {
+    display: none;
+  }
+}
+
+.eye-closed {
+  display: none;
+  [aria-expanded="true"] & {
+    display: block;
+  }
+}
+.eye-open {
+  display: block;
+  [aria-expanded="true"] & {
+    display: none;
+  }
+}
+
+.session-item-link {
+  @include cover_obj;
+  &[data-w-id] {
+    display: none;
+  }
+}
+
+//when there are not enoguh items ot fill the grid add pseudo elements
+
+.content_grid[fs-cmsfilter-element="list"][items-per-row="3"]:not(
+    :has(.w-dyn-item:nth-child(3))
+  ) {
+  &::after {
+    display: block;
+    content: "";
+    order: 3;
+  }
+}
+
+.content_grid[fs-cmsfilter-element="list"][items-per-row="3"]:not(
+    :has(.w-dyn-item:nth-child(2))
+  ) {
+  &::before {
+    display: block;
+    content: "";
+    order: 2;
+  }
+}

@@ -1,0 +1,295 @@
+/*css/globals/text_styles.scss*/
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+ font-feature-settings: "lnum" 1;
+}
+
+h1 {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 500;
+ font-size: clamp(2.625rem, 1.69vw + 2.23125rem, 3.75rem);
+ line-height: 1.1;
+ text-wrap: pretty;
+}
+
+h2 {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 600;
+ font-size: clamp(2rem, 1.03vw + 1.75625rem, 2.6875rem);
+ line-height: 1.2;
+ text-wrap: pretty;
+}
+
+h3 {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 570;
+ font-size: clamp(1.5rem, 0.38vw + 1.4125rem, 1.75rem);
+ line-height: 1.25;
+ text-wrap: pretty;
+}
+
+h4 {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 600;
+ font-size: clamp(1.25rem, 0.38vw + 1.1625rem, 1.5rem);
+ line-height: 1.25;
+ text-wrap: pretty;
+}
+
+h5 {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 700;
+ font-size: clamp(1rem, 0.28vw + 0.93125rem, 1.1875rem);
+ line-height: 1.25;
+}
+
+h6 {
+ color: var(--theme--primary_text, #fff);
+ font-weight: 600;
+ font-size: clamp(0.9375rem, 0vw + 0.9375rem, 0.9375rem);
+ line-height: 1.25;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+}
+
+p {
+ color: var(--theme--primary_text, #fff);
+ font-size: clamp(0.9375rem, 0.19vw + 0.89375rem, 1.0625rem);
+ font-weight: 300;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+}
+p a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+p a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+p a:hover::before {
+ width: 100%;
+}
+p.large {
+ color: var(--theme--primary_text, #fff);
+ font-size: clamp(1.125rem, 0.28vw + 1.05625rem, 1.3125rem);
+ font-weight: 300;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+}
+p.large a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+p.large a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+p.large a:hover::before {
+ width: 100%;
+}
+p.small {
+ color: var(--theme--primary_text, #fff);
+ font-size: clamp(0.8125rem, 0.09vw + 0.7875rem, 0.875rem);
+ font-weight: 300;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+}
+p.small a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+p.small a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+p.small a:hover::before {
+ width: 100%;
+}
+p.bold {
+ font-weight: 700;
+}
+p.light {
+ font-weight: 300;
+}
+p.book {
+ font-weight: 450;
+}
+
+.style-h1 {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 500;
+ font-size: clamp(2.625rem, 1.69vw + 2.23125rem, 3.75rem);
+ line-height: 1.1;
+ text-wrap: pretty;
+}
+
+.style-h2 {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 600;
+ font-size: clamp(2rem, 1.03vw + 1.75625rem, 2.6875rem);
+ line-height: 1.2;
+ text-wrap: pretty;
+}
+
+.style-h3 {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 570;
+ font-size: clamp(1.5rem, 0.38vw + 1.4125rem, 1.75rem);
+ line-height: 1.25;
+ text-wrap: pretty;
+}
+
+.style-h4 {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 600;
+ font-size: clamp(1.25rem, 0.38vw + 1.1625rem, 1.5rem);
+ line-height: 1.25;
+ text-wrap: pretty;
+}
+
+.style-h5 {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 700;
+ font-size: clamp(1rem, 0.28vw + 0.93125rem, 1.1875rem);
+ line-height: 1.25;
+}
+
+.style-h6 {
+ color: var(--theme--primary_text, #fff);
+ font-weight: 600;
+ font-size: clamp(0.9375rem, 0vw + 0.9375rem, 0.9375rem);
+ line-height: 1.25;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+}
+
+.body-text,
+.body {
+ color: var(--theme--primary_text, #fff);
+ font-size: clamp(0.9375rem, 0.19vw + 0.89375rem, 1.0625rem);
+ font-weight: 300;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+}
+.body-text a,
+.body a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+.body-text a:hover,
+.body a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+.body-text a:hover::before,
+.body a:hover::before {
+ width: 100%;
+}
+
+.body-text-jumbo {
+ color: var(--theme--primary_text, #fff);
+ font-size: clamp(1.25rem, 0.38vw + 1.1625rem, 1.5rem);
+ font-weight: 300;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+}
+.body-text-jumbo a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+.body-text-jumbo a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+.body-text-jumbo a:hover::before {
+ width: 100%;
+}
+
+.body-text-large {
+ color: var(--theme--primary_text, #fff);
+ font-size: clamp(1.125rem, 0.28vw + 1.05625rem, 1.3125rem);
+ font-weight: 300;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+}
+.body-text-large a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+.body-text-large a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+.body-text-large a:hover::before {
+ width: 100%;
+}
+
+.body-text-small {
+ color: var(--theme--primary_text, #fff);
+ font-size: clamp(0.8125rem, 0.09vw + 0.7875rem, 0.875rem);
+ font-weight: 300;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+}
+.body-text-small a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+.body-text-small a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+.body-text-small a:hover::before {
+ width: 100%;
+}

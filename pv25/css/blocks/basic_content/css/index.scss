@@ -1,0 +1,43 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+// Basic Content
+//This is a basic block with standard row settings. That's bacially it
+// Visual:
+// Dependancy:
+
+/*css/blocks/basic_content/css/index.scss*/
+
+//Attributes
+//&--row: column-span = main* | inset | narrow | full_page
+//&--row: alignment = center* | right | left
+
+.basic_content {
+  &-- {
+    &section {
+      row-gap: var(--space_between, 32 * $rem);
+      padding-block: var(--section_padding, 80 * $rem);
+      position: relative;
+    } //section
+
+    &row {
+      position: relative;
+      &[alignment="center"] {
+        justify-content: center;
+        align-items: center;
+        .text_area {
+          justify-content: center;
+          align-items: center;
+        }
+        .text_content {
+          justify-content: center;
+          align-items: center;
+        }
+        .button-container {
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    } //row
+  } //--
+} //

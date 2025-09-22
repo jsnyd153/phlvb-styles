@@ -1,0 +1,91 @@
+/*css/components/fs-filters/css/index-mod.scss*/
+.fs-filter-group {
+   display: flex;
+   gap: var(--space_between-mini, 1.5rem);
+   position: relative;
+   z-index: 1;
+   flex-direction: column;
+   padding-top: 2rem;
+}
+
+.fs-filter-dropdown {
+   position: relative;
+   display: flex;
+   gap: 1rem;
+}
+.fs-filter-dropdown .dropdown--button {
+   box-sizing: border-box;
+   display: flex;
+   text-decoration: none;
+   background: var(--theme--background);
+   -webkit-backdrop-filter: blur(0.5rem);
+           backdrop-filter: blur(0.5rem);
+   transition: 0.3s box-shadow, 0.3s translate, 0.5s background, 0.5s color;
+   color: var(--theme--primary_text);
+   height: 100%;
+   color: var(--theme--secondary_text);
+   font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+   font-weight: 500;
+   line-height: 1.45;
+   font-family: "Raleway Variable", "Raleway", sans-serif;
+   text-transform: none;
+   letter-spacing: 0em;
+   flex-grow: 0;
+}
+.fs-filter-dropdown .dropdown--button::after {
+   display: inline-block;
+   content: ":";
+}
+.fs-filter-dropdown .dropdown--list {
+   display: flex;
+   gap: 0.75rem;
+}
+.fs-filter-dropdown.open .dropdown--button::after {
+   rotate: 180deg;
+}
+.fs-filter-search {
+   flex-grow: 1;
+}
+
+.fs-filter-search-field[type=text] {
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: column;
+   padding: 0.5rem 1rem;
+   text-decoration: none;
+   background: var(--theme--background);
+   transition: 0.3s box-shadow, 0.3s translate, 0.5s background, 0.5s color;
+   color: var(--theme--primary_text);
+   color: var(--theme--secondary_text);
+   font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+   font-weight: 500;
+   line-height: 1.45;
+   font-family: "Raleway Variable", "Raleway", sans-serif;
+   text-transform: none;
+   letter-spacing: 0em;
+   border: 1px solid var(--color--blue);
+   border-radius: 99em;
+}
+.fs-filter-search-field[type=text]:hover {
+   border-width: 1px;
+   border-color: #116597;
+   padding-bottom: 0.5rem;
+}
+.fs-filter-search-field[type=text]::-moz-placeholder {
+   color: var(--color--blue);
+   opacity: 0.9;
+}
+.fs-filter-search-field[type=text]::placeholder {
+   color: var(--color--blue);
+   opacity: 0.9;
+}
+.fs-filter-search-field[type=text]:hover::-moz-placeholder {
+   color: #116597;
+}
+.fs-filter-search-field[type=text]:hover::placeholder {
+   color: #116597;
+}
+
+.content_grid--list {
+   padding-bottom: 3rem;
+}

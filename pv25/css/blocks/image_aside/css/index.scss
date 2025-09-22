@@ -1,0 +1,65 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=17%3A17741&mode=design&t=iIhpQlgc7EE2wRKD-1
+/*css/blocks/grid_content/css/index.scss*/
+//Dependencies:
+
+//Attributres
+
+.image_aside {
+  &-- {
+    &section {
+      padding-block: var(--section_padding);
+      // background-color: $sea-foam;
+    }
+    &text_area {
+      grid-column: 2/-2;
+    }
+    &row {
+      grid-column: 2/-2;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-auto-flow: dense;
+      gap: inherit;
+      @include md {
+        grid-template-columns: 1fr;
+      }
+    }
+    &main_content {
+      grid-column: 1;
+      display: flex;
+      flex-direction: column;
+      gap: var(--obj_padding);
+    }
+    &media_area {
+      grid-column: 2;
+
+      @include md {
+        grid-column: auto;
+      }
+      .media_content {
+        position: relative;
+        display: flex;
+        gap: var(--gutter);
+        img {
+          width: 100%;
+          flex-grow: 1;
+          flex-shrink: 1;
+          aspect-ratio: 5/6;
+          position: absolute;
+          min-width: 0;
+          object-fit: cover;
+          @include md {
+            position: relative;
+          }
+          &:nth-child(n + 3) {
+            @include xs {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,157 @@
+//Attributres
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual:https://www.figma.com/file/bkJMx3wQBC5MoOB0mSGuqO/Data-Streaming-Report-LP?type=design&node-id=290%3A1393&mode=design&t=P0iJjQtxlG8hNy3v-1
+/*css/atoms/dropdown/css/index.scss*/
+//Dependencies: dropdown--select.js
+
+.dropdown-- {
+	&select {
+		max-width: 100%;
+		position: relative;
+		font-size: 1rem;
+		@include md {
+			font-size: 0.75rem;
+		}
+		@include sm {
+			flex-basis: 10rem;
+		}
+	}
+	&button {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 24/16 * 1em;
+		width: 100%;
+		font-size: 24/16 * 1em;
+		padding: 13/24 * 1em 24/24 * 1em;
+		color: var(--slate);
+		font-weight: 500;
+		text-align: left;
+		border-radius: 0.75rem;
+
+		cursor: pointer;
+		transition: color 0.3s;
+
+		&:hover {
+			color: var(--accent-light);
+		}
+		&:focus,
+		&:focus-visible {
+			color: var(--accent-light);
+			outline: 2/16 * 1rem solid var(--accent);
+			outline-offset: 2/16 * 1rem;
+		}
+
+		&-text {
+			width: 92/16 * 1em;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			@include sm {
+				width: 100%;
+			}
+		}
+	}
+
+	// &arrow {
+	//   @include css-arrow-down;
+	// }
+	&container {
+		position: absolute;
+		top: calc(100% + 0.25rem);
+		width: 100%;
+		background-color: #72b0fe;
+		box-shadow: var(--blue-shadow);
+		height: 0;
+		overflow: clip;
+		transition: content-visibility 0.5s allow-discrete, height 0.5s;
+		.open & {
+			height: 240 * $rem !important;
+		}
+	}
+	&list {
+		position: absolute;
+		list-style: none;
+		width: 100%;
+		border-radius: 0.75rem;
+		padding-inline: 24/16 * 1em;
+		max-height: 240/16 * 1em;
+		overflow-y: auto;
+		transition: 0.5s ease;
+		z-index: 100;
+		transform: scaleY(0);
+		transform-origin: 0 0;
+		opacity: 0;
+		visibility: hidden;
+
+		.open & {
+			transform: scaleY(1);
+			opacity: 1;
+			visibility: initial;
+		}
+
+		@include sm {
+			max-height: 280/16 * 1em;
+		}
+
+		&:focus-within {
+			//might need to update this later if we need differnt shadow colors
+			// box-shadow: 0 10/16 * 1rem 25/16 * 1rem rgba($indigo, 0.6);
+		}
+		&::-webkit-scrollbar {
+			width: 6/16 * 1rem;
+		}
+		&::-webkit-scrollbar-thumb {
+			background: var(--neutral-300);
+			border-radius: 99em;
+		}
+		&::-webkit-scrollbar-track {
+			background: transparent;
+			border-radius: 99rem;
+			margin-block: 0.75em;
+		}
+
+		//Active state
+		[aria-controls="dropdown--list"][aria-expanded="true"] ~ & {
+			opacity: 1;
+			visibility: visible;
+			transform: scaleY(1);
+		}
+	}
+	&option {
+		position: relative;
+		cursor: pointer;
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+		font-size: 1.125em;
+		color: var(--neutral-500);
+		font-family: $primary_font;
+		border-bottom: 1/16 * 1rem solid var(--neutral-300);
+		text-decoration: none;
+
+		&:hover,
+		input:checked ~ label {
+			color: var(--slate);
+		}
+		input:focus ~ label {
+			color: var(--slate);
+			text-decoration: underline;
+		}
+	}
+	&label {
+		width: 100%;
+		padding-block: 1em;
+		cursor: pointer;
+		display: flex;
+		gap: 1em;
+		align-items: center;
+	}
+	&input[type="radio"] {
+		position: absolute;
+		left: 0;
+		opacity: 0;
+	}
+} //.dropdown--

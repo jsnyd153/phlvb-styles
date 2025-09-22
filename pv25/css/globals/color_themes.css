@@ -1,0 +1,79 @@
+/*css/globals/color_themes.scss*/
+:root {
+ --theme--background: #000e35;
+ --theme--primary_text: #ffffff;
+ --theme--secondary_text: #b3b7c2;
+ --theme--border: #666e86;
+ --theme--soft_color: rgba(255, 255, 255, 0.25);
+ --theme--accent: #1a7aff;
+ --theme--accent-light: #76afff;
+ --theme--accent_glow: rgba(26, 122, 255, 0.6);
+ --theme--accent-text: #ffffff;
+ --theme--accent-text-light: #000e35;
+ --green: #94d13d;
+ --light-green: #bfe38b;
+ --blue: #1a7aff;
+ --light-blue: #76afff;
+ --crimson: #f16122;
+ --light-crimson: #f7a07a;
+ --yellow: #f9d452;
+ --light-yellow: #fbe597;
+ --white: #ffffff;
+ --navy: #000e35;
+}
+
+[color-theme~=dark] {
+ --theme--background: #000e35;
+ --theme--primary_text: #ffffff;
+ --theme--secondary_text: #b3b7c2;
+ --theme--border: #666e86;
+ --theme--soft_color: rgba(255, 255, 255, 0.25);
+}
+
+[color-theme~=light] {
+ --theme--background: #ffffff;
+ --theme--primary_text: #000e35;
+ --theme--secondary_text: #4d5672;
+ --theme--border: #999fae;
+ --theme--soft_color: rgba($navy, $alpha: 0.25);
+}
+
+[color-theme~=blue] {
+ --theme--accent: #1a7aff;
+ --theme--accent-light: #76afff;
+ --theme--accent_glow: rgba(26, 122, 255, 0.6);
+ --theme--accent-text: #ffffff;
+ --theme--accent-text-light: #000e35;
+}
+
+[color-theme~=green],
+[color-theme~=grass] {
+ --theme--accent: #94d13d;
+ --theme--accent-light: #bfe38b;
+ --theme--accent_glow: rgba(148, 209, 61, 0.6);
+ --theme--accent-text: #ffffff;
+ --theme--accent-text-light: #000e35;
+}
+
+[color-theme~=crimson],
+[color-theme~=indoor] {
+ --theme--accent: #f16122;
+ --theme--accent-light: #f7a07a;
+ --theme--accent_glow: rgba(241, 97, 34, 0.6);
+ --theme--accent-text: #ffffff;
+ --theme--accent-text-light: #000e35;
+}
+
+[color-theme~=yellow],
+[color-theme~=beach] {
+ --theme--accent: #f9d452;
+ --theme--accent-light: #fbe597;
+ --theme--accent_glow: rgba(249, 212, 82, 0.6);
+ --theme--accent-text: #ffffff;
+ --theme--accent-text-light: #000e35;
+}
+
+.wf-design-mode .demo-padding-dark {
+ background: rgba(255, 255, 255, 0.1);
+ padding: 0.5rem;
+}

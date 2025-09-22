@@ -1,0 +1,116 @@
+@use "sass:color";
+
+$navy: #000e35;
+$blue: #1a7aff;
+$crimson: #f16122;
+$yellow: #f9d452;
+$green: #94d13d;
+$white: #ffffff;
+
+$blue-0: #{mix($blue, $white, 5%)};
+$blue-25: #{mix($blue, $white, 15%)};
+$blue-50: #{mix($blue, $white, 30%)};
+$blue-100: #{mix($blue, $white, 45%)};
+$blue-200: #{mix($blue, $white, 60%)};
+$blue-300: #{mix($blue, $white, 75%)};
+$blue-400: #{mix($blue, $white, 90%)};
+$blue-500: $blue;
+$blue-600: #{mix($blue, $navy, 90%)};
+$blue-700: #{mix($blue, $navy, 66%)};
+$blue-800: #{mix($blue, $navy, 33%)};
+$blue-900: #{mix($blue, $navy, 5%)};
+
+$crimson-0: #{mix($crimson, $white, 5%)};
+$crimson-25: #{mix($crimson, $white, 15%)};
+$crimson-50: #{mix($crimson, $white, 30%)};
+$crimson-100: #{mix($crimson, $white, 45%)};
+$crimson-200: #{mix($crimson, $white, 60%)};
+$crimson-300: #{mix($crimson, $white, 75%)};
+$crimson-400: #{mix($crimson, $white, 90%)};
+$crimson-500: $crimson;
+$crimson-600: #{mix($crimson, $navy, 90%)};
+$crimson-700: #{mix($crimson, $navy, 66%)};
+$crimson-800: #{mix($crimson, $navy, 33%)};
+$crimson-900: #{mix($crimson, $navy, 5%)};
+
+$yellow-0: #{mix($yellow, $white, 5%)};
+$yellow-25: #{mix($yellow, $white, 15%)};
+$yellow-50: #{mix($yellow, $white, 30%)};
+$yellow-100: #{mix($yellow, $white, 45%)};
+$yellow-200: #{mix($yellow, $white, 60%)};
+$yellow-300: #{mix($yellow, $white, 75%)};
+$yellow-400: #{mix($yellow, $white, 90%)};
+$yellow-500: $yellow;
+$yellow-600: #{mix($yellow, $navy, 90%)};
+$yellow-700: #{mix($yellow, $navy, 66%)};
+$yellow-800: #{mix($yellow, $navy, 33%)};
+$yellow-900: #{mix($yellow, $navy, 5%)};
+
+$green-0: #{mix($green, $white, 5%)};
+$green-25: #{mix($green, $white, 15%)};
+$green-50: #{mix($green, $white, 30%)};
+$green-100: #{mix($green, $white, 45%)};
+$green-200: #{mix($green, $white, 60%)};
+$green-300: #{mix($green, $white, 75%)};
+$green-400: #{mix($green, $white, 90%)};
+$green-500: $green;
+$green-600: #{mix($green, $navy, 90%)};
+$green-700: #{mix($green, $navy, 66%)};
+$green-800: #{mix($green, $navy, 33%)};
+$green-900: #{mix($green, $navy, 5%)};
+
+$all_colors: (
+	"green" $green,
+	"light-green" $green-200,
+	"blue" $blue,
+	"light-blue" $blue-200,
+	"crimson" $crimson,
+	"light-crimson" $crimson-200,
+	"yellow" $yellow,
+	"light-yellow" $yellow-200,
+	"white" $white,
+	"navy" $navy
+);
+
+@mixin theme-dark {
+	--theme--background: #{$navy};
+	--theme--primary_text: #{$white};
+	--theme--secondary_text: #{mix($navy, $white, 30%)};
+	--theme--border: #{mix($navy, $white, 60%)};
+	--theme--soft_color: #{rgba($white, $alpha: 0.25)};
+}
+@mixin theme-light {
+	--theme--background: #{$white};
+	--theme--primary_text: #{$navy};
+	--theme--secondary_text: #{mix($white, $navy, 30%)};
+	--theme--border: #{mix($white, $navy, 60%)};
+	--theme--soft_color: rgba($navy, $alpha: 0.25);
+}
+@mixin theme-blue {
+	--theme--accent: #{$blue};
+	--theme--accent-light: #{$blue-200};
+	--theme--accent_glow: #{color.adjust($blue, $alpha: -0.4)};
+	--theme--accent-text: #{$white};
+	--theme--accent-text-light: #{$navy};
+}
+@mixin theme-crimson {
+	--theme--accent: #{$crimson};
+	--theme--accent-light: #{$crimson-200};
+	--theme--accent_glow: #{color.adjust($crimson, $alpha: -0.4)};
+	--theme--accent-text: #{$white};
+	--theme--accent-text-light: #{$navy};
+}
+@mixin theme-yellow {
+	--theme--accent: #{$yellow};
+	--theme--accent-light: #{$yellow-200};
+	--theme--accent_glow: #{color.adjust($yellow, $alpha: -0.4)};
+	--theme--accent-text: #{$navy};
+	--theme--accent-text-light: #{$navy};
+}
+@mixin theme-green {
+	--theme--accent: #{$green};
+	--theme--accent-light: #{$green-200};
+	--theme--accent_glow: #{color.adjust($green, $alpha: -0.4)};
+	--theme--accent-text: #{$white};
+	--theme--accent-text-light: #{$navy};
+}

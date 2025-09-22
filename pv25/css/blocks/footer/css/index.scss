@@ -1,0 +1,184 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/design/n1MRfrTDtMMwCwlUUJxRMM/Current-25-Website?node-id=505-11425&t=O2mZJSyMOQO7kI4S-1
+/*css/blocks/footer/css/index.scss*/
+//Dependencies:
+
+//Attributes
+
+footer {
+  padding: var(--obj_padding-large);
+  background-color: var(--theme--background-em);
+  font-family: $primary_font;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.footer-- {
+  &content {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    @include md {
+      flex-direction: column-reverse;
+    }
+  }
+  &branding {
+  }
+  &title {
+    @include headline_1;
+    color: var(--theme--primary_text);
+    @include fluid_size(font-size, 48px, 62px, 991px, 1440px);
+    margin-bottom: 0.25em;
+    margin-top: 130/16 * 1rem;
+    @include md {
+      @include fluid_size(font-size, 28px, 60px, 275px, 991px);
+      margin-top: 0;
+    }
+  }
+  &tagline {
+    color: var(--theme--primary_text);
+    font-family: $primary_font;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 105%;
+    letter-spacing: 0.16263rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  &nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8/16 * 1rem;
+    @include md {
+      align-items: flex-start;
+    }
+  }
+  &event_name {
+    padding-block: 0.75rem;
+    padding-inline: 1.25rem;
+    --_accent: var(--blue);
+    --_accent-light: var(--light-blue);
+    background-color: var(--theme--background-em);
+    border: 1px solid var(--theme--primary_text);
+    border-radius: 0.25rem;
+    text-decoration: none;
+    box-shadow: 0 0 0rem 0 var(--_accent);
+    transition: 0.5s box-shadow, 0.5s border, 0.3s background;
+
+    &[href="/new-orleans"] {
+      --_accent-light: var(--light-green);
+      --_accent: var(--green);
+    }
+    &[href="/bengaluru"] {
+      --_accent-light: var(--light-red);
+      --_accent: var(--red);
+    }
+    &[href="/london"] {
+      --_accent-light: var(--light-blue);
+      --_accent: var(--blue);
+    }
+
+    svg {
+      height: 24/16 * 1rem;
+      display: block;
+      path {
+        fill: var(--theme--primary_text);
+        transition: 0.5s fill;
+      }
+    }
+    &:hover {
+      // background-color: var(--theme--background);
+      box-shadow: 0 0 2.5rem 0 var(--_accent);
+      border: 1px solid var(--_accent-light);
+      svg {
+        path {
+          fill: var(--_accent-light);
+        }
+      }
+    }
+  }
+  &nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 0.125rem;
+    @include md {
+      align-items: flex-start;
+    }
+  }
+  &nav-item {
+    --_accent-light: #{$white};
+    --_accent: #{mix($white, $deep-navy, 95%)};
+    padding-block: 0.5rem;
+    padding-inline: 0.875rem;
+    color: #{mix($white, $deep-navy, 95%)};
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s all;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    transition: 0.5s box-shadow, 0.5s border, 0.5s color, 0.3s background;
+    box-shadow: 0 0 0rem 0 var(--_accent);
+
+    &:hover {
+      border: 1px solid var(--_accent-light);
+      color: var(--_accent-light);
+      box-shadow: 0 0 1.5rem 0 var(--_accent);
+    }
+
+    &[href="/new-orleans"] {
+      --_accent-light: var(--light-green);
+      --_accent: var(--greem);
+    }
+    &[href="/bengaluru"] {
+      --_accent-light: var(--light-red);
+      --_accent: var(--red);
+    }
+    &[href="/london"] {
+      --_accent-light: var(--light-blue);
+      --_accent: var(--blue);
+    }
+    &[href="/past-events"] {
+      --_accent-light: var(--light-gold);
+      --_accent: var(--gold);
+    }
+    &[href="/data-streaming-awards"] {
+      --_accent-light: var(--light-purple);
+      --_accent: var(--purple);
+    }
+  }
+  &legal {
+    border-top: 1/16 * 1rem solid var(--theme--primary_text);
+    padding-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    &-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--gutter);
+      a {
+        @include body_text;
+        color: var(--theme--primary_text);
+        font-size: 14/16 * 1rem;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  } //legal
+  &copyright {
+    @include body_text;
+    font-size: 13/16 * 1rem;
+    color: var(--theme--secondary_text);
+  }
+}

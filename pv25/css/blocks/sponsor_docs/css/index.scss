@@ -1,0 +1,58 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+// Basic Content
+//This is a basic block with standard row settings. That's bacially it
+// Visual:
+// Dependancy:
+
+/*css/blocks/basic_content/css/index.scss*/
+
+//Attributes
+//&--row: column-span = main* | inset | narrow | full_page
+//&--row: alignment = center* | right | left
+
+.sponsor_docs-- {
+  &filters {
+    @include column-span;
+  }
+  &list {
+    @include column-span;
+  }
+  &item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--gutter);
+  }
+  &logo-color {
+    background-color: white;
+    padding: 1rem;
+    border-radius: var(--_corner);
+    aspect-ratio: 21 / 9;
+    position: relative;
+    border-radius: 0.5rem;
+    @include f-center;
+    img {
+      max-width: calc(90% * var(--_logo-width, 1));
+    }
+  }
+  &logo-white {
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    padding: 1rem;
+    border-radius: var(--_corner);
+    aspect-ratio: 21 / 9;
+    position: relative;
+    border-radius: 0.5rem;
+    @include f-center;
+    img {
+      max-width: calc(90% * var(--_logo-width, 1));
+    }
+  }
+  &property {
+    margin-top: 0.5rem;
+    color: var(--theme--primary_text);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0.5rem;
+  }
+}

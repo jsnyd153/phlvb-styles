@@ -1,0 +1,12 @@
+/*css/custom/home/css/index.scss*/
+main.home {
+   min-height: 100svh;
+   padding-top: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+main.home section {
+   width: 100%;
+   row-gap: var(--space_between-large);
+}

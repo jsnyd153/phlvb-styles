@@ -1,0 +1,156 @@
+/*css/components/form/css/index.scss*/
+.c25-form,
+.c26-form {
+   margin-bottom: 0;
+   --_corner: var(--corner-12);
+   --_glow-inset: 2.5rem;
+   padding: 0;
+   container-type: inline-size;
+   container-name: form-card;
+   position: relative;
+}
+.c25-form[color-theme=silver],
+.c26-form[color-theme=silver] {
+   --gold: #ffffff;
+   --red: #acacac;
+   --blue: #5e6894;
+}
+.c25-form:before,
+.c26-form:before {
+   display: block;
+   content: "";
+   background: var(--theme--border);
+   position: absolute;
+   inset: -0.0625rem;
+   border-radius: inherit;
+   z-index: -1;
+   background-image: var(--brand--gradient-conic, conic-gradient(from var(--_gradient_angle), var(--gold), var(--red), var(--blue), var(--red), var(--gold)));
+}
+.c25-form[color-theme]::before,
+.c26-form[color-theme]::before {
+   background-image: conic-gradient(from var(--_gradient_angle), var(--theme--accent), var(--theme--accent-light), var(--theme--accent));
+}
+.c25-form-form,
+.c26-form-form {
+   padding: var(--obj_padding-large);
+   display: flex;
+   flex-direction: column;
+   gap: var(--obj_padding);
+   background-color: var(--theme--background);
+   border-radius: inherit;
+   position: relative;
+}
+.c25-form-text_area .text_content,
+.c26-form-text_area .text_content {
+   gap: 0.5rem;
+}
+.c25-form-fields,
+.c26-form-fields {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+}
+.c25-form-row,
+.c26-form-row {
+   display: flex;
+   gap: var(--gutter);
+   flex-wrap: wrap;
+}
+.c25-form-row .input_area,
+.c26-form-row .input_area {
+   flex-basis: 12.5rem;
+   flex-grow: 1;
+}
+.c25-form-step-wrapper,
+.c26-form-step-wrapper {
+   display: flex;
+   gap: 1.5rem;
+   flex-direction: column;
+}
+.c25-form-step-wrapper h3,
+.c26-form-step-wrapper h3 {
+   font-size: clamp(1.75rem, 0.75vw + 1.575rem, 2.25rem);
+   font-weight: 400;
+   margin-top: 0.5em;
+   color: var(--theme--accent-light);
+}
+
+.c25-form-group {
+   display: flex;
+   flex-direction: column;
+   gap: 0.25rem;
+   padding-block: 2rem;
+   border-bottom: 0.0625rem solid var(--theme--accent-light);
+}
+.c25-form-group .c25-form-row:not(:has(textarea,
+[type=text],
+[type=number],
+[type=email],
+[type=url],
+[type=tel])) {
+   margin-top: 1.5rem;
+}
+.c25-form-group .text_content {
+   gap: 0.25rem;
+}
+
+.c25-form-group:has([required]) h4::after {
+   display: inline-block;
+   content: "*";
+   color: #f63f5c;
+}
+
+.max {
+   color: vaR(--theme--secondary_text);
+}
+
+.c26-form-tracker {
+   width: 100%;
+   position: sticky;
+   top: 7.5rem;
+   background-color: var(--theme--background-em);
+   height: 10px;
+   --_items: 5;
+   display: grid;
+   grid-template-columns: repeat(var(--_items), 1fr);
+   border: 2px solid var(--theme--background-em);
+   gap: 0.25rem;
+   z-index: 99;
+   box-shadow: 0px 2px 16px 4px var(--theme--background);
+}
+.c26-form-tracker-item {
+   position: relative;
+   z-index: 10;
+   height: 100%;
+   background-color: rgba(255, 255, 255, 0.3);
+}
+.c26-form-tracker-item[complete=true] {
+   background-color: var(--theme--accent-light);
+}
+.c26-form-tracker-item:hover {
+   background-color: rgba(255, 255, 255, 0.8);
+}
+
+.invalid {
+   border-color: #f63f5c !important;
+}
+
+.c25-form-group[id] {
+   position: relative;
+}
+.c25-form-group[id] .scroll-anchor {
+   width: 1px;
+   height: 1px;
+   position: absolute;
+   top: -6.25rem;
+}
+
+.form--checkbox_input {
+   display: flex;
+   flex-direction: column;
+   gap: 0.75rem;
+}
+
+.utm-fields {
+   display: none;
+}

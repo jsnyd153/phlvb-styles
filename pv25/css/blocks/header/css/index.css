@@ -1,0 +1,275 @@
+/*css/blocks/grid_content/css/index.scss*/
+body {
+ background-color: var(--theme--background);
+}
+
+header {
+ position: sticky;
+ top: var(--gutter);
+ margin-inline: var(--page_margin);
+ z-index: 700;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+}
+[page-type=agenda] header {
+ position: relative;
+}
+header .w-nav {
+ padding: 0.25rem 0.5rem 0.25rem 1rem;
+ display: flex;
+ gap: var(--space_between);
+ align-items: center;
+ position: static;
+ border-radius: 99em;
+ border: 1px solid var(--theme--primary_text);
+ background: rgba(255, 255, 255, 0.7);
+ box-shadow: 0px 0.25rem 1.5rem 0px rgba(6, 15, 83, 0.65);
+ -webkit-backdrop-filter: blur(0.25rem);
+         backdrop-filter: blur(0.25rem);
+}
+header .w-nav:not(:has(.nav--actions)) {
+ min-height: 3rem;
+}
+header .w-nav:not(:has(.nav--actions .c26-button)) {
+ padding: 0.25rem 1rem 0.25rem 1rem;
+}
+header .w-nav::before, header .w-nav::after {
+ display: none;
+}
+
+.nav--branding {
+ width: 12.5rem;
+ flex-grow: 1;
+ min-width: 10rem;
+}
+.nav--branding-link {
+ display: block;
+ width: 100%;
+ max-width: clamp(12.5rem, 7.51vw + 10.7375rem, 17.5rem);
+ color: var(--theme--background);
+}
+.nav--branding-link:hover {
+ color: var(--theme--accent);
+}
+.nav--logo {
+ display: flex;
+ align-items: center;
+ padding-left: 0.5rem;
+}
+.nav--logo svg {
+ max-width: 100%;
+ height: clamp(1.5rem, 0.56vw + 1.36875rem, 1.875rem);
+}
+.nav--logo svg path {
+ fill: currentColor;
+}
+.nav--actions {
+ flex-grow: 0;
+ display: flex;
+ gap: var(--space_between-small);
+ align-items: center;
+}
+.w-nav-overlay .nav--actions {
+ flex-direction: column;
+ justify-content: space-between;
+ background: var(--theme--primary_text);
+ box-shadow: -13px 0px 100px 0px rgba(0, 0, 0, 0.7);
+ translate: calc(var(--page_margin) * -1) 0;
+}
+.nav--list {
+ display: flex;
+ gap: var(--space_between-small);
+ align-items: center;
+}
+.w-nav-overlay .nav--list {
+ flex-direction: column;
+ align-items: flex-start;
+ padding: 1.5rem;
+ min-width: clamp(18.75rem, 29.22vw + 11.9rem, 30rem);
+ max-width: 90svw;
+ height: 100svh;
+}
+.nav--item {
+ position: relative;
+}
+.w-nav-overlay .nav--item {
+ width: 100%;
+}
+.nav--link {
+ position: relative;
+ color: vaR(--theme--background);
+ font-size: clamp(0.75rem, 0.45vw + 0.475rem, 0.875rem);
+ padding: 0.7142857143em 0.2857142857em;
+ font-weight: 500;
+ text-decoration: none;
+ transition: 0.45s font-variation-settings, 0.45s color;
+ font-variation-settings: "wght" 500;
+}
+.nav--link::before {
+ display: block;
+ content: "";
+ position: absolute;
+ width: 0;
+ top: 100%;
+ left: 0;
+ height: 0.0625rem;
+ background-color: currentColor;
+ transition: 0.45s width, 0.45s color;
+}
+.nav--link.w--current {
+ color: #1a7aff;
+ font-variation-settings: "wght" 700;
+}
+.nav--link:hover {
+ font-variation-settings: "wght" 600;
+ color: var(--purple);
+}
+.nav--link:hover::before {
+ width: 100%;
+}
+.w-nav-overlay .nav--link {
+ font-size: clamp(1.1875rem, 0.81vw + 1rem, 1.5rem);
+}
+.w-nav-overlay .nav--link::before {
+ width: 100%;
+}
+.nav--dropdown .nav--link {
+ background-color: transparent;
+ border: 0;
+ display: flex;
+ gap: 0.5rem;
+ align-items: center;
+}
+.nav--dropdown .nav--link::after {
+ display: block;
+ content: "";
+ width: 0;
+ height: 0;
+ border-left: 4px solid transparent;
+ border-right: 4px solid transparent;
+ border-top: 5px solid currentColor;
+ transition: 0.3s rotate;
+}
+.w-nav-overlay .nav--dropdown .nav--link {
+ font-size: 0.875rem;
+ margin-top: 1rem;
+}
+.w-nav-overlay .nav--dropdown .nav--link::after {
+ display: none;
+}
+.nav--dropdown.open .nav--link::after {
+ rotate: 180deg;
+}
+
+.dropdown--container {
+ position: absolute;
+ top: calc(100% + 0.25rem);
+ width: 240px;
+ background-color: #ffffff;
+ box-shadow: var(--blue-shadow);
+ height: 0;
+ overflow: clip;
+ transition: content-visibility 0.5s allow-discrete, height 0.5s;
+}
+@media (prefers-reduced-motion: no-preference) {
+ .dropdown--container {
+  interpolate-size: allow-keywords;
+ }
+}
+.open .dropdown--container {
+ --_items: 4;
+ height: calc(var(--obj_padding-small) + var(--obj_padding-small) + var(--_items) * 24 * 0.0625rem) !important;
+ max-height: 15em;
+ z-index: 999;
+}
+.w-nav-overlay .dropdown--container {
+ position: static;
+ width: 100%;
+ background-color: transparent;
+ box-shadow: none;
+ height: auto;
+}
+.dropdown--list {
+ display: flex;
+ flex-direction: column;
+ gap: 0.25rem;
+ padding: var(--obj_padding-small);
+ align-items: flex-start;
+}
+.w-nav-overlay .dropdown--list {
+ padding: 0;
+ gap: 0.5rem;
+}
+.dropdown--link {
+ font-size: 0.9375rem;
+ font-variation-settings: "wght" 600;
+ color: var(--theme--background);
+ text-decoration: none;
+ padding: 0.5em 0.75em;
+ border: 0.0625rem solid transparent;
+ display: block;
+ transition: 0.3s border 0.3s background;
+ font-size: 1rem;
+ --_accent: var(--blue);
+}
+.dropdown--link[href~="/bengaluru"] {
+ --_accent: var(--red);
+}
+.dropdown--link[href~="/london"] {
+ --_accent: var(--blue);
+}
+.dropdown--link[href~="/new-orleans"] {
+ --_accent: var(--green);
+}
+.dropdown--link:hover {
+ border: 0.0625rem solid var(--_accent);
+ background-color: var(--theme--primary_text);
+ color: var(--_accent);
+}
+.dropdown--link svg {
+ width: auto;
+ height: 1em;
+ display: block;
+}
+.dropdown--link svg path {
+ fill: currentColor;
+}
+.w-nav-overlay .dropdown--link {
+ text-align: left;
+ background-color: rgba(255, 255, 255, 0.1);
+ font-size: clamp(1.1875rem, 0.81vw + 1rem, 1.5rem);
+ width: 100%;
+}
+[event=bengaluru] .dropdown--link[event=bengaluru], [event=london] .dropdown--link[event=london], [event=new-orleans] .dropdown--link[event=new-orleans] {
+ background: #ffffff;
+ color: var(--_accent);
+}
+.dropdown--link:not([event]) {
+ font-size: 1rem;
+}
+
+.w-nav-overlay .c25-button {
+ margin-top: auto;
+ width: 100%;
+ font-size: 1.125rem;
+}
+.w-nav-overlay .c25-button .button-text {
+ width: 100%;
+}
+.w-nav-overlay .side-button {
+ padding: 0;
+ background-color: transparent;
+}
+
+.w-nav-button {
+ padding: 0.25rem 1rem;
+}
+
+#header-burger {
+ width: 1.5em;
+}
+
+.w-nav[data-animation=over-right] .w-nav-overlay,
+.w-nav[data-animation=over-right] [data-nav-menu-open] {
+ right: calc(var(--page_margin) * -1);
+ top: calc(var(--gutter) * -1);
+}

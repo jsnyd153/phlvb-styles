@@ -1,0 +1,94 @@
+/*css/blocks/basic_hero/css/index.scss*/
+.basic_hero--section {
+   position: relative;
+   padding-block: var(--section_padding-jumbo, 7.5rem) var(--section_padding, 3rem);
+}
+.basic_hero--section .background_fill {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   inset: 0;
+   -o-object-fit: cover;
+      object-fit: cover;
+   -webkit-mask-image: linear-gradient(0deg, rgba(255, 0, 0, 0) 0%, rgb(255, 0, 0) 100%);
+           mask-image: linear-gradient(0deg, rgba(255, 0, 0, 0) 0%, rgb(255, 0, 0) 100%);
+}
+.basic_hero--row {
+   grid-column: 2/span 7;
+   display: flex;
+   flex-direction: column;
+   align-items: stretch;
+   gap: var(--gutter, 0.75rem);
+}
+@media (max-width: 991px) {
+   .basic_hero--row {
+      grid-column: 2/span 10;
+   }
+}
+@media (max-width: 767px) {
+   .basic_hero--row {
+      grid-column: 2/span 12;
+   }
+}
+.basic_hero--row h1 {
+   font-weight: 600;
+}
+.basic_hero--row:has(> div:nth-child(2)) {
+   grid-column: 2/span 12;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: var(--space_between-large);
+}
+@media (max-width: 767px) {
+   .basic_hero--row:has(> div:nth-child(2)) {
+      grid-template-columns: 1fr;
+   }
+}
+.basic_hero--row:has(> div:nth-child(2)) .text_area {
+   align-self: center;
+}
+.basic_hero--row[alignment=center] {
+   grid-column: 2/-2;
+}
+.basic_hero--row[alignment=center] .text_area {
+   justify-content: center;
+   align-items: center;
+}
+.basic_hero--row[alignment=center] .text_content {
+   align-items: center;
+}
+
+.tdse-lockup {
+   width: 100%;
+   --_scale: clamp(0.875rem, 1.5vw + 0.525rem, 1.875rem);
+}
+.tdse-lockup svg {
+   width: calc(20 * var(--_scale));
+   max-width: 100%;
+}
+.tdse-lockup h1 {
+   font-weight: 600;
+   font-size: calc(1.2 * var(--_scale));
+   margin-top: 0.5em;
+   text-transform: uppercase;
+   letter-spacing: 0.08em;
+}
+.tdse-lockup + .subhead {
+   display: flex;
+   gap: 1em;
+   color: var(--theme--secondary_text);
+   font-size: clamp(1.25rem, 0.38vw + 1.1625rem, 1.5rem);
+   font-weight: 500;
+   line-height: 1.45;
+   font-family: "Raleway Variable", "Raleway", sans-serif;
+   text-transform: none;
+   letter-spacing: 0em;
+   align-items: stretch;
+}
+.tdse-lockup + .subhead .button-container {
+   justify-content: center;
+}
+.tdse-lockup + .subhead .vertical-divider {
+   width: 2px;
+   background-color: currentColor;
+}

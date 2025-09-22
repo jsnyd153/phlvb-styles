@@ -1,0 +1,22 @@
+//==========================
+//===========BUTTONS==========
+//==========================
+
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/design/n1MRfrTDtMMwCwlUUJxRMM/Current-25-Website?node-id=529-19748&t=YgpxiGlCc0XuNnSD-1
+/*css/custom/home/css/index.scss*/
+//Dependencies:
+
+//custom home page styles
+
+main.home {
+  min-height: 100svh;
+  padding-top: 0;
+  @include f-center;
+  section {
+    width: 100%;
+    row-gap: var(--space_between-large);
+  }
+}

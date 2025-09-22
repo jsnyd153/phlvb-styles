@@ -1,0 +1,14 @@
+/*css/globals/text_variables.scss*/
+:root {
+   --text--size-h1: clamp(2.625rem, 3.57vw + 1.7875rem, 5rem);
+   --text--size-h2: clamp(2.25rem, 1.5vw + 1.9rem, 3.25rem);
+   --text--size-h3: clamp(2rem, 0.75vw + 1.825rem, 2.5rem);
+   --text--size-h4: clamp(1.625rem, 0.56vw + 1.49375rem, 2rem);
+   --text--size-h5: clamp(1.375rem, 0.47vw + 1.2625rem, 1.6875rem);
+   --text--size-h6: clamp(1.0625rem, 0.19vw + 1.01875rem, 1.1875rem);
+   --text--size-body-jumbo: clamp(1.25rem, 0.38vw + 1.1625rem, 1.5rem);
+   --text--size-body-large: clamp(1.0625rem, 0.38vw + 0.975rem, 1.3125rem);
+   --text--size-body: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+   --text--size-body-small: clamp(0.8125rem, 0.28vw + 0.74375rem, 1rem);
+   --primary_font: Raleway, sans-serif;
+}

@@ -1,0 +1,25 @@
+/*css/blocks/basic_content/css/index.scss*/
+.basic_content--section {
+   row-gap: var(--space_between, 2rem);
+   padding-block: var(--section_padding, 5rem);
+   position: relative;
+}
+.basic_content--row {
+   position: relative;
+}
+.basic_content--row[alignment=center] {
+   justify-content: center;
+   align-items: center;
+}
+.basic_content--row[alignment=center] .text_area {
+   justify-content: center;
+   align-items: center;
+}
+.basic_content--row[alignment=center] .text_content {
+   justify-content: center;
+   align-items: center;
+}
+.basic_content--row[alignment=center] .button-container {
+   justify-content: center;
+   align-items: center;
+}

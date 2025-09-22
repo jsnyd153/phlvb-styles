@@ -1,0 +1,31 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual:
+/*css/blocks/banner/css/index.scsss*/
+//Dependencies:
+
+.banner-- {
+	&section {
+		padding-block: var(--section_padding);
+	}
+	&card {
+		background-color: var(--theme--accent);
+		padding: var(--obj_padding-large);
+		position: relative;
+		overflow: clip;
+
+		.background_area {
+			@include cover_obj;
+			img {
+				@include cover_obj;
+				opacity: 0.2;
+				// mix-blend-mode: ;
+			}
+		}
+		.text_area {
+			position: relative;
+			max-width: 120ch;
+		}
+	}
+}

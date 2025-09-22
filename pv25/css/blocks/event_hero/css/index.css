@@ -1,0 +1,47 @@
+/*css/blocks/event_heros*/
+.event_hero--section {
+   position: relative;
+   overflow-x: clip;
+   padding-block: var(--section_padding-jumbo, 7.5rem);
+   row-gap: var(--space_between-large, 3rem);
+}
+.event_hero--text_area {
+   grid-column: 2/span 5;
+   gap: 1rem;
+   align-self: center;
+}
+@media (max-width: 991px) {
+   .event_hero--text_area {
+      grid-column: 2/span 6;
+   }
+}
+@media (max-width: 767px) {
+   .event_hero--text_area {
+      grid-column: 2/-2;
+   }
+}
+.event_hero--subheadline {
+   font-weight: 300;
+   font-size: 1.875rem;
+   font-size: clamp(1.375rem, 0.75vw + 1.2rem, 1.875rem);
+}
+.event_hero--date {
+   font-weight: 300;
+   font-size: 1.3125rem;
+   font-size: clamp(0.875rem, 0.66vw + 0.71875rem, 1.3125rem);
+}
+.text_content:has(.event_hero--date) {
+   gap: 0rem;
+}
+.event_hero--media_area {
+   grid-column: span 6/-2;
+}
+@media (max-width: 767px) {
+   .event_hero--media_area {
+      grid-column: 2/-2;
+   }
+}
+.event_hero--media_area .media_content {
+   border-radius: var(--corner-20, 1rem);
+   overflow: clip;
+}

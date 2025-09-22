@@ -1,0 +1,300 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=4%3A5788&mode=design&t=g6qwze9oShWnmzfu-1
+/*components/accordion/css/index.scsss*/
+//Dependencies: @finsweet/attributes-cmsfilter@1/cmsfilter.js, js/fs-filters.js
+
+.filter-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.fs-filter-row {
+	display: flex;
+	gap: var(--space_between-mini);
+	justify-content: space-between;
+	align-items: stretch;
+	position: relative;
+	z-index: 1;
+	flex-wrap: wrap;
+	container-type: inline-size;
+}
+
+.fs-filter-group {
+	display: grid;
+	gap: var(--space_between-mini);
+	grid-template-columns: repeat(4, 1fr);
+	position: relative;
+	max-width: 640 * $rem;
+	@include sm {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@include xs {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+.fs-date-toggle {
+	display: grid;
+	--_items: 2;
+	grid-template-columns: repeat(var(--_items), 76 * $rem);
+	gap: var(--space_between-mini);
+	flex-grow: 0;
+	flex-basis: 150px;
+	&:has(.w-radio:nth-child(3)) {
+		--_items: 3;
+	}
+	//If there are more that 3 items we should use a differnt selection method
+
+	.w-radio {
+		border-radius: var(--corner-4);
+		background: var(--theme--background);
+		text-align: center;
+		margin: 0;
+		padding: 0;
+		@include f-center;
+		color: var(--theme--secondary_text);
+		border: 1px solid var(--theme--primary_text);
+		transition: 0.5s all;
+		font-weight: 500;
+		&:has(input:checked) {
+			border: 1 * $rem solid var(--theme--accent);
+			color: var(--theme--accent);
+			background-color: var(--theme--primary_text);
+			font-weight: 700;
+		}
+		input {
+			display: none;
+		}
+		span {
+			font-family: $primary_font-var;
+			font-size: 14 * $rem;
+			font-style: normal;
+			line-height: 115%;
+			padding: 0.5rem;
+			font-weight: inherit;
+		}
+		&:hover {
+			color: var(--theme--primary_text);
+			background: rgba(255, 255, 255, 0.2);
+		}
+	}
+} //date-toggle
+
+.fs-display-toggle {
+	flex-grow: 0;
+	flex-basis: 150px;
+
+	.w-radio {
+		border-radius: var(--corner-4);
+		background: var(--theme--background);
+		text-align: center;
+		margin: 0;
+		padding: 0;
+		@include f-center;
+		color: var(--theme--accent-light);
+		border: 1 * $rem solid var(--theme--accent-light);
+		transition: 0.5s all;
+		font-weight: 500;
+		height: 100%;
+
+		&::after {
+			display: block;
+			content: "";
+			background-image: url(http://127.0.0.1:3002/media/grid-block.svg);
+			width: 12 * $rem;
+			height: 12 * $rem;
+			background-size: contain;
+			background-position: center center;
+		}
+
+		&:has(input:checked) {
+			display: none;
+		}
+		input {
+			display: none;
+		}
+		span {
+			font-family: $primary_font-var;
+			font-size: 14 * $rem;
+			font-style: normal;
+			line-height: 115%;
+			padding: 0.5rem;
+			font-weight: inherit;
+		}
+		&:hover {
+			background: rgba(255, 255, 255, 0.2);
+		}
+	}
+} //date-toggle
+
+.fs-filter-dropdown {
+	position: relative;
+	&-group {
+		gap: var(--space_between-mini);
+		position: relative;
+		z-index: 1;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(160 * $rem, 1fr));
+		flex-basis: 340 * $rem;
+		flex-grow: 1;
+	}
+	.dropdown--container {
+		z-index: 999;
+	}
+	&.open .dropdown--container {
+		height: calc(
+			var(--obj_padding-small) + var(--obj_padding-small) + var(--_items) * 30 * 0.0625rem
+		) !important;
+		max-height: 15em;
+	}
+
+	.dropdown--button {
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.5rem 1rem;
+		text-decoration: none;
+		background: var(--theme--background);
+		border: 1px solid var(--theme--primary_text);
+		backdrop-filter: blur(0.5rem);
+		transition: 0.3s box-shadow, 0.3s translate, 0.5s background, 0.5s color;
+		color: var(--theme--primary_text);
+		height: 100%;
+		@include body_text-style;
+		width: 100%;
+		min-width: 140 * $rem;
+		border-radius: 4 * $rem;
+
+		&:hover {
+		}
+		&::after {
+			display: block;
+			content: "";
+			width: 0;
+			height: 0;
+			border-left: 4px solid transparent;
+			border-right: 4px solid transparent;
+			border-top: 5px solid currentColor;
+			transition: 0.3s rotate;
+		}
+	}
+
+	&.open {
+		.dropdown--button {
+			&::after {
+				rotate: 180deg;
+			}
+		}
+	}
+	.dropdown--container {
+		background-color: $white;
+		width: 100%;
+	}
+}
+
+.fs-filter-search {
+	flex-grow: 10;
+	flex-basis: 300 * $rem;
+	position: relative;
+
+	.search-icon {
+		position: absolute;
+		left: 1rem;
+		top: 50%;
+		translate: 0 -50%;
+		z-index: 1;
+		path {
+			stroke: var(--theme--primary_text);
+		}
+	}
+}
+
+//Search field
+.fs-filter-search-field[type="text"] {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	padding: 0.5rem 1rem 0.5rem 3rem;
+	border: 1px solid var(--theme--secondary_text);
+	text-decoration: none;
+	background: var(--theme--background);
+	transition: 0.3s box-shadow, 0.3s translate, 0.5s background, 0.5s color;
+	color: var(--theme--secondary_text);
+	@include body_text-style;
+	border-radius: 4 * $rem;
+
+	&:hover {
+		border: 1px solid var(--theme--primary_text);
+	}
+	&::placeholder {
+		color: var(--theme--secondary_text);
+		opacity: 0.9;
+	}
+}
+
+//multiple toggle options
+.fs-filter-multitoggle .multitoggle- {
+	&wrapper {
+	}
+	&list {
+		display: flex;
+		align-items: center;
+		gap: 8 * $rem;
+		justify-content: stretch;
+	}
+	&input {
+		&[color-theme="clinic"],
+		&[color-theme="sitting"] {
+			display: none;
+		}
+		flex-grow: 1;
+		flex-shrink: 1;
+		width: 100%;
+		.checkbox-group-item {
+			border-radius: 0.25rem;
+			border: 1 * $rem solid var(--theme--border);
+			padding: 0.5rem 1rem;
+			color: var(--theme--primary_text);
+
+			&:has(input:checked) {
+				background-color: var(--theme--accent);
+				border: 1px solid var(--theme--primary_text);
+				color: var(--theme--accent-text-light);
+			}
+
+			&:has(.empty) {
+				opacity: 0.5;
+				pointer-events: none;
+			}
+
+			.w-form-label {
+				color: inherit;
+				text-align: center;
+				font-family: $primary_font-var;
+				font-size: 1rem;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 1; /* 20px */
+				padding-top: 0.3em;
+				text-transform: capitalize;
+				width: 100%;
+			}
+		}
+	}
+}
+
+.checkbox-group-item {
+	&:has(.empty) {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}
+.multi-select-input {
+	&:has(.empty) {
+		order: 1;
+	}
+}

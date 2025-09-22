@@ -1,0 +1,138 @@
+/*components/accordion/css/index.scsss*/
+.accordion {
+   position: relative;
+   border-radius: vaR(--corner-16);
+}
+.accordion:before {
+   display: block;
+   content: "";
+   background: var(--theme--border);
+   position: absolute;
+   inset: -0.0625rem;
+   border-radius: inherit;
+   z-index: -1;
+   --_gradient_angle: 100deg;
+   background-image: conic-gradient(from var(--_gradient_angle), var(--gold), var(--red), var(--blue), var(--red), var(--gold));
+   animation: card-border-rotation 5s linear infinite;
+   animation-play-state: paused;
+}
+[event=london] .accordion:before {
+   background-image: conic-gradient(from var(--_gradient_angle), var(--cyan), var(--light-blue), var(--blue), var(--light-blue), var(--cyan));
+}
+[event=new-orleans] .accordion:before {
+   background-image: conic-gradient(from var(--_gradient_angle), var(--light-green), var(--light-purple), var(--purple), var(--light-purple), var(--light-green));
+}
+[event=bengaluru] .accordion:before {
+   background-image: conic-gradient(from var(--_gradient_angle), var(--cyan), var(--light-blue), var(--blue), var(--light-blue), var(--cyan));
+}
+.accordion::after {
+   display: block;
+   content: "";
+   background: var(--theme--border);
+   position: absolute;
+   inset: -0.0625rem;
+   border-radius: inherit;
+   z-index: -1;
+   transition: 0.5s opacity;
+}
+.accordion:has(details:hover, details[open])::after {
+   opacity: 0;
+}
+.accordion:has(details:hover)::before {
+   animation-play-state: running;
+}
+.accordion details > summary {
+   list-style: none;
+}
+.accordion details > summary::-webkit-details-marker {
+   display: none;
+}
+.accordion details {
+   box-sizing: border-box;
+   padding: var(--obj_padding);
+   text-decoration: none;
+   transition: 0.5s height;
+   position: relative;
+   background: var(--theme--background);
+   color: var(--theme--primary_text);
+   border-radius: inherit;
+}
+.accordion details:hover .accordion-content, .accordion details:focus-within .accordion-content, .accordion details[open] .accordion-content {
+   margin-top: 0.5rem;
+}
+@media (prefers-reduced-motion: no-preference) {
+   .accordion details {
+      interpolate-size: allow-keywords;
+   }
+}
+.accordion details::details-content {
+   height: 0;
+   overflow-y: clip;
+   transition: content-visibility 0.5s allow-discrete, height 0.5s;
+}
+.accordion details[open]::details-content {
+   height: auto;
+}
+.accordion summary {
+   cursor: pointer;
+   padding: var(--obj_padding);
+   margin: calc(var(--obj_padding) * -1);
+}
+.accordion summary h1,
+.accordion summary h2,
+.accordion summary h3,
+.accordion summary h4,
+.accordion summary h5,
+.accordion summary h6 {
+   display: flex;
+   gap: 1em;
+   justify-content: space-between;
+   width: 100%;
+   color: var(--_primary-text-color);
+}
+.accordion summary:focus-visible, .accordion summary:hover {
+   border: 0;
+   outline: 0;
+}
+.accordion summary:focus-visible h1,
+.accordion summary:focus-visible h2,
+.accordion summary:focus-visible h3,
+.accordion summary:focus-visible h4,
+.accordion summary:focus-visible h5,
+.accordion summary:focus-visible h6, .accordion summary:hover h1,
+.accordion summary:hover h2,
+.accordion summary:hover h3,
+.accordion summary:hover h4,
+.accordion summary:hover h5,
+.accordion summary:hover h6 {
+   -webkit-text-decoration-line: underline;
+           text-decoration-line: underline;
+   text-decoration-thickness: 0.0625em;
+}
+details[open] .accordion summary:focus-visible, details[open] .accordion summary:hover {
+   padding: 0;
+   margin: 0;
+}
+.accordion-icon {
+   width: 1.4761904762em;
+   height: 1.4761904762em;
+   position: relative;
+}
+.accordion-icon::after, .accordion-icon::before {
+   display: block;
+   content: "";
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   translate: -50% -50%;
+   background-color: currentColor;
+   width: 0.619047619em;
+   height: 0.1428571429em;
+}
+.accordion-icon::before {
+   rotate: 90deg;
+   transition: 0.3s rotate;
+}
+details[open] .accordion-icon::before {
+   rotate: 0deg;
+}

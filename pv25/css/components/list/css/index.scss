@@ -1,0 +1,71 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual:
+/*css/components/list/css/index.scss*/
+//Dependencies:
+
+.w-richtext {
+  gap: 0.5em;
+  li {
+    @include body_text-style-small;
+  }
+}
+
+ul.text_list {
+  margin-top: 0;
+  margin-bottom: 0px;
+  padding-left: 0px;
+  margin-block: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  &[list-style="comment"] {
+    li {
+      display: flex;
+      gap: 0.5rem;
+      @include body_text-style;
+      &::before {
+        content: "//";
+        color: var(--theme--accent-light);
+      }
+    }
+  }
+  &[list-style="bullets"] {
+    margin-left: 1rem;
+    li {
+      display: flex;
+      gap: 0.5rem;
+      @include body_text-style;
+      &::before {
+        content: "•";
+        color: var(--theme--accent-light);
+      }
+    }
+  }
+}
+ol.text_list {
+  margin-top: 0;
+  margin-bottom: 0px;
+  padding-left: 0px;
+  margin-block: 0.5rem;
+  margin-left: 2rem;
+  li {
+    @include body_text-style;
+    margin-bottom: 0.25em;
+    a {
+      @include rainbow-link;
+      display: inline-block;
+      filter: brightness(1.5);
+    }
+  }
+}
+
+[list-link="rainbow"] ul,
+ul[list-link="rainbow"] {
+  li {
+    a {
+      @include rainbow-link;
+    }
+  }
+}

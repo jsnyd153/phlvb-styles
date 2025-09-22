@@ -1,0 +1,79 @@
+/*css/blocks/stat_feature/css/index.scss*/
+.stat_feature--section {
+   gap: var(--space_between);
+   padding-block: var(--section_padding);
+}
+.stat_feature--row {
+   display: grid;
+   gap: inherit;
+}
+.stat_feature--row:nth-child(odd) {
+   grid-template-columns: 5fr 4fr;
+}
+@media (max-width: 767px) {
+   .stat_feature--row:nth-child(odd) {
+      grid-template-columns: 1fr;
+   }
+}
+.stat_feature--row:nth-child(even) {
+   grid-template-columns: 4fr 5fr;
+}
+@media (max-width: 767px) {
+   .stat_feature--row:nth-child(even) {
+      grid-template-columns: 1fr;
+   }
+}
+.stat_feature--row:has(.stat_feature--item:nth-child(3)) {
+   grid-template-columns: 1fr 1fr 1fr;
+}
+@media (max-width: 767px) {
+   .stat_feature--row:has(.stat_feature--item:nth-child(3)) {
+      grid-template-columns: 1fr;
+   }
+}
+.stat_feature--item {
+   border-radius: var(--corner-16, 1rem);
+   position: relative;
+   overflow: hidden;
+   background: linear-gradient(90deg, var(--theme--accent, #fea237) 0%, var(--theme--accent-light, #f5c27f) 100%);
+   --_shadow-size: 2.75rem;
+   box-shadow: 0 0 var(--_shadow-size, 2rem) 0 var(--theme--accent_glow, rgba(254, 163, 57, 0.6));
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 10% 0;
+   min-height: 200px;
+}
+.stat_feature--label {
+   color: var(--theme--primary_text, #fff);
+   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
+   font-weight: 600;
+   font-size: clamp(1.25rem, 0.38vw + 1.1625rem, 1.5rem);
+   line-height: 1.25;
+   text-wrap: pretty;
+   position: relative;
+   z-index: 1;
+}
+.stat_feature--number {
+   color: var(--theme--primary_text, #fff);
+   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
+   font-weight: 500;
+   font-size: clamp(2.625rem, 1.69vw + 2.23125rem, 3.75rem);
+   line-height: 1.1;
+   text-wrap: pretty;
+   font-weight: 800;
+   font-size: clamp(3.75rem, 1.88vw + 3.3125rem, 5rem);
+   position: relative;
+   z-index: 1;
+}
+.stat_feature--background {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   inset: 0;
+   -o-object-fit: cover;
+      object-fit: cover;
+   width: 101%;
+   height: 101%;
+}

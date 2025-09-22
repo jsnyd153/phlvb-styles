@@ -1,0 +1,82 @@
+@use "sass:color";
+@use "abstracts/" as *;
+/*css/globals/text_styles.scss*/
+
+:root {
+	font-feature-settings: "lnum" 1;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+h1 {
+	@include headline_1;
+}
+h2 {
+	@include headline_2;
+}
+h3 {
+	@include headline_3;
+}
+h4 {
+	@include headline_4;
+}
+h5 {
+	@include headline_5;
+}
+h6 {
+	@include headline_6;
+}
+
+p {
+	@include body_text;
+
+	&.large {
+		@include body_text-style-large;
+	}
+
+	&.small {
+		@include body_text-style-small;
+	}
+
+	&.bold {
+		font-weight: 700;
+	}
+	&.light {
+		font-weight: 300;
+	}
+	&.book {
+		font-weight: 450;
+	}
+}
+
+.style-h1 {
+	@include headline_1;
+}
+.style-h2 {
+	@include headline_2;
+}
+.style-h3 {
+	@include headline_3;
+}
+.style-h4 {
+	@include headline_4;
+}
+.style-h5 {
+	@include headline_5;
+}
+.style-h6 {
+	@include headline_6;
+}
+.body-text,
+.body {
+	@include body_text;
+}
+.body-text-jumbo {
+	@include body_text-style-jumbo;
+}
+.body-text-large {
+	@include body_text-style-large;
+}
+.body-text-small {
+	@include body_text-style-small;
+}

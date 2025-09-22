@@ -1,0 +1,36 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/design/n1MRfrTDtMMwCwlUUJxRMM/Current-25-Website?node-id=488-6055&t=O2mZJSyMOQO7kI4S-1
+/*css/atoms/inputs/css/index.scss*/
+//Dependencies:
+
+//Attributres
+
+.divider,
+hr {
+  --_color: var(--theme--border);
+  @include column-span;
+  border: 0;
+  outline: 0;
+  border-top: 1 * $rem solid var(--_color);
+  width: 100%;
+
+  @each $color in $all_colors {
+    &[divider-color="#{nth($color, 1)}"] {
+      --_color: #{nth($color, 2)};
+    }
+  }
+  &[divider-color="accent"] {
+    --_color: var(--theme--accent);
+  }
+  &[divider-color="accent light"] {
+    --_color: var(--theme--accent-light);
+  }
+  &[divider-color="primary"] {
+    --_color: var(--theme--primary_text);
+  }
+  &[divider-color="secondary"] {
+    --_color: var(--theme--secondary_text);
+  }
+}

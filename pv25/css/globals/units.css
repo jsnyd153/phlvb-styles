@@ -1,0 +1,172 @@
+/*css/globals/units.scss*/
+:root {
+ --section_padding-mini: clamp(0.5rem, 0.75vw + 0.325rem, 1rem);
+ --section_padding-small: clamp(1.875rem, 1.41vw + 1.54375rem, 2.8125rem);
+ --section_padding: clamp(3rem, 1.5vw + 2.65rem, 4rem);
+ --section_padding-large: clamp(5.375rem, 2.07vw + 4.89375rem, 6.75rem);
+ --section_padding-jumbo: clamp(7.5rem, 3.76vw + 6.61875rem, 10rem);
+ --section_padding-medium: var(--section_padding);
+ --obj_padding-mini: clamp(1rem, 0.6vw + 0.7125rem, 1.25rem);
+ --obj_padding-small: clamp(1.125rem, 1.19vw + 0.55625rem, 1.625rem);
+ --obj_padding: clamp(1.25rem, 1.13vw + 0.9875rem, 2rem);
+ --obj_padding-large: clamp(2rem, 1.5vw + 1.65rem, 3rem);
+ --obj_padding-jumbo: clamp(2.5rem, 1.88vw + 2.0625rem, 3.75rem);
+ --obj_padding-medium: var(--obj_padding);
+ --space_between-mini: clamp(0.75rem, 0.75vw + 0.575rem, 1.25rem);
+ --space_between-small: clamp(1.25rem, 0.75vw + 1.075rem, 1.75rem);
+ --space_between: clamp(1.5rem, 2.25vw + 0.96875rem, 3rem);
+ --space_between-large: clamp(3rem, 1.5vw + 2.65rem, 4rem);
+ --space_between-jumbo: clamp(4rem, 1.5vw + 3.65rem, 5rem);
+ --space_between-medium: var(--space_between);
+ --gutter: clamp(0.75rem, 1.5vw + 0.4rem, 1.75rem);
+ --corner-20: clamp(1rem, 0.38vw + 0.9125rem, 1.25rem);
+ --corner-16: clamp(0.75rem, 0.38vw + 0.6625rem, 1rem);
+ --corner-12: clamp(0.5rem, 0.38vw + 0.4125rem, 0.75rem);
+ --corner-10: clamp(0.375rem, 0.38vw + 0.2875rem, 0.625rem);
+ --corner-8: clamp(0.375rem, 0.19vw + 0.33125rem, 0.5rem);
+ --corner-4: clamp(0.125rem, 0.19vw + 0.08125rem, 0.25rem);
+}
+
+[space-between=mini] {
+ gap: var(--space_between-mini);
+}
+
+[object-padding=mini] {
+ padding: var(--obj_padding-mini);
+}
+
+[section-height=mini] {
+ padding-block: var(--section_padding-mini);
+}
+
+[space-between=small] {
+ gap: var(--space_between-small);
+}
+
+[object-padding=small] {
+ padding: var(--obj_padding-small);
+}
+
+[section-height=small] {
+ padding-block: var(--section_padding-small);
+}
+
+[space-between=medium] {
+ gap: var(--space_between-medium);
+}
+
+[object-padding=medium] {
+ padding: var(--obj_padding-medium);
+}
+
+[section-height=medium] {
+ padding-block: var(--section_padding-medium);
+}
+
+[space-between=large] {
+ gap: var(--space_between-large);
+}
+
+[object-padding=large] {
+ padding: var(--obj_padding-large);
+}
+
+[section-height=large] {
+ padding-block: var(--section_padding-large);
+}
+
+[space-between=jumbo] {
+ gap: var(--space_between-jumbo);
+}
+
+[object-padding=jumbo] {
+ padding: var(--obj_padding-jumbo);
+}
+
+[section-height=jumbo] {
+ padding-block: var(--section_padding-jumbo);
+}
+
+section[section-height=minimum] {
+ padding-block: 0;
+}
+
+[text-color=green] {
+ color: var(--green);
+}
+
+[text-color=light-green] {
+ color: var(--light-green);
+}
+
+[text-color=blue] {
+ color: var(--blue);
+}
+
+[text-color=light-blue] {
+ color: var(--light-blue);
+}
+
+[text-color=crimson] {
+ color: var(--crimson);
+}
+
+[text-color=light-crimson] {
+ color: var(--light-crimson);
+}
+
+[text-color=yellow] {
+ color: var(--yellow);
+}
+
+[text-color=light-yellow] {
+ color: var(--light-yellow);
+}
+
+[text-color=white] {
+ color: var(--white);
+}
+
+[text-color=navy] {
+ color: var(--navy);
+}
+
+[text-color=accent] {
+ color: var(--theme--accent);
+}
+
+[text-color=accent-light] {
+ color: var(--theme--accent-light);
+}
+
+[text-color=accent-text] {
+ color: var(--theme--accent-text);
+}
+
+[text-color=accent-text-light] {
+ color: var(--theme--accent-text-light);
+}
+
+[text-color=secondary] {
+ color: var(--theme--secondary_text);
+}
+
+[text-color=primary] {
+ color: var(--theme--primary_text);
+}
+
+[text-color=border] {
+ color: var(--theme--border);
+}
+
+[text-color=soft] {
+ color: var(--theme--soft_color);
+}
+
+[text-color=background] {
+ color: var(--theme--background);
+}
+
+[text-color=background-em] {
+ color: var(--theme--background-em);
+}

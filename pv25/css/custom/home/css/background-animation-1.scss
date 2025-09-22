@@ -1,0 +1,329 @@
+//==========================
+//===========BUTTONS==========
+//==========================
+
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/design/n1MRfrTDtMMwCwlUUJxRMM/Current-25-Website?node-id=529-19748&t=YgpxiGlCc0XuNnSD-1
+/*css/custom/home/css/index.scss*/
+//Dependencies:
+
+//custom home page styles
+
+main {
+  // min-height: 300vh;
+  // position: relative;
+}
+
+$timing: 5s;
+
+.background_area {
+  z-index: -1;
+  pointer-events: none;
+  position: fixed;
+  inset: 0%;
+  // background-color: $sea-foam;
+  overflow-x: clip;
+  overflow-y: clip !important;
+
+  @media (prefers-reduced-motion: reduce) {
+    --state: paused;
+    .h-grad-top,
+    .h-burst.h-grad-1,
+    .h-grad-2,
+    .h-grad-3,
+    .h-grad-4,
+    .h-grad-5,
+    .h-wave-1,
+    .h-wave-2,
+    .h-wave-3,
+    .h-wave-4,
+    .h-wave-5 {
+      animation-play-state: paused;
+      &:after {
+        animation-play-state: paused;
+      }
+    }
+  }
+}
+
+@mixin background-el-position($w: 6137, $h: 336, $x: -2960, $y: 177) {
+  position: absolute;
+  width: $w/1440 * 100vw;
+  aspect-ratio: $w/$h;
+  translate: $x / $w * 100% $y / $h * 100%;
+  top: 0;
+  left: 0;
+}
+
+.h-grad-top {
+  @include background-el-position(1440, 1389, 0, 0);
+
+  background: linear-gradient(
+    219.94deg,
+    #091438 0.7%,
+    rgba(1, 102, 146, 0) 37.76%
+  );
+  background-blend-mode: hard-light;
+  mix-blend-mode: hard-light;
+  z-index: -5;
+}
+
+.h-burst {
+  @include background-el-position(6137, 1336, -2960, 177);
+
+  background-blend-mode: lighten;
+  mix-blend-mode: lighten;
+  z-index: 1;
+  filter: blur(5rem);
+  // animation: slowPulse 15s linear infinite;
+
+  animation: animation-2-x $timing * 2 infinite;
+  animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+
+  &:after {
+    animation: animation-2-y $timing * 2 infinite;
+    animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+    @include psuedo_el;
+    background: radial-gradient(
+      37.56% 106.02% at 50.18% 49.95%,
+      rgba(253, 186, 93, 0.8) 0%,
+      rgba(239, 70, 91, 0) 40%
+    );
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.h-grad-1 {
+  @include background-el-position(2116, 2116, -460, -437);
+
+  z-index: 0;
+  animation: animation-1-x $timing * 2.1 infinite;
+  animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  &:after {
+    animation: animation-1-y $timing * 2.1 infinite;
+    animation-timing-function: cubic-bezier(0.42, 0, 1, 1);
+
+    @include psuedo_el;
+    background: radial-gradient(
+      42.29% 26.67% at 50% 50%,
+      #f36e3d 0%,
+      rgba(253, 186, 93, 0) 100%
+    );
+    opacity: 0.6;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.h-grad-2 {
+  @include background-el-position(2116, 2116, -772, 122);
+  z-index: -3;
+  opacity: 0.6;
+  animation: animation-1-x $timing * 2.2 infinite;
+  animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  &:after {
+    animation: animation-1-y $timing * 2.2 infinite;
+    animation-timing-function: cubic-bezier(0.42, 0, 1, 1);
+
+    @include psuedo_el;
+    background: radial-gradient(
+      50% 29.5% at 50% 50%,
+      #bd382e 0%,
+      rgba(253, 186, 93, 0) 100%
+    );
+
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.h-grad-3 {
+  @include background-el-position(1737, 1022, -698, 775);
+  filter: blur(52px);
+  z-index: -2;
+  animation: animation-1-x $timing * 2.4 infinite;
+  animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  &:after {
+    animation: animation-1-y $timing * 2.4 infinite;
+    animation-timing-function: cubic-bezier(0.42, 0, 1, 1);
+
+    @include psuedo_el;
+    background: radial-gradient(
+      49.75% 43.9% at 50% 50%,
+      #dd372b 0%,
+      #f36e3d 18%,
+      rgba(253, 186, 93, 0) 100%
+    );
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.h-grad-4 {
+  @include background-el-position(1486, 1968, -725, 796);
+  opacity: 0.6;
+  z-index: -1;
+  animation: animation-1-x $timing * 2.5 infinite;
+  animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  &:after {
+    animation: animation-1-y $timing * 2.5 infinite;
+    animation-timing-function: cubic-bezier(0.42, 0, 1, 1);
+
+    @include psuedo_el;
+    background: radial-gradient(
+      32.61% 47.76% at 50% 50%,
+      #f36e3d 0%,
+      rgba(253, 186, 93, 0) 100%
+    );
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.h-grad-5 {
+  @include background-el-position(1697, 1480, -253, 117);
+
+  opacity: 0.8;
+  z-index: -4;
+
+  animation: animation-1-x $timing * 2.6 infinite;
+  animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  &:after {
+    animation: animation-1-y $timing * 2.6 infinite;
+    animation-timing-function: cubic-bezier(0.42, 0, 1, 1);
+    @include psuedo_el;
+    background: radial-gradient(
+      46.84% 25.64% at 50% 50%,
+      #f36e3d 0%,
+      rgba(253, 186, 93, 0) 100%
+    );
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.h-wave-1 {
+  @include background-el-position(1336, 894, -443, 50);
+  translate: -100.158683% 5.5928411633%;
+  top: 0;
+  left: 50%;
+  mask-image: linear-gradient(black, rgba(0, 0, 0, 0.4));
+  max-width: 1600/16rem;
+
+  @include sm {
+    width: 117.777778vw;
+    translate: -100.158683% 22.592841%;
+  }
+  @include xl {
+    translate: -119.158683% 6.592841%;
+  }
+  mask-image: linear-gradient(black, rgba(0, 0, 0, 0.4));
+}
+.h-wave-2 {
+  display: none;
+}
+
+.h-wave-3 {
+  @include background-el-position(1121, 1209, -627, -512);
+}
+.h-wave-4 {
+  @include background-el-position(690, 680, 846, -457);
+  width: 53.917vw;
+  translate: 108.609% -67.2058823529%;
+}
+
+.h-wave-5 {
+  @include background-el-position(851, 483, 20, 20);
+  left: auto;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  translate: 12.35% 41.141%;
+}
+
+.reveal {
+  color: hsl(0 0% 100% / 0.2);
+  background-image: linear-gradient(
+    90deg,
+    var(--theme--secondary_text),
+    var(--theme--secondary_text)
+  );
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  background-clip: text;
+}
+
+@keyframes animation-1-x {
+  0% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(50%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  75% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes animation-1-y {
+  0% {
+    transform: translateY(0%);
+  }
+  25% {
+    transform: translateY(50%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+  75% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes animation-2-x {
+  0% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(10%);
+  }
+  50% {
+    transform: translateX(20%);
+  }
+  75% {
+    transform: translateX(10%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes animation-2-y {
+  0% {
+    transform: translateY(0%);
+  }
+  25% {
+    transform: translateY(10%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+  75% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}

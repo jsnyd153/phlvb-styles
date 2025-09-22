@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1" large bold="viewport" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Components - Modal</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+    <link rel="stylesheet" href="../../globals/_index.css" />
+    <link rel="stylesheet" href="../../atoms/index.css" />
+    <link rel="stylesheet" href="../../components/_index.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+
+  <body>
+    <main class="">
+      <button class="c25-button" modal-trigger="slug">Open</button>
+
+      <dialog modal-dialog="slug" class="modal-dialog" open="">
+        <div class="modal-wrapper event_modal">
+          <div class="event_modal-header">
+            <div class="event_modal-label">Session Details</div>
+            <div class="event_modal-close">
+              <button modal-close="parent">
+                <svg
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M2 2L16 16M16 2L2 16" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="event_modal-content">
+            <div class="event_modal-tag">Lecture</div>
+            <h4 class="event_modal-title">
+              Superpower Your Apache Kafka Applications Development with
+              Complementary Open-Source Technologies
+            </h4>
+            <div class="event_modal-details">
+              <div class="event_modal-details-date">
+                Wednesday, March 19, 2025
+              </div>
+              <div class="event_modal-details-time">12:30 PM - 1:30 PM</div>
+              <div class="event_modal-details-time">Main Hall</div>
+            </div>
+            <div class="event_modal-body">
+              <div class="w-richtext">
+                <p>
+                  Etiam laoreet consectetur viverra. Nunc eget orci dapibus,
+                  ultrices neque nec, egestas nunc. Pellentesque fermentum
+                  commodo eros, nec bibendum ex vestibulum vitae. Curabitur ac
+                  neque mi. Nunc dictum pulvinar massa, at tempus massa interdum
+                  eget. Cras nec mi orci. Sed a risus leo. Aenean quis tellus
+                  massa. Donec diam nisl, aliquam sit amet condimentum vitae,
+                  gravida et felis. Vivamus quis turpis feugiat, eleifend massa
+                  sit amet, commodo ex. Etiam at enim sed odio consectetur
+                  commodo. Etiam at rutrum magna. Sed tristique viverra elit et
+                  volutpat.
+                </p>
+              </div>
+            </div>
+            <div class="event_modal-accordion accordion">
+              <details class="accordion-details">
+                <summary class="accordion-summary">
+                  <h4 class="body-text-small">
+                    <div>Full Address</div>
+                    <div class="accordion-icon"></div>
+                  </h4>
+                </summary>
+                <div class="accordion-content">
+                  <div class="w-richtext">
+                    <p>Please reach out to organizers@current.io</p>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div modal-close="parent" class="modal-close"></div>
+      </dialog>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../../js/modal.js"></script>
+  </body>
+</html>

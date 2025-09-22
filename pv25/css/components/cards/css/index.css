@@ -1,0 +1,544 @@
+/*css/components/cards/css/index.scss*/
+.card {
+ box-sizing: border-box;
+ display: flex;
+ flex-direction: column;
+ padding: var(--obj_padding-large);
+ text-decoration: none;
+ border-radius: var(--corner-12, 0.75rem);
+ background-color: var(--theme--background);
+}
+.card[card-layout=none] {
+ padding: 0;
+ background: transparent;
+}
+.card[card-style~=border] {
+ border: 0.0625rem solid var(--theme--border);
+ transition: 0.3s border;
+}
+.card[card-style~=border]:is(a):hover {
+ border: 0.0625rem solid var(--theme--primary_text);
+}
+.card[card-style~=border][color-theme] {
+ border: 0.0625rem solid var(--theme--accent);
+}
+.card[card-style~=collapsed] {
+ padding: 0;
+}
+.card[card-layout=platform-icon] {
+ padding: 0;
+}
+.card[card-layout=platform-icon] .content_block {
+ display: flex;
+ flex-direction: row;
+ padding: var(--obj_padding);
+ flex-wrap: wrap;
+ align-items: center;
+}
+.card[card-layout=platform-icon] .media_area {
+ position: relative;
+ flex-basis: clamp(2.5rem, 1.13vw + 2.2375rem, 3.25rem);
+ flex-grow: 0;
+ flex-shrink: 0;
+ aspect-ratio: 1;
+ width: clamp(2.5rem, 1.13vw + 2.2375rem, 3.25rem);
+ border-radius: var(--corner-6, 0.375rem);
+ overflow: clip;
+}
+.card[card-layout=platform-icon] .media_area img {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+}
+.card[card-layout=platform-icon] .text_area {
+ flex-basis: 9.375rem;
+ flex-grow: 1;
+ flex-shrink: 0;
+}
+.card[card-layout=platform-icon] .text_content {
+ gap: 0.25rem;
+}
+.card:is(a) h1,
+.card:is(a) h2,
+.card:is(a) h3,
+.card:is(a) h4,
+.card:is(a) h5,
+.card:is(a) h6 {
+ position: relative;
+ display: inline-block;
+ align-self: flex-start;
+}
+.card:is(a) h1::after,
+.card:is(a) h2::after,
+.card:is(a) h3::after,
+.card:is(a) h4::after,
+.card:is(a) h5::after,
+.card:is(a) h6::after {
+ display: block;
+ content: "";
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ width: 0;
+ height: 0.1em;
+ background-color: currentColor;
+ transition: 0.3s width;
+}
+.card:is(a:hover) h1::after,
+.card:is(a:hover) h2::after,
+.card:is(a:hover) h3::after,
+.card:is(a:hover) h4::after,
+.card:is(a:hover) h5::after,
+.card:is(a:hover) h6::after {
+ width: 100%;
+}
+
+.league-item .meta {
+ display: none;
+}
+.league-link {
+ width: 100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-end;
+ align-items: flex-end;
+ overflow: clip;
+ background-color: var(--theme--background);
+ border-radius: var(--corner-12);
+ text-decoration: none;
+ box-shadow: 0 0 0px -2px var(--theme--accent);
+ transition: 0.3s box-shadow, 0.3s translate;
+}
+.league-link:hover {
+ outline: 2px solid var(--theme--primary_text);
+ box-shadow: 0 0 0px 4px var(--theme--accent);
+ translate: 0 -1px;
+}
+[league-status~=full] .league-link, [league-status~=Full] .league-link {
+ flex-direction: row;
+ gap: 1rem;
+ padding-left: 1rem;
+ padding-block: 0.75rem;
+}
+.league-details {
+ padding: var(--obj_padding) var(--obj_padding) 0 var(--obj_padding);
+ width: 100%;
+ display: flex;
+ flex-direction: column;
+}
+[league-status~=full] .league-details, [league-status~=Full] .league-details {
+ flex-direction: row;
+ padding: 0;
+ margin-block: auto;
+ align-items: center;
+ gap: 1rem;
+}
+.league-timing {
+ color: var(--theme--primary_text, #fff);
+ font-size: clamp(0.9375rem, 0.19vw + 0.89375rem, 1.0625rem);
+ font-weight: 300;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-size: 0.875rem;
+ gap: 0.25em;
+ display: flex;
+ margin-bottom: 1em;
+ align-items: center;
+ flex-wrap: wrap;
+ row-gap: 0.5em;
+}
+.league-timing a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+.league-timing a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+.league-timing a:hover::before {
+ width: 100%;
+}
+[league-status~=full] .league-timing, [league-status~=Full] .league-timing {
+ display: none;
+}
+.league-day, .league-start-date {
+ font-weight: 600;
+}
+.league-level {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 570;
+ font-size: clamp(1.5rem, 0.38vw + 1.4125rem, 1.75rem);
+ line-height: 1.25;
+ text-wrap: pretty;
+ font-weight: 500;
+}
+[league-status~=full] .league-level, [league-status~=Full] .league-level {
+ font-size: 1rem;
+}
+.league-format {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 600;
+ font-size: clamp(2rem, 1.03vw + 1.75625rem, 2.6875rem);
+ line-height: 1.2;
+ text-wrap: pretty;
+ font-weight: 500;
+ font-size: clamp(2rem, 2.25vw + 1.46875rem, 3.5rem);
+ font-weight: 500;
+ transition: 0.7s color;
+ position: relative;
+ display: inline-block;
+ align-self: flex-start;
+}
+[league-status~=full] .league-format, [league-status~=Full] .league-format {
+ font-size: 1rem;
+}
+.league-organizer {
+ color: var(--theme--primary_text, #fff);
+ font-size: clamp(0.9375rem, 0.19vw + 0.89375rem, 1.0625rem);
+ font-weight: 300;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-size: 0.875rem;
+ font-style: italic;
+ font-weight: 800;
+ margin-top: 1em;
+ font-weight: 500;
+}
+.league-organizer a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+.league-organizer a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+.league-organizer a:hover::before {
+ width: 100%;
+}
+[league-status~=full] .league-organizer, [league-status~=Full] .league-organizer {
+ margin-top: 0;
+}
+.league-location {
+ color: var(--theme--primary_text);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-size: 0.9375rem;
+ font-weight: 600;
+ line-height: 1;
+ padding: 0.6666666667em 1.6em;
+ border-radius: var(--corner-12) 0 0 0;
+ background-image: linear-gradient(90deg, var(--theme--accent, #1a7aff) 33%, var(--theme--accent-light, #76afff) 66%);
+ background-size: 300% 100%;
+ background-position: 50% 0%;
+ transition: 0.75s all;
+}
+[league-status~=full] .league-location, [league-status~=Full] .league-location {
+ position: relative;
+ top: 0.75rem;
+}
+a:hover .league-location {
+ color: white;
+ background-position: 0% 0%;
+}
+.league-status {
+ display: none;
+ padding: 2.5px 11.25px;
+ justify-content: center;
+ align-items: center;
+ gap: 11.25px;
+ border-radius: 7.5px;
+ border: 1.25px solid rgba(0, 0, 0, 0.25);
+ background: rgba(0, 0, 0, 0.1);
+ color: #000e35;
+ font-family: var(--Primary-Font, "Fira Sans");
+ font-size: 13px;
+ font-style: normal;
+ font-weight: 600;
+ line-height: 145%; /* 18.85px */
+ letter-spacing: -0.13px;
+}
+[league-status~=full] .league-status, [league-status~=Full] .league-status {
+ display: flex;
+ flex-shrink: 0;
+ margin-block: auto;
+}
+.league-timing .league-status {
+ margin-left: 0.25em;
+ display: flex;
+}
+
+.pickup-link {
+ width: 100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-end;
+ align-items: flex-end;
+ overflow: clip;
+ background-color: var(--theme--background);
+ border-radius: var(--corner-12);
+ text-decoration: none;
+ box-shadow: 0 0 0px -2px var(--theme--accent);
+ transition: 0.3s box-shadow, 0.3s translate;
+}
+.pickup-link:hover {
+ outline: 2px solid var(--theme--primary_text);
+ box-shadow: 0 0 0px 4px var(--theme--accent);
+ translate: 0 -1px;
+}
+.pickup-details {
+ padding: var(--obj_padding) var(--obj_padding) 0 var(--obj_padding);
+ width: 100%;
+ display: flex;
+ flex-direction: column;
+}
+.pickup-timing {
+ color: var(--theme--primary_text, #fff);
+ font-size: clamp(0.9375rem, 0.19vw + 0.89375rem, 1.0625rem);
+ font-weight: 300;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-size: 0.875rem;
+ gap: 0.25em;
+ display: flex;
+ margin-bottom: 1em;
+ align-items: center;
+ flex-wrap: wrap;
+ row-gap: 0.5em;
+}
+.pickup-timing a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+.pickup-timing a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+.pickup-timing a:hover::before {
+ width: 100%;
+}
+.pickup-day {
+ font-weight: 600;
+}
+.pickup-title {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 570;
+ font-size: clamp(1.5rem, 0.38vw + 1.4125rem, 1.75rem);
+ line-height: 1.25;
+ text-wrap: pretty;
+ font-weight: 500;
+ position: relative;
+ display: inline-block;
+ align-self: flex-start;
+}
+.pickup-title::after {
+ display: block;
+ content: "";
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ width: 0;
+ height: 0.1em;
+ background-color: currentColor;
+ transition: 0.3s width;
+}
+a:hover .pickup-title {
+ color: var(--theme--accent);
+}
+a:hover .pickup-title::after {
+ width: 100%;
+}
+.pickup-level {
+ color: var(--theme--primary_text, #fff);
+ font-size: clamp(0.9375rem, 0.19vw + 0.89375rem, 1.0625rem);
+ font-weight: 300;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-size: 0.875rem;
+ font-style: italic;
+ font-weight: 800;
+ margin-top: 1em;
+ font-weight: 500;
+}
+.pickup-level a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+.pickup-level a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+.pickup-level a:hover::before {
+ width: 100%;
+}
+[league-status~=full] .pickup-level, [league-status~=Full] .pickup-level {
+ margin-top: 0;
+}
+.pickup-location {
+ color: var(--theme--primary_text);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-size: 0.9375rem;
+ font-weight: 600;
+ line-height: 1;
+ padding: 0.6666666667em 1.6em;
+ border-radius: var(--corner-12) 0 0 0;
+ background-image: linear-gradient(90deg, var(--theme--accent, #1a7aff) 33%, var(--theme--accent-light, #76afff) 66%);
+ background-size: 300% 100%;
+ background-position: 50% 0%;
+ transition: 0.75s all;
+}
+[league-status~=full] .pickup-location, [league-status~=Full] .pickup-location {
+ position: relative;
+ top: 0.75rem;
+}
+a:hover .pickup-location {
+ color: white;
+ background-position: 0% 0%;
+}
+
+.tournament-item .meta {
+ display: none;
+}
+.tournament-link {
+ width: 100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-end;
+ align-items: flex-end;
+ overflow: clip;
+ background-color: var(--theme--background);
+ border-radius: var(--corner-12);
+ text-decoration: none;
+ transition: 0.3s box-shadow, 0.3s translate;
+}
+.tournament-link:hover {
+ outline: 2px solid var(--theme--primary_text);
+ box-shadow: 0 0 0px 4px var(--theme--accent);
+ translate: 0 -1px;
+}
+.tournament-details {
+ padding: var(--obj_padding) var(--obj_padding) 0 var(--obj_padding);
+ width: 100%;
+ display: flex;
+ flex-direction: column;
+}
+.tournament-timing {
+ color: var(--theme--primary_text, #fff);
+ font-size: clamp(0.9375rem, 0.19vw + 0.89375rem, 1.0625rem);
+ font-weight: 300;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-size: 0.875rem;
+ gap: 0.25em;
+ display: flex;
+ margin-bottom: 1em;
+ align-items: center;
+ flex-wrap: wrap;
+ row-gap: 0.5em;
+}
+.tournament-timing a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+.tournament-timing a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+.tournament-timing a:hover::before {
+ width: 100%;
+}
+.tournament-date {
+ font-weight: 600;
+}
+.tournament-title {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 570;
+ font-size: clamp(1.5rem, 0.38vw + 1.4125rem, 1.75rem);
+ line-height: 1.25;
+ text-wrap: pretty;
+ font-weight: 500;
+ transition: 0.3s color;
+ position: relative;
+ display: inline-block;
+ align-self: flex-start;
+}
+.tournament-organizer {
+ color: var(--theme--primary_text, #fff);
+ font-size: clamp(0.9375rem, 0.19vw + 0.89375rem, 1.0625rem);
+ font-weight: 300;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-size: 0.875rem;
+ font-style: italic;
+ font-weight: 800;
+ margin-top: 1em;
+ font-weight: 500;
+}
+.tournament-organizer a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+.tournament-organizer a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+.tournament-organizer a:hover::before {
+ width: 100%;
+}
+.tournament-location {
+ color: var(--theme--primary_text);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-size: 0.9375rem;
+ font-weight: 600;
+ line-height: 1;
+ padding: 0.6666666667em 1.6em;
+ border-radius: var(--corner-12) 0 0 0;
+ background-image: linear-gradient(90deg, var(--theme--accent, #1a7aff) 33%, var(--theme--accent-light, #76afff) 66%);
+ background-size: 300% 100%;
+ background-position: 50% 0%;
+ transition: 0.75s all;
+}
+a:hover .tournament-location {
+ background-position: 0% 0%;
+}

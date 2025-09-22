@@ -1,0 +1,291 @@
+@use "sass:color";
+@use "_media_queries" as *;
+@use "_colors" as *;
+// @use "_fonts" as *;
+
+$rem: 1/16 * 1rem;
+
+@mixin fluid_size(
+  $property: font-size,
+  $minSize: 16px,
+  $maxSize: 20px,
+  $minBreakpoint: 375px,
+  $maxBreakpoint: 1440px
+) {
+  //Formula y = mx+b
+  $m: ($maxSize - $minSize) / ($maxBreakpoint - $minBreakpoint);
+  $b: $maxSize - ($maxBreakpoint * $m);
+  $m_round: round($m * 10000) / 10000;
+  $b_round: round($b * 10) / 10;
+  $rem_base: 16px;
+
+  #{$property}: clamp(
+    $minSize/$rem_base * 1rem,
+    calc($m_round * 100 * 1vw + $b_round/$rem_base * 1rem),
+    $maxSize/$rem_base * 1rem
+  );
+
+  // /*print values*/
+  // --value-at-1440: #{$m_round * 1440px + $b_round};
+  // --value-at-1280: #{$m_round * 1280px + $b_round};
+  // --value-at-991: #{$m_round * 991px + $b_round};
+  // --value-at-778: #{$m_round * 768px + $b_round};
+  // --value-at-478: #{$m_round * 476px + $b_round};
+  // --value-at-375: #{$m_round * 375px + $b_round};
+}
+
+// functions for scss color adjustments
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+///
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+///
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+//text selectors
+@mixin header_tags {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @content;
+  }
+}
+
+@mixin text_nodes {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    @content;
+  }
+}
+
+@mixin nth-range($start, $end) {
+  &:nth-child(n + #{$start}):nth-child(-n + #{$end}) {
+    @content;
+  }
+}
+
+//basic setting for pseudo element
+@mixin psuedo_el() {
+  display: block;
+  content: "";
+}
+
+// sets and image to cover - parent must have position property
+@mixin image_cover() {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+}
+@mixin cover_obj() {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+}
+
+//sets up container for use with @image_cover
+@mixin cover_container() {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+@mixin t-center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+@mixin f-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin v-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@mixin base_grid() {
+  display: grid;
+  grid-template-columns: var(--page_grid);
+  gap: var(--gap);
+}
+
+@mixin inner_grid($c: 12) {
+  --columns: #{$c};
+  display: grid;
+  grid-column: 2/-2;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  gap: var(--gap);
+}
+
+@mixin column-span {
+  --columns: 12;
+  --start: calc((16 - var(--columns)) / 2);
+  grid-column: var(--start) / span var(--columns);
+
+  &[column-span="grid"] {
+    --columns: 12;
+  }
+
+  &[column-span="inset"] {
+    --columns: 10;
+    @include md {
+      --columns: 12;
+    }
+  }
+  &[column-span="narrow"] {
+    --columns: 8;
+    @include md {
+      --columns: 10;
+    }
+    @include sm {
+      --columns: 12;
+    }
+  }
+  &[column-span="full-page"] {
+    --columns: 14;
+  }
+  &[alignment="left"] {
+    grid-column: 2 / span var(--columns);
+  }
+  &[alignment="right"] {
+    grid-column: span var(--columns) / -2;
+  }
+  &[alignment="center"] {
+    grid-column: var(--start) / span var(--columns);
+  }
+}
+
+@mixin intro-text {
+  > .text_area {
+    grid-column: grid-start / span 7;
+    @include md {
+      grid-column: grid-start / span 9;
+    }
+    @include sm {
+      grid-column: grid-start / span 12;
+    }
+    &[area-length="long"] {
+      grid-column: grid-start / span 9;
+      @include sm {
+        grid-column: grid-start / span 12;
+      }
+    }
+    &[area-length="full"] {
+      grid-column: grid-start / span 12;
+    }
+  }
+}
+
+$sizes: ("mini", "small", "medium", "large", "jumbo");
+
+@mixin glass-background {
+  background: var(--glass-fill, rgba(255, 255, 255, 0.05));
+  background-blend-mode: normal, normal, overlay;
+  backdrop-filter: blur(0.75rem);
+}
+
+@mixin background-el-position($w: 6137, $h: 336, $x: -2960, $y: 177) {
+  position: absolute;
+  width: $w/1440 * 100vw;
+  aspect-ratio: $w/$h;
+  translate: $x / $w * 100% $y / $h * 100%;
+  top: 0;
+  left: 0;
+}
+
+@mixin rainbow-link {
+  background-image: var(
+    --brand--gradient-linear,
+    linear-gradient(
+      90deg,
+      var(--gold) 0%,
+      var(--red) 33%,
+      var(--blue) 66%,
+      var(--light-blue) 100%
+    )
+  );
+  background-size: 300% 200%;
+  background-position: right;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: 0.5s background;
+  position: relative;
+  &::after {
+    @include psuedo_el;
+    position: absolute;
+    bottom: 0.2em;
+    left: 0;
+    width: 100%;
+    height: 0.05em;
+    background-image: inherit;
+    background-size: inherit;
+    background-position: inherit;
+  }
+  &:hover {
+    background-position: left;
+  }
+}
+
+@mixin rainbow-2-link {
+  background-image: linear-gradient(
+    90deg,
+    var(--purple) 0%,
+    var(--red) 33%,
+    var(--light-red) 66%,
+    var(--gold) 100%
+  );
+  background-size: 300% 200%;
+  background-position: right;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: 0.5s background;
+  position: relative;
+  &::after {
+    @include psuedo_el;
+    position: absolute;
+    bottom: 0.2em;
+    left: 0;
+    width: 100%;
+    height: 0.05em;
+    background-image: inherit;
+    background-size: inherit;
+    background-position: inherit;
+  }
+  &:hover {
+    background-position: left;
+  }
+}

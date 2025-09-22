@@ -1,0 +1,39 @@
+/*css/components/row/css/index.scss*/
+.row {
+   --columns: 12;
+   --start: calc((16 - var(--columns)) / 2);
+   grid-column: var(--start)/span var(--columns);
+}
+.row[column-span=inset] {
+   --columns: 10;
+}
+@media (max-width: 991px) {
+   .row[column-span=inset] {
+      --columns: 12;
+   }
+}
+.row[column-span=narrow] {
+   --columns: 8;
+}
+@media (max-width: 991px) {
+   .row[column-span=narrow] {
+      --columns: 10;
+   }
+}
+@media (max-width: 767px) {
+   .row[column-span=narrow] {
+      --columns: 12;
+   }
+}
+.row[column-span=full-page] {
+   --columns: 14;
+}
+.row[alignment=left] {
+   grid-column: 2/span var(--columns);
+}
+.row[alignment=right] {
+   grid-column: span var(--columns)/-2;
+}
+.row[alignment=center] {
+   grid-column: var(--start)/span var(--columns);
+}

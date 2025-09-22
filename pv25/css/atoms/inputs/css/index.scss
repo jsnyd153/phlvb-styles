@@ -1,0 +1,466 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/design/n1MRfrTDtMMwCwlUUJxRMM/Current-25-Website?node-id=488-6055&t=O2mZJSyMOQO7kI4S-1
+/*css/atoms/inputs/css/index.scss*/
+//Dependencies:
+
+//Attributres
+
+@mixin label-style {
+	color: var(--theme--secondary_text);
+	font-family: $primary_font-var;
+	font-weight: 500;
+	line-height: 1.05;
+	font-size: 18/16 * 1rem;
+	margin-bottom: 0.25em;
+	margin-left: 0.125em;
+}
+
+////================General Text Box Input Styles
+
+.input_input {
+	position: relative;
+	transition: 0.3s all;
+
+	&:has(input[type="text"]),
+	&:has(input[type="number"]),
+	&:has(input[type="email"]),
+	&:has(input[type="password"]),
+	&:has(input[type="url"]),
+	&:has(input[type="tel"]) {
+		margin-top: 0.875rem;
+	}
+
+	&:has(input[type="text"]:placeholder-shown),
+	&:has(input[type="number"]:placeholder-shown),
+	&:has(input[type="email"]:placeholder-shown),
+	&:has(input[type="password"]:placeholder-shown),
+	&:has(input[type="url"]:placeholder-shown),
+	&:has(input[type="tel"]:placeholder-shown) {
+		margin-top: 0.875rem;
+	}
+	&:has(input[type="text"]:focus-visible),
+	&:has(input[type="number"]:focus-visible),
+	&:has(input[type="email"]:focus-visible),
+	&:has(input[type="password"]:focus-visible),
+	&:has(input[type="url"]:focus-visible),
+	&:has(input[type="tel"]:focus-visible) {
+		margin-top: 0.875rem;
+	}
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="url"] {
+	display: flex;
+	align-items: center;
+	gap: 0.625rem;
+	border: 0;
+	border: 1px solid var(--theme--border);
+	background-color: var(--theme--background);
+	border-radius: var(--corner-4);
+
+	flex-grow: 1;
+	width: 100%;
+	box-sizing: border-box;
+	color: var(--theme--primary_text);
+	font-family: $primary_font-var;
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 105%;
+	transition: 0.5s all;
+	padding: 1.25rem 0.75rem;
+	min-height: 48/16 * 1rem;
+	// padding-bottom: 0.75rem + 0.0625rem;
+	height: auto;
+	margin-bottom: 0;
+
+	& + label {
+		@include label-style;
+		font-size: 14/16 * 1rem;
+		transition: 0.5s all;
+		position: absolute;
+		bottom: calc(100%);
+		left: 0;
+		pointer-events: none;
+		translate: 0 0;
+	}
+
+	&:hover {
+		border-color: var(--theme--primary_text);
+		// padding-bottom: 0.75rem;
+		& + label {
+			color: var(--theme--primary_text);
+		}
+	}
+	&:placeholder-shown {
+		& + label {
+			bottom: 50%;
+			left: 0.75rem;
+			translate: 0 50%;
+			font-size: 18/16 * 1rem;
+			margin-bottom: 0;
+		}
+	}
+	&:focus-visible {
+		background-color: var(--theme--background-em);
+		outline: 0;
+		border-color: var(--theme--primary_text);
+		& + label {
+			bottom: calc(100%);
+			left: 0;
+			translate: 0 0;
+			font-size: 14/16 * 1rem;
+			margin-bottom: 0.25em;
+		}
+	}
+
+	&:required {
+		+ label {
+			&::after {
+				content: "*";
+				color: $crimson;
+			}
+		}
+	}
+}
+
+.input-reminder-text {
+	color: orange;
+	font-family: $primary_font;
+	font-size: 0.875rem;
+	font-weight: 400;
+	line-height: 115%;
+	margin-top: 0.375rem;
+	letter-spacing: -0.01em;
+}
+
+//======== tex area styles
+
+textarea.w-input {
+	background-color: var(--theme--background);
+	border: 1px solid var(--theme--border);
+	border-radius: var(--corner-4);
+	flex-grow: 1;
+	width: 100%;
+	box-sizing: border-box;
+	color: var(--theme--primary_text);
+	font-family: $primary_font-var;
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 125%;
+	transition: 0.5s all;
+	padding: 1.25rem 0.75rem;
+	min-height: 4rem;
+	// padding-bottom: 0.75rem + 0.0625rem;
+	height: auto;
+	margin-bottom: 0;
+	margin-top: 0.875rem;
+
+	@include sm {
+		min-height: 8rem;
+	}
+	&:focus-visible {
+		background-color: var(--theme--background-em);
+		outline: 0;
+		border-color: var(--theme--primary_text);
+		& + label {
+			bottom: calc(100%);
+			left: 0;
+			translate: 0 0;
+			font-size: 14/16 * 1rem;
+			margin-bottom: 0.25em;
+		}
+	}
+
+	&[maxlength="1000"] {
+		height: 6rem;
+	}
+	&[maxlength="2500"] {
+		height: 8rem;
+	}
+}
+
+//================ Styles for both Checkboxes and Radio Inputs
+.radio,
+.checkbox {
+	&-group-header {
+		@include label-style;
+	}
+	&-group {
+		font-size: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75em;
+		width: 100%;
+	}
+	&-group-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75em;
+		&[direction="horizontal"] {
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: 1em;
+		}
+	}
+	&-group-item {
+		display: flex;
+		gap: 15/16 * 1em;
+		align-items: flex-start;
+		margin-bottom: 0;
+		padding-left: 0;
+		&:before,
+		&:after {
+			display: none;
+		}
+		.w-form-label {
+			@include label-style;
+			color: var(--theme--primary_text);
+			font-weight: 600;
+			min-height: 1.29/16 * 1em;
+			&.body {
+				@include body_text-style;
+				font-weight: 400;
+				line-height: 1.05;
+			}
+			&.body-small {
+				@include body_text-style-small;
+				font-weight: 400;
+				line-height: 1.05;
+			}
+		}
+		//hide orignal input
+		.w-radio-input,
+		.w-checkbox-input {
+			display: none;
+		}
+	} //group-item
+
+	&-display {
+		margin-block: 1/16 * 1em;
+		width: 19/16 * 1em;
+		height: 19/16 * 1em;
+		border: 2/16 * 1em var(--theme--primary_text) solid;
+		border-radius: 99em;
+		@include f-center;
+		background: rgba($color: $blue, $alpha: 0.1);
+		flex-shrink: 0;
+
+		&::after {
+			content: "";
+			display: block;
+			width: 13/16 * 1em;
+			height: 13/16 * 1em;
+			flex-shrink: 0;
+			border-radius: 13/16 * 1em;
+			background: radial-gradient(
+				107.14% 107.14% at 11.54% 0%,
+				var(--theme--accent) 0%,
+				var(--theme--accent-light) 100%
+			);
+			scale: 0;
+			transition: 0.1s scale;
+		}
+	} //display
+
+	&-group-item:has(input:checked) &-display {
+		&::after {
+			scale: 1;
+		}
+	} //checked
+
+	&-group-item:hover &-display {
+		background-color: rgba($color: $blue, $alpha: 0.4);
+	} //hover
+} //radio or checkbox
+
+//================ Checkbox specific styles
+.checkbox {
+	&-display {
+		border-radius: 4/16 * 1em;
+		position: relative;
+
+		&::after {
+			border-radius: 2/16 * 1em;
+		}
+		&::before {
+			content: "";
+			display: block;
+			width: 7/16 * 1em;
+			height: 3/16 * 1em;
+			flex-shrink: 0;
+			border-bottom: 2/16 * 1em solid white;
+			border-left: 2/16 * 1em solid white;
+			rotate: -45deg;
+			position: absolute;
+			top: 3.5/16 * 1em;
+			opacity: 0;
+			z-index: 1;
+		}
+	} //display
+	&-group-item:has(input:checked) &-display {
+		&::before {
+			opacity: 1;
+		}
+	} //checked
+}
+//Revealed fields
+//Reveals field with [reveal-with="other"] when #other is checked
+
+$reveal-feilds: ("other");
+
+@each $field in $reveal-feilds {
+	form:has(##{nth($field, 1)}) [reveal-with="#{nth($field, 1)}"] {
+		display: none;
+	}
+	form:has(##{nth($field, 1)}:checked) [reveal-with="#{nth($field, 1)}"] {
+		display: flex;
+		flex-basis: auto;
+		.input_input {
+			width: 100%;
+		}
+	}
+}
+
+//======cusotm select fields
+
+.select {
+	&-group-header {
+		@include label-style;
+	}
+	&-group {
+		font-size: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75em;
+		width: 100%;
+	}
+}
+
+//elements that replace the select field select-type="checkbox" and select-type="radio"
+//checkbox or radio styles
+
+.c25-form-row:has([select-type="checkbox"][checkbox-layout="vertical"]) {
+	flex-direction: column;
+}
+.multi-select-input {
+	display: flex;
+	gap: 1.5rem;
+	margin: 0;
+	padding: 0;
+
+	[select-type="checkbox"][checkbox-layout="vertical"] + & {
+		flex-direction: column;
+	}
+
+	.checkbox-display {
+		.w-form-label {
+			@include body_text-style;
+		}
+	}
+
+	.selected .checkbox-display {
+		&::before {
+			opacity: 1;
+		}
+		&::after {
+			scale: 1;
+		}
+	}
+}
+
+////================Select/Dropdown
+//Nice Select For Countries
+
+.nice-select {
+	&.form-field.select.w-select {
+		border-radius: 0;
+		display: flex;
+		align-items: center;
+		gap: 0.625rem;
+		border: 0;
+		border: 1px solid var(--theme--border);
+		border-radius: var(--corner-4);
+		background-color: color.adjust(yellow, $alpha: -1);
+		flex-grow: 1;
+		width: 100%;
+		box-sizing: border-box;
+		color: var(--theme--secondary_text);
+		font-family: $primary_font;
+		font-size: 1.125rem;
+		font-weight: 500;
+		line-height: 105%;
+		transition: 0.5s all;
+		padding: 1.25rem 0.75rem;
+		min-height: 48/16 * 1rem;
+		margin-top: 0.875rem;
+		margin-bottom: 0;
+
+		&:focus {
+			background-color: var(--theme--background-em);
+			border-color: var(--theme--primary_text);
+		}
+		&:hover {
+			border-color: var(--theme--primary_text);
+		}
+	}
+	&::after {
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-top: 5px solid currentColor;
+		border-bottom: 0px solid currentColor;
+		transform: rotate(0deg);
+		width: 0;
+		height: 0;
+		right: 16px;
+		margin-top: -3px;
+	}
+	&.open:after {
+		transform: rotate(180deg);
+	}
+
+	.option {
+		font-family: $primary_font;
+	}
+	.option:hover,
+	.option.focus,
+	.option.selected.focus {
+		background-color: color.adjust($navy, $alpha: -0.8);
+	}
+	.option.selected {
+		font-weight: 700;
+	}
+	.list {
+		background-color: $white;
+		box-shadow: 0px 0.75em 15em -0.25em color.adjust(white, $alpha: -0.8);
+		color: $navy;
+		border-radius: vaR(--corner-4);
+	}
+}
+
+.input_area:has(.multi-select-input):not(:has(.nice-select)) {
+	[select-type="multiple"] {
+		display: none;
+	}
+	&::after {
+		display: none;
+	}
+}
+
+form .c25-button {
+	transition: 0.3s all;
+	&:hover {
+		filter: brightness(1.5);
+	}
+}
+
+//New shit for DSA form
+
+.hidden-label {
+	opacity: 0;
+}

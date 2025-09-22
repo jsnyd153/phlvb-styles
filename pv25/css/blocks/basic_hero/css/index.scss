@@ -1,0 +1,106 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+// Basic Content
+//Standard Interior page hero area
+//Default is left aligned text, but can have 2 elements in the row
+
+//Visual:
+/*css/blocks/basic_hero/css/index.scss*/
+//Dependencies:
+
+//Attributres
+
+.basic_hero {
+  &-- {
+    &section {
+      position: relative;
+      padding-block: var(--section_padding-jumbo, 120 * $rem)
+        var(--section_padding, 48 * $rem);
+      .background_fill {
+        @include cover_obj;
+        mask-image: linear-gradient(
+          0deg,
+          rgba(255, 0, 0, 0) 0%,
+          rgba(255, 0, 0, 1) 100%
+        );
+      }
+    }
+    &row {
+      grid-column: 2 / span 7;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--gutter, 12 * $rem);
+      @include md {
+        grid-column: 2 / span 10;
+      }
+      @include sm {
+        grid-column: 2 / span 12;
+      }
+      h1 {
+        font-weight: 600;
+      }
+    } //row
+    &row:has(> div:nth-child(2)) {
+      //If there's a media area, make the sections side by side
+      grid-column: 2 / span 12;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space_between-large);
+      @include sm {
+        grid-template-columns: 1fr;
+      }
+      .text_area {
+        align-self: center;
+      }
+    }
+    &row[alignment="center"] {
+      grid-column: 2/-2;
+      .text_area {
+        justify-content: center;
+        align-items: center;
+      }
+      .text_content {
+        align-items: center;
+      }
+    }
+  }
+}
+
+.tdse-lockup {
+  width: 100%;
+  --_scale: clamp(0.875rem, 1.5vw + 0.525rem, 1.875rem);
+
+  svg {
+    width: calc(20 * var(--_scale));
+    max-width: 100%;
+  }
+  h1 {
+    font-weight: 600;
+    font-size: calc(1.2 * var(--_scale));
+    margin-top: 0.5em;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  & + .subhead {
+    display: flex;
+    gap: 1em;
+    color: var(--theme--secondary_text);
+    font-size: clamp(1.25rem, 0.38vw + 1.1625rem, 1.5rem);
+    font-weight: 500;
+    line-height: 1.45;
+    font-family: "Raleway Variable", "Raleway", sans-serif;
+    text-transform: none;
+    letter-spacing: 0em;
+    align-items: stretch;
+    .button-container {
+      justify-content: center;
+    }
+
+    .vertical-divider {
+      width: 2px;
+      background-color: currentColor;
+    }
+  }
+}

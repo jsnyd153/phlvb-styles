@@ -1,0 +1,94 @@
+/*css/blocks/basic_content/css/index.scss*/
+.headliners--section {
+   row-gap: var(--space_between, 2rem);
+   padding-block: var(--section_padding, 5rem);
+   position: relative;
+   display: none;
+}
+.headliners--intro {
+   position: relative;
+   grid-column: 2/-2;
+}
+.headliners--grid {
+   position: relative;
+   grid-column: 2/-2;
+   --columns: 12;
+   display: grid;
+   grid-column: 2/-2;
+   grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+   gap: var(--gap);
+   gap: inherit;
+}
+.headliners--description {
+   --columns: 12;
+   display: grid;
+   grid-column: 2/-2;
+   grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+   gap: var(--gap);
+   grid-column: 1/-1;
+   gap: inherit;
+}
+.headliners--description p {
+   grid-column: 3/span 5;
+}
+.headliners--description .headliners--text-secondary {
+   grid-column: 9/span 3;
+   font-size: 0.875rem;
+   font-weight: 600;
+   line-height: 145%;
+   letter-spacing: -0.143px;
+   text-transform: uppercase;
+}
+.headliners--list {
+   grid-column: 1/span 7;
+   display: flex;
+   flex-direction: column;
+   gap: var(--gutter);
+}
+.headliners--item {
+   display: grid;
+   grid-template-columns: 2fr 5fr;
+   gap: var(--gutter);
+   grid-auto-flow: dense;
+}
+.headliners--item h3 {
+   grid-column: 2;
+   opacity: 0.9;
+}
+.headliners--item[focus=true] h3 {
+   opacity: 1;
+}
+.headliners--item img {
+   display: none;
+}
+.headliners--title {
+   grid-column: 1;
+   color: #faf9e9;
+   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
+   font-size: 0.875rem;
+   font-style: normal;
+   font-weight: 500;
+   line-height: 125%; /* 17.971px */
+   opacity: 0;
+   transition: 0.5s all;
+   translate: -50% 0;
+}
+[focus=true] .headliners--title {
+   opacity: 1;
+   translate: 0% 0;
+}
+.headliners--media {
+   grid-column: 9/span 3;
+   overflow: hidden;
+   position: relative;
+   border-radius: 0.75rem;
+   aspect-ratio: 5/7;
+}
+.headliners--media img {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   inset: 0;
+   -o-object-fit: cover;
+      object-fit: cover;
+}

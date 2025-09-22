@@ -1,0 +1,146 @@
+@charset "UTF-8";
+/*css/components/list/css/index.scss*/
+.w-richtext {
+   gap: 0.5em;
+}
+.w-richtext li {
+   color: var(--theme--primary_text, #fff);
+   font-size: clamp(0.8125rem, 0.09vw + 0.7875rem, 0.875rem);
+   font-weight: 400;
+   line-height: 1.45;
+   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
+}
+.w-richtext li a {
+   font-weight: 650;
+   color: var(--theme--accent-light);
+   text-decoration: none;
+   white-space: no-wrap;
+   display: inline-block;
+   position: relative;
+   transition: 0.5s color, 0.5s background;
+}
+.w-richtext li a:hover {
+   color: var(--theme--accent-light);
+   filter: brightness(1.2);
+   text-decoration: underline;
+}
+.w-richtext li a:hover::before {
+   width: 100%;
+}
+
+ul.text_list {
+   margin-top: 0;
+   margin-bottom: 0px;
+   padding-left: 0px;
+   margin-block: 0.5rem;
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem;
+}
+ul.text_list[list-style=comment] li {
+   display: flex;
+   gap: 0.5rem;
+   color: var(--theme--primary_text, #fff);
+   font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+   font-weight: 500;
+   line-height: 1.45;
+   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
+   text-transform: none;
+   letter-spacing: 0em;
+}
+ul.text_list[list-style=comment] li::before {
+   content: "//";
+   color: var(--theme--accent-light);
+}
+ul.text_list[list-style=bullets] {
+   margin-left: 1rem;
+}
+ul.text_list[list-style=bullets] li {
+   display: flex;
+   gap: 0.5rem;
+   color: var(--theme--primary_text, #fff);
+   font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+   font-weight: 500;
+   line-height: 1.45;
+   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
+   text-transform: none;
+   letter-spacing: 0em;
+}
+ul.text_list[list-style=bullets] li::before {
+   content: "•";
+   color: var(--theme--accent-light);
+}
+
+ol.text_list {
+   margin-top: 0;
+   margin-bottom: 0px;
+   padding-left: 0px;
+   margin-block: 0.5rem;
+   margin-left: 2rem;
+}
+ol.text_list li {
+   color: var(--theme--primary_text, #fff);
+   font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+   font-weight: 500;
+   line-height: 1.45;
+   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
+   text-transform: none;
+   letter-spacing: 0em;
+   margin-bottom: 0.25em;
+}
+ol.text_list li a {
+   background-image: var(--brand--gradient-linear, linear-gradient(90deg, var(--gold) 0%, var(--red) 33%, var(--blue) 66%, var(--light-blue) 100%));
+   background-size: 300% 200%;
+   background-position: right;
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   transition: 0.5s background;
+   position: relative;
+   display: inline-block;
+   filter: brightness(1.5);
+}
+ol.text_list li a::after {
+   display: block;
+   content: "";
+   position: absolute;
+   bottom: 0.2em;
+   left: 0;
+   width: 100%;
+   height: 0.05em;
+   background-image: inherit;
+   background-size: inherit;
+   background-position: inherit;
+}
+ol.text_list li a:hover {
+   background-position: left;
+}
+
+[list-link=rainbow] ul li a,
+ul[list-link=rainbow] li a {
+   background-image: var(--brand--gradient-linear, linear-gradient(90deg, var(--gold) 0%, var(--red) 33%, var(--blue) 66%, var(--light-blue) 100%));
+   background-size: 300% 200%;
+   background-position: right;
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   transition: 0.5s background;
+   position: relative;
+}
+[list-link=rainbow] ul li a::after,
+ul[list-link=rainbow] li a::after {
+   display: block;
+   content: "";
+   position: absolute;
+   bottom: 0.2em;
+   left: 0;
+   width: 100%;
+   height: 0.05em;
+   background-image: inherit;
+   background-size: inherit;
+   background-position: inherit;
+}
+[list-link=rainbow] ul li a:hover,
+ul[list-link=rainbow] li a:hover {
+   background-position: left;
+}

@@ -1,0 +1,45 @@
+/*css/components/alert_bar/css/index.scss*/
+.alert_bar {
+   background: linear-gradient(90deg, var(--theme--accent) -5.41%, var(--theme--accent-light) 100%);
+   display: flex;
+   gap: 1rem;
+   justify-content: space-between;
+   margin-bottom: var(--obj_padding-small);
+   padding-block: clamp(0.5rem, -0.75vw + 1.175rem, 1rem);
+   padding-inline: 1rem;
+}
+.alert_bar-link {
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 0.5rem;
+   flex-grow: 1;
+   color: #fff;
+}
+.alert_bar-link svg {
+   transition: 0.5s translate;
+}
+.alert_bar-link:hover {
+   color: #fff;
+   text-decoration: underline;
+}
+.alert_bar-link:hover svg {
+   translate: 50% 0;
+}
+.alert_bar-text {
+   color: #fff;
+   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
+   font-size: 0.8125rem;
+   font-style: normal;
+   font-weight: 600;
+   line-height: 100%;
+}
+.alert_bar-close button {
+   background-color: transparent;
+   padding: 0.3125rem 0.3125rem;
+}
+.alert_bar-close button:hover, .alert_bar-close button:focus {
+   opacity: 0.8;
+   outline: 1px solid #fff;
+}

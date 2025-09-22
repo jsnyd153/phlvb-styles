@@ -1,0 +1,42 @@
+@use "sass:color";
+@use "abstracts/" as *;
+/*css/globals/color_themes.scss*/
+:root {
+	@include theme-dark;
+	@include theme-blue;
+	@each $color in $all_colors {
+		--#{nth($color, 1)}: #{nth($color, 2)};
+	}
+}
+
+[color-theme~="dark"] {
+	@include theme-dark;
+}
+[color-theme~="light"] {
+	@include theme-light;
+}
+
+[color-theme~="blue"] {
+	@include theme-blue;
+}
+
+[color-theme~="green"],
+[color-theme~="grass"] {
+	@include theme-green;
+}
+[color-theme~="crimson"],
+[color-theme~="indoor"] {
+	@include theme-crimson;
+}
+
+[color-theme~="yellow"],
+[color-theme~="beach"] {
+	@include theme-yellow;
+}
+
+.wf-design-mode {
+	.demo-padding-dark {
+		background: rgba(255, 255, 255, 0.1);
+		padding: 0.5rem;
+	}
+}

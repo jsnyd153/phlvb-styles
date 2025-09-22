@@ -1,0 +1,7 @@
+/*css/blocks/grid_content/css/index.scss*/
+.image_hero-- section {
+ padding-block: var(--section_padding);
+}
+.image_hero--media_area {
+ grid-column: 2/-2;
+}

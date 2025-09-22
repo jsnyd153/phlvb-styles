@@ -1,0 +1,41 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=4%3A5788&mode=design&t=g6qwze9oShWnmzfu-1
+/*css/components/confuent-tag/css/index.scss*/
+//Dependencies:
+
+.confluent-tag {
+  position: fixed;
+  bottom: var(--obj_padding);
+  right: var(--obj_padding);
+  @include fluid_size(font-size, 16px, 20px);
+  z-index: 600;
+  a {
+    color: $blue;
+    transition: 0.75s all;
+    text-decoration: none;
+    padding-block: 6/16 * 1em;
+    padding-inline: 10/16 * 1em;
+    background-color: $white;
+    border-radius: 4/16 * 1em;
+    border: 1/16 * 1rem solid rgba($color: $navy-blue, $alpha: 0.2);
+    box-shadow: 0px 0.75em 1em -0.25em rgba($color: $deep-navy, $alpha: 0.2);
+    display: block;
+    font-size: inherit;
+    svg {
+      font-size: inherit;
+      width: 180/16 * 1em;
+      height: auto;
+      display: block;
+      path {
+        fill: currentColor;
+      }
+    }
+    &:hover {
+      color: $red;
+      border-color: $gold;
+      box-shadow: 0px 0em 1.5em -0.25em rgba($color: $gold, $alpha: 0.7);
+    }
+  }
+}

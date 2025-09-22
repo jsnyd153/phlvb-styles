@@ -1,0 +1,83 @@
+/*css/components/exec_agenda/css/index.scss*/
+.exec_agenda-list {
+   display: flex;
+   flex-direction: column;
+   gap: var(--gutter);
+}
+@media (max-width: 767px) {
+   .exec_agenda-list {
+      gap: var(--space_between);
+   }
+}
+.exec_agenda-item {
+   display: grid;
+   gap: var(--gutter);
+   grid-template-columns: 3fr 7fr;
+}
+@media (max-width: 991px) {
+   .exec_agenda-item {
+      grid-template-columns: 4fr 6fr;
+   }
+}
+@media (max-width: 767px) {
+   .exec_agenda-item {
+      grid-template-columns: 1fr;
+   }
+}
+.exec_agenda-side .w-richtext p {
+   font-size: 1rem;
+}
+.exec_agenda-side .w-richtext p strong em {
+   font-style: normal;
+   font-weight: 600;
+}
+.exec_agenda-side .w-richtext p em {
+   font-weight: 400;
+   font-style: normal;
+}
+.exec_agenda-time {
+   display: flex;
+   gap: 0.25em;
+   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
+   font-style: normal;
+   font-weight: 600;
+   font-size: 1.125rem;
+   line-height: 135%;
+   letter-spacing: 0.09em;
+   text-transform: uppercase;
+   color: var(--theme--primary_text);
+   padding-bottom: 0.25rem;
+   margin-bottom: 0.25rem;
+   border-bottom: 0.0625rem solid var(--theme--primary_text);
+}
+.exec_agenda-card {
+   padding: var(--obj_padding-small);
+}
+.exec_agenda-card .w-richtext h5 {
+   font-style: italic;
+   font-weight: 500;
+}
+.exec_agenda-card .w-richtext p {
+   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
+   font-style: normal;
+   font-weight: 400;
+   font-size: 1rem;
+   line-height: 135%;
+   letter-spacing: 0em;
+   color: var(--theme--primary_text);
+   margin-top: 0.2em;
+}
+.exec_agenda-card .w-richtext p strong {
+   font-weight: 600;
+   font-size: clamp(1.125rem, 0.28vw + 1.05625rem, 1.3125rem);
+   letter-spacing: 0em;
+   text-transform: initial;
+   font-style: normal;
+}
+.exec_agenda-card .w-richtext p em {
+   font-size: 0.9375rem;
+   font-weight: 400;
+   letter-spacing: 0em;
+   text-transform: initial;
+   font-style: normal;
+}

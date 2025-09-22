@@ -1,0 +1,57 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+// Evnet Hero
+// Hero for individual city/event home pages
+// Visual:
+// Dependancy:
+
+/*css/blocks/event_heros*/
+
+//Attributes
+
+.event_hero {
+  &-- {
+    &section {
+      position: relative;
+      overflow-x: clip;
+      padding-block: var(--section_padding-jumbo, 120 * $rem);
+      row-gap: var(--space_between-large, 48 * $rem);
+    }
+    //Skipping the row wrapper since there should only ever be 2 elements in the section and one bleeds off the edge
+    &text_area {
+      grid-column: 2 / span 5;
+      gap: 1rem;
+      align-self: center;
+      @include md {
+        grid-column: 2 / span 6;
+      }
+      @include sm {
+        grid-column: 2 / -2;
+      }
+    }
+    &subheadline {
+      font-weight: 300;
+      font-size: 30 * $rem;
+      @include fluid_size(font-size, 22px, 30px);
+    }
+    &date {
+      font-weight: 300;
+      font-size: 21 * $rem;
+      @include fluid_size(font-size, 14px, 21px);
+      .text_content:has(&) {
+        gap: 0rem;
+      }
+    }
+    &media_area {
+      grid-column: span 6 / -2;
+      @include sm {
+        grid-column: 2 / -2;
+      }
+      .media_content {
+        border-radius: var(--corner-20, 1rem);
+        overflow: clip;
+      }
+    }
+  } //--
+} //event_hero

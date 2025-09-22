@@ -1,0 +1,18 @@
+@use "sass:color";
+@use "abstracts/" as *;
+
+/*css/globals/text_variables.scss*/
+:root {
+  @include fluid_size(--text--size-h1, 42px, 80px);
+  @include fluid_size(--text--size-h2, 36px, 52px);
+  @include fluid_size(--text--size-h3, 32px, 40px);
+  @include fluid_size(--text--size-h4, 26px, 32px);
+  @include fluid_size(--text--size-h5, 22px, 27px);
+  @include fluid_size(--text--size-h6, 17px, 19px);
+  @include fluid_size(--text--size-body-jumbo, 20px, 24px);
+  @include fluid_size(--text--size-body-large, 17px, 21px);
+  @include fluid_size(--text--size-body, 15px, 18px);
+  @include fluid_size(--text--size-body-small, 13px, 16px);
+
+  --primary_font: #{$primary_font};
+}
