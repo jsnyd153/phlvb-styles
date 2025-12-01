@@ -1,89 +1,50 @@
 /*css/atoms/inputs/css/index.scss*/
 .tag-container {
-   display: flex;
-   gap: 0.5rem;
-   flex-wrap: wrap;
+ display: flex;
+ gap: 0.5rem;
+ flex-wrap: wrap;
 }
 
 .tag {
-   display: flex;
-   flex-direction: row;
-   justify-content: center;
-   align-items: center;
-   gap: 0.7692307692em;
-   padding: 0.25rem 0.75rem;
-   border-radius: 99em;
-   background: var(--theme--accent, #02a576);
-   color: var(--theme--accent-text, #fff);
-   font-size: clamp(0.6875rem, 0.19vw + 0.64375rem, 0.8125rem);
-   font-weight: 600;
-   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
-}
-.tag[tag-color~=blue] {
-   --theme--accent: #5450e0;
-   --theme--accent-light: #72b0fe;
-   --theme--accent_glow: rgba(84, 80, 224, 0.6);
-   --theme--accent-text: #fff;
-   --theme--accent-text-light: #161b32;
-}
-.tag[tag-color~=green] {
-   --theme--accent: #02a576;
-   --theme--accent-light: #6cde8e;
-   --theme--accent_glow: rgba(2, 165, 118, 0.6);
-   --theme--accent-text: #fff;
-   --theme--accent-text-light: #161b32;
-}
-.tag[tag-color~=purple] {
-   --theme--accent: #7e2cbf;
-   --theme--accent-light: #b774f3;
-   --theme--accent_glow: rgba(126, 44, 191, 0.6);
-   --theme--accent-text: #fff;
-   --theme--accent-text-light: #161b32;
-}
-.tag[tag-color~=red] {
-   --theme--accent: #f63f5c;
-   --theme--accent-light: #fa8d5a;
-   --theme--accent_glow: rgba(246, 63, 92, 0.6);
-   --theme--accent-text: #fff;
-   --theme--accent-text-light: #fff;
-}
-.tag[tag-color~=gold] {
-   --theme--accent: #fea237;
-   --theme--accent-light: #f5c27f;
-   --theme--accent_glow: rgba(254, 162, 55, 0.6);
-   --theme--accent-text: #161b32;
-   --theme--accent-text-light: #161b32;
-}
-.tag[tag-color~=light] {
-   background: var(--theme--accent-light, #6cde8e);
-   color: var(--theme--accent-text-light, #161b32);
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ gap: 0.7692307692em;
+ padding: 0.25rem 0.75rem;
+ border-radius: 99em;
+ background: var(--theme--accent, #94d13d);
+ color: var(--theme--accent-text, #ffffff);
+ font-size: clamp(0.6875rem, 0.19vw + 0.64375rem, 0.8125rem);
+ font-weight: 600;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
 }
 .tag[tag-style~=outline] {
-   border: 0.0625rem solid var(--theme--soft_color);
-   padding: 0.125rem 0.4375rem;
-   background-color: var(--theme--background);
-   color: var(--theme--secondary_text);
+ border: 0.0625rem solid var(--theme--soft_color);
+ padding: 0.125rem 0.4375rem;
+ background-color: var(--theme--background);
+ color: var(--theme--secondary_text);
 }
 .tag[tag-style~=outline][tag-color] {
-   color: var(--theme--accent);
+ color: var(--theme--accent);
 }
 .tag[tag-style~=outline][tag-color~=light] {
-   color: var(--theme--accent-light);
+ color: var(--theme--accent-light);
 }
 
 a.tag {
-   text-decoration: none;
+ text-decoration: none;
 }
 a.tag:hover {
-   text-decoration: underline;
-   color: var(--theme--accent-text, #fff);
+ text-decoration: underline;
+ color: var(--theme--accent-text, #ffffff);
 }
 a.tag[tag-style~=outline]:hover {
-   color: var(--theme--secondary_text);
+ color: var(--theme--secondary_text);
 }
 a.tag[tag-style~=outline][tag-color]:hover {
-   color: var(--theme--accent);
+ color: var(--theme--accent);
 }
 a.tag[tag-style~=outline][tag-color~=light]:hover {
-   color: var(--theme--accent-light);
+ color: var(--theme--accent-light);
 }

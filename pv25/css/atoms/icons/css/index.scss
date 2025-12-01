@@ -13,70 +13,74 @@
 //size = small | large | jumbo | interface
 
 .icon-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
 }
 
 .svg-icon {
-  display: contents;
+	display: contents;
+	&::before,
+	&::after {
+		display: none;
+	}
 }
 
 .icon,
 .svg-icon svg {
-  width: var(--_size, 48 * $rem);
-  height: var(--_size, 48 * $rem);
-  object-fit: contain;
+	width: var(--_size, 48 * $rem);
+	height: var(--_size, 48 * $rem);
+	object-fit: contain;
 }
 
 .icon,
 .svg-icon {
-  &[icon-size="micro"] {
-    --_size: #{22 * $rem};
-  }
-  &[icon-size="interface"] {
-    --_size: #{24 * $rem};
-  }
-  &[icon-size="small"] {
-    --_size: #{32 * $rem};
-  }
-  &[icon-size="large"] {
-    --_size: #{64 * $rem};
-  }
-  &[icon-size="jumbo"] {
-    --_size: #{80 * $rem};
-  }
+	&[icon-size="micro"] {
+		--_size: #{22 * $rem};
+	}
+	&[icon-size="interface"] {
+		--_size: #{24 * $rem};
+	}
+	&[icon-size="small"] {
+		--_size: #{32 * $rem};
+	}
+	&[icon-size="large"] {
+		--_size: #{64 * $rem};
+	}
+	&[icon-size="jumbo"] {
+		--_size: #{80 * $rem};
+	}
 
-  &[icon-shape="circle"] {
-    border-radius: 50%;
-    overflow: clip;
-  }
+	&[icon-shape="circle"] {
+		border-radius: 50%;
+		overflow: clip;
+	}
 }
 
 .icon_list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space_between-small, 20 * $rem);
-  &- {
-    &item {
-      display: flex;
-      gap: 0.75rem;
-    }
-    &icon {
-      flex-grow: 0;
-      display: block;
-      margin-top: 0.125rem;
-      svg {
-        width: 1.25rem;
-        path,
-        circle,
-        rect {
-          fill: currentColor;
-        }
-      }
-    }
-    &text {
-      flex-grow: 1;
-    }
-  }
+	display: flex;
+	flex-direction: column;
+	gap: var(--space_between-small, 20 * $rem);
+	&- {
+		&item {
+			display: flex;
+			gap: 0.75rem;
+		}
+		&icon {
+			flex-grow: 0;
+			display: block;
+			margin-top: 0.125rem;
+			svg {
+				width: 1.25rem;
+				path,
+				circle,
+				rect {
+					fill: currentColor;
+				}
+			}
+		}
+		&text {
+			flex-grow: 1;
+		}
+	}
 }

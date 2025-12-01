@@ -1,31 +1,42 @@
 /*css/globals/grids.scss*/
 :root {
-   --grid_margin: calc(var(--page_margin) - var(--gutter));
-   --page_grid: [page-start] var(--grid_margin) minmax(0, 1fr) [inset-start]
-     minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
-     [center] minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
-     minmax(0, 1fr) minmax(0, 1fr) var(--grid_margin);
-   --page_margin: clamp(1.75rem, 3.91vw - 0.125rem, 3rem);
+ --grid_margin: calc(var(--page_margin) - var(--gutter));
+ --page_grid: [page-start] var(--grid_margin) minmax(0, 1fr) [inset-start] minmax(0, 1fr)
+ 	minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) [center] minmax(0, 1fr)
+ 	minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) var(--grid_margin);
+ --page_margin: clamp(1.75rem, 3.91vw - 0.125rem, 3rem);
+ --value-at-1440: 54.304px;
+ --value-at-991: 36.7481px;
+ --value-at-778: 28.0288px;
+ --value-at-375: 12.6625px;
 }
 @media (max-width: 767px) {
-   :root {
-      --page_margin: clamp(0.75rem, 4.07vw - 0.20625rem, 1.75rem);
-   }
+ :root {
+  --page_margin: clamp(0.75rem, 4.07vw - 0.20625rem, 1.75rem);
+  --value-at-1440: 55.308px;
+  --value-at-991: 37.0337px;
+  --value-at-778: 27.9576px;
+  --value-at-375: 11.9625px;
+ }
 }
 @media (min-width: 1280px) {
-   :root {
-      --page_margin: clamp(3rem, 7.5vw - 3rem, 3.75rem);
-   }
+ :root {
+  --page_margin: clamp(3rem, 7.5vw - 3rem, 3.75rem);
+  --value-at-1440: 60px;
+  --value-at-991: 26.325px;
+  --value-at-778: 9.6px;
+  --value-at-375: -19.875px;
+ }
 }
 @media (min-width: 1440px) {
-   :root {
-      --page_margin: calc((100vw - 82.5rem) / 2);
-   }
+ :root {
+  --page_margin: calc((100vw - 82.5rem) / 2);
+ }
 }
 
 section {
-   box-sizing: border-box;
-   display: grid;
-   grid-template-columns: var(--page_grid);
-   gap: var(--gutter);
+ box-sizing: border-box;
+ display: grid;
+ grid-template-columns: var(--page_grid);
+ gap: var(--gutter);
 }

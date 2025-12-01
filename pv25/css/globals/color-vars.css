@@ -1,0 +1,37 @@
+/* Collection name: Base Colors */
+/*Mode: Default*/
+:root {
+	--blue-25: #ebf2ff;
+	--blue-50: #d7e6ff;
+	--blue-100: #c2dbff;
+	--blue-200: #9fc7ff;
+	--blue-300: #76afff;
+	--blue-400: #4895ff;
+	--blue-500: #1a7aff;
+	--blue-600: #005be1;
+	--blue-700: #0041a9;
+	--blue-800: #002871;
+	--blue-900: #000f39;
+	--green-25: #f8fef1;
+	--green-50: #effddd;
+	--green-100: #d4fa9e;
+	--green-200: #bdf36d;
+	--green-300: #a5ea3f;
+	--green-400: #8ad21e;
+	--green-500: #6eb800;
+	--green-600: #538f00;
+	--green-700: #3a6600;
+	--green-800: #213e00;
+	--green-900: #122900;
+	--crimson-25: #fff2eb;
+	--crimson-50: #ffe4d7;
+	--crimson-100: #ffd6c2;
+	--crimson-200: #ffbc9f;
+	--crimson-300: #ff9f76;
+	--crimson-400: #ff7f48;
+	--crimson-500: #ff5f1a;
+	--crimson-600: #e14800;
+	--crimson-700: #a93800;
+	--crimson-800: #712900;
+	--crimson-900: #391a00;
+}

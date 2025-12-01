@@ -18,51 +18,71 @@
 	gap: 1rem;
 	flex-wrap: wrap;
 	justify-content: flex-start;
+	&[alignment="center"] {
+		justify-content: center;
+	}
+	&[alignment="right"] {
+		justify-content: flex-end;
+	}
+}
+
+.button-list {
+	display: flex;
+	gap: 1rem;
+	flex-direction: column;
+	justify-content: stretch;
+	width: max-content;
+
+	&:has(.w--current) .pv25-button {
+		opacity: 0.8;
+	}
+	&:has(.w--current) .pv25-button.w--current {
+		opacity: 1;
+	}
 }
 
 .pv25-button {
+	--_button-background: var(--theme--accent, #{$blue});
+
+	position: relative;
+
 	display: flex;
-	padding: 9/14 * 1em 15/14 * 1em;
 	justify-content: center;
 	align-items: center;
-	gap: 15/14 * 1em;
+
 	@include fluid_size(font-size, 14px, 16px);
-	color: var(--theme--accent-text, #{$white});
-	background: var(--theme--accent, #{$blue});
-	border: 1 * $rem solid var(--theme--accent, #{$green});
-	border-radius: 1rem 0 1rem 0;
 	font-style: normal;
 	font-weight: 400;
 	font-family: $primary_font-var;
 	line-height: 100%;
 	text-decoration: none;
-	transition: 0.5s box-shadow, 0.5s background-color, 0.5s color, 0.25s translate, 0.5s filter;
-	position: relative;
+
+	padding: 9/14 * 1em 15/14 * 1em;
+	gap: 12/14 * 1em;
+	border: 1 * $rem solid var(--_button-background, #{$blue});
+
+	color: var(--theme--accent-text, #{$white});
+	background: var(--_button-background, #{$blue});
+
+	border-radius: 1em 0 1em 0;
 	filter: brightness(1);
+	outline: 1 * $rem solid transparent;
+	outline-offset: 2 * $rem;
+
+	transition: 0.5s background-color, 0.5s color, 0.5s filter, 0.5s outline;
 
 	.button-container &:nth-child(even) {
-		border-radius: 0rem 1rem 0rem 1rem;
+		border-radius: 0em 1em 0rem 1em;
 	}
-	&:before {
-		@include psuedo_el;
-		position: absolute;
-		inset: 0.5em;
-		filter: blur(1.25em);
-		background-color: inherit;
-		opacity: 0;
-		transition: 0.5s opacity;
-		transition-timing-function: cubic-bezier(0.11, 0, 0.2, 0);
-	}
+
 	.button-arrow {
 		transition: 0.3s translate;
 	}
 
 	&:hover {
-		color: var(--theme--accent-text, #{$white});
 		filter: brightness(1.25);
-		&::before {
-			opacity: 1;
-		}
+		outline: 1 * $rem solid var(--_button-background, #{$blue});
+		outline-offset: 2 * $rem;
 		.button-arrow {
 			translate: 50% 0;
 		}
@@ -73,7 +93,7 @@
 	}
 
 	&[button-size="large"] {
-		@include fluid_size(font-size, 14px, 18px);
+		@include fluid_size(font-size, 16px, 18px);
 	}
 	&[button-size="small"] {
 		@include fluid_size(font-size, 12px, 13px);
@@ -89,25 +109,63 @@
 			display: none;
 		}
 	}
-	// &[button-type~="ghost"] {
-	// 	background-color: var(--theme--background);
-	// 	border: 1 * $rem solid var(--theme--background);
-	// 	color: var(--theme--accent, #{$green});
 
-	// 	&:hover {
-	// 		background-color: var(--theme--accent, #{$green});
-	// 		color: var(--theme--accent-text, #{$white});
-	// 	}
-	// }
+	&[button-style~="text"] {
+		--_button-background: var(--theme--accent, #{$blue});
+
+		position: relative;
+
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+
+		@include fluid_size(font-size, 14px, 16px);
+		font-style: normal;
+		font-weight: 400;
+		font-family: $primary_font-var;
+		line-height: 100%;
+		text-decoration: none;
+
+		padding: 0;
+		gap: 12/14 * 1em;
+		border: 0 * $rem solid var(--_button-background, #{$blue});
+
+		color: var(--_button-background, #{$blue});
+		background: transparent;
+
+		border-radius: 0;
+		filter: brightness(1);
+		outline: 0 * $rem solid transparent;
+		outline-offset: 2 * $rem;
+
+		transition: 0.5s background-color, 0.5s color, 0.5s filter, 0.5s outline;
+	}
 
 	&[button-style~="ghost"] {
 		color: var(--theme--accent-text, #{$white});
 		background: transparent;
 		border: 1 * $rem solid var(--theme--accent-text, #{$white});
-		&:hover {
-			background-color: var(--theme--accent-text, #{$white});
-			color: var(--theme--accent, #{$blue});
+		position: relative;
+		overflow: clip;
+		> div {
+			position: relative;
 		}
+		&::before {
+			@include psuedo_el;
+			background-color: var(--theme--accent-text, #{$white});
+			@include cover_obj;
+			width: 0;
+			transition: 0.3s width;
+		}
+
+		&:hover {
+			color: var(--theme--accent, #{$blue});
+			outline-color: var(--theme--accent-text, #{$white});
+			&::before {
+				width: 100%;
+			}
+		}
+
 		@each $color in $all_colors {
 			&[button-color="#{nth($color, 1)}"] {
 				color: var(--theme--accent, #{$blue});
@@ -135,17 +193,28 @@
 
 	&[button-color~="yellow"] {
 		@include theme-yellow;
+		color: var(--theme--accent-text-light, #{$navy});
 	}
 
 	&[button-color~="white"] {
 		color: #{$blue};
-		background: #{$white};
-		border: 1 * $rem solid #{$white};
+		--_button-background: #{$white};
 	}
 
-	&[button-color~="light"] {
-		background: var(--theme--accent-light, #{$blue-200});
-		color: var(--theme--accent-text-light, #{$navy});
+	@for $i from 4 through 9 {
+		$n: $i * 100;
+		&[button-color~="#{$n}"] {
+			--_button-background: var(--theme--accent-#{$n});
+			color: var(--theme--accent-text, #{$white});
+		}
+	}
+
+	@for $i from 1 through 3 {
+		$n: $i * 100;
+		&[button-color~="#{$n}"] {
+			--_button-background: var(--theme--accent-#{$n});
+			color: var(--theme--accent-dark, #{$navy});
+		}
 	}
 
 	&[button-color="inactive"] {

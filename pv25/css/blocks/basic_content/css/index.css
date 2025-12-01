@@ -1,25 +1,49 @@
 /*css/blocks/basic_content/css/index.scss*/
 .basic_content--section {
-   row-gap: var(--space_between, 2rem);
-   padding-block: var(--section_padding, 5rem);
-   position: relative;
+ row-gap: var(--space_between, 2rem);
+ padding-block: var(--section_padding, 5rem);
+ position: relative;
+}
+.basic_content--section[space-between=mini] {
+ row-gap: var(--space_between-mini);
+ -moz-column-gap: var(--_gutter, 0.75rem);
+      column-gap: var(--_gutter, 0.75rem);
+}
+.basic_content--section[section-height=mini] {
+ padding-block: var(--section_padding-mini);
+}
+.basic_content--section[space-between=small] {
+ row-gap: var(--space_between-small);
+ -moz-column-gap: var(--_gutter, 0.75rem);
+      column-gap: var(--_gutter, 0.75rem);
+}
+.basic_content--section[section-height=small] {
+ padding-block: var(--section_padding-small);
+}
+.basic_content--section[space-between=medium] {
+ row-gap: var(--space_between-medium);
+ -moz-column-gap: var(--_gutter, 0.75rem);
+      column-gap: var(--_gutter, 0.75rem);
+}
+.basic_content--section[section-height=medium] {
+ padding-block: var(--section_padding-medium);
+}
+.basic_content--section[space-between=large] {
+ row-gap: var(--space_between-large);
+ -moz-column-gap: var(--_gutter, 0.75rem);
+      column-gap: var(--_gutter, 0.75rem);
+}
+.basic_content--section[section-height=large] {
+ padding-block: var(--section_padding-large);
+}
+.basic_content--section[space-between=jumbo] {
+ row-gap: var(--space_between-jumbo);
+ -moz-column-gap: var(--_gutter, 0.75rem);
+      column-gap: var(--_gutter, 0.75rem);
+}
+.basic_content--section[section-height=jumbo] {
+ padding-block: var(--section_padding-jumbo);
 }
 .basic_content--row {
-   position: relative;
-}
-.basic_content--row[alignment=center] {
-   justify-content: center;
-   align-items: center;
-}
-.basic_content--row[alignment=center] .text_area {
-   justify-content: center;
-   align-items: center;
-}
-.basic_content--row[alignment=center] .text_content {
-   justify-content: center;
-   align-items: center;
-}
-.basic_content--row[alignment=center] .button-container {
-   justify-content: center;
-   align-items: center;
+ position: relative;
 }

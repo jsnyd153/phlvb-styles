@@ -9,6 +9,12 @@ h1 {
  font-family: var(--primary_font, "Fira Sans", sans-serif);
  font-weight: 500;
  font-size: clamp(2.625rem, 1.69vw + 2.23125rem, 3.75rem);
+ --value-at-1440: 60.036px;
+ --value-at-1280: 57.332px;
+ --value-at-991: 52.4479px;
+ --value-at-778: 48.6792px;
+ --value-at-478: 43.7444px;
+ --value-at-375: 42.0375px;
  line-height: 1.1;
  text-wrap: pretty;
 }
@@ -16,8 +22,14 @@ h1 {
 h2 {
  color: var(--theme--primary_text, #fff);
  font-family: var(--primary_font, "Fira Sans", sans-serif);
- font-weight: 600;
+ font-weight: 500;
  font-size: clamp(2rem, 1.03vw + 1.75625rem, 2.6875rem);
+ --value-at-1440: 42.932px;
+ --value-at-1280: 41.284px;
+ --value-at-991: 38.3073px;
+ --value-at-778: 36.0104px;
+ --value-at-478: 33.0028px;
+ --value-at-375: 31.9625px;
  line-height: 1.2;
  text-wrap: pretty;
 }
@@ -25,8 +37,14 @@ h2 {
 h3 {
  color: var(--theme--primary_text, #fff);
  font-family: var(--primary_font, "Fira Sans", sans-serif);
- font-weight: 570;
+ font-weight: 500;
  font-size: clamp(1.5rem, 0.38vw + 1.4125rem, 1.75rem);
+ --value-at-1440: 28.072px;
+ --value-at-1280: 27.464px;
+ --value-at-991: 26.3658px;
+ --value-at-778: 25.5184px;
+ --value-at-478: 24.4088px;
+ --value-at-375: 24.025px;
  line-height: 1.25;
  text-wrap: pretty;
 }
@@ -34,8 +52,14 @@ h3 {
 h4 {
  color: var(--theme--primary_text, #fff);
  font-family: var(--primary_font, "Fira Sans", sans-serif);
- font-weight: 600;
+ font-weight: 500;
  font-size: clamp(1.25rem, 0.38vw + 1.1625rem, 1.5rem);
+ --value-at-1440: 24.072px;
+ --value-at-1280: 23.464px;
+ --value-at-991: 22.3658px;
+ --value-at-778: 21.5184px;
+ --value-at-478: 20.4088px;
+ --value-at-375: 20.025px;
  line-height: 1.25;
  text-wrap: pretty;
 }
@@ -43,8 +67,14 @@ h4 {
 h5 {
  color: var(--theme--primary_text, #fff);
  font-family: var(--primary_font, "Fira Sans", sans-serif);
- font-weight: 700;
+ font-weight: 500;
  font-size: clamp(1rem, 0.28vw + 0.93125rem, 1.1875rem);
+ --value-at-1440: 18.932px;
+ --value-at-1280: 18.484px;
+ --value-at-991: 17.6748px;
+ --value-at-778: 17.0504px;
+ --value-at-478: 16.2328px;
+ --value-at-375: 15.95px;
  line-height: 1.25;
 }
 
@@ -52,14 +82,26 @@ h6 {
  color: var(--theme--primary_text, #fff);
  font-weight: 600;
  font-size: clamp(0.9375rem, 0vw + 0.9375rem, 0.9375rem);
+ --value-at-1440: 15px;
+ --value-at-1280: 15px;
+ --value-at-991: 15px;
+ --value-at-778: 15px;
+ --value-at-478: 15px;
+ --value-at-375: 15px;
  line-height: 1.25;
  font-family: var(--primary_font, "Fira Sans", sans-serif);
 }
 
 p {
- color: var(--theme--primary_text, #fff);
+ color: var(--theme--secondary_text, #000f39);
  font-size: clamp(0.9375rem, 0.19vw + 0.89375rem, 1.0625rem);
- font-weight: 300;
+ --value-at-1440: 17.036px;
+ --value-at-1280: 16.732px;
+ --value-at-991: 16.1829px;
+ --value-at-778: 15.7592px;
+ --value-at-478: 15.2044px;
+ --value-at-375: 15.0125px;
+ font-weight: 400;
  line-height: 1.45;
  font-family: var(--primary_font, "Fira Sans", sans-serif);
 }
@@ -81,9 +123,15 @@ p a:hover::before {
  width: 100%;
 }
 p.large {
- color: var(--theme--primary_text, #fff);
- font-size: clamp(1.125rem, 0.28vw + 1.05625rem, 1.3125rem);
- font-weight: 300;
+ color: var(--theme--secondary_text, #000f39);
+ font-size: clamp(1.0625rem, 0.19vw + 1.01875rem, 1.1875rem);
+ --value-at-1440: 19.036px;
+ --value-at-1280: 18.732px;
+ --value-at-991: 18.1829px;
+ --value-at-778: 17.7592px;
+ --value-at-478: 17.2044px;
+ --value-at-375: 17.0125px;
+ font-weight: 400;
  line-height: 1.45;
  font-family: var(--primary_font, "Fira Sans", sans-serif);
 }
@@ -105,11 +153,18 @@ p.large a:hover::before {
  width: 100%;
 }
 p.small {
- color: var(--theme--primary_text, #fff);
- font-size: clamp(0.8125rem, 0.09vw + 0.7875rem, 0.875rem);
- font-weight: 300;
+ color: var(--theme--secondary_text, #000f39);
+ font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+ --value-at-1440: 16.036px;
+ --value-at-1280: 15.732px;
+ --value-at-991: 15.1829px;
+ --value-at-778: 14.7592px;
+ --value-at-478: 14.2044px;
+ --value-at-375: 14.0125px;
+ font-weight: 400;
  line-height: 1.45;
  font-family: var(--primary_font, "Fira Sans", sans-serif);
+ line-height: 1.35;
 }
 p.small a {
  font-weight: 650;
@@ -143,15 +198,43 @@ p.book {
  font-family: var(--primary_font, "Fira Sans", sans-serif);
  font-weight: 500;
  font-size: clamp(2.625rem, 1.69vw + 2.23125rem, 3.75rem);
+ --value-at-1440: 60.036px;
+ --value-at-1280: 57.332px;
+ --value-at-991: 52.4479px;
+ --value-at-778: 48.6792px;
+ --value-at-478: 43.7444px;
+ --value-at-375: 42.0375px;
  line-height: 1.1;
  text-wrap: pretty;
+}
+
+.style-h1-emphasis {
+ color: var(--theme--primary_text, #fff);
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-weight: 500;
+ font-size: clamp(3.25rem, 1.88vw + 2.8125rem, 4.5rem);
+ --value-at-1440: 72.072px;
+ --value-at-1280: 69.064px;
+ --value-at-991: 63.6308px;
+ --value-at-778: 59.4384px;
+ --value-at-478: 53.9488px;
+ --value-at-375: 52.05px;
+ line-height: 1.1;
+ text-wrap: pretty;
+ font-weight: 700;
 }
 
 .style-h2 {
  color: var(--theme--primary_text, #fff);
  font-family: var(--primary_font, "Fira Sans", sans-serif);
- font-weight: 600;
+ font-weight: 500;
  font-size: clamp(2rem, 1.03vw + 1.75625rem, 2.6875rem);
+ --value-at-1440: 42.932px;
+ --value-at-1280: 41.284px;
+ --value-at-991: 38.3073px;
+ --value-at-778: 36.0104px;
+ --value-at-478: 33.0028px;
+ --value-at-375: 31.9625px;
  line-height: 1.2;
  text-wrap: pretty;
 }
@@ -159,8 +242,14 @@ p.book {
 .style-h3 {
  color: var(--theme--primary_text, #fff);
  font-family: var(--primary_font, "Fira Sans", sans-serif);
- font-weight: 570;
+ font-weight: 500;
  font-size: clamp(1.5rem, 0.38vw + 1.4125rem, 1.75rem);
+ --value-at-1440: 28.072px;
+ --value-at-1280: 27.464px;
+ --value-at-991: 26.3658px;
+ --value-at-778: 25.5184px;
+ --value-at-478: 24.4088px;
+ --value-at-375: 24.025px;
  line-height: 1.25;
  text-wrap: pretty;
 }
@@ -168,8 +257,14 @@ p.book {
 .style-h4 {
  color: var(--theme--primary_text, #fff);
  font-family: var(--primary_font, "Fira Sans", sans-serif);
- font-weight: 600;
+ font-weight: 500;
  font-size: clamp(1.25rem, 0.38vw + 1.1625rem, 1.5rem);
+ --value-at-1440: 24.072px;
+ --value-at-1280: 23.464px;
+ --value-at-991: 22.3658px;
+ --value-at-778: 21.5184px;
+ --value-at-478: 20.4088px;
+ --value-at-375: 20.025px;
  line-height: 1.25;
  text-wrap: pretty;
 }
@@ -177,8 +272,14 @@ p.book {
 .style-h5 {
  color: var(--theme--primary_text, #fff);
  font-family: var(--primary_font, "Fira Sans", sans-serif);
- font-weight: 700;
+ font-weight: 500;
  font-size: clamp(1rem, 0.28vw + 0.93125rem, 1.1875rem);
+ --value-at-1440: 18.932px;
+ --value-at-1280: 18.484px;
+ --value-at-991: 17.6748px;
+ --value-at-778: 17.0504px;
+ --value-at-478: 16.2328px;
+ --value-at-375: 15.95px;
  line-height: 1.25;
 }
 
@@ -186,15 +287,27 @@ p.book {
  color: var(--theme--primary_text, #fff);
  font-weight: 600;
  font-size: clamp(0.9375rem, 0vw + 0.9375rem, 0.9375rem);
+ --value-at-1440: 15px;
+ --value-at-1280: 15px;
+ --value-at-991: 15px;
+ --value-at-778: 15px;
+ --value-at-478: 15px;
+ --value-at-375: 15px;
  line-height: 1.25;
  font-family: var(--primary_font, "Fira Sans", sans-serif);
 }
 
 .body-text,
 .body {
- color: var(--theme--primary_text, #fff);
+ color: var(--theme--secondary_text, #000f39);
  font-size: clamp(0.9375rem, 0.19vw + 0.89375rem, 1.0625rem);
- font-weight: 300;
+ --value-at-1440: 17.036px;
+ --value-at-1280: 16.732px;
+ --value-at-991: 16.1829px;
+ --value-at-778: 15.7592px;
+ --value-at-478: 15.2044px;
+ --value-at-375: 15.0125px;
+ font-weight: 400;
  line-height: 1.45;
  font-family: var(--primary_font, "Fira Sans", sans-serif);
 }
@@ -220,9 +333,15 @@ p.book {
 }
 
 .body-text-jumbo {
- color: var(--theme--primary_text, #fff);
+ color: var(--theme--secondary_text, #000f39);
  font-size: clamp(1.25rem, 0.38vw + 1.1625rem, 1.5rem);
- font-weight: 300;
+ --value-at-1440: 24.072px;
+ --value-at-1280: 23.464px;
+ --value-at-991: 22.3658px;
+ --value-at-778: 21.5184px;
+ --value-at-478: 20.4088px;
+ --value-at-375: 20.025px;
+ font-weight: 400;
  line-height: 1.45;
  font-family: var(--primary_font, "Fira Sans", sans-serif);
 }
@@ -245,9 +364,15 @@ p.book {
 }
 
 .body-text-large {
- color: var(--theme--primary_text, #fff);
- font-size: clamp(1.125rem, 0.28vw + 1.05625rem, 1.3125rem);
- font-weight: 300;
+ color: var(--theme--secondary_text, #000f39);
+ font-size: clamp(1.0625rem, 0.19vw + 1.01875rem, 1.1875rem);
+ --value-at-1440: 19.036px;
+ --value-at-1280: 18.732px;
+ --value-at-991: 18.1829px;
+ --value-at-778: 17.7592px;
+ --value-at-478: 17.2044px;
+ --value-at-375: 17.0125px;
+ font-weight: 400;
  line-height: 1.45;
  font-family: var(--primary_font, "Fira Sans", sans-serif);
 }
@@ -270,11 +395,18 @@ p.book {
 }
 
 .body-text-small {
- color: var(--theme--primary_text, #fff);
- font-size: clamp(0.8125rem, 0.09vw + 0.7875rem, 0.875rem);
- font-weight: 300;
+ color: var(--theme--secondary_text, #000f39);
+ font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+ --value-at-1440: 16.036px;
+ --value-at-1280: 15.732px;
+ --value-at-991: 15.1829px;
+ --value-at-778: 14.7592px;
+ --value-at-478: 14.2044px;
+ --value-at-375: 14.0125px;
+ font-weight: 400;
  line-height: 1.45;
  font-family: var(--primary_font, "Fira Sans", sans-serif);
+ line-height: 1.35;
 }
 .body-text-small a {
  font-weight: 650;
@@ -292,4 +424,72 @@ p.book {
 }
 .body-text-small a:hover::before {
  width: 100%;
+}
+.body-text-small:is(ul) li, .body-text-small:is(ol) li {
+ margin: 0 0 0.5em 0;
+}
+
+.w-richtext ul li {
+ color: var(--theme--secondary_text, #000f39);
+ font-size: clamp(0.9375rem, 0.19vw + 0.89375rem, 1.0625rem);
+ --value-at-1440: 17.036px;
+ --value-at-1280: 16.732px;
+ --value-at-991: 16.1829px;
+ --value-at-778: 15.7592px;
+ --value-at-478: 15.2044px;
+ --value-at-375: 15.0125px;
+ font-weight: 400;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+}
+.w-richtext ul li a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+.w-richtext ul li a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+.w-richtext ul li a:hover::before {
+ width: 100%;
+}
+.w-richtext blockquote {
+ color: var(--theme--secondary_text, #000f39);
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ --value-at-1440: 17.932px;
+ --value-at-1280: 17.484px;
+ --value-at-991: 16.6748px;
+ --value-at-778: 16.0504px;
+ --value-at-478: 15.2328px;
+ --value-at-375: 14.95px;
+ font-weight: 500;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ text-transform: none;
+ letter-spacing: 0em;
+ font-style: italic;
+ border-left: 0px solid #e2e2e2;
+ margin: 0;
+ padding: var(--obj_padding-small);
+ border: 1px solid var(--theme--border);
+ border-radius: var(--corner-8);
+ margin-block: 0.5rem;
+}
+
+.w-richtext h1,
+.w-richtext h2,
+.w-richtext h3,
+.w-richtext h4,
+.w-richtext h5,
+.w-richtext h6 {
+ margin-top: 0.5em;
+}
+.w-richtext p {
+ margin-top: 0.25em;
 }

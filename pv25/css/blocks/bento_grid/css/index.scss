@@ -29,13 +29,16 @@
 .bento_grid {
 	&-- {
 		&section {
-			row-gap: var(--space_between, 24 * $rem);
+			row-gap: var(--space_between-xlarge, 24 * $rem);
 			padding-block: var(--section_padding-large, 48 * $rem);
 			position: relative;
 			@each $size in $sizes {
 				&[space-between="#{nth($size, 1)}"] {
 					row-gap: var(--space_between-#{nth($size, 1)});
 					column-gap: var(--_gutter, 12 * $rem);
+				}
+				&[section-height="#{nth($size, 1)}"] {
+					padding-block: var(--section_padding-#{nth($size, 1)});
 				}
 			}
 		}
@@ -134,29 +137,17 @@
 					grid-template-columns: 1fr;
 				}
 			}
-		} //row
-	}
-}
 
-.sidebar_area {
-	position: relative;
-	height: 100%;
-	&-sticky {
-		position: sticky;
-		top: var(--section_padding-large, 48 * $rem);
-		@include md {
-			position: relative;
-			top: auto;
-		}
-		> .text_area {
-			@include md {
-				display: none;
+			> .media_area {
+				.media_content {
+					border-radius: 0 var(--corner-20, 20 * $rem) 0 var(--corner-16, 20 * $rem);
+				}
+				&:nth-child(even) {
+					.media_content {
+						border-radius: var(--corner-20, 20 * $rem) 0 var(--corner-16, 20 * $rem) 0;
+					}
+				}
 			}
-		}
-	}
-}
-.filter-sidebar {
-	@include sm {
-		grid-row: 1;
+		} //row
 	}
 }

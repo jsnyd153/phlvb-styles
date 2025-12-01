@@ -5,50 +5,67 @@
  flex-wrap: wrap;
  justify-content: flex-start;
 }
+.button-container[alignment=center] {
+ justify-content: center;
+}
+.button-container[alignment=right] {
+ justify-content: flex-end;
+}
+
+.button-list {
+ display: flex;
+ gap: 1rem;
+ flex-direction: column;
+ justify-content: stretch;
+ width: -moz-max-content;
+ width: max-content;
+}
+.button-list:has(.w--current) .pv25-button {
+ opacity: 0.8;
+}
+.button-list:has(.w--current) .pv25-button.w--current {
+ opacity: 1;
+}
 
 .pv25-button {
+ --_button-background: var(--theme--accent, #1a7aff);
+ position: relative;
  display: flex;
- padding: 0.6428571429em 1.0714285714em;
  justify-content: center;
  align-items: center;
- gap: 1.0714285714em;
  font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
- color: var(--theme--accent-text, #ffffff);
- background: var(--theme--accent, #1a7aff);
- border: 0.0625rem solid var(--theme--accent, #94d13d);
- border-radius: 1rem 0 1rem 0;
+ --value-at-1440: 16.036px;
+ --value-at-1280: 15.732px;
+ --value-at-991: 15.1829px;
+ --value-at-778: 14.7592px;
+ --value-at-478: 14.2044px;
+ --value-at-375: 14.0125px;
  font-style: normal;
  font-weight: 400;
  font-family: var(--primary_font, "Fira Sans", sans-serif);
  line-height: 100%;
  text-decoration: none;
- transition: 0.5s box-shadow, 0.5s background-color, 0.5s color, 0.25s translate, 0.5s filter;
- position: relative;
+ padding: 0.6428571429em 1.0714285714em;
+ gap: 0.8571428571em;
+ border: 0.0625rem solid var(--_button-background, #1a7aff);
+ color: var(--theme--accent-text, #ffffff);
+ background: var(--_button-background, #1a7aff);
+ border-radius: 1em 0 1em 0;
  filter: brightness(1);
+ outline: 0.0625rem solid transparent;
+ outline-offset: 0.125rem;
+ transition: 0.5s background-color, 0.5s color, 0.5s filter, 0.5s outline;
 }
 .button-container .pv25-button:nth-child(even) {
- border-radius: 0rem 1rem 0rem 1rem;
-}
-.pv25-button:before {
- display: block;
- content: "";
- position: absolute;
- inset: 0.5em;
- filter: blur(1.25em);
- background-color: inherit;
- opacity: 0;
- transition: 0.5s opacity;
- transition-timing-function: cubic-bezier(0.11, 0, 0.2, 0);
+ border-radius: 0em 1em 0rem 1em;
 }
 .pv25-button .button-arrow {
  transition: 0.3s translate;
 }
 .pv25-button:hover {
- color: var(--theme--accent-text, #ffffff);
  filter: brightness(1.25);
-}
-.pv25-button:hover::before {
- opacity: 1;
+ outline: 0.0625rem solid var(--_button-background, #1a7aff);
+ outline-offset: 0.125rem;
 }
 .pv25-button:hover .button-arrow {
  translate: 50% 0;
@@ -57,10 +74,22 @@
  position: relative;
 }
 .pv25-button[button-size=large] {
- font-size: clamp(0.875rem, 0.38vw + 0.7875rem, 1.125rem);
+ font-size: clamp(1rem, 0.19vw + 0.95625rem, 1.125rem);
+ --value-at-1440: 18.036px;
+ --value-at-1280: 17.732px;
+ --value-at-991: 17.1829px;
+ --value-at-778: 16.7592px;
+ --value-at-478: 16.2044px;
+ --value-at-375: 16.0125px;
 }
 .pv25-button[button-size=small] {
  font-size: clamp(0.75rem, 0.09vw + 0.725rem, 0.8125rem);
+ --value-at-1440: 12.896px;
+ --value-at-1280: 12.752px;
+ --value-at-991: 12.4919px;
+ --value-at-778: 12.2912px;
+ --value-at-478: 12.0284px;
+ --value-at-375: 11.9375px;
 }
 .pv25-button[button-type~=back] {
  flex-direction: row-reverse;
@@ -71,14 +100,64 @@
 .pv25-button[button-type~=no-arrow] .button-arrow {
  display: none;
 }
+.pv25-button[button-style~=text] {
+ --_button-background: var(--theme--accent, #1a7aff);
+ position: relative;
+ display: flex;
+ justify-content: flex-start;
+ align-items: center;
+ font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+ --value-at-1440: 16.036px;
+ --value-at-1280: 15.732px;
+ --value-at-991: 15.1829px;
+ --value-at-778: 14.7592px;
+ --value-at-478: 14.2044px;
+ --value-at-375: 14.0125px;
+ font-style: normal;
+ font-weight: 400;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ line-height: 100%;
+ text-decoration: none;
+ padding: 0;
+ gap: 0.8571428571em;
+ border: 0rem solid var(--_button-background, #1a7aff);
+ color: var(--_button-background, #1a7aff);
+ background: transparent;
+ border-radius: 0;
+ filter: brightness(1);
+ outline: 0rem solid transparent;
+ outline-offset: 0.125rem;
+ transition: 0.5s background-color, 0.5s color, 0.5s filter, 0.5s outline;
+}
 .pv25-button[button-style~=ghost] {
  color: var(--theme--accent-text, #ffffff);
  background: transparent;
  border: 0.0625rem solid var(--theme--accent-text, #ffffff);
+ position: relative;
+ overflow: clip;
+}
+.pv25-button[button-style~=ghost] > div {
+ position: relative;
+}
+.pv25-button[button-style~=ghost]::before {
+ display: block;
+ content: "";
+ background-color: var(--theme--accent-text, #ffffff);
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+ width: 0;
+ transition: 0.3s width;
 }
 .pv25-button[button-style~=ghost]:hover {
- background-color: var(--theme--accent-text, #ffffff);
  color: var(--theme--accent, #1a7aff);
+ outline-color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-style~=ghost]:hover::before {
+ width: 100%;
 }
 .pv25-button[button-style~=ghost][button-color=green] {
  color: var(--theme--accent, #1a7aff);
@@ -86,15 +165,6 @@
  border: 0.0625rem solid var(--theme--accent, #1a7aff);
 }
 .pv25-button[button-style~=ghost][button-color=green]:hover {
- background-color: var(--theme--accent, #1a7aff);
- color: var(--theme--accent-text, #ffffff);
-}
-.pv25-button[button-style~=ghost][button-color=light-green] {
- color: var(--theme--accent, #1a7aff);
- background: transparent;
- border: 0.0625rem solid var(--theme--accent, #1a7aff);
-}
-.pv25-button[button-style~=ghost][button-color=light-green]:hover {
  background-color: var(--theme--accent, #1a7aff);
  color: var(--theme--accent-text, #ffffff);
 }
@@ -107,30 +177,12 @@
  background-color: var(--theme--accent, #1a7aff);
  color: var(--theme--accent-text, #ffffff);
 }
-.pv25-button[button-style~=ghost][button-color=light-blue] {
- color: var(--theme--accent, #1a7aff);
- background: transparent;
- border: 0.0625rem solid var(--theme--accent, #1a7aff);
-}
-.pv25-button[button-style~=ghost][button-color=light-blue]:hover {
- background-color: var(--theme--accent, #1a7aff);
- color: var(--theme--accent-text, #ffffff);
-}
 .pv25-button[button-style~=ghost][button-color=crimson] {
  color: var(--theme--accent, #1a7aff);
  background: transparent;
  border: 0.0625rem solid var(--theme--accent, #1a7aff);
 }
 .pv25-button[button-style~=ghost][button-color=crimson]:hover {
- background-color: var(--theme--accent, #1a7aff);
- color: var(--theme--accent-text, #ffffff);
-}
-.pv25-button[button-style~=ghost][button-color=light-crimson] {
- color: var(--theme--accent, #1a7aff);
- background: transparent;
- border: 0.0625rem solid var(--theme--accent, #1a7aff);
-}
-.pv25-button[button-style~=ghost][button-color=light-crimson]:hover {
  background-color: var(--theme--accent, #1a7aff);
  color: var(--theme--accent-text, #ffffff);
 }
@@ -143,69 +195,118 @@
  background-color: var(--theme--accent, #1a7aff);
  color: var(--theme--accent-text, #ffffff);
 }
-.pv25-button[button-style~=ghost][button-color=light-yellow] {
- color: var(--theme--accent, #1a7aff);
- background: transparent;
- border: 0.0625rem solid var(--theme--accent, #1a7aff);
-}
-.pv25-button[button-style~=ghost][button-color=light-yellow]:hover {
- background-color: var(--theme--accent, #1a7aff);
- color: var(--theme--accent-text, #ffffff);
-}
-.pv25-button[button-style~=ghost][button-color=white] {
- color: var(--theme--accent, #1a7aff);
- background: transparent;
- border: 0.0625rem solid var(--theme--accent, #1a7aff);
-}
-.pv25-button[button-style~=ghost][button-color=white]:hover {
- background-color: var(--theme--accent, #1a7aff);
- color: var(--theme--accent-text, #ffffff);
-}
-.pv25-button[button-style~=ghost][button-color=navy] {
- color: var(--theme--accent, #1a7aff);
- background: transparent;
- border: 0.0625rem solid var(--theme--accent, #1a7aff);
-}
-.pv25-button[button-style~=ghost][button-color=navy]:hover {
- background-color: var(--theme--accent, #1a7aff);
- color: var(--theme--accent-text, #ffffff);
-}
 .pv25-button[button-color~=blue] {
  --theme--accent: #1a7aff;
- --theme--accent-light: #76afff;
+ --theme--accent-25: #ebf2ff;
+ --theme--accent-50: #d7e6ff;
+ --theme--accent-100: #c2dbff;
+ --theme--accent-200: #9fc7ff;
+ --theme--accent-300: #76afff;
+ --theme--accent-400: #4895ff;
+ --theme--accent-500: #1a7aff;
+ --theme--accent-600: #005be1;
+ --theme--accent-700: #0041a9;
+ --theme--accent-800: #002871;
+ --theme--accent-900: #000f39;
  --theme--accent_glow: rgba(26, 122, 255, 0.6);
- --theme--accent-text: #ffffff;
- --theme--accent-text-light: #000e35;
+ --theme--accent-500-50: rgba(26, 122, 255, 0.5);
+ --theme--transparent: rgba(26, 122, 255, 0);
+ --theme--accent-500-20: rgba(26, 122, 255, 0.2);
 }
 .pv25-button[button-color~=green] {
- --theme--accent: #94d13d;
- --theme--accent-light: #bfe38b;
- --theme--accent_glow: rgba(148, 209, 61, 0.6);
- --theme--accent-text: #ffffff;
- --theme--accent-text-light: #000e35;
+ --theme--accent: #6eb800;
+ --theme--accent-25: #f8fef1;
+ --theme--accent-50: #effddd;
+ --theme--accent-100: #d4fa9e;
+ --theme--accent-200: #bdf36d;
+ --theme--accent-300: #a5ea3f;
+ --theme--accent-400: #8ad21e;
+ --theme--accent-500: #6eb800;
+ --theme--accent-600: #538f00;
+ --theme--accent-700: #3a6600;
+ --theme--accent-800: #213e00;
+ --theme--accent-900: #122900;
+ --theme--accent_glow: rgba(110, 184, 0, 0.6);
+ --theme--accent-500-50: rgba(110, 184, 0, 0.5);
+ --theme--accent-500-20: rgba(110, 184, 0, 0.2);
+ --theme--transparent: rgba(110, 184, 0, 0);
 }
 .pv25-button[button-color~=crimson] {
- --theme--accent: #f16122;
- --theme--accent-light: #f7a07a;
- --theme--accent_glow: rgba(241, 97, 34, 0.6);
- --theme--accent-text: #ffffff;
- --theme--accent-text-light: #000e35;
+ --theme--accent: #ff5f1a;
+ --theme--accent-25: #fff2eb;
+ --theme--accent-50: #ffe4d7;
+ --theme--accent-100: #ffd6c2;
+ --theme--accent-200: #ffbc9f;
+ --theme--accent-300: #ff9f76;
+ --theme--accent-400: #ff7f48;
+ --theme--accent-500: #ff5f1a;
+ --theme--accent-600: #e14800;
+ --theme--accent-700: #a93800;
+ --theme--accent-800: #712900;
+ --theme--accent-900: #391a00;
+ --theme--accent_glow: rgba(255, 95, 26, 0.6);
+ --theme--accent-500-50: rgba(255, 95, 26, 0.5);
+ --theme--transparent: rgba(255, 95, 26, 0);
+ --theme--accent-500-20: rgba(255, 95, 26, 0.2);
 }
 .pv25-button[button-color~=yellow] {
  --theme--accent: #f9d452;
- --theme--accent-light: #fbe597;
+ --theme--accent-25: white;
+ --theme--accent-50: white;
+ --theme--accent-100: #fffdf4;
+ --theme--accent-200: #fef4d2;
+ --theme--accent-300: #fdeaaa;
+ --theme--accent-400: #fbdf7e;
+ --theme--accent-500: #f9d452;
+ --theme--accent-600: #f7ca1c;
+ --theme--accent-700: #d3ad07;
+ --theme--accent-800: #9d8605;
+ --theme--accent-900: #676004;
  --theme--accent_glow: rgba(249, 212, 82, 0.6);
- --theme--accent-text: #ffffff;
- --theme--accent-text-light: #000e35;
+ --theme--accent-500-50: rgba(249, 212, 82, 0.5);
+ --theme--transparent: rgba(249, 212, 82, 0);
+ --theme--accent-500-20: rgba(249, 212, 82, 0.2);
+ color: var(--theme--accent-text-light, #000f39);
 }
 .pv25-button[button-color~=white] {
  color: #1a7aff;
- background: #ffffff;
- border: 0.0625rem solid #ffffff;
+ --_button-background: #ffffff;
 }
-.pv25-button[button-color~=light] {
- background: var(--theme--accent-light, #76afff);
- color: var(--theme--accent-text-light, #000e35);
+.pv25-button[button-color~="400"] {
+ --_button-background: var(--theme--accent-400);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-color~="500"] {
+ --_button-background: var(--theme--accent-500);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-color~="600"] {
+ --_button-background: var(--theme--accent-600);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-color~="700"] {
+ --_button-background: var(--theme--accent-700);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-color~="800"] {
+ --_button-background: var(--theme--accent-800);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-color~="900"] {
+ --_button-background: var(--theme--accent-900);
+ color: var(--theme--accent-text, #ffffff);
+}
+.pv25-button[button-color~="100"] {
+ --_button-background: var(--theme--accent-100);
+ color: var(--theme--accent-dark, #000f39);
+}
+.pv25-button[button-color~="200"] {
+ --_button-background: var(--theme--accent-200);
+ color: var(--theme--accent-dark, #000f39);
+}
+.pv25-button[button-color~="300"] {
+ --_button-background: var(--theme--accent-300);
+ color: var(--theme--accent-dark, #000f39);
 }
 .pv25-button[button-color=inactive] {
  background: var(--theme--border);

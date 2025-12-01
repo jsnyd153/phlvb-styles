@@ -1,12 +1,82 @@
 @use "sass:color";
 @use "abstracts/" as *;
 /*css/globals/color_themes.scss*/
+
 :root {
-	@include theme-dark;
+	@include theme-light;
 	@include theme-blue;
-	@each $color in $all_colors {
-		--#{nth($color, 1)}: #{nth($color, 2)};
-	}
+	--blue: #{$blue};
+
+	--blue-25: #{$blue-25};
+	--blue-50: #{$blue-50};
+	--blue-100: #{$blue-100};
+	--blue-200: #{$blue-200};
+	--blue-300: #{$blue-300};
+	--blue-400: #{$blue-400};
+	--blue-500: #{$blue-500};
+	--blue-600: #{$blue-600};
+	--blue-700: #{$blue-700};
+	--blue-800: #{$blue-800};
+	--blue-900: #{$blue-900};
+
+	--blue_glow: #{color.adjust($blue, $alpha: -0.4)};
+	--blue-500-50: #{color.adjust($blue, $alpha: -0.5)};
+	--theme--transparent: #{color.adjust($blue, $alpha: -1)};
+	--blue-500-20: #{color.adjust($blue, $alpha: -0.8)};
+	--crimson: #{$blue};
+
+	--crimson-25: #{$blue-25};
+	--crimson-50: #{$blue-50};
+	--crimson-100: #{$blue-100};
+	--crimson-200: #{$blue-200};
+	--crimson-300: #{$blue-300};
+	--crimson-400: #{$blue-400};
+	--crimson-500: #{$blue-500};
+	--crimson-600: #{$blue-600};
+	--crimson-700: #{$blue-700};
+	--crimson-800: #{$blue-800};
+	--crimson-900: #{$blue-900};
+
+	--crimson_glow: #{color.adjust($blue, $alpha: -0.4)};
+	--crimson-500-50: #{color.adjust($blue, $alpha: -0.5)};
+	--theme--transparent: #{color.adjust($blue, $alpha: -1)};
+	--crimson-500-20: #{color.adjust($blue, $alpha: -0.8)};
+	--green: #{$blue};
+
+	--green-25: #{$blue-25};
+	--green-50: #{$blue-50};
+	--green-100: #{$blue-100};
+	--green-200: #{$blue-200};
+	--green-300: #{$blue-300};
+	--green-400: #{$blue-400};
+	--green-500: #{$blue-500};
+	--green-600: #{$blue-600};
+	--green-700: #{$blue-700};
+	--green-800: #{$blue-800};
+	--green-900: #{$blue-900};
+
+	--green_glow: #{color.adjust($blue, $alpha: -0.4)};
+	--green-500-50: #{color.adjust($blue, $alpha: -0.5)};
+	--theme--transparent: #{color.adjust($blue, $alpha: -1)};
+	--green-500-20: #{color.adjust($blue, $alpha: -0.8)};
+	--yellow: #{$blue};
+
+	--yellow-25: #{$blue-25};
+	--yellow-50: #{$blue-50};
+	--yellow-100: #{$blue-100};
+	--yellow-200: #{$blue-200};
+	--yellow-300: #{$blue-300};
+	--yellow-400: #{$blue-400};
+	--yellow-500: #{$blue-500};
+	--yellow-600: #{$blue-600};
+	--yellow-700: #{$blue-700};
+	--yellow-800: #{$blue-800};
+	--yellow-900: #{$blue-900};
+
+	--yellow_glow: #{color.adjust($blue, $alpha: -0.4)};
+	--yellow-500-50: #{color.adjust($blue, $alpha: -0.5)};
+	--theme--transparent: #{color.adjust($blue, $alpha: -1)};
+	--yellow-500-20: #{color.adjust($blue, $alpha: -0.8)};
 }
 
 [color-theme~="dark"] {
@@ -32,11 +102,4 @@
 [color-theme~="yellow"],
 [color-theme~="beach"] {
 	@include theme-yellow;
-}
-
-.wf-design-mode {
-	.demo-padding-dark {
-		background: rgba(255, 255, 255, 0.1);
-		padding: 0.5rem;
-	}
 }

@@ -7,77 +7,52 @@
 
 //Attributres
 .tag-container {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
 }
 
 .tag {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 10/13 * 1em;
-  padding: 4 * $rem 12 * $rem;
-  border-radius: 99em;
-  background: var(--theme--accent, #{$green});
-  color: var(--theme--accent-text, #{$white});
-  @include fluid_size(font-size, 11px, 13px);
-  font-weight: 600;
-  font-family: $primary_font-var;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 10/13 * 1em;
+	padding: 4 * $rem 12 * $rem;
+	border-radius: 99em;
+	background: var(--theme--accent, #{$green});
+	color: var(--theme--accent-text, #{$white});
+	@include fluid_size(font-size, 11px, 13px);
+	font-weight: 600;
+	font-family: $primary_font-var;
 
-  &[tag-color~="blue"] {
-    @include theme-blue;
-  }
-
-  &[tag-color~="green"] {
-    @include theme-green;
-  }
-
-  &[tag-color~="purple"] {
-    @include theme-purple;
-  }
-
-  &[tag-color~="red"] {
-    @include theme-red;
-  }
-
-  &[tag-color~="gold"] {
-    @include theme-gold;
-  }
-
-  &[tag-color~="light"] {
-    background: var(--theme--accent-light, #{$light-green});
-    color: var(--theme--accent-text-light, #{$deep-navy});
-  }
-
-  &[tag-style~="outline"] {
-    border: 1 * $rem solid var(--theme--soft_color);
-    padding: 2 * $rem 7 * $rem;
-    background-color: var(--theme--background);
-    color: var(--theme--secondary_text);
-    &[tag-color] {
-      color: var(--theme--accent);
-    }
-    &[tag-color~="light"] {
-      color: var(--theme--accent-light);
-    }
-  }
+	&[tag-style~="outline"] {
+		border: 1 * $rem solid var(--theme--soft_color);
+		padding: 2 * $rem 7 * $rem;
+		background-color: var(--theme--background);
+		color: var(--theme--secondary_text);
+		&[tag-color] {
+			color: var(--theme--accent);
+		}
+		&[tag-color~="light"] {
+			color: var(--theme--accent-light);
+		}
+	}
 }
 
 a.tag {
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-    color: var(--theme--accent-text, #{$white});
-  }
-  &[tag-style~="outline"]:hover {
-    color: var(--theme--secondary_text);
-  }
-  &[tag-style~="outline"][tag-color]:hover {
-    color: var(--theme--accent);
-  }
-  &[tag-style~="outline"][tag-color~="light"]:hover {
-    color: var(--theme--accent-light);
-  }
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+		color: var(--theme--accent-text, #{$white});
+	}
+	&[tag-style~="outline"]:hover {
+		color: var(--theme--secondary_text);
+	}
+	&[tag-style~="outline"][tag-color]:hover {
+		color: var(--theme--accent);
+	}
+	&[tag-style~="outline"][tag-color~="light"]:hover {
+		color: var(--theme--accent-light);
+	}
 }

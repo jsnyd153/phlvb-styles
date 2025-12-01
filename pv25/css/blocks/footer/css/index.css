@@ -1,216 +1,96 @@
 /*css/blocks/footer/css/index.scss*/
-footer {
-   padding: var(--obj_padding-large);
-   background-color: var(--theme--background-em);
-   font-family: "Raleway Variable", "Raleway", sans-serif;
-   display: flex;
-   flex-direction: column;
-   gap: 1.75rem;
+.footer {
+ display: grid;
+ grid-template-columns: var(--page_grid);
+ gap: var(--gutter);
+ background-color: #050505;
+ row-gap: 0;
 }
 
-.footer--content {
-   display: flex;
-   justify-content: space-between;
-   gap: 2rem;
+.footer--container {
+ padding: var(--obj_padding-large) 0;
+ grid-column: 2/-2;
+ display: flex;
+ flex-wrap: wrap;
+ gap: var(--space_between);
+ justify-content: space-between;
 }
-@media (max-width: 991px) {
-   .footer--content {
-      flex-direction: column-reverse;
-   }
-}
-.footer--title {
-   color: var(--theme--primary_text, #fff);
-   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
-   font-weight: 500;
-   font-size: clamp(2.625rem, 1.69vw + 2.23125rem, 3.75rem);
-   line-height: 1.1;
-   text-wrap: pretty;
-   color: var(--theme--primary_text);
-   font-size: clamp(3rem, 3.12vw + 1.06875rem, 3.875rem);
-   margin-bottom: 0.25em;
-   margin-top: 8.125rem;
-}
-@media (max-width: 991px) {
-   .footer--title {
-      font-size: clamp(1.75rem, 4.47vw + 0.98125rem, 3.75rem);
-      margin-top: 0;
-   }
-}
-.footer--tagline {
-   color: var(--theme--primary_text);
-   font-family: "Raleway Variable", "Raleway", sans-serif;
-   font-size: 0.625rem;
-   font-style: normal;
-   font-weight: 700;
-   line-height: 105%;
-   letter-spacing: 0.16263rem;
-   text-transform: uppercase;
-   display: flex;
-   align-items: center;
-   gap: 0.75rem;
+.footer--branding {
+ flex-grow: 0;
+ flex-shrink: 0;
+ 180px: clamp(14.125rem, -19.34vw + 18.65625rem, 1.25rem);
+ --_dark-fill: #76afff;
+ --_light-fill: #ebf2ff;
 }
 .footer--nav {
-   display: flex;
-   flex-direction: column;
-   align-items: flex-end;
-   gap: 0.5rem;
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: var(--gutter);
 }
-@media (max-width: 991px) {
-   .footer--nav {
-      align-items: flex-start;
-   }
+@media (max-width: 767px) {
+ .footer--nav {
+  grid-template-columns: repeat(2, 1fr);
+ }
 }
-.footer--event_name {
-   padding-block: 0.75rem;
-   padding-inline: 1.25rem;
-   --_accent: var(--blue);
-   --_accent-light: var(--light-blue);
-   background-color: var(--theme--background-em);
-   border: 1px solid var(--theme--primary_text);
-   border-radius: 0.25rem;
-   text-decoration: none;
-   box-shadow: 0 0 0rem 0 var(--_accent);
-   transition: 0.5s box-shadow, 0.5s border, 0.3s background;
+.footer--nav-column {
+ display: flex;
+ flex-direction: column;
+ gap: 0.625rem;
 }
-.footer--event_name[href="/new-orleans"] {
-   --_accent-light: var(--light-green);
-   --_accent: var(--green);
-}
-.footer--event_name[href="/bengaluru"] {
-   --_accent-light: var(--light-red);
-   --_accent: var(--red);
-}
-.footer--event_name[href="/london"] {
-   --_accent-light: var(--light-blue);
-   --_accent: var(--blue);
-}
-.footer--event_name svg {
-   height: 1.5rem;
-   display: block;
-}
-.footer--event_name svg path {
-   fill: var(--theme--primary_text);
-   transition: 0.5s fill;
-}
-.footer--event_name:hover {
-   box-shadow: 0 0 2.5rem 0 var(--_accent);
-   border: 1px solid var(--_accent-light);
-}
-.footer--event_name:hover svg path {
-   fill: var(--_accent-light);
+.footer--nav-header {
+ color: #4895ff;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-size: 0.75rem;
+ font-style: normal;
+ font-weight: 500;
+ line-height: 100%;
+ text-transform: uppercase;
+ letter-spacing: 0.08em;
 }
 .footer--nav-list {
-   display: flex;
-   flex-direction: column;
-   align-items: flex-end;
-   justify-content: flex-start;
-   gap: 0.125rem;
+ display: flex;
+ flex-direction: column;
+ gap: 0.375rem;
 }
-@media (max-width: 991px) {
-   .footer--nav-list {
-      align-items: flex-start;
-   }
+.footer--nav-link {
+ text-decoration: none;
+ color: #ebf2ff;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ font-size: 0.9375rem;
+ font-style: normal;
+ font-weight: 300;
+ line-height: 145%; /* 20.3px */
+ display: inline;
+ text-decoration: none;
+ background-image: linear-gradient(currentColor, currentColor);
+ background-position: 0% 100%;
+ background-repeat: no-repeat;
+ background-size: 0% 2px;
+ transition: background-size 0.3s;
 }
-.footer--nav-item {
-   --_accent-light: #fff;
-   --_accent: #f3f4f5;
-   padding-block: 0.5rem;
-   padding-inline: 0.875rem;
-   color: #f3f4f5;
-   display: inline-block;
-   text-decoration: none;
-   transition: 0.3s all;
-   border: 1px solid transparent;
-   border-radius: 0.25rem;
-   transition: 0.5s box-shadow, 0.5s border, 0.5s color, 0.3s background;
-   box-shadow: 0 0 0rem 0 var(--_accent);
+.footer--nav-link:hover {
+ background-size: 100% 2px;
 }
-.footer--nav-item:hover {
-   border: 1px solid var(--_accent-light);
-   color: var(--_accent-light);
-   box-shadow: 0 0 1.5rem 0 var(--_accent);
+.footer--social {
+ grid-column: 1/-1;
+ display: flex;
+ justify-content: center;
+ background-color: black;
+ padding-block: var(--obj_padding-micro);
 }
-.footer--nav-item[href="/new-orleans"] {
-   --_accent-light: var(--light-green);
-   --_accent: var(--greem);
+.footer--social-list {
+ display: flex;
+ gap: var(--gutter);
+ justify-content: center;
 }
-.footer--nav-item[href="/bengaluru"] {
-   --_accent-light: var(--light-red);
-   --_accent: var(--red);
+.footer--social-link {
+ width: 1.5rem;
+ opacity: 0.8;
+ transition: 0.3s all;
 }
-.footer--nav-item[href="/london"] {
-   --_accent-light: var(--light-blue);
-   --_accent: var(--blue);
+.footer--social-link .social-icon svg path {
+ fill: #ebf2ff;
 }
-.footer--nav-item[href="/past-events"] {
-   --_accent-light: var(--light-gold);
-   --_accent: var(--gold);
-}
-.footer--nav-item[href="/data-streaming-awards"] {
-   --_accent-light: var(--light-purple);
-   --_accent: var(--purple);
-}
-.footer--legal {
-   border-top: 0.0625rem solid var(--theme--primary_text);
-   padding-top: 0.75rem;
-   display: flex;
-   flex-direction: column;
-   gap: 0.75rem;
-}
-.footer--legal-links {
-   display: flex;
-   flex-wrap: wrap;
-   gap: var(--gutter);
-}
-.footer--legal-links a {
-   color: var(--theme--primary_text, #fff);
-   font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
-   font-weight: 400;
-   line-height: 1.45;
-   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
-   color: var(--theme--primary_text);
-   font-size: 0.875rem;
-   text-decoration: none;
-}
-.footer--legal-links a a {
-   font-weight: 650;
-   color: var(--theme--emphasis_text);
-   text-decoration: none;
-   white-space: no-wrap;
-   display: inline-block;
-   position: relative;
-   transition: 0.5s color;
-}
-.footer--legal-links a a:hover {
-   color: var(--theme--contrast);
-}
-.footer--legal-links a a:hover::before {
-   width: 100%;
-}
-.footer--legal-links a:hover {
-   text-decoration: underline;
-}
-.footer--copyright {
-   color: var(--theme--primary_text, #fff);
-   font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
-   font-weight: 400;
-   line-height: 1.45;
-   font-family: var(--primary_font, "Raleway Variable", "Raleway", sans-serif);
-   font-size: 0.8125rem;
-   color: var(--theme--secondary_text);
-}
-.footer--copyright a {
-   font-weight: 650;
-   color: var(--theme--emphasis_text);
-   text-decoration: none;
-   white-space: no-wrap;
-   display: inline-block;
-   position: relative;
-   transition: 0.5s color;
-}
-.footer--copyright a:hover {
-   color: var(--theme--contrast);
-}
-.footer--copyright a:hover::before {
-   width: 100%;
+.footer--social-link:hover {
+ opacity: 1;
 }

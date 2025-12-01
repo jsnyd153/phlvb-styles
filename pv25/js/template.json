@@ -1,0 +1,97 @@
+{
+  "page": 1,
+  "count": 24,
+  "totalCount": 2,
+  "totalPages": 1,
+  "items": [
+    {
+      "id": "sat-bb-and-aaa-grass-doubles--lXzGeYb7E4o",
+      "title": "SAT | BB & A/AA | Grass Doubles 🏐",
+      "start": "2025-09-27T17:00:50.817+00:00",
+      "end": "2025-09-27T20:00:50.817+00:00",
+      "description": "# Join us for some Saturday afternoon _fun in the sun_ in South Philly's own Columbus Square Park\n\n👥 Intended for __BB players or better__. No partner required. We will have __5-10 courts!__ We will break into courts by skill level if we have enough players to do so. Games to 21 (cap at 23).\n\n**GAMEPLAY**\nCourts will be setup in a row and operate like a skill range with **lower BB players to the left** of the row, **A/AA players on the right** of the row, and **upper BB players in the middle**; exact makeup of the range will be different every week depending on turnout.\n\n__🔞 Must be 18 years of age or older to participate.__\n\n__Outdoor grass rules are in effect__\n-No let serves\n-No open hand receives\n-Hand sets/pushes must be perpendicular/square to the body.\n\n## ⛈️ WEATHER PERMITTING\n\nIf it's clear 2 hours before play the weather is going to ruin our plans, the event will get officially cancelled in the app, and refunds will be issued.\n\n## 🅿️ PARKING & TRANSPORTATION\n\nTwo-hour street parking only.  The Broad Street Line (BSL) stops two blocks away at Ellsworth-Federal Station, use the Federal St. exit. Entrance to the field is in the middle of the block on 13th St.\n\n## 📝 WAIT LIST\n\nIs this event full? Join the wait list, it's free! Curious how the wait list works? Read [how the wait list works](https://opensports.net/waitlist).\n\n## 📛 MEMBERSHIP PERKS\n\nWe have two annual membership plans, one **$10 plan** which saves $2 on your ticket, and a second **$15 plan** that saves $2 on your ticket and $2 for every guest ticket. Get your membership by clicking on **_[this link](https://opensports.net/PhiladelphiaVolleyball/memberships)_**.\n\n## 🤹 HOW TO DETERMINE YOUR SKILL LEVEL\n\nPlease visit the [**understanding levels**](https://phlvb.com/levels) page on our website, [**www.phillyvolleyball.org**](https://phlvb.com/start).\n\n# 🗒️ ADDITIONAL NOTES\n\n⛔ We _won't_ play the same weekend we a run a grass tournment; see our [**tournament schedule**](https://phlvb.com/join-tournaments)\n🎫 Ticket required to attend this event\n🎟️ Ticket cost is donated to **[Columbus Square Park](https://www.columbussquare.org/)'s Rec Center**\n💵🔙 Refund deadline is 2️⃣ hours before the event.\n🔔 Registration opens 1️⃣ week prior to play\n📞 Message the organizer with any questions.\n🏐 Official ball is the [**OPTX AVP Tour Game Volleyball**](https://www.wilson.com/product/optx-avp-game-volleyball-wv30002)",
+      "level": "NotSelected",
+      "eventType": "Grass",
+      "gender": "Coed",
+      "status": "Active",
+      "host": "Daniel",
+      "visibility": "Public",
+      "location": {
+        "title": "Columbus Square Park",
+        "neighborhood": "Passyunk Square",
+        "position": {
+          "latitude": 39.932878,
+          "longitude": -75.164471
+        },
+        "address": "1200 Wharton St, Philadelphia, PA  19147, United States",
+        "city": "Philadelphia",
+        "zipCode": "19147"
+      },
+      "day": "Saturday"
+    },
+    {
+      "id": "saturday-morning-bb-sand-volleyball-note-newer-start-time-RfJWaPzgn",
+      "title": "Saturday Morning BB Sand Volleyball.  NOTE LATER START TIME.",
+      "start": "2025-09-27T14:00:27.951+00:00",
+      "end": "2025-09-27T17:00:27.951+00:00",
+      "description": "`THIS IS A GRASSROOTS EVENT ORGANIZED BY MEMBERS OF THE COMMUNITY, NOT BY PHILADELPHIA VOLLEYBALL OFFICIAL.`\n\nSand Volleyball at Mondauk Park in Ambler.\n\nCourts are just south of the building and playground.\n\nUsually play 3x3 or 4x4.\n\n° No open hand receiving.\n° No open handed dinks.\n° No let serves unless 4x4\n° Sets must be clean.\n\nThere are two courts.\n\nLevel is BB.\n\nA \"BB\" player knows where to be on the court at all times when plays are developing and position themselves accordingly, defensively and offensively. They know where to be when the opponent is hitting. They know the footwork of and how to approach hitting effectively. They have solid mechanics for all skills and can underhand pass to target consistently.\n\nFree",
+      
+      "eventType": "Beach",
+      "gender": "Coed",
+      "status": "Active",
+      "host": "Paul",
+      "visibility": "Public",
+      "location": {
+        "title": "Mondauk Common Park",
+        "neighborhood": "Ambler",
+        "position": {
+          "latitude": 40.154775,
+          "longitude": -75.182965
+        },
+        "address": "1451 Dillon Rd, Ambler, PA 19002, USA"
+      },
+      "day": "Saturday",
+      "level": [
+        "BB"
+      ],
+      "format": [
+        "Coed Triples",
+        "Coed Quads"
+      ]
+      
+    }
+  ]
+}
+
+
+// options for format:
+
+// Coed Doubles
+// Revco Doubles
+// Women's Doubles
+// Men's Doubles
+
+// Women's Triples
+// Men's Triples
+// Coed Triples
+
+// Women's Quads
+// Gender-blind Quads
+// Men's Quads
+// Revco Quads
+// Coed Quads
+
+// Women's 6s
+// Men's 6s
+// Coed 6s
+
+
+// Options for Level
+// All Levels
+// Beginner
+// B
+// Lower BB
+// BB
+// Upper BB
+// A
+// AA

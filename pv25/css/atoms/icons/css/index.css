@@ -1,70 +1,73 @@
 /*components/icons/css/index.scsss*/
 .icon-container {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 0.5rem;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 0.5rem;
 }
 
 .svg-icon {
-   display: contents;
+ display: contents;
+}
+.svg-icon::before, .svg-icon::after {
+ display: none;
 }
 
 .icon,
 .svg-icon svg {
-   width: var(--_size, 3rem);
-   height: var(--_size, 3rem);
-   -o-object-fit: contain;
-      object-fit: contain;
+ width: var(--_size, 3rem);
+ height: var(--_size, 3rem);
+ -o-object-fit: contain;
+    object-fit: contain;
 }
 
 .icon[icon-size=micro],
 .svg-icon[icon-size=micro] {
-   --_size: 1.375rem;
+ --_size: 1.375rem;
 }
 .icon[icon-size=interface],
 .svg-icon[icon-size=interface] {
-   --_size: 1.5rem;
+ --_size: 1.5rem;
 }
 .icon[icon-size=small],
 .svg-icon[icon-size=small] {
-   --_size: 2rem;
+ --_size: 2rem;
 }
 .icon[icon-size=large],
 .svg-icon[icon-size=large] {
-   --_size: 4rem;
+ --_size: 4rem;
 }
 .icon[icon-size=jumbo],
 .svg-icon[icon-size=jumbo] {
-   --_size: 5rem;
+ --_size: 5rem;
 }
 .icon[icon-shape=circle],
 .svg-icon[icon-shape=circle] {
-   border-radius: 50%;
-   overflow: clip;
+ border-radius: 50%;
+ overflow: clip;
 }
 
 .icon_list {
-   display: flex;
-   flex-direction: column;
-   gap: var(--space_between-small, 1.25rem);
+ display: flex;
+ flex-direction: column;
+ gap: var(--space_between-small, 1.25rem);
 }
 .icon_list-item {
-   display: flex;
-   gap: 0.75rem;
+ display: flex;
+ gap: 0.75rem;
 }
 .icon_list-icon {
-   flex-grow: 0;
-   display: block;
-   margin-top: 0.125rem;
+ flex-grow: 0;
+ display: block;
+ margin-top: 0.125rem;
 }
 .icon_list-icon svg {
-   width: 1.25rem;
+ width: 1.25rem;
 }
 .icon_list-icon svg path,
 .icon_list-icon svg circle,
 .icon_list-icon svg rect {
-   fill: currentColor;
+ fill: currentColor;
 }
 .icon_list-text {
-   flex-grow: 1;
+ flex-grow: 1;
 }

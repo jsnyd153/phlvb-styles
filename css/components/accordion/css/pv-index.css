@@ -1,0 +1,31 @@
+/*components/accordion/css/index.scsss*/
+details > summary {
+ list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+ display: none;
+}
+
+[open] .pv-accordion-summary h4 {
+ margin-bottom: 1rem;
+}
+.pv-accordion-icon {
+ transition: 0.3s opacity, 0.3s rotate;
+}
+.pv-accordion-icon.open {
+ position: absolute;
+ right: 0;
+ opacity: 1;
+ rotate: 180deg;
+}
+[open] .pv-accordion-icon.open {
+ opacity: 0;
+ rotate: 0deg;
+}
+.pv-accordion-icon.close {
+ rotate: 180deg;
+}
+[open] .pv-accordion-icon.close {
+ rotate: 0deg;
+}

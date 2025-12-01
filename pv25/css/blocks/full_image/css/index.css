@@ -1,22 +1,63 @@
 /*css/blocks/full_image/css/index.scss*/
 .hero_image--section,
-.image_herosection {
- padding-block: var(--section_padding);
-}
-.hero_image--media_area,
-.image_heromedia_area {
- grid-column: 2/-2;
+.image_hero--section {
+ -webkit-clip-path: inset(0% 0% 0% 0%);
+         clip-path: inset(0% 0% 0% 0%);
  position: relative;
- border-radius: var(--corner-12, 0.75rem);
- overflow: clip;
- height: clamp(18.75rem, 11.27vw + 16.10625rem, 26.25rem);
 }
-.hero_image--media_area img,
-.image_heromedia_area img {
+.hero_image--section .background_area,
+.image_hero--section .background_area {
  position: absolute;
  width: 100%;
  height: 100%;
  inset: 0;
  -o-object-fit: cover;
     object-fit: cover;
+ height: 50%;
+ bottom: auto;
+ background-color: var(--theme--accent);
+ transition: 1s background-color;
+}
+body:has(header[scrolled=true]) .hero_image--section .background_area,
+body:has(header[scrolled=true]) .image_hero--section .background_area {
+ background-color: rgba(255, 255, 255, 0);
+}
+.hero_image--media_area,
+.image_hero--media_area {
+ grid-column: 1/-1;
+ position: relative;
+ overflow: clip;
+ padding: 0 var(--obj_padding-large) var(--obj_padding-large) var(--obj_padding-large);
+ height: clamp(20rem, 22.54vw + 14.71875rem, 35rem);
+ --value-at-1440: 560.076px;
+ --value-at-991: 458.8714px;
+ --value-at-778: 408.6072px;
+ --value-at-375: 320.025px;
+}
+.hero_image--media_area img,
+.image_hero--media_area img {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+ -webkit-clip-path: inset(0% 0% 0% 0%);
+         clip-path: inset(0% 0% 0% 0%);
+}
+.hero_image--media_area .media_content,
+.image_hero--media_area .media_content {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ translate: -50% -50%;
+ background-color: #000f39;
+ scale: 1.25;
+ position: relative;
+ height: 100%;
+ width: 100%;
+ overflow: clip;
+ --_clip: 10%;
+ -webkit-clip-path: inset(var(--_clip) var(--_clip) round var(--corner-60, 3.75rem) 0);
+         clip-path: inset(var(--_clip) var(--_clip) round var(--corner-60, 3.75rem) 0);
 }

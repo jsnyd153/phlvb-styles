@@ -1,314 +1,301 @@
 @use "sass:color";
 @use "../../../globals/abstracts" as *;
 
-//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=17%3A17741&mode=design&t=iIhpQlgc7EE2wRKD-1
-/*css/blocks/grid_content/css/index.scss*/
+//Visual:
+/*css/blocks/header/css/index.scss*/
 //Dependencies:
 
 //Attributres
-// body {
-//   background: color.adjust($light-blue, $lightness: -5%);
-// }
 
 body {
 	background-color: var(--theme--background);
 }
-header {
-	position: sticky;
-	top: var(--gutter);
-	margin-inline: var(--page_margin);
-	z-index: 700;
-	font-family: $primary_font-var;
 
-	[page-type="agenda"] & {
-		position: relative;
+.nav-- {
+	&header {
+		position: sticky;
+		top: 0rem;
+		z-index: 200;
+		width: 100%;
+		min-width: 600px;
+		top: 0rem;
+		left: 0rem;
+
+		@include sm {
+			min-width: 80px;
+		}
 	}
-
-	.w-nav {
-		padding: 0.25rem 0.5rem 0.25rem 1rem;
+	&nav {
+		background-color: var(--theme--accent);
+	}
+	&wrapper {
 		display: flex;
-		gap: var(--space_between);
+		gap: var(--gutter);
 		align-items: center;
-		position: static;
-		border-radius: 99em;
-		border: 1px solid var(--theme--primary_text);
-		background: rgba(255, 255, 255, 0.7);
-		box-shadow: 0px 0.25rem 1.5rem 0px rgba(6, 15, 83, 0.65);
-		backdrop-filter: blur(0.25rem);
-		&:not(:has(.nav--actions)) {
-			min-height: 48 * $rem;
-		}
-		&:not(:has(.nav--actions .c26-button)) {
-			padding: 0.25rem 1rem 0.25rem 1rem;
-		}
-
+		justify-content: space-between;
+		max-width: 100%;
+		padding-inline: var(--obj_padding-large);
+		padding-block: 0.5rem;
 		&::before,
 		&::after {
 			display: none;
 		}
 	}
-}
-
-.nav-- {
-	//Logo Area
-	&branding {
-		width: 200/16 * 1rem;
-		flex-grow: 1;
-		min-width: 10rem;
-		&-link {
-			display: block;
-			width: 100%;
-			@include fluid_size(max-width, 200px, 280px);
-			color: var(--theme--background);
-			&:hover {
-				color: var(--theme--accent);
-			}
-		}
+	&branding-link {
+		// @include fluid_size(width, 26px, 32px);
 	}
-	&logo {
-		display: flex;
-		align-items: center;
-		padding-left: 0.5rem;
+	&branding-logo {
 		svg {
-			max-width: 100%;
-			@include fluid_size(height, 24px, 30px);
-			path {
-				fill: currentColor;
+			@include fluid_size(height, 30px, 36px);
+			display: block;
+			.logo-letters {
+				fill: var(--theme--accent-25);
+			}
+			.logo-bell {
+				fill: var(--theme--accent-100);
 			}
 		}
 	}
 
-	//main navigation actions
 	&actions {
-		flex-grow: 0;
-		display: flex;
-		gap: var(--space_between-small);
-		align-items: center;
-		.w-nav-overlay & {
-			//style adjustments for expanded mobile nav
-			//webflow moves the entire actions into the .w-nav-overlay element
-			flex-direction: column;
-			justify-content: space-between;
-			background: var(--theme--primary_text);
-			box-shadow: -13px 0px 100px 0px rgba(0, 0, 0, 0.7);
-			translate: calc(var(--page_margin) * -1) 0;
-		}
-	} //actions
+	}
 	&list {
 		display: flex;
-		gap: var(--space_between-small);
-		align-items: center;
-		.w-nav-overlay & {
-			//style adjustments for expanded mobile nav
-			//webflow moves the entire actions into the .w-nav-overlay element
-			flex-direction: column;
-			align-items: flex-start;
-			padding: 1.5rem;
-			@include fluid_size(min-width, 300px, 480px, 375px, 991px);
-			max-width: 90svw;
-			height: 100svh;
-		}
-	} //list
+		gap: var(--gutter);
+	}
 	&item {
 		position: relative;
-		.w-nav-overlay & {
-			width: 100%;
-		}
-	} //item
-	&link {
-		position: relative;
-		color: vaR(--theme--background);
-		@include fluid_size(font-size, 12px, 14px, 991px, 1440px);
-		padding: 10/14 * 1em 4/14 * 1em;
-		font-weight: 500;
-		text-decoration: none;
-		transition: 0.45s font-variation-settings, 0.45s color;
-		font-variation-settings: "wght" 500;
-		&::before {
-			@include psuedo_el;
-			position: absolute;
-			width: 0;
-			top: 100%;
-			left: 0;
-			height: 1/16 * 1rem;
-			background-color: currentColor;
-			transition: 0.45s width, 0.45s color;
-		}
-
-		&.w--current {
-			color: $blue;
-			font-variation-settings: "wght" 700;
-			&::before {
-				// width: 100%;
-				// height: 2/16 * 1rem;
-			}
-		}
+		--_opacity: 0;
+		--_clickable: none;
 		&:hover {
-			font-variation-settings: "wght" 600;
-			color: var(--purple);
-			&::before {
-				width: 100%;
-			}
+			--_opacity: 1;
+			--_clickable: initial;
 		}
-		.w-nav-overlay & {
-			//style adjustments for expanded mobile nav
-			//webflow moves the entire actions into the .w-nav-overlay element
-			@include fluid_size(font-size, 19px, 24px, 375px, 991px);
-			&::before {
-				width: 100%;
-			}
+	}
+	&link {
+		font-family: $primary_font-var;
+		font-weight: 500;
+		font-size: 18px;
+		@include fluid_size(font-size, 15px, 17px);
+		line-height: 1;
+		color: #ffffff;
+		padding: 0;
+		padding-block: 0.75em;
+		padding-inline: 0.25em;
+
+		&:hover {
+			text-decoration: underline;
+			background-color: rgba(255, 255, 255, 0.1);
 		}
-	} //link
+	}
 	&dropdown {
-	}
-	&dropdown &link {
-		background-color: transparent;
-		border: 0;
-		display: flex;
-		gap: 8/16 * 1rem;
-		align-items: center;
-		&::after {
-			@include psuedo_el;
-			width: 0;
-			height: 0;
-			border-left: 4px solid transparent;
-			border-right: 4px solid transparent;
-			border-top: 5px solid currentColor;
-			transition: 0.3s rotate;
-		}
-		.w-nav-overlay & {
-			//style adjustments for expanded mobile nav
-			//webflow moves the entire actions into the .w-nav-overlay element
-			font-size: 0.875rem;
-			margin-top: 1rem;
-			&::after {
-				display: none;
-			}
-		}
-	} //dropdown link
-	&dropdown.open &link {
-		&::after {
-			rotate: 180deg;
-		}
-	}
-} //nav
-
-.dropdown-- {
-	&container {
 		position: absolute;
-		top: calc(100% + 0.25rem);
-		width: 240px;
-		background-color: $white;
-		box-shadow: var(--blue-shadow);
-		height: 0;
-		overflow: clip;
-		@media (prefers-reduced-motion: no-preference) {
-			interpolate-size: allow-keywords;
-		}
-		transition: content-visibility 0.5s allow-discrete, height 0.5s;
-		.open & {
-			--_items: 4;
-			height: calc(
-				var(--obj_padding-small) + var(--obj_padding-small) + var(--_items) * 24 * $rem
-			) !important;
-			max-height: 15em;
-			z-index: 999;
-		}
-
-		.w-nav-overlay & {
-			position: static;
-			width: 100%;
-			background-color: transparent;
-			box-shadow: none;
-			height: auto;
-		}
+		top: calc(100% - 0.25rem);
+		background-color: $navy;
+		padding: var(--obj_padding-small);
+		border-radius: 4 * $rem;
+		width: max-content;
+		border: 1px solid white;
+		opacity: var(--_opacity);
+		pointer-events: var(--_clickable);
 	}
-	&list {
+	&dropdown-list {
 		display: flex;
 		flex-direction: column;
-		gap: 0.25rem;
-		padding: var(--obj_padding-small);
-		align-items: flex-start;
-		.w-nav-overlay & {
-			padding: 0;
-			gap: 0.5rem;
-		}
+		align-items: stretch;
+		justify-content: stretch;
 	}
-	&link {
-		font-size: 15/16 * 1rem;
-		font-variation-settings: "wght" 600;
-		color: var(--theme--background);
-		text-decoration: none;
-		padding: 0.5em 0.75em;
-		border: 1/16 * 1rem solid transparent;
-		display: block;
-		transition: 0.3s border 0.3s background;
-		font-size: 1rem;
-		--_accent: var(--blue);
-		&[href~="/bengaluru"] {
-			--_accent: var(--red);
-		}
-		&[href~="/london"] {
-			--_accent: var(--blue);
-		}
-		&[href~="/new-orleans"] {
-			--_accent: var(--green);
-		}
-		&:hover {
-			border: 1/16 * 1rem solid var(--_accent);
-			background-color: var(--theme--primary_text);
-			color: var(--_accent);
-		}
-		svg {
-			width: auto;
-			height: 1em;
-			display: block;
-			path {
-				fill: currentColor;
-			}
-		}
-		.w-nav-overlay & {
-			text-align: left;
-			background-color: rgba($color: $white, $alpha: 0.1);
-			@include fluid_size(font-size, 19px, 24px, 375px, 991px);
-			width: 100%;
-		}
-		[event="bengaluru"] &[event="bengaluru"],
-		[event="london"] &[event="london"],
-		[event="new-orleans"] &[event="new-orleans"] {
-			background: $white;
-			color: var(--_accent);
-		}
-		&:not([event]) {
-			font-size: 1rem;
-		}
-	}
-} //dropdown
-
-.w-nav-overlay {
-	.c25-button {
-		margin-top: auto;
+	&dropdown-item {
 		width: 100%;
-		font-size: 18/16 * 1rem;
-		.button-text {
-			width: 100%;
+	}
+	&dropdown-link {
+		display: inline-block;
+		font-family: $primary_font-var;
+		font-weight: 500;
+		color: $white;
+		text-decoration: none;
+		font-size: 14 * $rem;
+		color: #ffffff;
+		width: 100%;
+		&:hover {
+			text-decoration: underline;
+			background-color: rgba(255, 255, 255, 0.1);
 		}
 	}
-	.side-button {
+}
+
+.w-nav-brand {
+	@include md {
 		padding: 0;
-		background-color: transparent;
 	}
 }
 
 .w-nav-button {
-	padding: 0.25rem 1rem;
+	padding: 0;
+	min-height: 46 * $rem;
+}
+.w-icon-nav-menu {
 }
 
-#header-burger {
-	width: 1.5em;
+$b-height: 46px; //Height (and width) of the burger menu
+$b-margin-top: 30px; //Burger menu margin (distance from top)
+$b-margin-left: 30px; //Burger menu margin (distance from left)
+$b-border-width: 2px; //Width of the borders and 'buns'
+$b-bun-width: 25px; //Width of the 'buns'
+$b-bun-height: 3px; //Height of the 'buns'
+$b-border-radius: 50%; //Change the border radius of the menu
+
+$b-trans-speed: 0.4s; //Transition speed settings
+$b-transition: all $b-trans-speed ease; //Transitions
+
+$b-font-size: 24px; //Font size of brand and links
+$b-font-family: Helvetica-Neue, Helvetica, Arial, sans-serif; //Font family of the brand and links
+$b-font-weight: 300; //Font weight of brand and links
+$b-txt-pad: 30px; //Left padding on both brand and links
+
+$b-line-height: ($b-height / 2 - ($b-font-size / 2.8)); //Vertically centers brand to menu
+$b-txt-pad-top: ($b-margin-top + $b-height + $b-txt-pad); //Top margin for first link element
+$b-bun-width-half: ($b-bun-width / 2); //Half bun width used for calculation
+$b-pad-left: ($b-height / 2 - $b-bun-width-half - 2); //Horizontally centers bun in menu
+$b-pad-top: ($b-height / 2 - $b-bun-width-half); //Vertically centers bun in menu
+
+.w-nav-button {
+	//b-container
+	height: $b-height;
 }
-.w-nav[data-animation="over-right"] .w-nav-overlay,
-.w-nav[data-animation="over-right"] [data-nav-menu-open] {
-	right: calc(var(--page_margin) * -1);
-	top: calc(var(--gutter) * -1);
+
+.nav--burger {
+	//b-menu
+	background: $blue-900;
+	border: $blue-900 solid $b-border-width;
+	border-radius: $b-border-radius;
+	cursor: pointer;
+	display: inline-block;
+	height: $b-height;
+	padding-left: $b-pad-left;
+	padding-top: $b-pad-top;
+	position: relative;
+	transition: $b-transition;
+	user-select: none;
+	width: $b-height;
+	z-index: 12;
+
+	&:hover {
+		border: $blue-25 solid $b-border-width;
+	}
+	span {
+		//b-bun
+		background: $blue-25;
+		position: relative;
+		transition: $b-transition;
+		display: block;
+		&:nth-child(1) {
+			//b-bun--top
+			height: $b-bun-height;
+			top: 0;
+			width: $b-bun-width;
+			.nav--wrapper:has(.w--open) & {
+				background: $blue-25;
+				top: 9px;
+				transform: rotate(45deg);
+			}
+		}
+		&:nth-child(2) {
+			//b-bun--mid
+			height: $b-bun-height;
+			top: 6px;
+			width: $b-bun-width;
+			.nav--wrapper:has(.w--open) & {
+				opacity: 0;
+			}
+		}
+		&:nth-child(3) {
+			//b-bun--bottom
+			height: $b-bun-height;
+			top: 12px;
+			width: $b-bun-width;
+			.nav--wrapper:has(.w--open) & {
+				background: $blue-25;
+				top: 5px;
+				transform: rotate(-45deg);
+			}
+		}
+	}
+}
+
+//action nav on mobile
+.w-nav-overlay {
+	position: fixed;
+	.nav--actions {
+		background-color: $blue-900;
+	}
+	.nav--list {
+		flex-direction: column;
+		padding-inline: var(--obj_padding-large);
+		padding-block: var(--obj_padding-large);
+	}
+	.nav--item {
+		--_opacity: 1;
+		--_clickable: initial;
+		padding: 0;
+
+		.nav--link {
+			padding: 0;
+			font-size: 24px;
+			font-weight: 400;
+		}
+
+		&:has([href="/play/pickup"]) {
+		}
+		&:has([href="/about"]),
+		&:has([href="/resources"]) {
+			.nav--dropdown {
+				display: none;
+			}
+		}
+	}
+	.nav--dropdown {
+		position: relative;
+		background-color: transparent;
+		border: 0;
+		padding: 0;
+		border: 0;
+		&-list {
+			align-items: flex-start;
+			justify-content: flex-start;
+			text-align: left;
+			gap: 8 * $rem;
+			margin-top: 8 * $rem;
+		}
+		&-link {
+			font-weight: 300;
+			font-size: 18px;
+		}
+	}
+}
+
+.w-nav-link.w--current {
+	color: $blue-100;
+}
+
+[scrolled="true"] {
+	&.nav--header {
+		width: 50%;
+		min-width: 600px;
+		top: 1rem;
+		left: 1rem;
+		transition: width 0.5s, min-width, 0.5s, top 0.5s, left 0.5s;
+		@include sm {
+			min-width: 80px;
+		}
+	}
+	.nav--nav {
+		background-color: var(--theme--accent-500);
+		border-radius: 50px 0px 50px 50px;
+		transition: border-radius 0.5s;
+	}
+	.nav--wrapper {
+		padding-left: 0.75rem;
+		transition: padding 0.5s;
+	}
 }

@@ -1,0 +1,63 @@
+/*atoms/tabs/css/index.scss*/
+[state="0"] .pv-tab:nth-child(1) {
+ font-weight: 700;
+}
+
+[state="0"] .pv-tab-indicator {
+ translate: 0% 0;
+ z-index: 0;
+}
+
+[state="1"] .pv-tab:nth-child(2) {
+ font-weight: 700;
+}
+
+[state="1"] .pv-tab-indicator {
+ translate: 100% 0;
+ z-index: 0;
+}
+
+[state="2"] .pv-tab:nth-child(3) {
+ font-weight: 700;
+}
+
+[state="2"] .pv-tab-indicator {
+ translate: 200% 0;
+ z-index: 0;
+}
+
+[state="3"] .pv-tab:nth-child(4) {
+ font-weight: 700;
+}
+
+[state="3"] .pv-tab-indicator {
+ translate: 300% 0;
+ z-index: 0;
+}
+
+[state="4"] .pv-tab:nth-child(5) {
+ font-weight: 700;
+}
+
+[state="4"] .pv-tab-indicator {
+ translate: 400% 0;
+ z-index: 0;
+}
+
+[state="5"] .pv-tab:nth-child(6) {
+ font-weight: 700;
+}
+
+[state="5"] .pv-tab-indicator {
+ translate: 500% 0;
+ z-index: 0;
+}
+
+[state="6"] .pv-tab:nth-child(7) {
+ font-weight: 700;
+}
+
+[state="6"] .pv-tab-indicator {
+ translate: 600% 0;
+ z-index: 0;
+}

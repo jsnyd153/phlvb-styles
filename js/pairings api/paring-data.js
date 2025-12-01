@@ -1,0 +1,33 @@
+// Define your teamlist
+const teamlist = [
+	{ teamInitial: "A", teamName: "Working on it" },
+	{ teamInitial: "B", teamName: "Team Jonas" },
+	{ teamInitial: "C", teamName: "Help Me!" },
+	{ teamInitial: "D", teamName: "Dom & co" },
+	{ teamInitial: "E", teamName: "BRATwurst 🌭" },
+	{ teamInitial: "F", teamName: "Fairmount Fireballs" },
+];
+
+// Define your matches data
+const matches = [
+	{ teams: "B D", week: 1, timeslot: 1 },
+	{ teams: "A D", week: 1, timeslot: 2 },
+	{ teams: "C F", week: 1, timeslot: 3 },
+	{ teams: "", week: 2, timeslot: 4 },
+	{ teams: "D E", week: 2, timeslot: 1 },
+	{ teams: "A C", week: 2, timeslot: 2 },
+	{ teams: "B F", week: 2, timeslot: 3 },
+	{ teams: "", week: 2, timeslot: 4 },
+	{ teams: "C E", week: 3, timeslot: 1 },
+	{ teams: "E F", week: 3, timeslot: 2 },
+	{ teams: "A B", week: 3, timeslot: 3 },
+	{ teams: "", week: 3, timeslot: 4 },
+	{ teams: "B C", week: 4, timeslot: 1 },
+	{ teams: "D F", week: 4, timeslot: 2 },
+	{ teams: "A E", week: 4, timeslot: 3 },
+	{ teams: "", week: 4, timeslot: 4 },
+	{ teams: "C D", week: 5, timeslot: 1 },
+	{ teams: "B E", week: 5, timeslot: 2 },
+	{ teams: "A F", week: 5, timeslot: 3 },
+	{ teams: "", week: 5, timeslot: 4 },
+];

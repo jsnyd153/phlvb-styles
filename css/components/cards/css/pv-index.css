@@ -1,0 +1,139 @@
+/*css/components/cards/css/index.scss*/
+.card {
+ transition: 0.3s all;
+}
+[card-type=pickup] .card-details {
+ width: 70%;
+}
+[card-type=pickup] .card-name, [card-type=pickup] .card-body {
+ min-width: 12.5rem;
+}
+.card-host {
+ transition: 0.3s color;
+}
+a:hover .card-host {
+ color: var(--primary_text);
+}
+.card[card-type=location] {
+ height: 100%;
+}
+.card[card-type=location] .text_area {
+ width: 100%;
+}
+.card[card-type=location] .text_content {
+ justify-content: flex-start;
+ align-items: flex-start;
+ width: 100%;
+}
+.card[card-type=location] .divider {
+ border-color: var(--secondary_text);
+}
+.card[card-type=location] .event_type_indicator {
+ text-transform: capitalize;
+}
+.card[card-type=location][has-indicator=false] .event_type_indicator {
+ display: none;
+}
+.card[card-type=resource] {
+ height: 100%;
+}
+.card[card-type=resource] .media_area {
+ width: 100%;
+}
+.card[card-type=resource] .media_content img {
+ border-radius: 0.25rem;
+}
+.card[card-type=resource] .text_area p {
+ display: -webkit-box;
+ -webkit-box-orient: vertical;
+ -webkit-line-clamp: 3;
+ overflow: hidden;
+ text-overflow: ellipsis;
+}
+
+a.card {
+ color: var(--primary_text);
+}
+a.card:hover {
+ background: var(--theme_color-500, #76affe);
+ box-shadow: 0px 10px 16px -4px rgba(25, 45, 98, 0.125);
+}
+a.card:hover p {
+ color: var(--primary_text);
+}
+
+[min-char="6"] {
+ min-width: 6ch;
+}
+
+[min-char="7"] {
+ min-width: 7ch;
+}
+
+[min-char="8"] {
+ min-width: 8ch;
+}
+
+[min-char="9"] {
+ min-width: 9ch;
+}
+
+[min-char="10"] {
+ min-width: 10ch;
+}
+
+[min-char="11"] {
+ min-width: 11ch;
+}
+
+[min-char="12"] {
+ min-width: 12ch;
+}
+
+[min-char="13"] {
+ min-width: 13ch;
+}
+
+[min-char="14"] {
+ min-width: 14ch;
+}
+
+[min-char="15"] {
+ min-width: 15ch;
+}
+
+[min-char="16"] {
+ min-width: 16ch;
+}
+
+[min-char="17"] {
+ min-width: 17ch;
+}
+
+[min-char="18"] {
+ min-width: 18ch;
+}
+
+[min-char="19"] {
+ min-width: 19ch;
+}
+
+[min-char="20"] {
+ min-width: 20ch;
+}
+
+[min-char="21"] {
+ min-width: 21ch;
+}
+
+[min-char="22"] {
+ min-width: 22ch;
+}
+
+[min-char="23"] {
+ min-width: 23ch;
+}
+
+[min-char="24"] {
+ min-width: 24ch;
+}

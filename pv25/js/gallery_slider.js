@@ -41,7 +41,7 @@ $(document).ready(function () {
 		galleryNamesSwiper.controller.control = galleryPortraitSwiper;
 	});
 
-	const wrappedText = $(".gallery_slider--labels-item h4").each(function () {
+	const wrappedText = $(".gallery_slider--labels-item h3").each(function () {
 		const targetText = $(this);
 		const text = targetText.text(); // Get the raw text content
 

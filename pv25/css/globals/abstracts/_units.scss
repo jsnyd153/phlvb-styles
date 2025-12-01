@@ -1,0 +1,40 @@
+$section-padding-vals: (
+	"micro" 0 0,
+	"xsmall" 8 16,
+	"small" 32 48,
+	"medium" 48 64,
+	"large" 72 96,
+	"xlarge" 86 108,
+	"jumbo" 120 160
+);
+
+$object-padding-vals: (
+	"micro" 12 12,
+	"xsmall" 16 16,
+	"small" 20 24,
+	"medium" 24 28,
+	"large" 28 32,
+	"xlarge" 32 40,
+	"jumbo" 40 60
+);
+
+$space-between-vals: (
+	"micro" 4 4,
+	"xsmall" 8 12,
+	"small" 12 16,
+	"medium" 16 24,
+	"large" 24 32,
+	"xlarge" 32 48,
+	"jumbo" 48 64
+);
+
+$corner-vals: (
+	"60" 48 60,
+	"40" 32 40,
+	"20" 16 20,
+	"16" 12 16,
+	"12" 8 12,
+	"10" 6 10,
+	"8" 4 8,
+	"4" 2 4
+);

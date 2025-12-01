@@ -6,176 +6,160 @@
 //Dependencies:
 
 .accordion {
-  position: relative;
-  border-radius: vaR(--corner-16);
-  &:before {
-    @include psuedo_el;
-    background: var(--theme--border);
-    position: absolute;
-    inset: -1 * $rem;
-    border-radius: inherit;
-    z-index: -1;
-    --_gradient_angle: 100deg;
-    background-image: conic-gradient(
-      from var(--_gradient_angle),
-      var(--gold),
-      var(--red),
-      var(--blue),
-      var(--red),
-      var(--gold)
-    );
-    animation: card-border-rotation 5s linear infinite;
-    animation-play-state: paused;
+	position: relative;
 
-    [event="london"] & {
-      background-image: conic-gradient(
-        from var(--_gradient_angle),
-        var(--cyan),
-        var(--light-blue),
-        var(--blue),
-        var(--light-blue),
-        var(--cyan)
-      );
-    }
-    [event="new-orleans"] & {
-      background-image: conic-gradient(
-        from var(--_gradient_angle),
-        var(--light-green),
-        var(--light-purple),
-        var(--purple),
-        var(--light-purple),
-        var(--light-green)
-      );
-    }
-    [event="bengaluru"] & {
-      background-image: conic-gradient(
-        from var(--_gradient_angle),
-        var(--cyan),
-        var(--light-blue),
-        var(--blue),
-        var(--light-blue),
-        var(--cyan)
-      );
-    }
-  }
-  &::after {
-    @include psuedo_el;
-    background: var(--theme--border);
-    position: absolute;
-    inset: -1 * $rem;
-    border-radius: inherit;
-    z-index: -1;
-    transition: 0.5s opacity;
-  }
-  &:has(details:hover, details[open]) {
-    &::after {
-      opacity: 0;
-    }
-  }
-  &:has(details:hover) {
-    &::before {
-      animation-play-state: running;
-    }
-  }
+	//hide arrow element
+	details > summary {
+		list-style: none;
+		display: flex;
+		gap: 1rem;
+		align-items: flex-start;
+	}
+	details > summary::-webkit-details-marker {
+		display: none;
+	}
 
-  //hide arrow element
-  details > summary {
-    list-style: none;
-  }
-  details > summary::-webkit-details-marker {
-    display: none;
-  }
+	details {
+		box-sizing: border-box;
+		padding-block: var(--obj_padding);
+		text-decoration: none;
+		transition: 0.5s height;
+		position: relative;
+		background: var(--theme--background);
+		color: var(--theme--primary_text);
 
-  details {
-    box-sizing: border-box;
-    padding: var(--obj_padding);
-    text-decoration: none;
-    transition: 0.5s height;
-    position: relative;
-    background: var(--theme--background);
-    color: var(--theme--primary_text);
-    border-radius: inherit;
+		border-bottom: 1px solid var(--theme--border);
+		.accordian-content {
+			.rich_text {
+				display: flex;
+				flex-direction: column;
+			}
+			.rich_text > *:nth-child(1) {
+				padding-top: 1rem;
+			}
+		}
 
-    .accordion-content {
-    }
+		&:hover,
+		&:focus-within,
+		&[open] {
+			.accordian-content {
+				// margin-top: 0.5rem;
+			}
+		}
 
-    &:hover,
-    &:focus-within,
-    &[open] {
-      .accordion-content {
-        margin-top: 0.5rem;
-      }
-    }
+		&[open] {
+			.icon.close {
+				opacity: 1;
+			}
+			.icon.open {
+				opacity: 0;
+				rotate: 90deg;
+			}
+		}
 
-    //progresive enhancement
-    //animate height auto and display on the hidden content when opened
-    @media (prefers-reduced-motion: no-preference) {
-      interpolate-size: allow-keywords;
-    }
+		//progresive enhancement
+		//animate height auto and display on the hidden content when opened
+		// @media (prefers-reduced-motion: no-preference) {
+		//   interpolate-size: allow-keywords;
+		// }
 
-    &::details-content {
-      height: 0;
-      overflow-y: clip;
-      transition: content-visibility 0.5s allow-discrete, height 0.5s;
-    }
+		&::details-content {
+			height: 0;
+			overflow-y: clip;
+			transition: content-visibility 0.5s allow-discrete, height 0.5s;
+		}
 
-    &[open]::details-content {
-      height: auto;
-    }
-    //end animation
-  } //details
+		&[open]::details-content {
+			height: auto;
+			.rich_text {
+				padding-top: 1rem;
+			}
+		}
+		//end animation
+	} //details
 
-  summary {
-    cursor: pointer;
-    padding: var(--obj_padding);
-    margin: calc(var(--obj_padding) * -1);
+	summary {
+		cursor: pointer;
+		padding: var(--obj_padding);
+		margin: calc(var(--obj_padding) * -1);
+		h4 {
+			--_size: 1em;
+			span {
+				flex-grow: 1;
+			}
+		}
+		.svg-icon {
+			--_size: 1.75rem;
+			display: block;
+			position: relative;
+			&::after,
+			&::before {
+				display: none;
+			}
+		}
+		.icon.close {
+			opacity: 0;
+			flex-shrink: 0;
+			flex-grow: 0;
+			position: absolute;
+			transition: 0.3s all;
+		}
+		.icon.open {
+			opacity: 1;
+			flex-shrink: 0;
+			flex-grow: 0;
+			rotate: 0deg;
+			transition: 0.3s all;
+		}
 
-    @include header_tags {
-      display: flex;
-      gap: 1em;
-      justify-content: space-between;
-      width: 100%;
-      color: var(--_primary-text-color);
-    }
+		@include header_tags {
+			// display: flex;
+			// gap: 1em;
+			// justify-content: space-between;
+			width: 100%;
+			color: var(--_primary-text-color);
+			span {
+				display: inline;
+				text-decoration: none;
+				background-image: linear-gradient(currentColor, currentColor);
+				background-position: 0% 100%;
+				background-repeat: no-repeat;
+				background-size: 0% 2px;
+				transition: background-size 0.3s;
+			}
+		}
 
-    &:focus-visible,
-    &:hover {
-      border: 0;
-      outline: 0;
-      @include header_tags {
-        text-decoration-line: underline;
-        text-decoration-thickness: 1/16 * 1em;
-      }
-      details[open] & {
-        padding: 0;
-        margin: 0;
-      }
-    }
-  }
-  &- {
-    //Plus/minus icon
-    &icon {
-      width: 31/21 * 1em;
-      height: 31/21 * 1em;
-      position: relative;
+		&:focus-visible,
+		&:hover {
+			border: 0;
+			outline: 0;
+			@include header_tags {
+				span {
+					background-size: 100% 2px;
+				}
+			}
+			details[open] & {
+				padding: 0;
+				margin: 0;
+			}
+		}
 
-      &::after,
-      &::before {
-        @include psuedo_el;
-        @include t-center;
-        background-color: currentColor;
-        width: 13/21 * 1em;
-        height: 3/21 * 1em;
-      }
-      &::before {
-        rotate: 90deg;
-        transition: 0.3s rotate;
-        details[open] & {
-          rotate: 0deg;
-        }
-      }
-    }
-  } //-
+		&:is(a) {
+			@include header_tags {
+			}
+		}
+
+		&:is(a:hover) {
+			@include header_tags {
+			}
+		}
+
+		svg {
+			.fill {
+				fill: var(--theme--primary_text);
+			}
+		}
+	}
 } //accordian
 
 .card[card-type="accordion"] {

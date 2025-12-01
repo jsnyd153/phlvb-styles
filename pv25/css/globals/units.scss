@@ -3,48 +3,54 @@
 
 /*css/globals/units.scss*/
 :root {
-	@include fluid_size(--section_padding-mini, 8px, 16px);
-	@include fluid_size(--section_padding-small, 30px, 45px);
-	@include fluid_size(--section_padding, 48px, 64px);
-	@include fluid_size(--section_padding-large, 86px, 108px);
-	@include fluid_size(--section_padding-jumbo, 120px, 160px);
-	--section_padding-medium: var(--section_padding);
+	@each $size in $section-padding-vals {
+		$min: nth($size, 2) * 1px;
+		$max: nth($size, 3) * 1px;
+		@include fluid_size(--section_padding-#{nth($size, 1)}, $min, $max);
+	}
+	--section_padding: var(--section_padding-medium);
 
-	@include fluid_size(--obj_padding-mini, 16px, 20px, 768px, 1440px);
-	@include fluid_size(--obj_padding-small, 18px, 26px, 768px, 1440px);
-	@include fluid_size(--obj_padding, 20px, 32px);
-	@include fluid_size(--obj_padding-large, 32px, 48px);
-	@include fluid_size(--obj_padding-jumbo, 40px, 60px);
-	--obj_padding-medium: var(--obj_padding);
+	@each $size in $object-padding-vals {
+		$min: nth($size, 2) * 1px;
+		$max: nth($size, 3) * 1px;
+		@include fluid_size(--obj_padding-#{nth($size, 1)}, $min, $max);
+	}
+	--obj_padding: var(--obj_padding-medium);
 
-	@include fluid_size(--space_between-mini, 12px, 20px);
-	@include fluid_size(--space_between-small, 20px, 28px);
-	@include fluid_size(--space_between, 24px, 48px);
-	@include fluid_size(--space_between-large, 48px, 64px);
-	@include fluid_size(--space_between-jumbo, 64px, 80px);
-	--space_between-medium: var(--space_between);
+	@each $size in $space-between-vals {
+		$min: nth($size, 2) * 1px;
+		$max: nth($size, 3) * 1px;
+		@include fluid_size(--space_between-#{nth($size, 1)}, $min, $max);
+	}
+	--space_between: var(--space_between-medium);
 
 	@include fluid_size(--gutter, 12px, 28px);
 
-	@include fluid_size(--corner-20, 16px, 20px);
-	@include fluid_size(--corner-16, 12px, 16px);
-	@include fluid_size(--corner-12, 8px, 12px);
-	@include fluid_size(--corner-10, 6px, 10px);
-	@include fluid_size(--corner-8, 6px, 8px);
-	@include fluid_size(--corner-4, 2px, 4px);
+	@each $size in $corner-vals {
+		$min: nth($size, 2) * 1px;
+		$max: nth($size, 3) * 1px;
+		@include fluid_size(--corner-#{nth($size, 1)}, $min, $max);
+	}
 }
 
-@each $size in $sizes {
+@each $size in $space-between-vals {
 	[space-between="#{nth($size, 1)}"] {
 		gap: var(--space_between-#{nth($size, 1)});
 	}
+}
+
+@each $size in $object-padding-vals {
 	[object-padding="#{nth($size, 1)}"] {
 		padding: var(--obj_padding-#{nth($size, 1)});
 	}
+}
+
+@each $size in $section-padding-vals {
 	[section-height="#{nth($size, 1)}"] {
 		padding-block: var(--section_padding-#{nth($size, 1)});
 	}
 }
+
 section[section-height="minimum"] {
 	padding-block: 0;
 }
@@ -57,15 +63,14 @@ section[section-height="minimum"] {
 [text-color="accent"] {
 	color: var(--theme--accent);
 }
-[text-color="accent-light"] {
-	color: var(--theme--accent-light);
+
+@for $i from 1 through 9 {
+	$n: $i * 100;
+	[text-color="accent #{$n}"] {
+		color: var(--theme--accent-#{$n});
+	}
 }
-[text-color="accent-text"] {
-	color: var(--theme--accent-text);
-}
-[text-color="accent-text-light"] {
-	color: var(--theme--accent-text-light);
-}
+
 [text-color="secondary"] {
 	color: var(--theme--secondary_text);
 }

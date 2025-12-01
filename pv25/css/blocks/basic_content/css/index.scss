@@ -13,31 +13,40 @@
 //&--row: alignment = center* | right | left
 
 .basic_content {
-  &-- {
-    &section {
-      row-gap: var(--space_between, 32 * $rem);
-      padding-block: var(--section_padding, 80 * $rem);
-      position: relative;
-    } //section
+	&-- {
+		&section {
+			row-gap: var(--space_between, 32 * $rem);
+			padding-block: var(--section_padding, 80 * $rem);
+			position: relative;
+			@each $size in $sizes {
+				&[space-between="#{nth($size, 1)}"] {
+					row-gap: var(--space_between-#{nth($size, 1)});
+					column-gap: var(--_gutter, 12 * $rem);
+				}
+				&[section-height="#{nth($size, 1)}"] {
+					padding-block: var(--section_padding-#{nth($size, 1)});
+				}
+			}
+		} //section
 
-    &row {
-      position: relative;
-      &[alignment="center"] {
-        justify-content: center;
-        align-items: center;
-        .text_area {
-          justify-content: center;
-          align-items: center;
-        }
-        .text_content {
-          justify-content: center;
-          align-items: center;
-        }
-        .button-container {
-          justify-content: center;
-          align-items: center;
-        }
-      }
-    } //row
-  } //--
+		&row {
+			position: relative;
+			// &[alignment="center"] {
+			//   justify-content: center;
+			//   align-items: center;
+			//   .text_area {
+			//     justify-content: center;
+			//     align-items: center;
+			//   }
+			//   .text_content {
+			//     justify-content: center;
+			//     align-items: center;
+			//   }
+			//   .button-container {
+			//     justify-content: center;
+			//     align-items: center;
+			//   }
+			// }
+		} //row
+	} //--
 } //

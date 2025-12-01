@@ -1,0 +1,59 @@
+@use "sass:color";
+@use "abstracts/" as *;
+//Visual:
+//Dependencies:
+
+//Attributres
+
+// img,
+// picture,
+// video,
+// iframe {
+// 	width: 100%;
+// 	height: auto;
+// 	display: block;
+// }
+
+// .media_area {
+// }
+
+.pv-media_content {
+	&[aspect-ratio] {
+		--aspect-ratio: #{9/16 * 100%};
+	}
+	&[aspect-ratio="1:1"] {
+		--aspect-ratio: #{1/1 * 100%};
+	}
+	&[aspect-ratio="4:3"] {
+		--aspect-ratio: #{3/4 * 100%};
+	}
+	&[aspect-ratio="16:9"] {
+		--aspect-ratio: #{9/16 * 100%};
+	}
+	&[aspect-ratio="21:9"] {
+		--aspect-ratio: #{9/21 * 100%};
+	}
+
+	&[aspect-ratio] {
+		// position: relative;
+		// overflow: hidden;
+		// border-radius: 0.25rem;
+		// > img,
+		// > picture,
+		// > video,
+		// > iframe {
+		// 	@include cover_obj;
+		// }
+	}
+
+	// img {
+	// 	border-radius: 0.25rem;
+	// }
+}
+
+.media_area .media_content .parallax-image {
+	//need to nest this 3 levels down so it has highest specificity
+	// height: 120%;
+	// top: -10%;
+	// bottom: -10%;
+}

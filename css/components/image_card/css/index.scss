@@ -9,6 +9,8 @@
 	--primary_text: white;
 	--secondary_text: #{$brand-50};
 	--background: #{$brand-900};
+
+	
 	text-decoration: none;
 	position: relative;
 	border-radius: 0.25rem;
@@ -16,7 +18,6 @@
 	padding: var(--section_padding) 32/16 * 1rem;
 	@include f-center;
 	background-color: var(--background);
-
 	min-height: 450/16 * 1rem;
 	// min-width: 315/16 * 1rem;
 	@include sm {

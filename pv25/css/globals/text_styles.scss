@@ -52,6 +52,10 @@ p {
 .style-h1 {
 	@include headline_1;
 }
+.style-h1-emphasis {
+	@include headline_1(52px, 72px);
+	font-weight: 700;
+}
 .style-h2 {
 	@include headline_2;
 }
@@ -79,4 +83,37 @@ p {
 }
 .body-text-small {
 	@include body_text-style-small;
+	&:is(ul),
+	&:is(ol) {
+		li {
+			margin: 0 0 0.5em 0;
+		}
+	}
+}
+
+.w-richtext {
+	ul {
+		li {
+			@include body_text;
+		}
+	}
+	blockquote {
+		@include body_text-style;
+		font-style: italic;
+		border-left: 0px solid #e2e2e2;
+		margin: 0;
+		padding: var(--obj_padding-small);
+		border: 1px solid var(--theme--border);
+		border-radius: var(--corner-8);
+		margin-block: 0.5rem;
+	}
+}
+
+.w-richtext {
+	@include header_tags {
+		margin-top: 0.5em;
+	}
+	p {
+		margin-top: 0.25em;
+	}
 }

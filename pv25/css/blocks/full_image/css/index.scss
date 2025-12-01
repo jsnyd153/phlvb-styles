@@ -11,18 +11,42 @@
 //Attributres
 
 .hero_image--,
-.image_hero {
+.image_hero-- {
 	&section {
-		padding-block: var(--section_padding);
+		clip-path: inset(0% 0% 0% 0%);
+		position: relative;
+
+		.background_area {
+			@include cover_obj;
+			height: 50%;
+			bottom: auto;
+			background-color: var(--theme--accent);
+			transition: 1s background-color;
+			body:has(header[scrolled="true"]) & {
+				background-color: rgba(255, 255, 255, 0);
+			}
+		}
 	}
 	&media_area {
-		grid-column: 2/-2;
+		grid-column: 1/-1;
 		position: relative;
-		border-radius: var(--corner-12, 0.75rem);
 		overflow: clip;
-		@include fluid_size(height, 300px, 420px);
+		padding: 0 var(--obj_padding-large) var(--obj_padding-large) var(--obj_padding-large);
+		@include fluid_size(height, 320px, 560px);
 		img {
 			@include cover_obj;
+			clip-path: inset(0% 0% 0% 0%);
+		}
+		.media_content {
+			@include t-center;
+			background-color: $blue-900;
+			scale: 1.25;
+			position: relative;
+			height: 100%;
+			width: 100%;
+			overflow: clip;
+			--_clip: 10%;
+			clip-path: inset(var(--_clip) var(--_clip) round var(--corner-60, 60 * $rem) 0);
 		}
 	}
 }

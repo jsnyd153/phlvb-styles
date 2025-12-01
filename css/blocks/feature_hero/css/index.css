@@ -1,0 +1,72 @@
+/*css/blocks/basic_hero/css/index.scss*/
+.basic_hero--section {
+ --background: #192d62;
+ --primary_text: #e9f1ff;
+ --secondary_text: #a9bfeb;
+ --low_text: #90b9f8;
+ --border: #1c326f;
+ position: relative;
+ contain: paint;
+ height: 80svh;
+ max-height: 26rem;
+ min-height: 18rem;
+}
+.basic_hero--section[has-image=true] {
+ --primary_text: white;
+ --secondary_text: #e9f1ff;
+}
+.basic_hero--row {
+ grid-column: 2/span 9;
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-end;
+ align-items: flex-start;
+ padding-block: var(--padding_base);
+}
+@media (max-width: 767px) {
+ .basic_hero--row {
+  grid-column: 2/span 12;
+ }
+}
+.basic_hero--background {
+ background-color: var(--background);
+}
+.basic_hero--background img {
+ display: none;
+}
+[has-image=true] .basic_hero--background::after {
+ display: block;
+ content: "";
+ background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 70%);
+ mix-blend-mode: multiply;
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ inset: 0;
+ -o-object-fit: cover;
+    object-fit: cover;
+}
+[has-image=true] .basic_hero--background img {
+ display: block;
+}
+.basic_hero--circle {
+ display: block;
+ box-sizing: border-box;
+ width: clamp(22.5rem, 14.04vw + 19.2125rem, 35rem);
+ height: clamp(22.5rem, 14.04vw + 19.2125rem, 35rem);
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ translate: -35% 30%;
+ border-radius: 50%;
+ border-style: solid;
+ border-width: clamp(3.75rem, 2.81vw + 3.09375rem, 6.25rem);
+ border-color: var(--theme_color-500);
+ opacity: 0.3;
+}
+[has-image=true] .basic_hero--circle {
+ opacity: 1;
+ mix-blend-mode: soft-light;
+ border-color: #fff;
+ z-index: 2;
+}

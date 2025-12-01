@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Dynamic Team Pairing Schedule</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<style>
+			table {
+				width: 70%;
+				border-collapse: collapse;
+				margin-top: 20px;
+			}
+			th,
+			td {
+				border: 1px solid black;
+				padding: 10px;
+				text-align: center;
+			}
+			th {
+				background-color: #f2f2f2;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Team Pairing Schedule</h2>
+		<table id="scheduleTable">
+			<thead>
+				<tr id="headerRow">
+					<th>Round</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Generated rounds will appear here -->
+			</tbody>
+		</table>
+
+		<script>
+			$(document).ready(function () {
+				const teamlist = [
+					{ teamInitial: "A", teamName: "Working on it" },
+					{ teamInitial: "B", teamName: "Team Jonas" },
+					{ teamInitial: "C", teamName: "Help Me!" },
+					{ teamInitial: "D", teamName: "Dom & co" },
+					{ teamInitial: "E", teamName: "BRATwurst 🌭" },
+					{ teamInitial: "F", teamName: "Fairmount Fireballs" },
+					{ teamInitial: "G", teamName: "Fairmount" },
+					{ teamInitial: "H", teamName: "Fairmount" },
+					{ teamInitial: "I", teamName: "Fairmount" },
+				];
+
+				const timeSlots = 4; // ✅ Change this value dynamically
+				const rounds = 9; // ✅ Change this value dynamically
+
+				const teamInitials = teamlist.map((team) => team.teamInitial);
+				let allPairs = [];
+
+				// Generate all unique pairs
+				for (let i = 0; i < teamInitials.length; i++) {
+					for (let j = i + 1; j < teamInitials.length; j++) {
+						allPairs.push([teamInitials[i], teamInitials[j]]);
+					}
+				}
+
+				let scheduledPairs = [];
+				let pairUsage = {}; // Track occurrences of each team
+				teamInitials.forEach((team) => (pairUsage[team] = 0));
+
+				let availablePairs = [...allPairs];
+
+				// Shuffle pairs to add randomness
+				const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
+				availablePairs = shuffleArray(availablePairs);
+
+				while (scheduledPairs.length < rounds) {
+					let tempRound = [];
+					let usedTeams = new Set();
+					let roundPairs = [];
+
+					for (let i = 0; i < availablePairs.length; i++) {
+						let pair = availablePairs[i];
+
+						if (!usedTeams.has(pair[0]) && !usedTeams.has(pair[1])) {
+							tempRound.push(pair);
+							usedTeams.add(pair[0]);
+							usedTeams.add(pair[1]);
+
+							pairUsage[pair[0]]++;
+							pairUsage[pair[1]]++;
+
+							roundPairs.push(pair);
+						}
+
+						if (tempRound.length === timeSlots) break; // Stop when we have enough pairs
+					}
+
+					if (tempRound.length === timeSlots) {
+						scheduledPairs.push(tempRound);
+
+						// Remove used pairs only from this round
+						availablePairs = availablePairs.filter(
+							(pair) =>
+								!tempRound.some((usedPair) => usedPair[0] === pair[0] && usedPair[1] === pair[1])
+						);
+
+						// Re-shuffle to ensure a fair distribution of pairs
+						availablePairs = shuffleArray(availablePairs);
+					} else {
+						console.log("Not enough pairs left to form a full round. Reshuffling...");
+						availablePairs = shuffleArray(
+							allPairs.filter((pair) => pairUsage[pair[0]] < rounds && pairUsage[pair[1]] < rounds)
+						);
+
+						if (availablePairs.length === 0) break; // Stop if no valid pairs remain
+					}
+				}
+
+				// ✅ Dynamically update table headers based on timeSlots
+				let headerRow = $("#headerRow");
+				headerRow.empty().append(`<th>Round</th>`);
+				for (let i = 1; i <= timeSlots; i++) {
+					headerRow.append(`<th>Pair ${i}</th>`);
+				}
+
+				// ✅ Populate HTML table dynamically
+				let tableBody = $("#scheduleTable tbody");
+				tableBody.empty(); // Clear previous entries
+
+				scheduledPairs.forEach((round, index) => {
+					let row = `<tr><td>Round ${index + 1}</td>`;
+					round.forEach((pair) => {
+						row += `<td>${pair.join(" vs ")}</td>`;
+					});
+					row += `</tr>`;
+					tableBody.append(row);
+				});
+
+				console.log("Generated Pairs:", scheduledPairs);
+			});
+		</script>
+	</body>
+</html>

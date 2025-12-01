@@ -303,3 +303,38 @@
 		--_logo-width: #{$step * 0.01};
 	}
 }
+
+// .grid_content[items-per-row="2"]:has(.grid_content[items-per-row="4"]) {
+// 	grid-auto-rows: 1fr;
+// }
+.grid_content[items-per-row="2"] .grid_content[items-per-row="4"] {
+	grid-auto-rows: 1fr;
+}
+
+table {
+	display: table;
+	border-collapse: collapse;
+}
+
+tr {
+}
+tr:nth-child(even) {
+	background-color: rgba($blue, 0.05);
+}
+tr:nth-child(odd) {
+	background-color: rgba($blue, 0.075);
+}
+tr:nth-child(1) {
+	background-color: rgba($blue, 0.2);
+}
+td,
+th {
+	@include body_text-style-small;
+	border: 4px solid var(--theme--background);
+	padding: 0.75em;
+	vertical-align: top;
+}
+th {
+	font-weight: 600;
+	text-align: left;
+}

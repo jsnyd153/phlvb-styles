@@ -3,28 +3,27 @@
 
 /*css/globals/grids.scss*/
 :root {
-  --grid_margin: calc(var(--page_margin) - var(--gutter));
-  --page_grid: [page-start] var(--grid_margin) minmax(0, 1fr) [inset-start]
-    minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
-    [center] minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
-    minmax(0, 1fr) minmax(0, 1fr) var(--grid_margin);
+	--grid_margin: calc(var(--page_margin) - var(--gutter));
+	--page_grid: [page-start] var(--grid_margin) minmax(0, 1fr) [inset-start] minmax(0, 1fr)
+		minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) [center] minmax(0, 1fr)
+		minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) var(--grid_margin);
 
-  @include fluid_size(--page_margin, 28px, 48px, 768px, 1280px);
+	@include fluid_size(--page_margin, 28px, 48px, 768px, 1280px);
 
-  @include sm {
-    @include fluid_size(--page_margin, 12px, 28px, 375px, 768px);
-  }
+	@include sm {
+		@include fluid_size(--page_margin, 12px, 28px, 375px, 768px);
+	}
 
-  @include lg {
-    @include fluid_size(--page_margin, 48px, 60px, 1280px, 1440px);
-  }
-  @include xl {
-    --page_margin: calc((100vw - #{1320 * $rem}) / 2);
-  }
+	@include lg {
+		@include fluid_size(--page_margin, 48px, 60px, 1280px, 1440px);
+	}
+	@include xl {
+		--page_margin: calc((100vw - #{1320 * $rem}) / 2);
+	}
 }
 section {
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: var(--page_grid);
-  gap: var(--gutter);
+	box-sizing: border-box;
+	display: grid;
+	grid-template-columns: var(--page_grid);
+	gap: var(--gutter);
 }

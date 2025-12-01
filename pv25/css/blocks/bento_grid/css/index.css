@@ -1,40 +1,74 @@
 /*css/blocks/bento_grid/css/index.scss*/
 .bento_grid--section {
- row-gap: var(--space_between, 1.5rem);
+ row-gap: var(--space_between-xlarge, 1.5rem);
  padding-block: var(--section_padding-large, 3rem);
  position: relative;
 }
-.bento_grid--section[space-between=mini] {
- row-gap: var(--space_between-mini);
+.bento_grid--section[space-between=micro] {
+ row-gap: var(--space_between-micro);
  -moz-column-gap: var(--_gutter, 0.75rem);
       column-gap: var(--_gutter, 0.75rem);
+}
+.bento_grid--section[section-height=micro] {
+ padding-block: var(--section_padding-micro);
+}
+.bento_grid--section[space-between=xsmall] {
+ row-gap: var(--space_between-xsmall);
+ -moz-column-gap: var(--_gutter, 0.75rem);
+      column-gap: var(--_gutter, 0.75rem);
+}
+.bento_grid--section[section-height=xsmall] {
+ padding-block: var(--section_padding-xsmall);
 }
 .bento_grid--section[space-between=small] {
  row-gap: var(--space_between-small);
  -moz-column-gap: var(--_gutter, 0.75rem);
       column-gap: var(--_gutter, 0.75rem);
 }
+.bento_grid--section[section-height=small] {
+ padding-block: var(--section_padding-small);
+}
 .bento_grid--section[space-between=medium] {
  row-gap: var(--space_between-medium);
  -moz-column-gap: var(--_gutter, 0.75rem);
       column-gap: var(--_gutter, 0.75rem);
+}
+.bento_grid--section[section-height=medium] {
+ padding-block: var(--section_padding-medium);
 }
 .bento_grid--section[space-between=large] {
  row-gap: var(--space_between-large);
  -moz-column-gap: var(--_gutter, 0.75rem);
       column-gap: var(--_gutter, 0.75rem);
 }
+.bento_grid--section[section-height=large] {
+ padding-block: var(--section_padding-large);
+}
+.bento_grid--section[space-between=xlarge] {
+ row-gap: var(--space_between-xlarge);
+ -moz-column-gap: var(--_gutter, 0.75rem);
+      column-gap: var(--_gutter, 0.75rem);
+}
+.bento_grid--section[section-height=xlarge] {
+ padding-block: var(--section_padding-xlarge);
+}
 .bento_grid--section[space-between=jumbo] {
  row-gap: var(--space_between-jumbo);
  -moz-column-gap: var(--_gutter, 0.75rem);
       column-gap: var(--_gutter, 0.75rem);
 }
+.bento_grid--section[section-height=jumbo] {
+ padding-block: var(--section_padding-jumbo);
+}
 .bento_grid--row {
  display: grid;
  gap: var(--space_between, 1.5rem);
 }
-.bento_grid--row[space-between=mini] {
- gap: var(--space_between-mini);
+.bento_grid--row[space-between=micro] {
+ gap: var(--space_between-micro);
+}
+.bento_grid--row[space-between=xsmall] {
+ gap: var(--space_between-xsmall);
 }
 .bento_grid--row[space-between=small] {
  gap: var(--space_between-small);
@@ -44,6 +78,9 @@
 }
 .bento_grid--row[space-between=large] {
  gap: var(--space_between-large);
+}
+.bento_grid--row[space-between=xlarge] {
+ gap: var(--space_between-xlarge);
 }
 .bento_grid--row[space-between=jumbo] {
  gap: var(--space_between-jumbo);
@@ -155,29 +192,9 @@
   grid-template-columns: 1fr;
  }
 }
-
-.sidebar_area {
- position: relative;
- height: 100%;
+.bento_grid--row > .media_area .media_content {
+ border-radius: 0 var(--corner-20, 1.25rem) 0 var(--corner-16, 1.25rem);
 }
-.sidebar_area-sticky {
- position: sticky;
- top: var(--section_padding-large, 3rem);
-}
-@media (max-width: 991px) {
- .sidebar_area-sticky {
-  position: relative;
-  top: auto;
- }
-}
-@media (max-width: 991px) {
- .sidebar_area-sticky > .text_area {
-  display: none;
- }
-}
-
-@media (max-width: 767px) {
- .filter-sidebar {
-  grid-row: 1;
- }
+.bento_grid--row > .media_area:nth-child(even) .media_content {
+ border-radius: var(--corner-20, 1.25rem) 0 var(--corner-16, 1.25rem) 0;
 }

@@ -1,0 +1,198 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=4%3A4898&mode=design&t=g6qwze9oShWnmzfu-1
+/*css/components/cards/css/index.scss*/
+//Dependencies:
+
+//Attributres
+//card-type = tournament | pickup | league | empty | icon | location | resource
+
+.card {
+	// display: flex;
+	// padding: 2rem;
+	// flex-direction: column;
+	// align-items: flex-start;
+	// gap: 1rem;
+	// border-radius: var(--corner, 0.25rem);
+	// background: rgba(255, 255, 255, 0.9);
+	// text-decoration: none;
+	// box-shadow: 0px 0px 16px -4px rgba(25, 45, 98, 0);
+	// backdrop-filter: blur(6px);
+	transition: 0.3s all;
+	@include sm {
+		// padding: 1.5rem;
+	}
+	@include xs {
+		// padding: 1.25rem;
+	}
+
+	&-header {
+		// display: flex;
+		// gap: 0.75rem;
+		// align-items: center;
+	}
+	&-date {
+		// display: flex;
+		// gap: 0.25em;
+		// @include eyebrow-regular;
+		// font-weight: 700;
+		// color: var(--primary_text);
+		// &-pre {
+		// 	font-weight: 400;
+		// }
+		// &-time {
+		// 	font-weight: 400;
+		// }
+	}
+
+	&-content {
+		// display: flex;
+		// gap: var(--gap, 1.5rem);
+		// align-items: flex-end;
+		// justify-content: flex-end;
+		// flex-wrap: wrap;
+		// width: 100%;
+	}
+	&-details {
+		// display: flex;
+		// gap: var(--gap, 1.5rem);
+		// flex-wrap: wrap;
+		// width: 82%;
+		// flex-grow: 1;
+		[card-type="pickup"] & {
+			width: 70%;
+		}
+	}
+	&-name,
+	&-body {
+		// width: 30%;
+		// min-width: 290/16 * 1rem;
+		// flex-shrink: 1;
+		// flex-grow: 1;
+		[card-type="pickup"] & {
+			min-width: 200/16 * 1rem;
+		}
+	}
+	&-name {
+		// display: flex;
+		// flex-direction: column;
+		// gap: 8/16 * 1rem;
+	}
+	&-subhead {
+		// @include eyebrow-italic;
+		// display: flex;
+		// gap: 6/14 * 1em;
+		// color: var(--primary_text);
+	}
+	&-host {
+		// color: var(--theme_color-500);
+		transition: 0.3s color;
+		a:hover & {
+			color: var(--primary_text);
+		}
+	}
+	&-location {
+		// width: 120/16 * 1rem;
+		// flex-shrink: 0;
+		// flex-grow: 0;
+		// display: flex;
+		// justify-content: flex-end;
+
+		// @include md {
+		// 	width: auto;
+		// }
+		// .location_indicator {
+		// 	margin-left: auto;
+		// }
+	}
+
+	&[card-type="empty"] {
+		// @include body_text;
+		// text-align: center;
+		// align-items: center;
+		// color: var(--theme_color-700);
+	}
+
+	&[card-type="icon"] {
+		.text_content {
+			// justify-content: flex-start;
+			// align-items: flex-start;
+		}
+		.headline-row {
+			h3 {
+				// display: flex;
+				// align-items: center;
+				// column-gap: 24/16 * 1rem;
+				// row-gap: 12/16 * 1rem;
+				// flex-wrap: wrap;
+			}
+		}
+		.svg-icon {
+			// --_size: #{48/30 * 1em};
+		}
+		.headline {
+			// @include headline_3;
+		}
+	}
+
+	&[card-type="location"] {
+		height: 100%;
+		.text_area {
+			width: 100%;
+		}
+		.text_content {
+			justify-content: flex-start;
+			align-items: flex-start;
+			width: 100%;
+		}
+		.divider {
+			border-color: var(--secondary_text);
+		}
+		.event_type_indicator {
+			text-transform: capitalize;
+		}
+		&[has-indicator="false"] {
+			.event_type_indicator {
+				display: none;
+			}
+		}
+	}
+	&[card-type="resource"] {
+		height: 100%;
+		.media_area {
+			width: 100%;
+		}
+		.media_content {
+			img {
+				border-radius: 0.25rem;
+			}
+		}
+		.text_area {
+			p {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 3;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		}
+	}
+} //.card
+
+a.card {
+	color: var(--primary_text);
+	&:hover {
+		background: var(--theme_color-500, #{$brand-500});
+		box-shadow: 0px 10px 16px -4px rgba(25, 45, 98, 0.125);
+		p {
+			color: var(--primary_text);
+		}
+	}
+}
+
+@for $i from 6 through 24 {
+	[min-char="#{$i}"] {
+		min-width: #{$i}ch;
+	}
+}

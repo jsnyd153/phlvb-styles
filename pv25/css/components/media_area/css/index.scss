@@ -6,135 +6,172 @@
 //Dependencies:
 
 .media_area {
-  position: relative;
-  container-type: inline-size;
-  container-name: media-area;
+	position: relative;
+	container-type: inline-size;
+	container-name: media-area;
 }
 
 .media_area[glow] {
-  --_glow-inset: 2.5rem;
-  &::after {
-    @include psuedo_el;
-    position: absolute;
-    border-radius: inherit;
-    z-index: -1;
-    filter: blur(3.5rem);
-    inset: var(--_glow-inset);
-    background-image: conic-gradient(
-      from var(--_gradient_angle),
-      var(--gold),
-      var(--red),
-      var(--blue),
-      var(--red),
-      var(--gold)
-    );
+	--_glow-inset: 2.5rem;
+	&::after {
+		@include psuedo_el;
+		position: absolute;
+		border-radius: inherit;
+		z-index: -1;
+		filter: blur(3.5rem);
+		inset: var(--_glow-inset);
+		background-image: conic-gradient(
+			from var(--_gradient_angle),
+			var(--gold),
+			var(--red),
+			var(--blue),
+			var(--red),
+			var(--gold)
+		);
 
-    @include allow-motion {
-      animation: card-border-rotation 5s linear infinite;
-    }
+		@include allow-motion {
+			animation: card-border-rotation 5s linear infinite;
+		}
 
-    @include sm {
-      inset: 1rem;
-    }
-  }
+		@include sm {
+			inset: 1rem;
+		}
+	}
 }
 
 .media_content {
-  &[image-size] {
-    --_ratio: 16/9;
-    width: 100%;
-    aspect-ratio: var(--_ratio);
-    position: relative;
-    overflow: clip;
-    img,
-    video,
-    svg {
-      @include cover_obj;
-    }
-    border-radius: var(--corner-12, 12 * $rem);
+	&[image-size] {
+		--_ratio: 16/9;
+		width: 100%;
+		aspect-ratio: var(--_ratio);
+		position: relative;
+		overflow: clip;
+		img,
+		video,
+		svg {
+			@include cover_obj;
+		}
+		border-radius: 0 var(--corner-12, 12 * $rem) 0 var(--corner-12, 12 * $rem);
 
-    @container media-area (min-width: 500px) {
-      border-radius: var(--corner-16, 16 * $rem);
-    }
-    @container media-area (min-width: 700px) {
-      border-radius: var(--corner-20, 20 * $rem);
-    }
-  }
-  &[image-size="square"],
-  &[image-size="1x1"] {
-    --_ratio: 1;
-  }
-  &[image-size="16x9"] {
-    --_ratio: 16/9;
-  }
-  &[image-size="21x9"] {
-    --_ratio: 21/9;
-  }
-  &[image-size="4x3"] {
-    --_ratio: 4/3;
-  }
-  &[image-size="3x2"] {
-    --_ratio: 4/3;
-  }
-  &[image-size="9x16"] {
-    --_ratio: 9/16;
-  }
-  &[image-size="9x21"] {
-    --_ratio: 9/21;
-  }
-  &[image-size="3x4"] {
-    --_ratio: 3/4;
-  }
-  &[image-size="2x3"] {
-    --_ratio: 2/3;
-  }
+		@container media-area (min-width: 500px) {
+			border-radius: 0 var(--corner-16, 16 * $rem) 0 var(--corner-16, 16 * $rem);
+		}
+		@container media-area (min-width: 700px) {
+			border-radius: 0 var(--corner-20, 20 * $rem) 0 var(--corner-20, 20 * $rem);
+		}
+	}
+	&[image-size="square"],
+	&[image-size="1x1"] {
+		--_ratio: 1;
+	}
+	&[image-size="16x9"] {
+		--_ratio: 16/9;
+	}
+	&[image-size="21x9"] {
+		--_ratio: 21/9;
+	}
+	&[image-size="4x3"] {
+		--_ratio: 4/3;
+	}
+	&[image-size="3x2"] {
+		--_ratio: 4/3;
+	}
+	&[image-size="9x16"] {
+		--_ratio: 9/16;
+	}
+	&[image-size="9x21"] {
+		--_ratio: 9/21;
+	}
+	&[image-size="3x4"] {
+		--_ratio: 3/4;
+	}
+	&[image-size="2x3"] {
+		--_ratio: 2/3;
+	}
 
-  &[image-size="cover"] {
-    aspect-ratio: auto;
-    height: 100%;
-    img,
-    video,
-    svg {
-      aspect-ratio: auto;
-    }
-  }
-  &[image-size="auto"] {
-    aspect-ratio: auto;
-    img,
-    video,
-    svg {
-      position: relative;
-      aspect-ratio: auto;
-    }
-  }
+	&[image-size="cover"] {
+		aspect-ratio: auto;
+		height: 100%;
+		img,
+		video,
+		svg {
+			aspect-ratio: auto;
+		}
+	}
+	&[image-size="auto"] {
+		aspect-ratio: auto;
+		img,
+		video,
+		svg {
+			position: relative;
+			aspect-ratio: auto;
+		}
+	}
 } //media_content
 
 .w-background-video {
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	inset: 0;
 }
 
 .media_area:has(.w-background-video-atom) {
-  .play-pause-button {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding: var(--gutter);
-    display: flex;
-    gap: 0.75rem;
-  }
-  svg {
-    position: relative !important;
-    width: 3rem;
-    height: 3rem;
-    mix-blend-mode: screen;
-    opacity: 0.8;
-    transform: 0.3s opacity;
-    &:hover {
-      opacity: 1;
-    }
-  }
+	.play-pause-button {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		padding: var(--gutter);
+		display: flex;
+		gap: 0.75rem;
+	}
+	svg {
+		position: relative !important;
+		width: 3rem;
+		height: 3rem;
+		mix-blend-mode: screen;
+		opacity: 0.8;
+		transform: 0.3s opacity;
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+[animate="slideshow"] {
+	.w-slider {
+		height: 100%;
+	}
+	.w-slider-mask {
+	}
+	.w-slider-arrow-right,
+	.w-slider-arrow-left {
+		display: none;
+		opacity: 0;
+	}
+	.w-slider-nav {
+		display: none;
+	}
+	.w-slide {
+		img {
+			animation-name: scaleDown;
+			animation-duration: 9000ms;
+			animation-timing-function: ease-in-out;
+		}
+	}
+	.w-slide[aria-hidden="true"] {
+		img {
+			animation-name: none;
+		}
+	}
+}
+
+@keyframes scaleDown {
+	0% {
+		scale: 1.1;
+	}
+	100% {
+		scale: 1;
+	}
 }

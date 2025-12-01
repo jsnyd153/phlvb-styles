@@ -1,0 +1,20 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=1%3A2223&mode=design&t=g6qwze9oShWnmzfu-1
+/*atoms/tabs/css/index.scss*/
+//Dependencies:js/tabs.js
+
+// Max for max 6 items.
+
+//Attributres
+
+@for $i from 0 through 6 {
+	[state="#{$i}"] .pv-tab:nth-child(#{$i + 1}) {
+		font-weight: 700;
+	}
+	[state="#{$i}"] .pv-tab-indicator {
+		translate: $i * 100% 0;
+		z-index: 0;
+	}
+}

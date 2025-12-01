@@ -5,27 +5,39 @@
 /*css/blocks/banner/css/index.scsss*/
 //Dependencies:
 
+// Attributes:
+// row: column-spane = (default) | narrow | inset
+
 .banner-- {
 	&section {
-		padding-block: var(--section_padding);
+		// padding-block: var(--section_padding, 3rem);
 	}
 	&card {
-		background-color: var(--theme--accent);
-		padding: var(--obj_padding-large);
+		@include theme-dark;
 		position: relative;
+		padding: var(--obj_padding-jumbo, 5.375rem);
 		overflow: clip;
+		background-color: var(--theme--accent, #{$blue});
+		background: linear-gradient(
+			90deg,
+			var(--theme--accent-400, #{$blue-400}) 0%,
+			var(--theme--accent-600, #{$blue-600}) 100%
+		);
+		border-radius: var(--corner--40, 40 * $rem) 0 var(--corner--40, 40 * $rem) 0;
 
 		.background_area {
 			@include cover_obj;
+			z-index: 0;
 			img {
 				@include cover_obj;
-				opacity: 0.2;
-				// mix-blend-mode: ;
+				// opacity: 0.1;
 			}
 		}
 		.text_area {
 			position: relative;
-			max-width: 120ch;
+			//   max-width: 120ch;
+			max-width: 920 * $rem;
+			--theme--secondary_text: var(--theme--primary_text, #fff);
 		}
 	}
 }

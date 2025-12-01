@@ -1,0 +1,28 @@
+table {
+	// display: grid;
+	// grid-template-columns: repeat(6, 1fr);
+	margin: 40px;
+	border: 1px solid block;
+	outline: 1px solid black;
+}
+tr,
+thead,
+tbody {
+	// display: contents;
+}
+
+td {
+	&[double-header="true"] {
+		background-color: rgba(125, 100, 0, 0.2);
+	}
+	&[double-header*="error"] {
+		background-color: rgba(225, 20, 20, 0.4);
+	}
+}
+
+td {
+	&[repeated="true"] {
+		// background-color: rgba(125, 100, 0, 0.2);
+		border: 3px solid red;
+	}
+}

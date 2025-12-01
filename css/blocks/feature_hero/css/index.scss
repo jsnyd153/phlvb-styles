@@ -1,0 +1,85 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+//Visual: https://www.figma.com/file/FbVHOBSGd3G5HXu86r2vdn/PHLVB-Library?type=design&node-id=16%3A7615&mode=design&t=BexzFHryADFV6vUz-1
+/*css/blocks/basic_hero/css/index.scss*/
+//Dependencies:
+
+//Attributres
+//section: has-image = true | false
+
+.basic_hero {
+	&-- {
+		&section {
+			//dark mode vairables by default
+			--background: #{$brand-900};
+			--primary_text: #{$brand-50};
+			--secondary_text: #{$brand-200};
+			--low_text: #{$brand-400};
+			--border: #{$brand-800};
+			position: relative;
+			contain: paint;
+			height: 80svh;
+			max-height: 26rem;
+			min-height: 18rem;
+			&[has-image="true"] {
+				--primary_text: white;
+				--secondary_text: #{$brand-50};
+			}
+		}
+
+		&row {
+			grid-column: 2 / span 9;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			align-items: flex-start;
+			padding-block: var(--padding_base);
+			@include sm {
+				grid-column: 2 / span 12;
+			}
+		}
+
+		&background {
+			background-color: var(--background);
+
+			img {
+				display: none;
+			}
+			[has-image="true"] & {
+				&::after {
+					display: block;
+					content: "";
+					background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 70%);
+					mix-blend-mode: multiply;
+					@include cover_obj;
+				}
+				img {
+					display: block;
+				}
+			}
+		}
+		&circle {
+			display: block;
+			box-sizing: border-box;
+			@include fluid_size(width, 360px, 560px, 375px, 1800px);
+			@include fluid_size(height, 360px, 560px, 375px, 1800px);
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			translate: -35% 30%;
+			border-radius: 50%;
+			border-style: solid;
+			@include fluid_size(border-width, 60px, 100px, 375px, 1800px);
+			border-color: var(--theme_color-500);
+			opacity: 0.3;
+
+			[has-image="true"] & {
+				opacity: 1;
+				mix-blend-mode: soft-light;
+				border-color: #fff;
+				z-index: 2;
+			}
+		}
+	}
+}

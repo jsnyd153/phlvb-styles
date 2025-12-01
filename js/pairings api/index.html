@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Match Schedule</title>
+
+		<link rel="stylesheet" href="index.css" />
+		<style>
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-bottom: 20px;
+			}
+			th,
+			td {
+				border: 1px solid black;
+				padding: 8px;
+				text-align: center;
+			}
+			th {
+				background-color: #f2f2f2;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container"></div>
+		<table id="matchDisplay"></table>
+		<table id="scheduleBalance"></table>
+		<table id="weekBalance"></table>
+
+		<button id="generate">Generate</button>
+		<script src="paring-data.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script>
+			$(document).ready(function () {
+				function pairingFlag() {
+					console.log("flag");
+				}
+
+				// Function to get team initials from the teamlist
+				function getTeamInitials() {
+					let teamInitials = [];
+					teamlist.forEach((team) => {
+						teamInitials.push(team.teamInitial);
+					});
+					return teamInitials;
+				}
+
+				// Function to generate unique pairs of teams
+				function generateUniquePairs(teams) {
+					let pairs = [];
+					console.log("Team list:", teams); // Debug log to confirm the team list
+
+					for (let i = 0; i < teams.length; i++) {
+						for (let j = i + 1; j < teams.length; j++) {
+							console.log(`Pairing: ${teams[i]} with ${teams[j]}`); // Log each pair
+							pairs.push(teams[i] + " " + teams[j]);
+						}
+					}
+
+					console.log("Total pairs:", pairs.length); // Check the number of pairs generated
+					return pairs;
+				}
+
+				// Function to update the match display table and run the checks
+				function updateTables() {
+					let teamInitials = getTeamInitials(); // Get all team initials
+					let matchPairs = generateUniquePairs(teamInitials); // Generate unique pairs
+
+					// Shuffle the pairs to avoid any pattern and assign them to the matches
+					let shuffledMatches = shuffleArray(matchPairs);
+					matches.forEach((match, index) => {
+						match.teams = shuffledMatches[index] || ""; // Update the teams field
+					});
+
+					// Now, run the table update functions and checks
+					populateMatchDisplay(matches);
+					populateScheduleBalance(matches);
+					populateWeekBalance(matches);
+					validateMatchDisplay();
+				}
+
+				// Function to shuffle an array (used to randomize matchups)
+				function shuffleArray(array) {
+					for (let i = array.length - 1; i > 0; i--) {
+						const j = Math.floor(Math.random() * (i + 1));
+						[array[i], array[j]] = [array[j], array[i]]; // Swap elements
+					}
+					return array;
+				}
+
+				// Populate the #matchDisplay table with new match data
+				function populateMatchDisplay(matches) {
+					let matchTable = $("#matchDisplay");
+					matchTable.empty();
+
+					// Create headers for timeslots
+					let timeslotRow = "<tr><th>Week</th>";
+					for (let i = 1; i <= 4; i++) {
+						timeslotRow += `<th>TS ${i}</th>`;
+					}
+					timeslotRow += "</tr>";
+					matchTable.append(timeslotRow);
+
+					// Populate table with match data
+					for (let week = 1; week <= 5; week++) {
+						let row = `<tr><th>Week ${week}</th>`;
+						for (let timeslot = 1; timeslot <= 4; timeslot++) {
+							let match = matches.find((m) => m.week === week && m.timeslot === timeslot);
+							row += `<td>${match ? match.teams : ""}</td>`;
+						}
+						row += "</tr>";
+						matchTable.append(row);
+					}
+				}
+
+				// Populate the #scheduleBalance table (based on teams and their occurrences)
+				function populateScheduleBalance(matches) {
+					let scheduleBalanceTable = $("#scheduleBalance");
+					scheduleBalanceTable.empty();
+
+					// Get team initials dynamically
+					let teamInitials = getTeamInitials();
+
+					// Create headers for team initials
+					let headerRow = "<tr><th>Timeslot</th>";
+					teamInitials.forEach((team) => {
+						headerRow += `<th>${team}</th>`;
+					});
+					headerRow += "</tr>";
+					scheduleBalanceTable.append(headerRow);
+
+					// Populate table with team count data
+					for (let timeslot = 1; timeslot <= 4; timeslot++) {
+						let row = `<tr><th>TS ${timeslot}</th>`;
+						teamInitials.forEach((team) => {
+							let count = matches.filter(
+								(match) => match.timeslot === timeslot && match.teams.includes(team)
+							).length;
+							row += `<td>${count}</td>`;
+						});
+						row += "</tr>";
+						scheduleBalanceTable.append(row);
+					}
+				}
+
+				// Populate the #weekBalance table (based on weeks and team occurrences)
+				function populateWeekBalance(matches) {
+					let weekBalanceTable = $("#weekBalance");
+					weekBalanceTable.empty();
+
+					// Get team initials dynamically
+					let teamInitials = getTeamInitials();
+
+					// Create headers for weeks
+					let headerRow = "<tr><th>Team</th>";
+					for (let week = 1; week <= 5; week++) {
+						headerRow += `<th>Week ${week}</th>`;
+					}
+					headerRow += "</tr>";
+					weekBalanceTable.append(headerRow);
+
+					// Populate table with team count data
+					teamInitials.forEach((team) => {
+						let row = `<tr><th>${team}</th>`;
+						for (let week = 1; week <= 5; week++) {
+							let count = matches.filter(
+								(match) => match.week === week && match.teams.includes(team)
+							).length;
+							row += `<td>${count}</td>`;
+						}
+						row += "</tr>";
+						weekBalanceTable.append(row);
+					});
+				}
+
+				// Function to validate match display
+				function validateMatchDisplay() {
+					let matchTable = $("#matchDisplay");
+					let allTeams = getTeamInitials(); // Dynamically get team initials
+
+					// Check for duplicate values across the entire table
+					let seenContent = new Map();
+					matchTable.find("td").each(function () {
+						let content = $(this).text().trim();
+						if (content && seenContent.has(content)) {
+							$(this).attr("repeated", "true");
+							seenContent.get(content).attr("repeated", "true");
+							pairingFlag();
+						} else {
+							seenContent.set(content, $(this));
+						}
+					});
+
+					// Process each row separately
+					matchTable.find("tr").each(function () {
+						let row = $(this);
+						let teamPositions = {}; // Store the positions of teams in the row
+
+						// Iterate through each cell in the row
+						row.find("td").each(function (colIndex) {
+							let teams = $(this).text().trim().split(" ");
+							teams.forEach((team) => {
+								if (team) {
+									if (!teamPositions[team]) {
+										teamPositions[team] = [];
+									}
+									teamPositions[team].push(colIndex);
+								}
+							});
+						});
+
+						// Check for duplicate appearances per row
+						for (let team in teamPositions) {
+							let positions = teamPositions[team];
+							if (positions.length > 1) {
+								let isAdjacent = true;
+
+								// Check if all appearances are adjacent
+								for (let i = 0; i < positions.length - 1; i++) {
+									if (positions[i] + 1 !== positions[i + 1]) {
+										isAdjacent = false;
+										break;
+									}
+								}
+
+								row.find("td").each(function () {
+									if ($(this).text().includes(team)) {
+										if (isAdjacent) {
+											$(this).attr("double-header", "true");
+										} else {
+											$(this).attr("double-header", team + " error");
+										}
+										pairingFlag();
+									}
+								});
+							}
+						}
+					});
+
+					// Check for teams that do not appear in each row
+					matchTable.find("tr").each(function () {
+						let row = $(this);
+						let rowText = row.find("td").text();
+						allTeams.forEach((team) => {
+							if (!rowText.includes(team)) {
+								row.find("th:first").attr("bye", team);
+							}
+						});
+					});
+				}
+
+				// Attach the click event to #generate button
+				$("#generate").click(function () {
+					updateTables();
+				});
+
+				// Initial table population and validation
+				updateTables(); // Populate initially on page load (optional)
+			});
+		</script>
+	</body>
+</html>

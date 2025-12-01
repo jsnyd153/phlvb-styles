@@ -1,0 +1,16 @@
+table {
+ margin: 40px;
+ border: 1px solid block;
+ outline: 1px solid black;
+}
+
+td[double-header=true] {
+ background-color: rgba(125, 100, 0, 0.2);
+}
+td[double-header*=error] {
+ background-color: rgba(225, 20, 20, 0.4);
+}
+
+td[repeated=true] {
+ border: 3px solid red;
+}
