@@ -32,6 +32,7 @@
 			row-gap: var(--space_between-xlarge, 24 * $rem);
 			padding-block: var(--section_padding-large, 48 * $rem);
 			position: relative;
+			overflow-x: clip;
 			@each $size in $sizes {
 				&[space-between="#{nth($size, 1)}"] {
 					row-gap: var(--space_between-#{nth($size, 1)});

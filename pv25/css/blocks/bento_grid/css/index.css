@@ -3,6 +3,7 @@
  row-gap: var(--space_between-xlarge, 1.5rem);
  padding-block: var(--section_padding-large, 3rem);
  position: relative;
+ overflow-x: clip;
 }
 .bento_grid--section[space-between=micro] {
  row-gap: var(--space_between-micro);
