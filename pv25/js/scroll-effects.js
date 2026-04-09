@@ -51,7 +51,7 @@ function loadAnimations() {
 
 						"background-size": "0% 100%",
 					},
-					"=-.75"
+					"=-.75",
 				);
 
 			loadAnimation.play();
@@ -150,7 +150,7 @@ function loadAnimations() {
 							"clip-path": "inset(0 100% 0 0)",
 							ease: "power2.inOut",
 						},
-						0
+						0,
 					)
 
 					// B. Reveal the target image from left (0%) to right (0%)
@@ -163,7 +163,7 @@ function loadAnimations() {
 							"clip-path": "inset(0 0 0 0%)",
 							ease: "power2.inOut",
 						},
-						0
+						0,
 					)
 
 					// C. Start the visual timer
@@ -174,7 +174,7 @@ function loadAnimations() {
 							duration: timing / 1000,
 							ease: "linear",
 						},
-						0
+						0,
 					)
 					.to(
 						targetMedia,
@@ -183,7 +183,7 @@ function loadAnimations() {
 							duration: timing / 1000,
 							ease: "linear",
 						},
-						0
+						0,
 					);
 			}
 
@@ -268,7 +268,7 @@ function scrollfunctions() {
 					start: "top 40px",
 					// end: "top 10%",
 					scrub: true,
-					markers: true,
+					// markers: true,
 
 					// Callback when the scroll enters the defined start/end area
 					onEnter: () => {
@@ -340,7 +340,7 @@ function scrollfunctions() {
 						opacity: 0,
 						duration: 0.5,
 					},
-					"=-.4"
+					"=-.4",
 				);
 		});
 	}
@@ -381,7 +381,7 @@ function scrollfunctions() {
 						duration: 0.5,
 						stagger: 0.3,
 					},
-					"=-.5"
+					"=-.5",
 				);
 		});
 	}
@@ -419,7 +419,7 @@ function scrollfunctions() {
 					start: "top 85%",
 					end: "top 60%",
 
-					// markers: true,
+					// // markers: true,
 				},
 			});
 			fadeIn
@@ -439,7 +439,7 @@ function scrollfunctions() {
 	}
 
 	const winnerCardGrid = $(
-		'.grid_content:has([card-style="winner"]), .row[scroll-trigger="stagger-in-all"]'
+		'.grid_content:has([card-style="winner"]), .row[scroll-trigger="stagger-in-all"]',
 	);
 	if (winnerCardGrid.length > 0) {
 		winnerCardGrid.each(function () {
@@ -513,7 +513,7 @@ scrollfunctions();
 //                     $(scrollTargetText).text(0);
 //                 }, 200);
 //             },
-//             // markers: true, // Uncomment for debugging
+//             // // markers: true, // Uncomment for debugging
 //         }
 //     });
 
