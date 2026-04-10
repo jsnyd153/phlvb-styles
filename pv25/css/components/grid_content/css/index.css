@@ -239,12 +239,12 @@ section:has(.grid_content[grid-behavior=scroll]) {
 }
 @media (max-width: 600px) {
  .grid_content {
-  --_min-content-size: 12.5rem;
+  --_min-content-size: 13.75rem;
  }
 }
 @media (max-width: 450px) {
  .grid_content {
-  --_min-content-size: 8.75rem;
+  --_min-content-size: 11.25rem;
  }
 }
 
