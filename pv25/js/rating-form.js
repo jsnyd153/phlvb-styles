@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			try {
 				const response = await fetch(
-					"phlvb-rating-system.netlify.app/netlify/functions/submit-rating.js",
+					"https://phlvb-rating-system.netlify.app/.netlify/functions/submit-rating",
 					{
 						method: "POST",
 						headers: { "Content-Type": "application/json" },
