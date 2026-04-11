@@ -1,7 +1,6 @@
 /*css/blocks/banner/css/index.scsss*/
 .rater_details-header {
  position: sticky;
- display: none;
  top: 58.5px;
  background-color: #005be1;
  display: flex;
@@ -10,6 +9,7 @@
  align-items: center;
  gap: 0.5rem;
  z-index: 200;
+ display: none;
 }
 .rater_details-header-image {
  width: 2rem;
@@ -28,7 +28,6 @@
 }
 
 .player_details-header {
- display: none;
  position: sticky;
  top: 102.5px;
  background-color: #9fc7ff;
@@ -37,6 +36,7 @@
  display: flex;
  justify-content: space-between;
  z-index: 200;
+ display: none;
 }
 .player_details-header-name {
  color: var(--theme--secondary_text, #000f39);

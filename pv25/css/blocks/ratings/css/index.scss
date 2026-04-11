@@ -7,7 +7,7 @@
 
 .rater_details-header {
 	position: sticky;
-	display: none;
+
 	top: 58.5px;
 	background-color: $blue-600;
 	display: flex;
@@ -16,6 +16,7 @@
 	align-items: center;
 	gap: 0.5rem;
 	z-index: 200;
+	display: none;
 	&-image {
 		width: 2rem;
 		border-radius: 50%;
@@ -29,7 +30,6 @@
 
 .player_details- {
 	&header {
-		display: none;
 		position: sticky;
 		top: 58.5px + 32px + 12px;
 		background-color: $blue-200;
@@ -38,6 +38,7 @@
 		display: flex;
 		justify-content: space-between;
 		z-index: 200;
+		display: none;
 		&-name {
 			@include body_text-style;
 			color: $blue-800;
