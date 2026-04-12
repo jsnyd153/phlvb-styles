@@ -52,6 +52,13 @@
 		}
 	}
 }
+.text_content:has(.rater_form) {
+	@include f-center;
+}
+.card:has(.rater_form) {
+	max-width: 620px;
+	// margin-inline: auto;
+}
 
 .rater_form {
 	// width: 100%;
@@ -79,11 +86,28 @@
 	flex-direction: column;
 	justify-content: center;
 	position: relative;
+	&-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 	.rater_form-fields {
 		display: flex;
 		flex-direction: column;
 		gap: var(--space_between-xsmall);
 		margin-block: var(--space_between-large);
+		.range-description {
+			@include body_text-style;
+			[id] {
+				width: 1.5em;
+			}
+			label {
+				@include body_text-style-small;
+				text-transform: none;
+				font-weight: 400;
+				letter-spacing: 0;
+			}
+		}
 	}
 	// .button-container {
 	// 	position: absolute;

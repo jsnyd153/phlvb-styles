@@ -78,6 +78,16 @@
  width: 100%;
 }
 
+.text_content:has(.rater_form) {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.card:has(.rater_form) {
+ max-width: 620px;
+}
+
 .form_section {
  width: 100%;
  display: flex;
@@ -85,11 +95,56 @@
  justify-content: center;
  position: relative;
 }
+.form_section-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
 .form_section .rater_form-fields {
  display: flex;
  flex-direction: column;
  gap: var(--space_between-xsmall);
  margin-block: var(--space_between-large);
+}
+.form_section .rater_form-fields .range-description {
+ color: var(--theme--secondary_text, #000f39);
+ font-size: clamp(0.9375rem, 0.28vw + 0.86875rem, 1.125rem);
+ font-weight: 500;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ text-transform: none;
+ letter-spacing: 0em;
+}
+.form_section .rater_form-fields .range-description [id] {
+ width: 1.5em;
+}
+.form_section .rater_form-fields .range-description label {
+ color: var(--theme--secondary_text, #000f39);
+ font-size: clamp(0.875rem, 0.19vw + 0.83125rem, 1rem);
+ font-weight: 400;
+ line-height: 1.45;
+ font-family: var(--primary_font, "Fira Sans", sans-serif);
+ line-height: 1.35;
+ text-transform: none;
+ font-weight: 400;
+ letter-spacing: 0;
+}
+.form_section .rater_form-fields .range-description label a {
+ font-weight: 650;
+ color: var(--theme--accent-light);
+ text-decoration: none;
+ white-space: no-wrap;
+ display: inline-block;
+ position: relative;
+ transition: 0.5s color, 0.5s background;
+}
+.form_section .rater_form-fields .range-description label a:hover {
+ color: var(--theme--accent-light);
+ filter: brightness(1.2);
+ text-decoration: underline;
+}
+.form_section .rater_form-fields .range-description label a:hover::before {
+ width: 100%;
 }
 .form_section .fs-filter-range {
  width: 100%;

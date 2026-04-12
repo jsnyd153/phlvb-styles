@@ -14,6 +14,8 @@
 // // Example usage:
 // // fetchPlayerStats('player@example.com');
 
+let currentPlayerData;
+
 async function loadLeaderboard() {
 	try {
 		const response = await fetch(
@@ -29,19 +31,18 @@ async function loadLeaderboard() {
 		const container = document.getElementById("leaderboard-body");
 		const players = await response.json();
 		console.log("Success! Player data:", players);
-		// ... rest of your display logic ...
+
+		currentPlayerData = players;
+
 		players.forEach((player) => {
 			const row = `
                 <tr>
-                    <td>${player.player_name}<br><small>${player.player_email}</small></td>
-                    <td>${player.avg_attacking}</td>
-                    <td>${player.avg_blocking}</td>
-                    <td>${player.avg_defense}</td>
-                    <td>${player.avg_receive}</td>
-                    <td>${player.avg_serving}</td>
-                    <td>${player.avg_setting}</td>
+                    <td>${player.player_name}</td>
+                    <td>${player.player_email}</td>
+
                     <td>${player.position}</td>
-                    <td style="font-weight:bold; color:#007bff;">${player.weighted_rating}</td>
+                    <td class="rating_chart-weighted">${player.weighted_rating}</td>
+                    <td class="rating_chart-weighted"><b>Attacking:</b>${player.avg_attacking}, <b>Blocking:</b> ${player.avg_blocking},<b>Recieve</b>:${player.avg_defense}, <b>Defense</b> ${player.avg_receive}, <b>Serving:</b> ${player.avg_serving}, <b>setting</b>:${player.avg_setting}</td>
                 </tr>
             `;
 			container.innerHTML += row;
@@ -54,3 +55,38 @@ async function loadLeaderboard() {
 }
 // Run on page load
 loadLeaderboard();
+
+function downloadCSV(data) {
+	const csvRows = [];
+	const headers = Object.keys(data[0]);
+	csvRows.push(headers.join(","));
+
+	for (const row of data) {
+		const values = headers.map((header) => {
+			const escaped = ("" + row[header]).replace(/"/g, '\\"');
+			return `"${escaped}"`;
+		});
+		csvRows.push(values.join(","));
+	}
+
+	const csvData = csvRows.join("\n");
+	const blob = new Blob([csvData], { type: "text/csv" });
+	const url = window.URL.createObjectURL(blob);
+	const a = document.createElement("a");
+	a.setAttribute("href", url);
+	a.setAttribute("download", "phlvb_ratings.csv");
+	a.click();
+}
+
+// Attach to a button ID: #export-btn
+$("#export-btn").on("click", function () {
+	// 'currentPlayerData' would be the variable storing your JSON from the API
+	downloadCSV(currentPlayerData);
+});
+
+// <td>${player.avg_attacking}</td>
+// <td>${player.avg_blocking}</td>
+// <td>${player.avg_defense}</td>
+// <td>${player.avg_receive}</td>
+// <td>${player.avg_serving}</td>
+// <td>${player.avg_setting}</td>
