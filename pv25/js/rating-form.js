@@ -1,6 +1,7 @@
 $(document).ready(function () {
 	console.log("is this thing even on?");
 
+	//also need to run the inner function on load for cahced form values
 	function handleRatingSliders() {
 		$('input[type="range"]').each(function () {
 			const $slider = $(this);
@@ -17,6 +18,7 @@ $(document).ready(function () {
 		});
 	}
 
+	//also need to run the inner function on load for cahced form values
 	function handleDropdownRadios() {
 		// Base open close functions are in js/dropdown.js
 		$('.dropdown--list input[type="radio"]').on("change", function () {
