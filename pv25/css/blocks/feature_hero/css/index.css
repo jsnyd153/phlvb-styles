@@ -115,16 +115,9 @@ body:has(header[scrolled=true]) .feature_hero--section .background_area {
 .feature_hero--grid_content .content_block .button-container {
  transition: 0.3s all;
 }
-.feature_hero--grid_content .content_block:not(.active-tab) .text_content {
- opacity: 0.5;
-}
-.feature_hero--grid_content .content_block:not(.active-tab) .button-container {
- opacity: 0;
- translate: -40px 0;
- pointer-events: none;
-}
-.feature_hero--grid_content .content_block:hover .text_content {
- opacity: 0.7;
+.feature_hero--grid_content .content_block .icon-headline {
+ display: flex;
+ gap: 0.25em;
 }
 .feature_hero--grid_content .content_block .track {
  position: relative;

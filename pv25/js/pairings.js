@@ -1,4 +1,4 @@
-const teams = Array.from({ length: 18 }, (_, i) => ({
+const teams = Array.from({ length: 14 }, (_, i) => ({
 	name: `Team ${i + 1}`,
 	seed: i + 1,
 }));

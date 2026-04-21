@@ -1,0 +1,115 @@
+@use "sass:color";
+@use "../../../globals/abstracts" as *;
+
+// Basic Content
+//This is a basic block with standard row settings. That's bacially it
+// Visual:
+// Dependancy:
+
+/*css/blocks/basic_content/css/index.scss*/
+
+//Attributes
+//&--row: column-span = main* | inset | narrow | full_page
+//&--row: alignment = center* | right | left
+.level_links {
+	display: flex;
+	align-items: center;
+	padding: 1.5rem;
+	background-color: rgba(255, 255, 255, 0.6);
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
+	border-radius: 0.5rem;
+	border: 1px dashed var(--theme_color-500, #76affe);
+	justify-content: center;
+	gap: 0.75em;
+	width: 100%;
+	font-size: clamp(1rem, 1.13vw + 0.7375rem, 1.75rem);
+
+	a {
+		color: #192d62;
+		font-family: trade-gothic-next, "Gothic A1", sans-serif;
+		font-style: italic;
+		font-weight: 800;
+		line-height: 100%;
+		letter-spacing: 0.0875rem;
+		text-transform: uppercase;
+		text-decoration: none;
+	}
+	.svg-arrow {
+		display: contents;
+		color: var(--primary_text, #192d62);
+		svg {
+			fill: none;
+			height: 0.625em;
+		}
+	}
+}
+
+.toggle_content {
+	display: grid;
+	gap: var(--space_between-small);
+	grid-template-columns: 1fr 120 * $rem;
+	&-headline {
+		grid-column: 1;
+		grid-row: 1;
+	}
+	&-wrap {
+		display: contents;
+	}
+	&-menu {
+		grid-column: 2;
+		grid-row: 1;
+		display: grid;
+		grid-template-columns: repeat(var(--options, 2), 1fr);
+		padding: 0.25rem;
+		border-radius: 0 0.5rem;
+		background-color: white;
+		box-shadow: 0 10px 16px -10px rgba(26, 122, 255, 0.15);
+
+		&::after {
+			@include psuedo_el;
+			width: 100%;
+			height: 100%;
+			grid-row: 1;
+			grid-column: 1;
+			border-radius: 0.125rem;
+			transition: 0.3s all;
+			grid-row: 1;
+			grid-column: 1;
+			background-color: $crimson-500;
+			border-radius: 0 0.375rem;
+		}
+
+		&:has(.w--current:nth-child(2)) {
+			&::after {
+				translate: 100% 0;
+				background-color: $green-500;
+			}
+		}
+
+		.w-tab-link {
+			background-color: transparent;
+			font-size: 0.75rem;
+			color: var(--theme--primary_text);
+			font-family: $primary_font-var;
+			border: 0;
+			padding: 0.6666666667em 0.6666666667em;
+			line-height: 100%;
+			position: relative;
+			translate: 0% 0%;
+			z-index: 1;
+			transition: 0.3s all;
+			grid-row: 1;
+			grid-column: 1;
+			@include f-center;
+			text-align: center;
+			&:nth-child(2) {
+				grid-column: 2;
+			}
+		}
+	}
+	&-content {
+		grid-column: 1/-1;
+		grid-row: 2;
+	}
+}
