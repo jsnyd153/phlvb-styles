@@ -80,18 +80,32 @@ $(document).ready(function () {
 			const originalButtonText = $submitButton.val();
 
 			// 2. Data Collection
+			// Read each skill by its (unique) name attribute. If the row has been
+			// toggled to "No rating" the slider is disabled and we send null, which
+			// the backend stores as NULL and skips in all calculations.
+			const readSkill = (name) => {
+				const input = ratingForm.querySelector('input[name="' + name + '"]');
+				if (!input) return null;
+				const range = input.closest(".fs-filter-range");
+				if (input.disabled || (range && range.classList.contains("is-no-rating"))) {
+					return null;
+				}
+				const value = parseFloat(input.value);
+				return isNaN(value) ? null : value;
+			};
+
 			const data = {
 				rater_id: document.getElementById("rater-id").value.trim(),
 				player_name: document.getElementById("player-name").value.trim(),
 				player_email: document.getElementById("player-email").value.trim(),
 				rating_type: document.querySelector('input[name="Rating-Type"]:checked')?.value,
 				position: document.querySelector('input[name="Position"]:checked')?.value,
-				attacking: parseFloat(document.getElementById("attackingSlider").value),
-				blocking: parseFloat(document.getElementById("blockingSlider").value),
-				defense: parseFloat(document.getElementById("defenseSlider").value),
-				receive: parseFloat(document.getElementById("receiveSlider").value),
-				setting: parseFloat(document.getElementById("settingSlider").value),
-				serving: parseFloat(document.querySelector('input[name="serving"]').value),
+				attacking: readSkill("attacking"),
+				blocking: readSkill("blocking"),
+				defense: readSkill("defense"),
+				receive: readSkill("receive"),
+				setting: readSkill("setting"),
+				serving: readSkill("serving"),
 			};
 
 			// 3. VALIDATION CHECK
@@ -148,4 +162,158 @@ $(document).ready(function () {
 			}
 		});
 	}
+});
+
+// ---------------------------------------------------------------------------
+// "No rating" per-skill toggle
+//
+// Long-press (or right-click) a skill row to open a small context menu that
+// lets the rater toggle that skill to "No rating". When off, the slider is
+// disabled/greyed and its value display reads "No rating"; on submit that
+// skill is sent as null. Long-press again to toggle it back on.
+// ---------------------------------------------------------------------------
+$(document).ready(function () {
+	const form = document.getElementById("wf-form-Rating-Form");
+	if (!form) return;
+
+	const ranges = form.querySelectorAll(".fs-filter-range");
+	if (!ranges.length) return;
+
+	const LONG_PRESS_MS = 450;
+	const MOVE_CANCEL_PX = 10;
+
+	// Toggle a single skill row on/off.
+	function setNoRating(range, on) {
+		const input = range.querySelector('input[type="range"]');
+		const valueEl = range.querySelector(".range-description > div");
+		if (!input) return;
+
+		if (on) {
+			range.classList.add("is-no-rating");
+			input.disabled = true;
+			if (valueEl) valueEl.textContent = "No rating";
+		} else {
+			range.classList.remove("is-no-rating");
+			input.disabled = false;
+			if (valueEl) valueEl.textContent = parseFloat(input.value).toFixed(1);
+		}
+	}
+
+	// --- Build the context menu (one shared element) ---
+	const menu = document.createElement("div");
+	menu.className = "rating-context-menu";
+	menu.setAttribute("role", "menu");
+	menu.innerHTML =
+		'<button type="button" class="rating-context-menu-toggle" role="menuitemcheckbox">' +
+		'<span class="rating-context-menu-label">No rating</span>' +
+		'<span class="rating-context-menu-switch" aria-hidden="true"></span>' +
+		"</button>";
+	document.body.appendChild(menu);
+
+	const toggleBtn = menu.querySelector(".rating-context-menu-toggle");
+	let activeRange = null;
+
+	function closeMenu() {
+		menu.classList.remove("open");
+		activeRange = null;
+	}
+
+	function openMenu(range, x, y) {
+		activeRange = range;
+		const isOff = range.classList.contains("is-no-rating");
+		toggleBtn.classList.toggle("is-on", isOff);
+		toggleBtn.setAttribute("aria-checked", String(isOff));
+
+		// Show first so we can measure, then clamp within the viewport.
+		menu.classList.add("open");
+		const rect = menu.getBoundingClientRect();
+		const pad = 8;
+		let left = x;
+		let top = y;
+		if (left + rect.width + pad > window.innerWidth) left = window.innerWidth - rect.width - pad;
+		if (top + rect.height + pad > window.innerHeight) top = y - rect.height;
+		menu.style.left = Math.max(pad, left) + "px";
+		menu.style.top = Math.max(pad, top) + "px";
+	}
+
+	toggleBtn.addEventListener("click", function () {
+		if (!activeRange) return;
+		setNoRating(activeRange, !activeRange.classList.contains("is-no-rating"));
+		closeMenu();
+	});
+
+	// --- Long-press + right-click wiring per row ---
+	ranges.forEach(function (range) {
+		let timer = null;
+		let startX = 0;
+		let startY = 0;
+		let longPressed = false;
+
+		const cancel = () => {
+			if (timer) {
+				clearTimeout(timer);
+				timer = null;
+			}
+		};
+
+		range.addEventListener("pointerdown", function (e) {
+			if (e.button && e.button !== 0) return; // ignore non-primary buttons
+			longPressed = false;
+			startX = e.clientX;
+			startY = e.clientY;
+			cancel();
+			timer = setTimeout(function () {
+				longPressed = true;
+				openMenu(range, startX, startY);
+			}, LONG_PRESS_MS);
+		});
+
+		range.addEventListener("pointermove", function (e) {
+			if (!timer) return;
+			if (
+				Math.abs(e.clientX - startX) > MOVE_CANCEL_PX ||
+				Math.abs(e.clientY - startY) > MOVE_CANCEL_PX
+			) {
+				cancel();
+			}
+		});
+
+		["pointerup", "pointerleave", "pointercancel"].forEach(function (evt) {
+			range.addEventListener(evt, cancel);
+		});
+
+		// Suppress the click/value-change that follows a long-press.
+		range.addEventListener(
+			"click",
+			function (e) {
+				if (longPressed) {
+					e.preventDefault();
+					e.stopPropagation();
+					longPressed = false;
+				}
+			},
+			true,
+		);
+
+		// Right-click / native long-press callout opens our menu instead.
+		range.addEventListener("contextmenu", function (e) {
+			e.preventDefault();
+			cancel();
+			openMenu(range, e.clientX, e.clientY);
+		});
+	});
+
+	// --- Dismiss the menu ---
+	document.addEventListener(
+		"pointerdown",
+		function (e) {
+			if (menu.classList.contains("open") && !menu.contains(e.target)) closeMenu();
+		},
+		true,
+	);
+	document.addEventListener("keydown", function (e) {
+		if (e.key === "Escape") closeMenu();
+	});
+	window.addEventListener("scroll", closeMenu, true);
+	window.addEventListener("resize", closeMenu);
 });
